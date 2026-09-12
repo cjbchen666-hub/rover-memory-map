@@ -24,15 +24,15 @@ concurrency:
 env:
   # ============ 数据快照（Rover 上传至 aka 短链，带 SHA256 校验）============
   # 每次汇报后由 Rover 自动更新以下 5 组 URL/SHA
-  BS_URL: https://aka.doubaocdn.com/s/jmyVVAMK7r
-  BS_SHA: 6e185b1c7fefb9ab8395306ea5c8b15421d3f54589237895d95b956c51e1ca9e
-  MEM_URL: https://aka.doubaocdn.com/s/HKr1JpBhBB
-  MEM_SHA: 380710df750092c30584c2497a78eb7abd64958795d1ca0701815cd0a901205e
-  TRAIL_URL: https://aka.doubaocdn.com/s/i3zuHOut5q
-  TRAIL_SHA: 4d753c2a2152713772153503ed02f257e9375efaf069e0622b8b1f1e5b3fb57e
-  STATE_URL: https://aka.doubaocdn.com/s/GQ1WNCciRv
-  STATE_SHA: f57474ba224dde317df36222286b52a611fcb3075aa3099d48aa5369714566cd
-  RPT_URL: https://aka.doubaocdn.com/s/1M6TXdoplP
+  BS_URL: https://aka.doubaocdn.com/s/D9yyXGQ7L2
+  BS_SHA: f228ae5114bd84d0e55ad13575d08e4eb50298cc534b891a00675d45005b8bfc
+  MEM_URL: https://aka.doubaocdn.com/s/PEm5rNfR5S
+  MEM_SHA: 37f83ec53f56a7fc60c4ee75f4d2ff5bad1f69687118257612d32328346d5044
+  TRAIL_URL: https://aka.doubaocdn.com/s/ws2TYIBI6r
+  TRAIL_SHA: 068169f117c92c0863af0e8bb92eb5991a85eb62e822e5cfbd722a46437b9363
+  STATE_URL: https://aka.doubaocdn.com/s/7XNDXUniKu
+  STATE_SHA: bdc7adfd03a60b98fd41355e8b885d14e942b112995dcc705e762309020007f0
+  RPT_URL: https://aka.doubaocdn.com/s/ljWKciohRb
   RPT_SHA: abdd3262d92978fd0826d2994adefe54683cee8529d90947f4238f94cb4e5fa1
 
 jobs:

@@ -10,6 +10,8 @@ on:
       - 'memory.md'
       - 'trail.md'
       - 'reports/**'
+      - 'audit-log.json'
+      - 'inject-audit.py'
   workflow_dispatch:
 
 permissions:
@@ -81,6 +83,13 @@ jobs:
         run: |
           python3 rover/web/build_site.py
           ls -la rover/web/index.html
+      - name: Inject independent audit section
+        run: |
+          cp audit-log.json rover/web/audit-log.json
+          python3 inject-audit.py rover/web/index.html audit-log.json rover/web/index.html
+          rm -f rover/web/index.html.bak
+          echo "=== Audit injection complete ==="
+          ls -la rover/web/index.html rover/web/audit-log.json
       - name: Commit index.html back to repo root
         run: |
           cp rover/web/index.html index.html

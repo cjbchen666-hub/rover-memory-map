@@ -1,4 +1,4 @@
-name: Build and Deploy Rover Memory Map
+name: Deploy Rover Memory Map
 
 on:
   push:
@@ -15,24 +15,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
-      - name: Build site
+      - name: Prepare directory structure
         run: |
-          mkdir -p web/reports
-          python3 build_site.py
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        
+          mkdir -p rover/web/reports
+          cp build_site.py rover/web/
+          cp state.json memory.md trail.md rover/
+          cp reports/*.md rover/web/reports/ 2>/dev/null || true
+      - name: Build site
+        run: python3 rover/web/build_site.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: web
+          path: rover/web/index.html
 
   deploy:
     needs: build

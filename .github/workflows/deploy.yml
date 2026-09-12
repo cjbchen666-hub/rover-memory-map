@@ -1,8 +1,8 @@
-name: Deploy Rover Memory Map
+name: Deploy Rover Memory Map to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -10,34 +10,46 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Prepare directory structure
         run: |
           mkdir -p rover/web/reports
-          cp build_site.py rover/web/
-          cp state.json memory.md trail.md rover/
+          cp build_site.py rover/web/build_site.py 2>/dev/null || true
+          cp memory.md rover/memory.md 2>/dev/null || true
+          cp trail.md rover/trail.md 2>/dev/null || true
+          cp state.json rover/state.json 2>/dev/null || true
           cp reports/*.md rover/web/reports/ 2>/dev/null || true
+          ls -la rover/web/
+
       - name: Build site
-        run: python3 rover/web/build_site.py
+        run: |
+          python3 rover/web/build_site.py
+          ls -la rover/web/index.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: rover/web/index.html
+          path: rover/web/
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

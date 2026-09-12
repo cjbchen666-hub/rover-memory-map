@@ -2,7 +2,7 @@
 """部署脚本：从CDN下载最新index.html并提交到main分支"""
 import urllib.request, os, subprocess, sys
 
-URL = "https://aka.doubaocdn.com/s/a9XmH11WPg"
+URL = "https://aka.doubaocdn.com/s/IYsw8lU65q"
 OUT = "index.html"
 
 def run(cmd):

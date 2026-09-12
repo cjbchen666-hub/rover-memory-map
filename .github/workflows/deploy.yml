@@ -10,8 +10,6 @@ on:
       - 'memory.md'
       - 'trail.md'
       - 'reports/**'
-      - 'audit-log.json'
-      - 'inject-audit.py'
   workflow_dispatch:
 
 permissions:
@@ -24,16 +22,18 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BS_URL: https://aka.doubaocdn.com/s/n7pvuy0rhR
+  # ============ 数据快照（Rover 上传至 aka 短链，带 SHA256 校验）============
+  # 每次汇报后由 Rover 自动更新以下 5 组 URL/SHA
+  BS_URL: https://aka.doubaocdn.com/s/MabUV081gG
   BS_SHA: d9ccb367d243cf214a380f936d0c513e79ad0b8152d9179795dfcd9240a3bc7a
-  MEM_URL: https://aka.doubaocdn.com/s/QYtQVuKxX4
-  MEM_SHA: 8c47ec56c7184a295e3980231e370169a9772660ab51e97a7d0a6a96791c2c67
-  TRAIL_URL: https://aka.doubaocdn.com/s/Z2NcksLiaK
-  TRAIL_SHA: a37e8363599b536a96a236073fa587c2bb6138fa61957c295694a442502cfa6b
-  STATE_URL: https://aka.doubaocdn.com/s/NaEHPsKcZy
-  STATE_SHA: 45047719fbdf3e6fce851a1ac7dd84256b3fd0b8522747aee7b4413790d8b360
-  RPT_URL: https://aka.doubaocdn.com/s/nlAgpXJZKt
-  RPT_SHA: 10f4fde8f097d545078567d912ec898e43c921f6da69e35968bd5b4021aa82a3
+  MEM_URL: https://aka.doubaocdn.com/s/gkmjLxXmIV
+  MEM_SHA: fca6e1b99d8ef07e79a3c07fc9e94d89a913bf9add38d5387fad699237b35c23
+  TRAIL_URL: https://aka.doubaocdn.com/s/VZxlhhk82m
+  TRAIL_SHA: 9b7786ec531422c968105df18b746e96343f69ee6712327f0e574b756e2cbc05
+  STATE_URL: https://aka.doubaocdn.com/s/cNXir3meZR
+  STATE_SHA: 3f15239cd6cf5fdd542936960e346763621699bf04988b372244b5adf86f6b2d
+  RPT_URL: https://aka.doubaocdn.com/s/34yzxos7yS
+  RPT_SHA: a26ed88700ac560d84189f0622fe893ec86fb32c911a5561d02e4ca5882ba440
 
 jobs:
   build:
@@ -41,56 +41,56 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Prepare directory structure
         run: |
           mkdir -p rover/web/reports
           ls -la
-      - name: Fetch build_site.py
+
+      - name: Fetch build_site.py (snapshot, fallback to repo)
         run: |
           if curl -fsSL -A "Mozilla/5.0" "$BS_URL" -o rover/web/build_site.py && echo "$BS_SHA  rover/web/build_site.py" | sha256sum -c - >/dev/null 2>&1; then
-            echo "build_site.py OK"
+            echo "build_site.py OK ($(wc -c < rover/web/build_site.py) bytes)"
           else
             echo "snapshot failed, fallback repo"
             cp build_site.py rover/web/build_site.py 2>/dev/null || true
           fi
-      - name: Fetch data files
+
+      - name: Fetch data files (snapshot, fallback to repo)
         run: |
           fetch() {
             local url="$1" sha="$2" out="$3" repo="${4:-}"
             if curl -fsSL -A "Mozilla/5.0" "$url" -o "$out" && echo "$sha  $out" | sha256sum -c - >/dev/null 2>&1; then
-              echo "OK  $out"
+              echo "OK  $out ($(wc -c < "$out") bytes)"
             else
               if [ -n "$repo" ] && [ -f "$repo" ]; then
-                cp "$repo" "$out"; echo "FB  $out"
+                cp "$repo" "$out"; echo "FB  $out <- $repo"
               else
-                echo "ERR $out"
+                echo "ERR $out no fallback"
               fi
             fi
           }
           fetch "$MEM_URL" "$MEM_SHA" rover/memory.md memory.md
           fetch "$TRAIL_URL" "$TRAIL_SHA" rover/trail.md trail.md
           fetch "$STATE_URL" "$STATE_SHA" rover/state.json state.json
-      - name: Fetch and extract reports archive
+
+      - name: Fetch and extract reports archive (snapshot, fallback to repo)
         run: |
           if curl -fsSL -A "Mozilla/5.0" "$RPT_URL" -o /tmp/reports.tar.gz && echo "$RPT_SHA  /tmp/reports.tar.gz" | sha256sum -c - >/dev/null 2>&1; then
             tar xzf /tmp/reports.tar.gz -C rover/web/
-            echo "reports OK"
+            echo "reports OK: $(ls rover/web/reports/ | wc -l) files"
           else
-            echo "reports snapshot failed"
+            echo "reports snapshot failed, fallback repo"
             cp reports/*.md rover/web/reports/ 2>/dev/null || true
           fi
+          ls -la rover/web/reports/
+
       - name: Build site
         run: |
           python3 rover/web/build_site.py
           ls -la rover/web/index.html
-      - name: Inject independent audit section
-        run: |
-          cp audit-log.json rover/web/audit-log.json
-          python3 inject-audit.py rover/web/index.html audit-log.json rover/web/index.html
-          rm -f rover/web/index.html.bak
-          echo "=== Audit injection complete ==="
-          ls -la rover/web/index.html rover/web/audit-log.json
-      - name: Commit index.html back to repo root
+
+      - name: Commit index.html back to repo root (branch-based Pages fallback)
         run: |
           cp rover/web/index.html index.html
           git config user.name "github-actions[bot]"
@@ -102,12 +102,15 @@ jobs:
             git commit -m "build(index.html): auto rebuild from Rover data [skip ci]"
             git push origin main
           fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: rover/web/
+
   deploy:
     environment:
       name: github-pages

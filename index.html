@@ -256,6 +256,28 @@ mark { background:rgba(88,166,255,.28); color:var(--text); padding:0 3px; border
 .point-list-item .pli-name { font-size:13px; color:var(--text); flex:1; }
 .point-list-item .pli-badges { display:flex; gap:4px; flex-shrink:0; }
 
+/* [P2-1] 来源分布小图 */
+.source-dist-panel { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:10px 0 14px; }
+.source-dist-title { font-size:12px; font-weight:700; color:var(--text); margin-bottom:8px; letter-spacing:0.3px; }
+.source-dist-bars { display:flex; flex-direction:column; gap:6px; }
+.source-dist-row { display:flex; align-items:center; gap:8px; }
+.source-dist-label { font-size:11px; color:var(--muted); width:70px; flex-shrink:0; }
+.source-dist-bar { flex:1; height:8px; background:var(--panel2); border-radius:4px; overflow:hidden; }
+.source-dist-fill { height:100%; border-radius:4px; transition:width .3s; }
+.source-dist-fill.multi { background:linear-gradient(90deg,var(--l1),var(--l2)); }
+.source-dist-fill.single { background:var(--l4); }
+.source-dist-fill.none { background:var(--muted); opacity:0.5; }
+.source-dist-count { font-size:11px; color:var(--text); font-weight:600; width:24px; text-align:right; flex-shrink:0; }
+.source-dist-hint { font-size:10px; color:var(--muted); margin-top:6px; font-style:italic; }
+
+/* [P2-2] Sticky 迷你导航 */
+.sticky-nav { position:sticky; top:0; z-index:100; background:rgba(13,17,23,0.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); padding:8px 0; margin-bottom:16px; display:none; }
+.sticky-nav.show { display:block; }
+.sticky-nav-inner { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; }
+.sticky-nav a { color:var(--muted); text-decoration:none; font-size:12px; padding:5px 12px; border-radius:6px; transition:all .2s; }
+.sticky-nav a:hover { color:var(--text); background:var(--panel2); }
+.sticky-nav a.active { color:var(--accent); background:var(--panel2); font-weight:600; }
+
 /* [优化 16] 轨迹卡片窄屏优化 */
 .tl-card .tl-card-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .tl-card .tl-secondary { display:block; }
@@ -920,6 +942,18 @@ button { min-height:44px; }
   <div class="rover-status"><i></i>持续漫游中 · 每 10 分钟一步</div>
 </header>
 
+<!-- [P2-2] Sticky 迷你导航 -->
+<nav class="sticky-nav" id="stickyNav" aria-label="页面导航">
+  <div class="sticky-nav-inner">
+    <a href="#beliefs-section" data-target="beliefs-section">信念</a>
+    <a href="#map-section" data-target="map-section">地图</a>
+    <a href="#trail-section" data-target="trail-section">轨迹</a>
+    <a href="#shapes-section" data-target="shapes-section">形状观察</a>
+    <a href="#summary-section" data-target="summary-section">全图汇总</a>
+    <a href="#reports-section" data-target="reports-section">汇报归档</a>
+  </div>
+</nav>
+
   <!-- [重构] 漫游者手记 -->
   <div class="agent-note">
     <strong>📝 漫游者手记</strong><br>
@@ -1358,6 +1392,28 @@ button { min-height:44px; }
 
 <section id="map-section">
   <h2 class="sec"><span class="dot"></span>记忆地图 <small>点 150 个 · 连线 539 条 · 悬停看详情，拖拽可移动</small></h2>
+  <!-- [P2-1] 来源分布小图 -->
+  <div class="source-dist-panel" id="sourceDistPanel">
+    <div class="source-dist-title">来源分布</div>
+    <div class="source-dist-bars">
+      <div class="source-dist-row">
+        <span class="source-dist-label">多来源 (≥2)</span>
+        <div class="source-dist-bar"><div class="source-dist-fill multi" style="width:0%"></div></div>
+        <span class="source-dist-count">0</span>
+      </div>
+      <div class="source-dist-row">
+        <span class="source-dist-label">单一来源</span>
+        <div class="source-dist-bar"><div class="source-dist-fill single" style="width:0%"></div></div>
+        <span class="source-dist-count">0</span>
+      </div>
+      <div class="source-dist-row">
+        <span class="source-dist-label">无来源</span>
+        <div class="source-dist-bar"><div class="source-dist-fill none" style="width:96%"></div></div>
+        <span class="source-dist-count">145</span>
+      </div>
+    </div>
+    <div class="source-dist-hint">点击"单一来源"徽章可高亮对应节点</div>
+  </div>
   <!-- [优化 15] 地图视图切换按钮 -->
   <div class="map-view-toggle" role="tablist" aria-label="地图视图切换">
     <button id="btnListView" class="active" role="tab" aria-selected="true" aria-label="切换到列表视图" onclick="switchMapView('list')">列表视图</button>
@@ -6332,6 +6388,8 @@ function syncFilterBadge() {
 }
 
 // [重构] 不确定性徽章点击联动筛选
+// [P2-1] single 类型增加地图高亮
+var singleSourceHighlightActive = false;
 function filterUncertainty(kind) {
   if (kind === 'contradiction') {
     var sel = document.getElementById('filterContradiction');
@@ -6340,8 +6398,17 @@ function filterUncertainty(kind) {
     var srcSel = document.getElementById('filterSource');
     srcSel.value = 'l4';
   } else if (kind === 'single') {
+    // [P2-1] 切换地图上单一来源节点的高亮
+    singleSourceHighlightActive = !singleSourceHighlightActive;
+    if (window.chart && singleSourceHighlightActive) {
+      var singleIds = (window.POINTS || []).filter(function(n) { return (n.source_count || 0) === 1; }).map(function(n) { return n.id; });
+      window.chart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: singleIds });
+    } else if (window.chart) {
+      window.chart.dispatchAction({ type: 'downplay', seriesIndex: 0 });
+    }
+    // 同时切换列表筛选
     var sel = document.getElementById('filterTime');
-    sel.value = sel.value ? '' : 'old';
+    sel.value = singleSourceHighlightActive ? 'old' : '';
   } else if (kind === 'stale') {
     var sel = document.getElementById('filterTime');
     sel.value = (sel.value === 'old') ? '' : 'old';
@@ -6573,6 +6640,61 @@ document.addEventListener('DOMContentLoaded', function() {
       else text = '· 距今 ' + diffMin + ' 分钟';
       freshnessEl.textContent = text;
     } catch(e) { console.warn('[P2-2] 数据新鲜度计算失败:', e); }
+  })();
+  // [P2-2] Sticky 迷你导航初始化
+  (function() {
+    var nav = document.getElementById('stickyNav');
+    if (!nav) return;
+    var navLinks = nav.querySelectorAll('a');
+    var sections = [];
+    navLinks.forEach(function(link) {
+      var targetId = link.getAttribute('data-target');
+      var section = document.getElementById(targetId);
+      if (section) sections.push({ id: targetId, el: section, link: link });
+    });
+    // 点击平滑滚动
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetId = this.getAttribute('data-target');
+        var target = document.getElementById(targetId);
+        if (target) {
+          var offset = 60; // sticky nav 高度
+          var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+    // 滚动时显示/隐藏 + 高亮当前区块
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          // 显示/隐藏 sticky nav（滚动超过 hero 区域时显示）
+          var hero = document.querySelector('.hero');
+          if (hero && window.scrollY > hero.offsetHeight + 100) {
+            nav.classList.add('show');
+          } else {
+            nav.classList.remove('show');
+          }
+          // 高亮当前区块
+          var scrollPos = window.scrollY + 100;
+          var currentId = '';
+          sections.forEach(function(s) {
+            if (s.el.offsetTop <= scrollPos) currentId = s.id;
+          });
+          navLinks.forEach(function(link) {
+            if (link.getAttribute('data-target') === currentId) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
   })();
   // [A2] toggleSummary 内联 onclick 改为 addEventListener
   var summaryToggle = document.querySelector('#summary-section .summary-toggle');

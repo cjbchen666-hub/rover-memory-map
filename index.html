@@ -148,15 +148,7 @@ h2.sec small { color:var(--muted); font-weight:400; font-size:13px; }
 .rpt-tab.active { background:var(--accent); border-color:var(--accent); color:#0a0e14; font-weight:600; }
 .rpt-view { display:none; }
 .rpt-view.active { display:block; }
-/* 时间线视图 */
-.rpt-tl-row { display:grid; grid-template-columns:120px 24px 1fr; gap:0; }
-.rpt-tl-time { padding:16px 8px 16px 0; text-align:right; font-variant-numeric:tabular-nums;
-  color:var(--muted); font-size:12.5px; line-height:1.5; }
-.rpt-tl-axis { position:relative; }
-.rpt-tl-axis::before { content:""; position:absolute; left:50%; top:0; bottom:0; width:2px;
-  background:var(--line); transform:translateX(-50%); }
-.rpt-tl-axis i { position:absolute; left:50%; top:22px; width:12px; height:12px; border-radius:50%;
-  background:var(--accent); transform:translateX(-50%); box-shadow:0 0 0 4px rgba(88,166,255,.18); }
+/* 时间线视图（已改为卡片布局，保留 body/title/full 样式） */
 .rpt-tl-body { padding:12px 0 20px 14px; }
 .rpt-tl-title { font-size:15px; font-weight:700; cursor:pointer; color:var(--text); }
 .rpt-tl-title:hover { color:var(--accent); }
@@ -187,8 +179,6 @@ h2.sec small { color:var(--muted); font-weight:400; font-size:13px; }
 .cat-item-meta a { color:var(--accent); text-decoration:none; }
 .cat-item-sowhat { margin-top:6px; font-size:12.5px; color:#8b949e; line-height:1.55; }
 @media (max-width:640px) {
-  .rpt-tl-row { grid-template-columns:80px 18px 1fr; }
-  .rpt-tl-time { font-size:11px; }
 }
 .shapes { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
 .shapes li { list-style:none; background:var(--panel); border:1px solid var(--line);
@@ -363,9 +353,10 @@ li { margin-bottom:5px; }
 .tl-card .tl-card-full strong { color:var(--text); }
 
 /* 报告卡片可读性优化 */
-.rpt-card { padding:20px 24px; margin-bottom:16px; border-radius:12px; }
+.rpt-card { padding:16px; margin-bottom:12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-elevated); transition:border-color .2s cubic-bezier(0.4,0,0.2,1); }
+.rpt-card:hover { border-color:var(--border-light); }
 .rpt-card .rpt-tl-title { font-size:16px; font-weight:700; line-height:1.5; }
-.rpt-card .rpt-tl-body { font-size:14.5px; line-height:1.85; color:#c9d1d9; }
+.rpt-card .rpt-tl-body { font-size:14.5px; line-height:1.85; color:#c9d1d9; padding:0; }
 .rpt-card .rpt-tl-body h4 { font-size:15px; color:var(--text); margin:14px 0 8px; }
 .rpt-card .rpt-tl-body p { margin-bottom:10px; }
 .rpt-card .rpt-tl-body li { margin-bottom:6px; line-height:1.75; }
@@ -719,20 +710,8 @@ header.hero {
 }
 .obs-toggle .tl-btn:hover { border-color:var(--accent); color:var(--text); }
 
-/* ---------- [重构] 区块9：汇报归档 ---------- */
+/* ---------- [重构] 区块9：汇报归档（卡片布局） ---------- */
 .rpt-timeline { position:relative; }
-.rpt-tl-row { display:grid; grid-template-columns:100px 24px 1fr; gap:0; }
-.rpt-tl-time { font-size:12px; color:var(--muted); padding:14px 8px 0 0; text-align:right; font-variant-numeric:tabular-nums; }
-.rpt-tl-axis { position:relative; display:flex; justify-content:center; }
-.rpt-tl-axis:before {
-  content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
-  background:var(--border); transform:translateX(-50%);
-}
-.rpt-tl-axis i {
-  position:relative; top:18px; width:10px; height:10px; border-radius:50%;
-  background:var(--accent); flex-shrink:0;
-  box-shadow:0 0 0 4px rgba(88,166,255,.15);
-}
 .rpt-tl-body { padding:12px 0 20px 14px; }
 .rpt-tl-title {
   font-size:15px; font-weight:600; cursor:pointer; color:var(--text);
@@ -755,17 +734,6 @@ header.hero {
 .rpt-expand-btn:hover { border-color:var(--accent); color:var(--text); }
 .rpt-view { display:none; }
 .rpt-view.active { display:block; }
-
-/* [汇报归档改常规卡片] 覆盖时间线三列布局为普通卡片 */
-.rpt-tl-row.rpt-card {
-  display:block; border:1px solid var(--border); border-radius:10px;
-  padding:16px; margin-bottom:12px; background:var(--bg-elevated);
-  transition:border-color .2s cubic-bezier(0.4,0,0.2,1);
-}
-.rpt-tl-row.rpt-card:hover { border-color:var(--border-light); }
-.rpt-tl-row.rpt-card .rpt-tl-body { padding:0; }
-.rpt-tl-row.rpt-card .rpt-tl-time,
-.rpt-tl-row.rpt-card .rpt-tl-axis { display:none; }
 
 /* ---------- [重构] 区块10：关于本页 + 页脚 + 回到顶部 ---------- */
 .about-section .about-content > div {
@@ -839,8 +807,6 @@ button { min-height:44px; }
   #map { height:420px; }
   .tl-full-cols { grid-template-columns:1fr; }
   .obs-cards { grid-template-columns:1fr; }
-  .rpt-tl-row { grid-template-columns:70px 18px 1fr; }
-  .rpt-tl-time { font-size:11px; }
   .hero h1 { font-size:28px; }
   section { margin-top:var(--sp-4); }
   .tl-card-start,.tl-card-angle { max-width:110px; }

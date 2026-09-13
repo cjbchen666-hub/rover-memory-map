@@ -22,8 +22,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BS_URL: https://aka.doubaocdn.com/s/Y5U3c7lbfs
-  BS_SHA: d617c52b4bd46c70cf1b1383dad61b09db8923be22d891a6f19f1f98cfcbd781
+  BS_URL: https://aka.doubaocdn.com/s/dQw9ObW7LG
+  BS_SHA: 9b0502fc1573965c81c996110215b27fac140f3ed509f0ad9a2a260924422926
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
   MEM_URL: https://aka.doubaocdn.com/s/bXl9qchQDG

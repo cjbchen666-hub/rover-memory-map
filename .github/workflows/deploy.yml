@@ -1,5 +1,5 @@
 name: Deploy Rover Memory Map to GitHub Pages
-# C10 fix: event delegation for trail/list items
+# C9 fix: TreeWalker text nodes for first-person annotation
 on:
   push:
     branches: [main]
@@ -26,12 +26,12 @@ env:
   BS_SHA: 4efbfd9570b8489deb32688a58704b5f2724bfb6499aee0e5055168f4d75523f
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
-  MEM_URL: https://aka.doubaocdn.com/s/tZpKW4U70m
-  MEM_SHA: 10aae2d103fc6275f64955d45b9ceba033cea562fec33ec538c61c3f9424170b
-  TRAIL_URL: https://aka.doubaocdn.com/s/DHNqcfbUVF
-  TRAIL_SHA: 4946bf1ce15b5daf78ba9c0ec71fb43ef2c81f893de5068179ceb7b6ef9cfb9c
-  STATE_URL: https://aka.doubaocdn.com/s/iD9NbTl7nh
-  STATE_SHA: fb2b475ce98d427f2b7afc250f9678ebccbaea59f96868b1c0a4bb0ee9d8ab63
+  MEM_URL: https://aka.doubaocdn.com/s/3iO29DMzEs
+  MEM_SHA: bc51c9d36c480c64d25f82da1c562a2705c5ef8d284a8fa8a20d714b9c39ac31
+  TRAIL_URL: https://aka.doubaocdn.com/s/FEcmwRggx9
+  TRAIL_SHA: b257203ee8b69ad0a0cb255a2666d10dfddcae8ab8a51462cbc95a94483995d7
+  STATE_URL: https://aka.doubaocdn.com/s/rYMAIm8VV8
+  STATE_SHA: b891cb01a52a0de9e5be359672de7302ac92029ff408436cd98bfa5a255b7305
   RPT_URL: https://aka.doubaocdn.com/s/nHAFGaVrTH
   RPT_SHA: 84005fab26a032fa1a76448004e2e7fc4a4076af6c7001bb0e5cd3543a57adc0
   BELIEFS_URL: https://aka.doubaocdn.com/s/mApFQSGQeq

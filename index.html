@@ -10726,7 +10726,35 @@ var LONE = [{"id": 20, "note": "：工程物理/极限基建是新开的独立�
 var DOMAINS = {"能力实证": {"color": "#58a6ff"}, "安全治理": {"color": "#f78166"}, "社会结构": {"color": "#7ee787"}, "极限工程": {"color": "#d2a8ff"}, "天文考古": {"color": "#ffd58a"}, "生物基因": {"color": "#ffa657"}, "认知科学": {"color": "#bc8cff"}};
 var CATS = Object.keys(DOMAINS);
 
-var chart = echarts.init(document.getElementById('map'));
+// [A4] 延迟 ECharts init：移动端默认列表视图时 #map 容器 display:none，
+// 立即 init 会导致 canvas 尺寸为 0，切回地图时残留错误。
+// 改为：容器可见时才 init；不可见时 chart=null，等首次 switchMapView('map') 时再 init。
+var chart = null;
+var chartInited = false;
+function initChart() {
+  if (chartInited) return;
+  var mapEl = document.getElementById('map');
+  if (!mapEl) return;
+  // 确认容器可见且有尺寸
+  var rect = mapEl.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) {
+    console.warn('[A4] #map 容器尺寸为0，延迟init');
+    return;
+  }
+  chart = echarts.init(mapEl);
+  chart.setOption(option);
+  chart.on('click', onChartClick);
+  chartInited = true;
+  // [A4] ResizeObserver：容器尺寸变化时自动 resize
+  if (typeof ResizeObserver !== 'undefined') {
+    var ro = new ResizeObserver(function() {
+      if (chart && chartInited) chart.resize();
+    });
+    ro.observe(mapEl);
+  }
+  console.log('[A4] ECharts 已初始化，尺寸:', rect.width + 'x' + rect.height);
+}
+
 var option = {
   tooltip: {
     backgroundColor: '#11161f', borderColor: '#232c3a', textStyle: { color: '#e6edf3', fontSize: 13 },
@@ -10766,8 +10794,8 @@ var option = {
     })
   }]
 };
-chart.setOption(option);
-window.addEventListener('resize', function() { chart.resize(); });
+// [A4] setOption 和 resize 监听移到 initChart() 中；此处只保留 window resize 兜底
+window.addEventListener('resize', function() { if (chart && chartInited) chart.resize(); });
 
 // 展开/收起汇报全文（aria-expanded 同步 + 键盘可操作）
 function toggleReport(el) {
@@ -10954,7 +10982,8 @@ function buildPointStepMapping() {
   });
 }
 
-chart.on('click', function(params) {
+// [A4] 地图节点点击回调（命名函数，在 initChart 中绑定，避免 chart 为 null 时报错）
+function onChartClick(params) {
   if (params.dataType === 'node') {
     var pointId = params.data.id;
     var step = pointStepMap[pointId];
@@ -10976,14 +11005,15 @@ chart.on('click', function(params) {
       }
     }
   }
-});
+}
 
 function highlightMapNode(pointId) {
-  if (!pointId) return;
+  if (!pointId || !chart || !chartInited) return;
   var nodeName = '点' + pointId;
   chart.dispatchAction({ type: 'highlight', seriesIndex: 0, name: nodeName });
   chart.dispatchAction({ type: 'showTip', seriesIndex: 0, name: nodeName });
   setTimeout(function() {
+    if (!chart || !chartInited) return;
     chart.dispatchAction({ type: 'downplay', seriesIndex: 0, name: nodeName });
     chart.dispatchAction({ type: 'hideTip', seriesIndex: 0, name: nodeName });
   }, 3500);
@@ -11084,6 +11114,8 @@ function applyFilters() {
     return filteredPointIds[e.source] && filteredPointIds[e.target];
   });
 
+  // [A4] 地图未初始化时跳过 setOption（移动端默认列表视图）
+  if (chart && chartInited) {
   chart.setOption({
     series: [{
       data: filteredPoints.map(function(n) {
@@ -11103,6 +11135,7 @@ function applyFilters() {
       })
     }]
   });
+  }
 
   var countEl = document.getElementById('searchCount');
   if (countEl) {
@@ -11387,7 +11420,13 @@ function switchMapView(mode) {
     btnList.classList.remove('active');
     btnMap.setAttribute('aria-selected', 'true');
     btnList.setAttribute('aria-selected', 'false');
-    if (chart) chart.resize();
+    // [A4] 切到地图视图时：未 init 先 init，已 init 先 resize
+    if (!chartInited) {
+      // 延迟一帧确保 display:block 生效后容器有尺寸
+      requestAnimationFrame(function() { initChart(); });
+    } else if (chart) {
+      chart.resize();
+    }
   }
 }
 
@@ -11684,7 +11723,9 @@ document.addEventListener('DOMContentLoaded', function() {
   if (summaryToggle) summaryToggle.addEventListener('click', toggleSummary);
   addAriaLabels();
   syncFilterBadge();
+  // [A4] 桌面端先 init ECharts（容器此时已可见且有尺寸），再切视图
   if (window.innerWidth > 640) {
+    initChart();
     switchMapView('map');
   } else {
     switchMapView('list');

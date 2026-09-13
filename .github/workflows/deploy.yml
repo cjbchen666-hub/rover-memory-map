@@ -1,5 +1,5 @@
 name: Deploy Rover Memory Map to GitHub Pages
-# C9 fix: TreeWalker text nodes for first-person annotation
+# D11: legend category filter + node focus + dblclick center
 on:
   push:
     branches: [main]
@@ -22,8 +22,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BS_URL: https://aka.doubaocdn.com/s/lkQVefGKDs
-  BS_SHA: 4efbfd9570b8489deb32688a58704b5f2724bfb6499aee0e5055168f4d75523f
+  BS_URL: https://aka.doubaocdn.com/s/d9ZgzsUWO4
+  BS_SHA: 5cf99c1c7b92e250e31b67b885364e7c44b19e7b5c75caedd94b397102207ad9
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
   MEM_URL: https://aka.doubaocdn.com/s/3iO29DMzEs

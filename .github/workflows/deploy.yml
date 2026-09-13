@@ -22,18 +22,18 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BS_URL: https://aka.doubaocdn.com/s/V9zcYRtS06
+  BS_URL: https://aka.doubaocdn.com/s/V96qCzIUjs
   BS_SHA: 7a564cbd75c776ab11127f25d7a9482d8d88d05847095489a91c1c176806a265
-  CONSOLIDATE_URL: https://aka.doubaocdn.com/s/9sowarOHZE
+  CONSOLIDATE_URL: https://aka.doubaocdn.com/s/alaV3IyGUQ
   CONSOLIDATE_SHA: 1e393f38f95d72a0f7cd7a2da55702587549fcd0cb10dd710bad1106d7ee07b2
-  MEM_URL: https://aka.doubaocdn.com/s/CEGSW82qKd
-  MEM_SHA: f2bd22d112df23dbc9e76266e230393dbc562ccf4871d079d3ea049ec1f88f15
-  TRAIL_URL: https://aka.doubaocdn.com/s/4Hgs9rKTpZ
-  TRAIL_SHA: fb46ac2a7fcb755263b27d584ef7d244378108b818d073fb6a123727f5c4205c
-  STATE_URL: https://aka.doubaocdn.com/s/guAQPdghri
-  STATE_SHA: 908864b9afbd247828b1ace454d71492a46b30317f76a17abd38c14059946851
-  RPT_URL: https://aka.doubaocdn.com/s/8XceQCH113
-  RPT_SHA: bf72411fd87bfd9f4f8bdde88c0d66a4671a267b79cb6b927d72518d5ef54d24
+  MEM_URL: https://aka.doubaocdn.com/s/ZpYpSzigmv
+  MEM_SHA: ea86b165a42d730b0969c826ee31ffaac94fbe543fb3966d7b11b7157ea60fa8
+  TRAIL_URL: https://aka.doubaocdn.com/s/z4gc7ZEkVK
+  TRAIL_SHA: 0cc4fa47372aa036d763f14a42312979a466969d2eff97b854aef6b461c0d74f
+  STATE_URL: https://aka.doubaocdn.com/s/waBGG9IefZ
+  STATE_SHA: 57dbfb49113bf3444706f97ceffec7fc8d7653aa4fed1088d2dad3d9371daea7
+  RPT_URL: https://aka.doubaocdn.com/s/LUlsJgofZk
+  RPT_SHA: f1f04c33d48318b6bdb7fb3c8b1c74008254d5102fa9669165ee1a188f146c20
 
 jobs:
   build:
@@ -41,58 +41,61 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Prepare directory structure
         run: |
           mkdir -p rover/web/reports
           ls -la
-
-      - name: Fetch build_site.py (snapshot, fallback to repo)
+      - name: Fetch build_site.py
         run: |
           if curl -fsSL -A "Mozilla/5.0" "$BS_URL" -o rover/web/build_site.py && echo "$BS_SHA  rover/web/build_site.py" | sha256sum -c - >/dev/null 2>&1; then
-            echo "build_site.py OK ($(wc -c < rover/web/build_site.py) bytes)"
+            echo "build_site.py OK"
           else
             echo "snapshot failed, fallback repo"
             cp build_site.py rover/web/build_site.py 2>/dev/null || true
           fi
-
-      - name: Fetch data files (snapshot, fallback to repo)
+      - name: Fetch data files
         run: |
           fetch() {
             local url="$1" sha="$2" out="$3" repo="${4:-}"
             if curl -fsSL -A "Mozilla/5.0" "$url" -o "$out" && echo "$sha  $out" | sha256sum -c - >/dev/null 2>&1; then
-              echo "OK  $out ($(wc -c < "$out") bytes)"
+              echo "OK  $out"
             else
               if [ -n "$repo" ] && [ -f "$repo" ]; then
-                cp "$repo" "$out"; echo "FB  $out <- $repo"
+                cp "$repo" "$out"; echo "FB  $out"
               else
-                echo "ERR $out no fallback"
+                echo "ERR $out"
               fi
             fi
           }
           fetch "$MEM_URL" "$MEM_SHA" rover/memory.md memory.md
           fetch "$TRAIL_URL" "$TRAIL_SHA" rover/trail.md trail.md
           fetch "$STATE_URL" "$STATE_SHA" rover/state.json state.json
-
-      - name: Fetch and extract reports archive (snapshot, fallback to repo)
+      - name: Fetch and extract reports archive
         run: |
           if curl -fsSL -A "Mozilla/5.0" "$RPT_URL" -o /tmp/reports.tar.gz && echo "$RPT_SHA  /tmp/reports.tar.gz" | sha256sum -c - >/dev/null 2>&1; then
             tar xzf /tmp/reports.tar.gz -C rover/web/
-            echo "reports OK: $(ls rover/web/reports/ | wc -l) files"
+            echo "reports OK"
           else
             echo "reports snapshot failed, fallback repo"
             cp reports/*.md rover/web/reports/ 2>/dev/null || true
           fi
-          ls -la rover/web/reports/
-
-      - name: Fetch consolidate.py (belief settlement)
+          echo "=== rover/web/ directory ==="
+          ls -la rover/web/
+          echo "=== beliefs.json check ==="
+          if [ -f rover/web/beliefs.json ]; then
+            echo "beliefs.json EXISTS"
+            python3 -c "import json; d=json.load(open('rover/web/beliefs.json')); print(f'  beliefs={len(d.get(chr(34)+chr(98)+chr(101)+chr(108)+chr(105)+chr(101)+chr(102)+chr(115)+chr(34),[]))} tensions={len(d.get(chr(34)+chr(116)+chr(101)+chr(110)+chr(115)+chr(105)+chr(111)+chr(110)+chr(115)+chr(34),[]))}')"
+          else
+            echo "WARNING: beliefs.json MISSING, creating empty"
+            echo '{"beliefs": [], "tensions": []}' > rover/web/beliefs.json
+          fi
+      - name: Fetch consolidate.py
         run: |
           if curl -fsSL -A "Mozilla/5.0" "$CONSOLIDATE_URL" -o rover/web/consolidate.py && echo "$CONSOLIDATE_SHA  rover/web/consolidate.py" | sha256sum -c - >/dev/null 2>&1; then
-            echo "consolidate.py OK ($(wc -c < rover/web/consolidate.py) bytes)"
+            echo "consolidate.py OK"
           else
             echo "consolidate.py snapshot failed, skip belief settlement"
           fi
-
       - name: Run belief settlement (consolidate.py)
         run: |
           if [ -f rover/web/consolidate.py ]; then
@@ -100,13 +103,11 @@ jobs:
           else
             echo "consolidate.py not found, skip"
           fi
-
       - name: Build site
         run: |
           python3 rover/web/build_site.py
           ls -la rover/web/index.html
-
-      - name: Commit index.html back to repo root (branch-based Pages fallback)
+      - name: Commit index.html back to repo root
         run: |
           cp rover/web/index.html index.html
           git config user.name "github-actions[bot]"
@@ -118,15 +119,12 @@ jobs:
             git commit -m "build(index.html): auto rebuild from Rover data [skip ci]"
             git push origin main
           fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: rover/web/
-
   deploy:
     environment:
       name: github-pages

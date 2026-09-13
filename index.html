@@ -3934,7 +3934,7 @@ button { min-height:44px; }
   <div class="summary-box">
     <div class="stat-line" id="summaryStatLine">加载中…</div>
     <div class="summary-body" id="summaryBody">正在从 rover-data 统计结构事实并生成报告…</div>
-    <span class="summary-toggle" role="button" tabindex="0" aria-label="收起或展开全图汇总">收起报告</span>
+    <span class="summary-toggle" role="button" tabindex="0" aria-expanded="true" aria-label="收起或展开全图汇总">收起报告</span>
   </div>
 </section>
 
@@ -5081,7 +5081,7 @@ button { min-height:44px; }
 
 <!-- [优化 5] 关于本页折叠区 -->
 <section class="about-section" id="about-section">
-  <div class="about-toggle" onclick="toggleAbout()">
+  <div class="about-toggle" onclick="toggleAbout()" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起关于本页">
     <span class="arrow">▶</span>
     <h2 class="sec" style="margin:0"><span class="dot"></span>关于本页 <small>来源分级与可信度规则</small><span class="version-badge">v2.0</span></h2>
   </div>
@@ -5111,7 +5111,7 @@ button { min-height:44px; }
     <p>来源等级由 URL 域名自动判定，可能存在误判（如个人博客托管在 github.io 会被误判为 L1）。关键结论请以原始链接为准。本页仅作漫游记录与兴趣地图展示，不构成任何投资、医疗或法律建议。</p>
     <!-- [优化 14] 已纠正条目日志 -->
     <div class="correction-log" id="correctionLog">
-      <div class="correction-toggle" onclick="toggleCorrectionLog()">
+      <div class="correction-toggle" onclick="toggleCorrectionLog()" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起已纠正条目日志">
         <span class="arrow">▶</span>五、已纠正条目日志（点击展开）
       </div>
       <div class="correction-content">
@@ -5307,7 +5307,9 @@ function toggleSummary() {
   var btn = document.querySelector('#summary-section .summary-toggle');
   if (!box || !btn) return;
   box.classList.toggle('collapsed');
-  btn.textContent = box.classList.contains('collapsed') ? '展开报告' : '收起报告';
+  var isCollapsed = box.classList.contains('collapsed');
+  btn.textContent = isCollapsed ? '展开报告' : '收起报告';
+  btn.setAttribute('aria-expanded', String(!isCollapsed));
 }
 // 轨迹卡片展开/收起
 function toggleTrail(el) {
@@ -5501,7 +5503,10 @@ function annotateReports() {
 }
 // [优化 5] 关于本页折叠区切换
 function toggleAbout() {
-  document.getElementById('about-section').classList.toggle('open');
+  var section = document.getElementById('about-section');
+  section.classList.toggle('open');
+  var toggle = section.querySelector('.about-toggle');
+  if (toggle) toggle.setAttribute('aria-expanded', String(section.classList.contains('open')));
 }
 
 // ============================================================
@@ -5931,7 +5936,10 @@ function updateUncertaintyPanel() {
 
 // [优化 14] 纠正日志折叠切换
 function toggleCorrectionLog() {
-  document.getElementById('correctionLog').classList.toggle('open');
+  var log = document.getElementById('correctionLog');
+  log.classList.toggle('open');
+  var toggle = log.querySelector('.correction-toggle');
+  if (toggle) toggle.setAttribute('aria-expanded', String(log.classList.contains('open')));
 }
 
 // ============================================================

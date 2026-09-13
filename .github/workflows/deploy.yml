@@ -22,8 +22,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BS_URL: https://aka.doubaocdn.com/s/RFjteoUTlV
-  BS_SHA: 9f95d234b770ee4adfe23b770160f757ce4345a3255606cc7a10511a31af122f
+  BS_URL: https://aka.doubaocdn.com/s/Y5U3c7lbfs
+  BS_SHA: d617c52b4bd46c70cf1b1383dad61b09db8923be22d891a6f19f1f98cfcbd781
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
   MEM_URL: https://aka.doubaocdn.com/s/bXl9qchQDG
@@ -34,8 +34,8 @@ env:
   STATE_SHA: 4250e727a89912c6f8277678b7ff0af11a6b80ed1c20739092b7ad2bfb574f4c
   RPT_URL: https://aka.doubaocdn.com/s/9Nkl20UG77
   RPT_SHA: 84005fab26a032fa1a76448004e2e7fc4a4076af6c7001bb0e5cd3543a57adc0
-  BELIEFS_URL: https://aka.doubaocdn.com/s/UqKUamZkih
-  BELIEFS_SHA: 6bc82c3d125a301a86fdd4b31095a1f2c763d6db0f9531284f9cb0e6cef90da7
+  BELIEFS_URL: https://aka.doubaocdn.com/s/mApFQSGQeq
+  BELIEFS_SHA: 41e76390ab07758bae75cde4cbceebf1473a505d4b0c97825cb6307d7a0bbf77
 
 jobs:
   build:

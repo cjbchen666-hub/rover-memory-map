@@ -1,5 +1,5 @@
 name: Deploy Rover Memory Map to GitHub Pages
-# D13: remove report archive timeline dead code, unified card layout
+# D14: fix aria-expanded initial values for all toggle elements
 on:
   push:
     branches: [main]
@@ -22,8 +22,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BS_URL: https://aka.doubaocdn.com/s/fmTOMnPrb7
-  BS_SHA: a5b62b1ac68f5be31ed4950f980bd63139681a9b7e26173d544f69fd5b7f1069
+  BS_URL: https://aka.doubaocdn.com/s/4EsRrgVP4P
+  BS_SHA: 54e36e19de1edd6819cf3af1982288aa498156b4b374fe4518051334b6b38c16
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
   MEM_URL: https://aka.doubaocdn.com/s/3iO29DMzEs

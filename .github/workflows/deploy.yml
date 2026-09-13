@@ -22,16 +22,18 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BS_URL: https://aka.doubaocdn.com/s/xrSavFwYMm
+  BS_URL: https://aka.doubaocdn.com/s/qHBKz8ZUsZ
   BS_SHA: 7a564cbd75c776ab11127f25d7a9482d8d88d05847095489a91c1c176806a265
-  MEM_URL: https://aka.doubaocdn.com/s/KWo33bEbPs
+  CONSOLIDATE_URL: https://aka.doubaocdn.com/s/9sowarOHZE
+  CONSOLIDATE_SHA: 1e393f38f95d72a0f7cd7a2da55702587549fcd0cb10dd710bad1106d7ee07b2
+  MEM_URL: https://aka.doubaocdn.com/s/h1iqHoGYKV
   MEM_SHA: ea86b165a42d730b0969c826ee31ffaac94fbe543fb3966d7b11b7157ea60fa8
-  TRAIL_URL: https://aka.doubaocdn.com/s/FmHze5qNaf
+  TRAIL_URL: https://aka.doubaocdn.com/s/U0cJ25yz41
   TRAIL_SHA: 0cc4fa47372aa036d763f14a42312979a466969d2eff97b854aef6b461c0d74f
-  STATE_URL: https://aka.doubaocdn.com/s/botS7gYCt3
+  STATE_URL: https://aka.doubaocdn.com/s/YBP4bpE4JV
   STATE_SHA: 57dbfb49113bf3444706f97ceffec7fc8d7653aa4fed1088d2dad3d9371daea7
-  RPT_URL: https://aka.doubaocdn.com/s/FXbLgThBVT
-  RPT_SHA: b15b0c9e153230aa76bea485d8397e0a49b4298c6fd572cc8a2702a94d96fa3d
+  RPT_URL: https://aka.doubaocdn.com/s/EK6rlBCBu5
+  RPT_SHA: 17e79c24be27bf7c5d23904e54bdd400656fddeeec2a65f8e86aaf000540fac4
 
 jobs:
   build:
@@ -76,6 +78,20 @@ jobs:
           else
             echo "reports snapshot failed"
             cp reports/*.md rover/web/reports/ 2>/dev/null || true
+          fi
+      - name: Fetch consolidate.py (belief settlement)
+        run: |
+          if curl -fsSL -A "Mozilla/5.0" "$CONSOLIDATE_URL" -o rover/web/consolidate.py && echo "$CONSOLIDATE_SHA  rover/web/consolidate.py" | sha256sum -c - >/dev/null 2>&1; then
+            echo "consolidate.py OK"
+          else
+            echo "consolidate.py snapshot failed, skip belief settlement"
+          fi
+      - name: Run belief settlement (consolidate.py)
+        run: |
+          if [ -f rover/web/consolidate.py ]; then
+            cd rover/web && python3 consolidate.py || echo "consolidate.py failed, continue with existing beliefs"
+          else
+            echo "consolidate.py not found, skip"
           fi
       - name: Build site
         run: |

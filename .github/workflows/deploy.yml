@@ -1,5 +1,5 @@
 name: Deploy Rover Memory Map to GitHub Pages
-# D12: trail step prev/next navigation buttons
+# C9 fix: TreeWalker text nodes for first-person annotation
 on:
   push:
     branches: [main]
@@ -22,8 +22,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BS_URL: https://aka.doubaocdn.com/s/QSVwtJoxXO
-  BS_SHA: 40046048720af3db2faef9b2e546f8d991904aabbc086132ed22bce0ba277f94
+  BS_URL: https://aka.doubaocdn.com/s/YJszOXy7jR
+  BS_SHA: 94366c2fabe3aab2694fbd03700f0978cdd1567376c6c9f799bf13e55d4262a1
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
   MEM_URL: https://aka.doubaocdn.com/s/3iO29DMzEs

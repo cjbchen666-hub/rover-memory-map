@@ -34,6 +34,8 @@ env:
   STATE_SHA: 905c0c091e4018829ce7ab817078440ab9e9c623b2459d197f1604a3809a8b83
   RPT_URL: https://aka.doubaocdn.com/s/spCLSEqmkB
   RPT_SHA: bf72411fd87bfd9f4f8bdde88c0d66a4671a267b79cb6b927d72518d5ef54d24
+  BELIEFS_URL: https://aka.doubaocdn.com/s/UqKUamZkih
+  BELIEFS_SHA: 6bc82c3d125a301a86fdd4b31095a1f2c763d6db0f9531284f9cb0e6cef90da7
 
 jobs:
   build:
@@ -85,12 +87,14 @@ jobs:
           fi
           echo "=== rover/web/ directory ==="
           ls -la rover/web/
-          echo "=== beliefs.json check ==="
-          if [ -f rover/web/beliefs.json ]; then
-            echo "beliefs.json EXISTS ($(wc -c < rover/web/beliefs.json) bytes)"
+
+      - name: Fetch beliefs.json (snapshot with manual beliefs/tensions, fallback to empty)
+        run: |
+          if curl -fsSL -A "Mozilla/5.0" "$BELIEFS_URL" -o rover/web/beliefs.json && echo "$BELIEFS_SHA  rover/web/beliefs.json" | sha256sum -c - >/dev/null 2>&1; then
+            echo "beliefs.json OK ($(wc -c < rover/web/beliefs.json) bytes)"
             python3 -c "import json; d=json.load(open('rover/web/beliefs.json')); print(f'  beliefs={len(d.get(\"beliefs\",[]))} tensions={len(d.get(\"tensions\",[]))}')"
           else
-            echo "WARNING: beliefs.json MISSING, will create empty"
+            echo "WARNING: beliefs.json snapshot failed, creating empty"
             echo '{"beliefs": [], "tensions": []}' > rover/web/beliefs.json
           fi
 

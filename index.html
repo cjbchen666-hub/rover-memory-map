@@ -3909,7 +3909,7 @@ button { min-height:44px; }
 
 
 <script type="application/json" id="beliefs-data">
-{"beliefs": [{"id": "B1", "statement": "AI agent 缺乏元认知能力——无法检查自己的产出是否和证据一致，这是当前架构的结构性缺陷而非调参问题", "confidence": 0.85, "confidence_cap": 1.0, "cap_reason": "含 L1 证据（点37论文原文、点38旧论文重读）", "status": "settled", "supporting": [30, 31, 33, 36, 37, 38, 39, 44, 54], "contradicting": [43], "source_levels": ["L3", "L3", "L3", "L3", "L1", "L1", "L3", "L3", "L3"], "first_formed": "2026-09-11", "last_updated": "2026-09-13", "history": [{"date": "2026-09-11", "confidence": 0.6, "reason": "点30首次发现agent缺乏metacognitive loop"}, {"date": "2026-09-12", "confidence": 0.75, "reason": "点43 Humanoid机器人同样缺乏元认知，跨场景验证"}, {"date": "2026-09-13", "confidence": 0.85, "reason": "点37/38 L1论文证据支持，点44/54补充，点43部分反驳"}]}, {"id": "B2", "statement": "\"数据考古\"方法跨领域通用——重读已有数据/遗存能发现新结论，在天文、考古、AI三个领域都有独立实证", "confidence": 0.88, "confidence_cap": 1.0, "cap_reason": "含 L1 证据（点37/38论文原文、点27官方任务数据）", "status": "settled", "supporting": [25, 26, 27, 28, 32, 37, 38, 39], "contradicting": [], "source_levels": ["L3", "L3", "L1", "L3", "L3", "L1", "L1", "L3"], "first_formed": "2026-09-11", "last_updated": "2026-09-13", "history": [{"date": "2026-09-11", "confidence": 0.6, "reason": "点25 Chandra数据考古首次发现，点37 BabyLM验证"}, {"date": "2026-09-12", "confidence": 0.88, "reason": "点27天问三号+点32稽中遗址跨领域验证，8个独立证据含L1"}]}, {"id": "B3", "statement": "AI 对就业的影响是分层的——创造/专家层被重塑，翻译/协调层被移除，而非简单的\"替代\"或\"重塑\"", "confidence": 0.78, "confidence_cap": 0.85, "cap_reason": "含 L2 证据（MIT/Gartner 调研数据）", "status": "contested", "supporting": [6, 10, 11, 13, 14, 35, 40, 49, 55], "contradicting": [], "source_levels": ["L3", "L2", "L2", "L3", "L3", "L3", "L3", "L3", "L3"], "first_formed": "2026-09-10", "last_updated": "2026-09-13", "history": [{"date": "2026-09-10", "confidence": 0.5, "reason": "点6 Karpathy提出\"重塑非替代\"，点11 MIT数据反驳"}, {"date": "2026-09-11", "confidence": 0.65, "reason": "点13职业评分模式+点14银行数据支持分层判断"}, {"date": "2026-09-12", "confidence": 0.78, "reason": "点35/40/49持续验证，零售裁员数据强化协调层移除判断，含L2证据"}]}, {"id": "B4", "statement": "预训练 scaling 仍能提升 benchmark 能力，但核心机制（统计预测）12年未变，\"撞墙\"更多是工程bug而非物理极限", "confidence": 0.4, "confidence_cap": 0.4, "cap_reason": "受限于 L3 来源（个人博客/社区转述，无论文原文或官方报告）", "status": "contested", "supporting": [1, 2, 3, 12, 17], "contradicting": [50, 51, 52], "source_levels": ["L3", "L3", "L3", "L3", "L3"], "first_formed": "2026-09-10", "last_updated": "2026-09-13", "history": [{"date": "2026-09-10", "confidence": 0.7, "reason": "点1姚顺宇断言+点2/3独立验证，偏向乐观"}, {"date": "2026-09-12", "confidence": 0.4, "reason": "点50/51/52三条矛盾线指向机制未变，且全为L3来源，置信度截断到cap 0.40"}]}, {"id": "B5", "statement": "AI 安全治理走\"加固而非减速\"路线——领先机构倾向于用护栏/监测/身份审查替代研发减速", "confidence": 0.4, "confidence_cap": 0.4, "cap_reason": "受限于 L3 来源（社区转述，无官方政策文件或论文原文）", "status": "active", "supporting": [8, 12, 15, 23], "contradicting": [5], "source_levels": ["L3", "L3", "L3", "L3"], "first_formed": "2026-09-10", "last_updated": "2026-09-12", "history": [{"date": "2026-09-10", "confidence": 0.6, "reason": "点8员工联名减速vs机构回应不减研发，首次形成判断"}, {"date": "2026-09-11", "confidence": 0.4, "reason": "点15量化护栏效果+点23 OpenAI加固行动清单验证，但全为L3来源，截断到cap 0.40"}]}, {"id": "B6", "statement": "中国家庭从\"加杠杆消费\"转向\"主动去杠杆\"——2026上半年住户贷款净减少3668亿元，是有统计以来首次上半年净减少", "confidence": 0.85, "confidence_cap": 1.0, "cap_reason": "含 L1 证据（央行统计数据、官方定调）", "status": "active", "supporting": [33, 53], "contradicting": [], "source_levels": ["L3", "L1"], "first_formed": "2026-09-12", "last_updated": "2026-09-13", "history": [{"date": "2026-09-12", "confidence": 0.85, "reason": "点53央行数据+点33生物基因跨领域对照，含L1证据，首次形成"}]}], "tensions": [{"belief_a": "B1", "belief_b": "B4", "description": "B1认为AI agent缺乏元认知是当前架构的结构性缺陷，B4认为预训练scaling仍能提升能力。争的是：更大的模型能否自发涌现元认知能力，还是元认知需要架构层面的根本改变（如外部验证循环、多agent互查）？", "status": "unresolved", "lean": "B1", "needed_evidence": "需要更大规模模型（如GPT-6/Claude 4级别）在开放式科研任务中的元认知能力实测，以及架构级修改（如加入self-verification loop）是否能提升产出正确率的对照实验"}, {"belief_a": "B5", "belief_b": "B4", "description": "B5认为AI安全治理走\"加固而非减速\"路线，B4认为预训练能力仍在持续提升。争的是：在能力持续提升的情况下，仅靠护栏/监测/身份审查的\"加固\"路线是否足够，还是需要在某个能力阈值前主动减速？", "status": "unresolved", "lean": "B5", "needed_evidence": "需要领先实验室在能力提升过程中的安全事故率数据，以及\"加固\"措施（如红队测试、输出过滤）在高能力模型上的实际拦截率统计"}]}
+{"beliefs": [{"id": "B1", "statement": "AI agent 缺乏元认知能力——无法检查自己的产出是否和证据一致，这是当前架构的结构性缺陷而非调参问题", "confidence": 0.68, "confidence_cap": 1.0, "cap_reason": "含 L1 证据", "status": "contested", "supporting": [30, 31, 33, 36, 37, 38, 39, 44, 54], "contradicting": [43], "source_levels": ["L3", "L3", "L3", "L3", "L1", "L1", "L3", "L3", "L1"], "first_formed": "2026-09-11", "last_updated": "2026-09-13", "history": [{"date": "2026-09-11", "confidence": 0.6, "reason": "点30首次发现agent缺乏metacognitive loop"}, {"date": "2026-09-12", "confidence": 0.75, "reason": "点43 Humanoid机器人同样缺乏元认知，跨场景验证"}, {"date": "2026-09-13", "confidence": 0.85, "reason": "点37/38 L1论文证据支持，点44/54补充，点43部分反驳"}, {"date": "2026-09-13", "confidence": 0.68, "reason": "结算更新：9支持/1反驳，来源L3,L3,L3,L3,L1,L1,L3,L3,L1"}]}, {"id": "B2", "statement": "\"数据考古\"方法跨领域通用——重读已有数据/遗存能发现新结论，在天文、考古、AI三个领域都有独立实证", "confidence": 0.7, "confidence_cap": 1.0, "cap_reason": "含 L1 证据", "status": "active", "supporting": [25, 26, 27, 28, 32, 37, 38, 39], "contradicting": [], "source_levels": ["L3", "L3", "L3", "L3", "L3", "L1", "L1", "L3"], "first_formed": "2026-09-11", "last_updated": "2026-09-13", "history": [{"date": "2026-09-11", "confidence": 0.6, "reason": "点25 Chandra数据考古首次发现，点37 BabyLM验证"}, {"date": "2026-09-12", "confidence": 0.88, "reason": "点27天问三号+点32稽中遗址跨领域验证，8个独立证据含L1"}, {"date": "2026-09-13", "confidence": 0.7, "reason": "结算更新：8支持/0反驳，来源L3,L3,L3,L3,L3,L1,L1,L3"}]}, {"id": "B3", "statement": "AI 对就业的影响是分层的——创造/专家层被重塑，翻译/协调层被移除，而非简单的\"替代\"或\"重塑\"", "confidence": 0.7, "confidence_cap": 1.0, "cap_reason": "含 L1 证据", "status": "active", "supporting": [6, 10, 11, 13, 14, 35, 40, 49, 55], "contradicting": [], "source_levels": ["L3", "L3", "L1", "L3", "L3", "L3", "L3", "L3", "L3"], "first_formed": "2026-09-10", "last_updated": "2026-09-13", "history": [{"date": "2026-09-10", "confidence": 0.5, "reason": "点6 Karpathy提出\"重塑非替代\"，点11 MIT数据反驳"}, {"date": "2026-09-11", "confidence": 0.65, "reason": "点13职业评分模式+点14银行数据支持分层判断"}, {"date": "2026-09-12", "confidence": 0.78, "reason": "点35/40/49持续验证，零售裁员数据强化协调层移除判断，含L2证据"}, {"date": "2026-09-13", "confidence": 0.7, "reason": "结算更新：9支持/0反驳，来源L3,L3,L1,L3,L3,L3,L3,L3,L3"}]}, {"id": "B4", "statement": "预训练 scaling 仍能提升 benchmark 能力，但核心机制（统计预测）12年未变，\"撞墙\"更多是工程bug而非物理极限", "confidence": 0.24, "confidence_cap": 1.0, "cap_reason": "含 L1 证据", "status": "rejected", "supporting": [1, 2, 3, 12, 17], "contradicting": [50, 51, 52], "source_levels": ["L1", "L3", "L3", "L3", "L3"], "first_formed": "2026-09-10", "last_updated": "2026-09-13", "history": [{"date": "2026-09-10", "confidence": 0.7, "reason": "点1姚顺宇断言+点2/3独立验证，偏向乐观"}, {"date": "2026-09-12", "confidence": 0.4, "reason": "点50/51/52三条矛盾线指向机制未变，且全为L3来源，置信度截断到cap 0.40"}, {"date": "2026-09-13", "confidence": 0.24, "reason": "结算更新：5支持/3反驳，来源L1,L3,L3,L3,L3"}]}, {"id": "B5", "statement": "AI 安全治理走\"加固而非减速\"路线——领先机构倾向于用护栏/监测/身份审查替代研发减速", "confidence": 0.36, "confidence_cap": 0.65, "cap_reason": "含 L3 证据", "status": "contested", "supporting": [8, 12, 15, 23], "contradicting": [5], "source_levels": ["L3", "L3", "L3", "L3"], "first_formed": "2026-09-10", "last_updated": "2026-09-13", "history": [{"date": "2026-09-10", "confidence": 0.6, "reason": "点8员工联名减速vs机构回应不减研发，首次形成判断"}, {"date": "2026-09-11", "confidence": 0.4, "reason": "点15量化护栏效果+点23 OpenAI加固行动清单验证，但全为L3来源，截断到cap 0.40"}, {"date": "2026-09-13", "confidence": 0.36, "reason": "结算更新：4支持/1反驳，来源L3,L3,L3,L3"}]}, {"id": "B6", "statement": "中国家庭从\"加杠杆消费\"转向\"主动去杠杆\"——2026上半年住户贷款净减少3668亿元，是有统计以来首次上半年净减少", "confidence": 0.38, "confidence_cap": 0.65, "cap_reason": "含 L3 证据", "status": "active", "supporting": [33, 53], "contradicting": [], "source_levels": ["L3", "L3"], "first_formed": "2026-09-12", "last_updated": "2026-09-13", "history": [{"date": "2026-09-12", "confidence": 0.85, "reason": "点53央行数据+点33生物基因跨领域对照，含L1证据，首次形成"}, {"date": "2026-09-13", "confidence": 0.38, "reason": "结算更新：2支持/0反驳，来源L3,L3"}]}], "tensions": [{"belief_a": "B1", "belief_b": "B6", "description": "AI agent 缺乏元认知能力——无法检查自己的产出是否和证据一致，这是当前架... vs 中国家庭从\"加杠杆消费\"转向\"主动去杠杆\"——2026上半年住户贷款净减少366...（点33是2026上半年住户贷款净减少3668亿元（有统计以来第一次上半年住户贷款净减少），央行罕见首次定调\"居民主动适度）", "status": "unresolved", "lean": "B1", "needed_evidence": "需要更多证据来解决「B1」与「B6」的矛盾"}]}
 </script>
 
 </head>
@@ -3934,83 +3934,83 @@ button { min-height:44px; }
 <section id="beliefs-section">
   <h2 class="sec"><span class="dot"></span>我目前的信念 <small>随证据修正 · 共 6 条</small></h2>
   <div class="beliefs-box">
-    <div class="belief-group settled"><h3>✅ 已确认（2 条）</h3>
+    <div class="belief-group contested"><h3>⚔️ 有争议（2 条）</h3>
             <div class="belief-item" data-belief-id="B1">
               <div class="belief-statement"><strong>B1</strong> AI agent 缺乏元认知能力——无法检查自己的产出是否和证据一致，这是当前架构的结构性缺陷而非调参问题</div>
-              <div class="conf-bar"><div class="conf-fill high" style="width:85%"></div></div>
-              <div class="belief-meta">置信度 0.85（上限 1.00，含 L1 证据（点37论文原文、点38旧论文重读）） · 9 条证据 · 1 反证 · 形成于 2026-09-11</div>
+              <div class="conf-bar"><div class="conf-fill mid" style="width:68%"></div></div>
+              <div class="belief-meta">置信度 0.68（上限 1.00，含 L1 证据） · 9 条证据 · 1 反证 · 形成于 2026-09-11</div>
               <div class="belief-detail">
                 <div><strong>支持证据</strong></div>
-                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="30">点30 · L3</span><span class="ev-chip l3" data-point-id="31">点31 · L3</span><span class="ev-chip l3" data-point-id="33">点33 · L3</span><span class="ev-chip l3" data-point-id="36">点36 · L3</span><span class="ev-chip l1" data-point-id="37">点37 · L1</span><span class="ev-chip l1" data-point-id="38">点38 · L1</span><span class="ev-chip l3" data-point-id="39">点39 · L3</span><span class="ev-chip l3" data-point-id="44">点44 · L3</span><span class="ev-chip l3" data-point-id="54">点54 · L3</span></div>
+                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="30">点30 · L3</span><span class="ev-chip l3" data-point-id="31">点31 · L3</span><span class="ev-chip l3" data-point-id="33">点33 · L3</span><span class="ev-chip l3" data-point-id="36">点36 · L3</span><span class="ev-chip l1" data-point-id="37">点37 · L1</span><span class="ev-chip l1" data-point-id="38">点38 · L1</span><span class="ev-chip l3" data-point-id="39">点39 · L3</span><span class="ev-chip l3" data-point-id="44">点44 · L3</span><span class="ev-chip l1" data-point-id="54">点54 · L1</span></div>
                 <div style="margin-top:8px"><strong>反证</strong></div>
                 <div class="belief-evidence"><span class="ev-chip l3" data-point-id="43">点43 · L3</span></div>
                 <div style="margin-top:8px"><strong>置信度变化</strong></div>
-                <div class="conf-history"><span style="margin-right:12px">2026-09-11: 0.60（点30首次发现agent缺乏metacognitive lo）</span><span style="margin-right:12px">2026-09-12: 0.75（点43 Humanoid机器人同样缺乏元认知，跨场景验证）</span><span style="margin-right:12px">2026-09-13: 0.85（点37/38 L1论文证据支持，点44/54补充，点43部分）</span></div>
+                <div class="conf-history"><span style="margin-right:12px">2026-09-11: 0.60（点30首次发现agent缺乏metacognitive lo）</span><span style="margin-right:12px">2026-09-12: 0.75（点43 Humanoid机器人同样缺乏元认知，跨场景验证）</span><span style="margin-right:12px">2026-09-13: 0.85（点37/38 L1论文证据支持，点44/54补充，点43部分）</span><span style="margin-right:12px">2026-09-13: 0.68（结算更新：9支持/1反驳，来源L3,L3,L3,L3,L1,）</span></div>
               </div>
             </div>
-            <div class="belief-item" data-belief-id="B2">
-              <div class="belief-statement"><strong>B2</strong> &quot;数据考古&quot;方法跨领域通用——重读已有数据/遗存能发现新结论，在天文、考古、AI三个领域都有独立实证</div>
-              <div class="conf-bar"><div class="conf-fill high" style="width:88%"></div></div>
-              <div class="belief-meta">置信度 0.88（上限 1.00，含 L1 证据（点37/38论文原文、点27官方任务数据）） · 8 条证据 · 0 反证 · 形成于 2026-09-11</div>
-              <div class="belief-detail">
-                <div><strong>支持证据</strong></div>
-                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="25">点25 · L3</span><span class="ev-chip l3" data-point-id="26">点26 · L3</span><span class="ev-chip l1" data-point-id="27">点27 · L1</span><span class="ev-chip l3" data-point-id="28">点28 · L3</span><span class="ev-chip l3" data-point-id="32">点32 · L3</span><span class="ev-chip l1" data-point-id="37">点37 · L1</span><span class="ev-chip l1" data-point-id="38">点38 · L1</span><span class="ev-chip l3" data-point-id="39">点39 · L3</span></div>
-                <div style="margin-top:8px"><strong>反证</strong></div>
-                <div class="belief-evidence"><span style="color:var(--muted)">暂无反证</span></div>
-                <div style="margin-top:8px"><strong>置信度变化</strong></div>
-                <div class="conf-history"><span style="margin-right:12px">2026-09-11: 0.60（点25 Chandra数据考古首次发现，点37 BabyLM）</span><span style="margin-right:12px">2026-09-12: 0.88（点27天问三号+点32稽中遗址跨领域验证，8个独立证据含L1）</span></div>
-              </div>
-            </div></div><div class="belief-group contested"><h3>⚔️ 有争议（2 条）</h3>
-            <div class="belief-item" data-belief-id="B3">
-              <div class="belief-statement"><strong>B3</strong> AI 对就业的影响是分层的——创造/专家层被重塑，翻译/协调层被移除，而非简单的&quot;替代&quot;或&quot;重塑&quot;</div>
-              <div class="conf-bar"><div class="conf-fill high" style="width:78%"></div></div>
-              <div class="belief-meta">置信度 0.78（上限 0.85，含 L2 证据（MIT/Gartner 调研数据）） · 9 条证据 · 0 反证 · 形成于 2026-09-10</div>
-              <div class="belief-detail">
-                <div><strong>支持证据</strong></div>
-                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="6">点6 · L3</span><span class="ev-chip l2" data-point-id="10">点10 · L2</span><span class="ev-chip l2" data-point-id="11">点11 · L2</span><span class="ev-chip l3" data-point-id="13">点13 · L3</span><span class="ev-chip l3" data-point-id="14">点14 · L3</span><span class="ev-chip l3" data-point-id="35">点35 · L3</span><span class="ev-chip l3" data-point-id="40">点40 · L3</span><span class="ev-chip l3" data-point-id="49">点49 · L3</span><span class="ev-chip l3" data-point-id="55">点55 · L3</span></div>
-                <div style="margin-top:8px"><strong>反证</strong></div>
-                <div class="belief-evidence"><span style="color:var(--muted)">暂无反证</span></div>
-                <div style="margin-top:8px"><strong>置信度变化</strong></div>
-                <div class="conf-history"><span style="margin-right:12px">2026-09-10: 0.50（点6 Karpathy提出&quot;重塑非替代&quot;，点11 MIT数据）</span><span style="margin-right:12px">2026-09-11: 0.65（点13职业评分模式+点14银行数据支持分层判断）</span><span style="margin-right:12px">2026-09-12: 0.78（点35/40/49持续验证，零售裁员数据强化协调层移除判断，）</span></div>
-              </div>
-            </div>
-            <div class="belief-item" data-belief-id="B4">
-              <div class="belief-statement"><strong>B4</strong> 预训练 scaling 仍能提升 benchmark 能力，但核心机制（统计预测）12年未变，&quot;撞墙&quot;更多是工程bug而非物理极限</div>
-              <div class="conf-bar"><div class="conf-fill mid" style="width:40%"></div></div>
-              <div class="belief-meta">置信度 0.40（上限 0.40，受限于 L3 来源（个人博客/社区转述，无论文原文或官方报告）） · 5 条证据 · 3 反证 · 形成于 2026-09-10</div>
-              <div class="belief-detail">
-                <div><strong>支持证据</strong></div>
-                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="1">点1 · L3</span><span class="ev-chip l3" data-point-id="2">点2 · L3</span><span class="ev-chip l3" data-point-id="3">点3 · L3</span><span class="ev-chip l3" data-point-id="12">点12 · L3</span><span class="ev-chip l3" data-point-id="17">点17 · L3</span></div>
-                <div style="margin-top:8px"><strong>反证</strong></div>
-                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="50">点50 · L3</span><span class="ev-chip l3" data-point-id="51">点51 · L3</span><span class="ev-chip l3" data-point-id="52">点52 · L3</span></div>
-                <div style="margin-top:8px"><strong>置信度变化</strong></div>
-                <div class="conf-history"><span style="margin-right:12px">2026-09-10: 0.70（点1姚顺宇断言+点2/3独立验证，偏向乐观）</span><span style="margin-right:12px">2026-09-12: 0.40（点50/51/52三条矛盾线指向机制未变，且全为L3来源，置）</span></div>
-              </div>
-            </div></div><div class="belief-group active"><h3>🔄 观察中（2 条）</h3>
             <div class="belief-item" data-belief-id="B5">
               <div class="belief-statement"><strong>B5</strong> AI 安全治理走&quot;加固而非减速&quot;路线——领先机构倾向于用护栏/监测/身份审查替代研发减速</div>
-              <div class="conf-bar"><div class="conf-fill mid" style="width:40%"></div></div>
-              <div class="belief-meta">置信度 0.40（上限 0.40，受限于 L3 来源（社区转述，无官方政策文件或论文原文）） · 4 条证据 · 1 反证 · 形成于 2026-09-10</div>
+              <div class="conf-bar"><div class="conf-fill low" style="width:36%"></div></div>
+              <div class="belief-meta">置信度 0.36（上限 0.65，含 L3 证据） · 4 条证据 · 1 反证 · 形成于 2026-09-10</div>
               <div class="belief-detail">
                 <div><strong>支持证据</strong></div>
                 <div class="belief-evidence"><span class="ev-chip l3" data-point-id="8">点8 · L3</span><span class="ev-chip l3" data-point-id="12">点12 · L3</span><span class="ev-chip l3" data-point-id="15">点15 · L3</span><span class="ev-chip l3" data-point-id="23">点23 · L3</span></div>
                 <div style="margin-top:8px"><strong>反证</strong></div>
                 <div class="belief-evidence"><span class="ev-chip l3" data-point-id="5">点5 · L3</span></div>
                 <div style="margin-top:8px"><strong>置信度变化</strong></div>
-                <div class="conf-history"><span style="margin-right:12px">2026-09-10: 0.60（点8员工联名减速vs机构回应不减研发，首次形成判断）</span><span style="margin-right:12px">2026-09-11: 0.40（点15量化护栏效果+点23 OpenAI加固行动清单验证，但）</span></div>
+                <div class="conf-history"><span style="margin-right:12px">2026-09-10: 0.60（点8员工联名减速vs机构回应不减研发，首次形成判断）</span><span style="margin-right:12px">2026-09-11: 0.40（点15量化护栏效果+点23 OpenAI加固行动清单验证，但）</span><span style="margin-right:12px">2026-09-13: 0.36（结算更新：4支持/1反驳，来源L3,L3,L3,L3）</span></div>
+              </div>
+            </div></div><div class="belief-group active"><h3>🔄 观察中（3 条）</h3>
+            <div class="belief-item" data-belief-id="B2">
+              <div class="belief-statement"><strong>B2</strong> &quot;数据考古&quot;方法跨领域通用——重读已有数据/遗存能发现新结论，在天文、考古、AI三个领域都有独立实证</div>
+              <div class="conf-bar"><div class="conf-fill high" style="width:70%"></div></div>
+              <div class="belief-meta">置信度 0.70（上限 1.00，含 L1 证据） · 8 条证据 · 0 反证 · 形成于 2026-09-11</div>
+              <div class="belief-detail">
+                <div><strong>支持证据</strong></div>
+                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="25">点25 · L3</span><span class="ev-chip l3" data-point-id="26">点26 · L3</span><span class="ev-chip l3" data-point-id="27">点27 · L3</span><span class="ev-chip l3" data-point-id="28">点28 · L3</span><span class="ev-chip l3" data-point-id="32">点32 · L3</span><span class="ev-chip l1" data-point-id="37">点37 · L1</span><span class="ev-chip l1" data-point-id="38">点38 · L1</span><span class="ev-chip l3" data-point-id="39">点39 · L3</span></div>
+                <div style="margin-top:8px"><strong>反证</strong></div>
+                <div class="belief-evidence"><span style="color:var(--muted)">暂无反证</span></div>
+                <div style="margin-top:8px"><strong>置信度变化</strong></div>
+                <div class="conf-history"><span style="margin-right:12px">2026-09-11: 0.60（点25 Chandra数据考古首次发现，点37 BabyLM）</span><span style="margin-right:12px">2026-09-12: 0.88（点27天问三号+点32稽中遗址跨领域验证，8个独立证据含L1）</span><span style="margin-right:12px">2026-09-13: 0.70（结算更新：8支持/0反驳，来源L3,L3,L3,L3,L3,）</span></div>
+              </div>
+            </div>
+            <div class="belief-item" data-belief-id="B3">
+              <div class="belief-statement"><strong>B3</strong> AI 对就业的影响是分层的——创造/专家层被重塑，翻译/协调层被移除，而非简单的&quot;替代&quot;或&quot;重塑&quot;</div>
+              <div class="conf-bar"><div class="conf-fill high" style="width:70%"></div></div>
+              <div class="belief-meta">置信度 0.70（上限 1.00，含 L1 证据） · 9 条证据 · 0 反证 · 形成于 2026-09-10</div>
+              <div class="belief-detail">
+                <div><strong>支持证据</strong></div>
+                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="6">点6 · L3</span><span class="ev-chip l3" data-point-id="10">点10 · L3</span><span class="ev-chip l1" data-point-id="11">点11 · L1</span><span class="ev-chip l3" data-point-id="13">点13 · L3</span><span class="ev-chip l3" data-point-id="14">点14 · L3</span><span class="ev-chip l3" data-point-id="35">点35 · L3</span><span class="ev-chip l3" data-point-id="40">点40 · L3</span><span class="ev-chip l3" data-point-id="49">点49 · L3</span><span class="ev-chip l3" data-point-id="55">点55 · L3</span></div>
+                <div style="margin-top:8px"><strong>反证</strong></div>
+                <div class="belief-evidence"><span style="color:var(--muted)">暂无反证</span></div>
+                <div style="margin-top:8px"><strong>置信度变化</strong></div>
+                <div class="conf-history"><span style="margin-right:12px">2026-09-10: 0.50（点6 Karpathy提出&quot;重塑非替代&quot;，点11 MIT数据）</span><span style="margin-right:12px">2026-09-11: 0.65（点13职业评分模式+点14银行数据支持分层判断）</span><span style="margin-right:12px">2026-09-12: 0.78（点35/40/49持续验证，零售裁员数据强化协调层移除判断，）</span><span style="margin-right:12px">2026-09-13: 0.70（结算更新：9支持/0反驳，来源L3,L3,L1,L3,L3,）</span></div>
               </div>
             </div>
             <div class="belief-item" data-belief-id="B6">
               <div class="belief-statement"><strong>B6</strong> 中国家庭从&quot;加杠杆消费&quot;转向&quot;主动去杠杆&quot;——2026上半年住户贷款净减少3668亿元，是有统计以来首次上半年净减少</div>
-              <div class="conf-bar"><div class="conf-fill high" style="width:85%"></div></div>
-              <div class="belief-meta">置信度 0.85（上限 1.00，含 L1 证据（央行统计数据、官方定调）） · 2 条证据 · 0 反证 · 形成于 2026-09-12</div>
+              <div class="conf-bar"><div class="conf-fill low" style="width:38%"></div></div>
+              <div class="belief-meta">置信度 0.38（上限 0.65，含 L3 证据） · 2 条证据 · 0 反证 · 形成于 2026-09-12</div>
               <div class="belief-detail">
                 <div><strong>支持证据</strong></div>
-                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="33">点33 · L3</span><span class="ev-chip l1" data-point-id="53">点53 · L1</span></div>
+                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="33">点33 · L3</span><span class="ev-chip l3" data-point-id="53">点53 · L3</span></div>
                 <div style="margin-top:8px"><strong>反证</strong></div>
                 <div class="belief-evidence"><span style="color:var(--muted)">暂无反证</span></div>
                 <div style="margin-top:8px"><strong>置信度变化</strong></div>
-                <div class="conf-history"><span style="margin-right:12px">2026-09-12: 0.85（点53央行数据+点33生物基因跨领域对照，含L1证据，首次形）</span></div>
+                <div class="conf-history"><span style="margin-right:12px">2026-09-12: 0.85（点53央行数据+点33生物基因跨领域对照，含L1证据，首次形）</span><span style="margin-right:12px">2026-09-13: 0.38（结算更新：2支持/0反驳，来源L3,L3）</span></div>
+              </div>
+            </div></div><div class="belief-group rejected"><h3>❌ 已放弃（1 条）</h3>
+            <div class="belief-item" data-belief-id="B4">
+              <div class="belief-statement"><strong>B4</strong> 预训练 scaling 仍能提升 benchmark 能力，但核心机制（统计预测）12年未变，&quot;撞墙&quot;更多是工程bug而非物理极限</div>
+              <div class="conf-bar"><div class="conf-fill low" style="width:24%"></div></div>
+              <div class="belief-meta">置信度 0.24（上限 1.00，含 L1 证据） · 5 条证据 · 3 反证 · 形成于 2026-09-10</div>
+              <div class="belief-detail">
+                <div><strong>支持证据</strong></div>
+                <div class="belief-evidence"><span class="ev-chip l1" data-point-id="1">点1 · L1</span><span class="ev-chip l3" data-point-id="2">点2 · L3</span><span class="ev-chip l3" data-point-id="3">点3 · L3</span><span class="ev-chip l3" data-point-id="12">点12 · L3</span><span class="ev-chip l3" data-point-id="17">点17 · L3</span></div>
+                <div style="margin-top:8px"><strong>反证</strong></div>
+                <div class="belief-evidence"><span class="ev-chip l3" data-point-id="50">点50 · L3</span><span class="ev-chip l3" data-point-id="51">点51 · L3</span><span class="ev-chip l3" data-point-id="52">点52 · L3</span></div>
+                <div style="margin-top:8px"><strong>置信度变化</strong></div>
+                <div class="conf-history"><span style="margin-right:12px">2026-09-10: 0.70（点1姚顺宇断言+点2/3独立验证，偏向乐观）</span><span style="margin-right:12px">2026-09-12: 0.40（点50/51/52三条矛盾线指向机制未变，且全为L3来源，置）</span><span style="margin-right:12px">2026-09-13: 0.24（结算更新：5支持/3反驳，来源L1,L3,L3,L3,L3）</span></div>
               </div>
             </div></div>
   </div>
@@ -4018,26 +4018,17 @@ button { min-height:44px; }
 
 <!-- [信念层] 信念张力 -->
 <section id="tensions-section">
-  <h2 class="sec"><span class="dot"></span>信念张力 <small>未解决 2 条 · 已解决 0 条</small></h2>
+  <h2 class="sec"><span class="dot"></span>信念张力 <small>未解决 1 条 · 已解决 0 条</small></h2>
   <div class="tensions-box">
     
         <div class="tension-item" data-status="unresolved">
           <div class="tension-pair">
             <span class="tension-belief">B1 AI agent 缺乏元认知能力——无法检查自己的产出是否和证据一致，这是当前架…</span>
             <span class="tension-vs">⚔️ 对立</span>
-            <span class="tension-belief">B4 预训练 scaling 仍能提升 benchmark 能力，但核心机制（统计预测…</span>
+            <span class="tension-belief">B6 中国家庭从&quot;加杠杆消费&quot;转向&quot;主动去杠杆&quot;——2026上半年住户贷款净减少366…</span>
           </div>
-          <div class="tension-desc">争的是什么：B1认为AI agent缺乏元认知是当前架构的结构性缺陷，B4认为预训练scaling仍能提升能力。争的是：更大的模型能否自发涌现元认知能力，还是元认知需要架构层面的根本改变（如外部验证循环、多agent互查）？</div>
-          <div class="tension-lean">当前倾向：B1（0.85 vs 0.40）</div>
-        </div>
-        <div class="tension-item" data-status="unresolved">
-          <div class="tension-pair">
-            <span class="tension-belief">B5 AI 安全治理走&quot;加固而非减速&quot;路线——领先机构倾向于用护栏/监测/身份审查替代…</span>
-            <span class="tension-vs">⚔️ 对立</span>
-            <span class="tension-belief">B4 预训练 scaling 仍能提升 benchmark 能力，但核心机制（统计预测…</span>
-          </div>
-          <div class="tension-desc">争的是什么：B5认为AI安全治理走&quot;加固而非减速&quot;路线，B4认为预训练能力仍在持续提升。争的是：在能力持续提升的情况下，仅靠护栏/监测/身份审查的&quot;加固&quot;路线是否足够，还是需要在某个能力阈值前主动减速？</div>
-          <div class="tension-lean">当前倾向：B5（0.40 vs 0.40）</div>
+          <div class="tension-desc">争的是什么：AI agent 缺乏元认知能力——无法检查自己的产出是否和证据一致，这是当前架... vs 中国家庭从&quot;加杠杆消费&quot;转向&quot;主动去杠杆&quot;——2026上半年住户贷款净减少366...（点33是2026上半年住户贷款净减少3668亿元（有统计以来第一次上半年住户贷款净减少），央行罕见首次定调&quot;居民主动适度）</div>
+          <div class="tension-lean">当前倾向：B1（0.68 vs 0.38）</div>
         </div>
   </div>
 </section>

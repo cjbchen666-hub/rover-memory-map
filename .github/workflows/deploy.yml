@@ -1,5 +1,5 @@
 name: Deploy Rover Memory Map to GitHub Pages
-# D14: fix aria-expanded initial values for all toggle elements
+# C9 fix: TreeWalker text nodes for first-person annotation
 on:
   push:
     branches: [main]
@@ -26,14 +26,14 @@ env:
   BS_SHA: 54e36e19de1edd6819cf3af1982288aa498156b4b374fe4518051334b6b38c16
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
-  MEM_URL: https://aka.doubaocdn.com/s/3iO29DMzEs
-  MEM_SHA: bc51c9d36c480c64d25f82da1c562a2705c5ef8d284a8fa8a20d714b9c39ac31
-  TRAIL_URL: https://aka.doubaocdn.com/s/FEcmwRggx9
-  TRAIL_SHA: b257203ee8b69ad0a0cb255a2666d10dfddcae8ab8a51462cbc95a94483995d7
-  STATE_URL: https://aka.doubaocdn.com/s/rYMAIm8VV8
-  STATE_SHA: b891cb01a52a0de9e5be359672de7302ac92029ff408436cd98bfa5a255b7305
-  RPT_URL: https://aka.doubaocdn.com/s/nHAFGaVrTH
-  RPT_SHA: 84005fab26a032fa1a76448004e2e7fc4a4076af6c7001bb0e5cd3543a57adc0
+  MEM_URL: https://aka.doubaocdn.com/s/u0oOtWfQFQ
+  MEM_SHA: 34566b743db10c69652616435c6f21a1e28337090eb196b0a8c3ab9986be51ba
+  TRAIL_URL: https://aka.doubaocdn.com/s/MhdInND69P
+  TRAIL_SHA: 0a92bec1d537d5e0511e60a5eafe65b445e8a59fb40d17b15c07b33958847d0c
+  STATE_URL: https://aka.doubaocdn.com/s/mN5tlVymv6
+  STATE_SHA: ec0d6480d3320c720dbb9df981e29d64504c6dfd94c6cf51ddf971ca3602f8b5
+  RPT_URL: https://aka.doubaocdn.com/s/vIfBeEKCfv
+  RPT_SHA: 43274f34e87a06efafd72392324fe27d3fb16ce295700a9833cfac6e258cb651
   BELIEFS_URL: https://aka.doubaocdn.com/s/mApFQSGQeq
   BELIEFS_SHA: 41e76390ab07758bae75cde4cbceebf1473a505d4b0c97825cb6307d7a0bbf77
 

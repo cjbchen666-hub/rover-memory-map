@@ -4836,16 +4836,43 @@ function highlightMapNode(pointId) {
   }, 3500);
 }
 
-function setupTrailClickHandlers() {
-  document.querySelectorAll('.tl-card-head').forEach(function(head) {
-    if (head.getAttribute('data-linked')) return;
-    head.setAttribute('data-linked', '1');
-    head.addEventListener('click', function(e) {
-      var card = this.closest('.tl-card');
-      var step = card.getAttribute('data-step');
-      var pointId = stepPointMap[step];
-      if (pointId) highlightMapNode(pointId);
-    });
+// [C10] 事件委托：在 #trailList 上统一处理轨迹卡片点击（地图联动 + 移动端展开）
+function setupTrailEventDelegation() {
+  var trailList = document.getElementById('trailList');
+  if (!trailList || trailList.getAttribute('data-delegated')) return;
+  trailList.setAttribute('data-delegated', '1');
+  // 点击事件：.tl-card-head → 地图联动；.tl-card（移动端）→ 展开/收起
+  trailList.addEventListener('click', function(e) {
+    var head = e.target.closest('.tl-card-head');
+    if (head) {
+      var card = head.closest('.tl-card');
+      if (card) {
+        var step = card.getAttribute('data-step');
+        var pointId = stepPointMap[step];
+        if (pointId) highlightMapNode(pointId);
+      }
+      return;
+    }
+    // 移动端展开：点击 .tl-card 内任意位置（排除链接）
+    if (window.innerWidth <= 640) {
+      var cardEl = e.target.closest('.tl-card');
+      if (cardEl && e.target.tagName !== 'A') {
+        cardEl.classList.toggle('expanded');
+        var isExpanded = cardEl.classList.contains('expanded');
+        cardEl.setAttribute('aria-expanded', isExpanded);
+        var stepNum = cardEl.getAttribute('data-step');
+        cardEl.setAttribute('aria-label', '轨迹步骤' + stepNum + (isExpanded ? '，点击收起' : '，点击展开详情'));
+      }
+    }
+  });
+  // 键盘 Enter 支持：移动端 .tl-card 的 Enter 触发展开
+  trailList.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' || window.innerWidth > 640) return;
+    var cardEl = e.target.closest('.tl-card');
+    if (cardEl) {
+      e.preventDefault();
+      cardEl.click();
+    }
   });
 }
 
@@ -5201,19 +5228,29 @@ function buildPointListView() {
     html += '</div>';
   });
   container.innerHTML = html;
-  // [优化 15+18] 事件委托：点击和键盘Enter都能跳转
-  container.querySelectorAll('.point-list-item').forEach(function(item) {
-    item.addEventListener('click', function() {
-      var step = this.getAttribute('data-step');
+  // [C10] 事件委托移到 setupPointListEventDelegation()，不在此逐元素绑定
+}
+
+// [C10] 事件委托：在 #pointListView 上统一处理列表项点击 + 键盘 Enter
+function setupPointListEventDelegation() {
+  var list = document.getElementById('pointListView');
+  if (!list || list.getAttribute('data-delegated')) return;
+  list.setAttribute('data-delegated', '1');
+  list.addEventListener('click', function(e) {
+    var item = e.target.closest('.point-list-item');
+    if (item) {
+      var step = item.getAttribute('data-step');
       if (step) jumpFromList(parseInt(step));
-    });
-    item.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        var step = this.getAttribute('data-step');
-        if (step) jumpFromList(parseInt(step));
-      }
-    });
+    }
+  });
+  list.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    var item = e.target.closest('.point-list-item');
+    if (item) {
+      e.preventDefault();
+      var step = item.getAttribute('data-step');
+      if (step) jumpFromList(parseInt(step));
+    }
   });
 }
 
@@ -5411,27 +5448,14 @@ function jumpFromList(step) {
 // ============================================================
 // [优化 16] 轨迹卡片窄屏点击展开
 // ============================================================
+// [C10] 移动端展开逻辑已移到 setupTrailEventDelegation() 事件委托
+// 此函数只设置无障碍属性（tabindex/role/aria-label），不绑定事件
 function setupMobileTrailExpand() {
   document.querySelectorAll('.tl-card').forEach(function(card) {
     card.setAttribute('tabindex', '0');
     card.setAttribute('role', 'button');
     var step = card.getAttribute('data-step');
     card.setAttribute('aria-label', '轨迹步骤' + step + '，点击展开详情');
-    card.addEventListener('click', function(e) {
-      if (window.innerWidth <= 640) {
-        if (e.target.tagName === 'A') return;
-        card.classList.toggle('expanded');
-        var isExpanded = card.classList.contains('expanded');
-        card.setAttribute('aria-expanded', isExpanded);
-        card.setAttribute('aria-label', '轨迹步骤' + step + (isExpanded ? '，点击收起' : '，点击展开详情'));
-      }
-    });
-    card.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && window.innerWidth <= 640) {
-        e.preventDefault();
-        card.click();
-      }
-    });
   });
 }
 
@@ -5525,7 +5549,8 @@ document.addEventListener('DOMContentLoaded', function() {
   annotateReports();
   annotateSingleSource();
   buildPointStepMapping();
-  setupTrailClickHandlers();
+  // [C10] 事件委托替代逐元素绑定
+  setupTrailEventDelegation();
   initCategoryFilter();
   applyDefaultCollapse();
   // [重构] 轨迹分页（替代默认折叠的展示方式）
@@ -5533,6 +5558,7 @@ document.addEventListener('DOMContentLoaded', function() {
   updateShowMoreButton();
   updateUncertaintyPanel();
   buildPointListView();
+  setupPointListEventDelegation();
   setupMobileTrailExpand();
   setupReportCollapse();
   // [A2] toggleSummary 内联 onclick 改为 addEventListener

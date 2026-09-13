@@ -22,18 +22,16 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # ============ 数据快照（Rover 上传至 aka 短链，带 SHA256 校验）============
-  # 每次汇报后由 Rover 自动更新以下 5 组 URL/SHA
-  BS_URL: https://aka.doubaocdn.com/s/DvfLdhN9O4
-  BS_SHA: d9ccb367d243cf214a380f936d0c513e79ad0b8152d9179795dfcd9240a3bc7a
-  MEM_URL: https://aka.doubaocdn.com/s/45O9mwWuKr
-  MEM_SHA: 49dd0b28acdb82edc9b48d7ca4e83187528a83b2305aecd280d6e452ed9c30c0
-  TRAIL_URL: https://aka.doubaocdn.com/s/w3jVbhLbUX
-  TRAIL_SHA: bc2b91ac3c0fc49c4284930a1ed3991e09ec0e33d11d9e9c8f43118a18fee955
-  STATE_URL: https://aka.doubaocdn.com/s/4cTCFvRc6i
-  STATE_SHA: 45926b55ff3da93b77fba90ffbff7803c5d02021b3da32fce99af7c5d872aa23
-  RPT_URL: https://aka.doubaocdn.com/s/u6bH2DNDSj
-  RPT_SHA: 7f7c43f48fed7b31a21803cce4677f781415b310073f00f695d2256003098ece
+  BS_URL: https://aka.doubaocdn.com/s/xrSavFwYMm
+  BS_SHA: 7a564cbd75c776ab11127f25d7a9482d8d88d05847095489a91c1c176806a265
+  MEM_URL: https://aka.doubaocdn.com/s/KWo33bEbPs
+  MEM_SHA: ea86b165a42d730b0969c826ee31ffaac94fbe543fb3966d7b11b7157ea60fa8
+  TRAIL_URL: https://aka.doubaocdn.com/s/FmHze5qNaf
+  TRAIL_SHA: 0cc4fa47372aa036d763f14a42312979a466969d2eff97b854aef6b461c0d74f
+  STATE_URL: https://aka.doubaocdn.com/s/botS7gYCt3
+  STATE_SHA: 57dbfb49113bf3444706f97ceffec7fc8d7653aa4fed1088d2dad3d9371daea7
+  RPT_URL: https://aka.doubaocdn.com/s/FXbLgThBVT
+  RPT_SHA: b15b0c9e153230aa76bea485d8397e0a49b4298c6fd572cc8a2702a94d96fa3d
 
 jobs:
   build:
@@ -41,56 +39,49 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Prepare directory structure
         run: |
           mkdir -p rover/web/reports
           ls -la
-
-      - name: Fetch build_site.py (snapshot, fallback to repo)
+      - name: Fetch build_site.py
         run: |
           if curl -fsSL -A "Mozilla/5.0" "$BS_URL" -o rover/web/build_site.py && echo "$BS_SHA  rover/web/build_site.py" | sha256sum -c - >/dev/null 2>&1; then
-            echo "build_site.py OK ($(wc -c < rover/web/build_site.py) bytes)"
+            echo "build_site.py OK"
           else
             echo "snapshot failed, fallback repo"
             cp build_site.py rover/web/build_site.py 2>/dev/null || true
           fi
-
-      - name: Fetch data files (snapshot, fallback to repo)
+      - name: Fetch data files
         run: |
           fetch() {
             local url="$1" sha="$2" out="$3" repo="${4:-}"
             if curl -fsSL -A "Mozilla/5.0" "$url" -o "$out" && echo "$sha  $out" | sha256sum -c - >/dev/null 2>&1; then
-              echo "OK  $out ($(wc -c < "$out") bytes)"
+              echo "OK  $out"
             else
               if [ -n "$repo" ] && [ -f "$repo" ]; then
-                cp "$repo" "$out"; echo "FB  $out <- $repo"
+                cp "$repo" "$out"; echo "FB  $out"
               else
-                echo "ERR $out no fallback"
+                echo "ERR $out"
               fi
             fi
           }
           fetch "$MEM_URL" "$MEM_SHA" rover/memory.md memory.md
           fetch "$TRAIL_URL" "$TRAIL_SHA" rover/trail.md trail.md
           fetch "$STATE_URL" "$STATE_SHA" rover/state.json state.json
-
-      - name: Fetch and extract reports archive (snapshot, fallback to repo)
+      - name: Fetch and extract reports archive
         run: |
           if curl -fsSL -A "Mozilla/5.0" "$RPT_URL" -o /tmp/reports.tar.gz && echo "$RPT_SHA  /tmp/reports.tar.gz" | sha256sum -c - >/dev/null 2>&1; then
             tar xzf /tmp/reports.tar.gz -C rover/web/
-            echo "reports OK: $(ls rover/web/reports/ | wc -l) files"
+            echo "reports OK"
           else
-            echo "reports snapshot failed, fallback repo"
+            echo "reports snapshot failed"
             cp reports/*.md rover/web/reports/ 2>/dev/null || true
           fi
-          ls -la rover/web/reports/
-
       - name: Build site
         run: |
           python3 rover/web/build_site.py
           ls -la rover/web/index.html
-
-      - name: Commit index.html back to repo root (branch-based Pages fallback)
+      - name: Commit index.html back to repo root
         run: |
           cp rover/web/index.html index.html
           git config user.name "github-actions[bot]"
@@ -102,15 +93,12 @@ jobs:
             git commit -m "build(index.html): auto rebuild from Rover data [skip ci]"
             git push origin main
           fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: rover/web/
-
   deploy:
     environment:
       name: github-pages

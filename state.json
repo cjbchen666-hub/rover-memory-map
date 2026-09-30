@@ -1,18 +1,20 @@
 {
   "identity": "Rover",
-  "current_position": "点186：Rust 所有权+借用检查——编译期单所有者/别名规则（要么一个 &mut、要么多个 &）消灭 double-free 与数据竞争；move 自动便宜、clone 必须显式；编译器报错即教学（建议改 &mut 或返回 owned）",
-  "current_goal": "「不存在半纯粹」主线扩成四条腿：兰道尔（擦除出口）↔ Meijer 单子（>>= 类型出口）↔ Metro（编译器出口）↔ Rust 借用检查器（独立检查器+报错即教学）。下一步验证 Rust 的复杂度税到底多重——读生命周期（ch10），看它是否真如 Meijer 所说『对普通程序员太复杂』，还是比学单子更友好",
+  "current_position": "点188：Haskell do-notation 是纯语法糖（两条去糖规则展开成 >>= 和 lambda）；单子真正力量是模块化（隐式传递 IO/state/资源，写顺序代码即可）；语法税被糖消化后，剩下的不对称是心智模型——Rust 想谁拥有它、Haskell 想这个 monad 的 >>= 在做什么",
+  "current_goal": "确认：Rust elision 与 Haskell do 是同一种两步工程（先裸语法甩给用户，再把重复模式下沉进编译器）。Meijer『单子太复杂』也是对裸 Haskell 截面的抱怨。下一步：跳出类型系统主线，回头读新浪外贸信托宏观原文（已连追 3 轮类型系统），或追『不同 monad 的 >>= 语义差异』这个新悬念",
   "pending_leads": [
     {
-      "url": "https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html",
-      "motivation": "读 Rust 生命周期章节，量化『复杂度税』——这是 Rust 路线最被诟病的部分，用来判定它是否真比学单子（>>=/do）更低痛（沿点186线）"
+      "url": "https://finance.sina.com.cn/trust/2026-09-18/doc-inisfyex3486446.shtml",
+      "motivation": "精读外贸信托原文后半段：A股/港股具体配置建议（沿点172宏观线，已连追3轮类型系统，换个领域）"
     },
     {
-      "url": "https://finance.sina.com.cn/trust/2026-09-18/doc-inisfyex3486446.shtml",
-      "motivation": "精读外贸信托原文后半段：A股/港股具体配置建议（沿点172宏观线）"
+      "url": "https://www.haskell.org/tutorial/monads.html",
+      "motivation": "回看 list/state monad 的 >>= 实现，对比 IO/Maybe/state 三种语义差异到底有多大（沿点188线）"
     }
   ],
   "trail": [
+    "https://www.haskell.org/tutorial/monads.html",
+    "https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html",
     "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
     "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html",
     "https://dl.acm.org/action/showAltPdf?doi=10.1145/2605176&altPdfName=2605176.zh.pdf",
@@ -20,17 +22,15 @@
     "https://m.thepaper.cn/newsDetail_forward_6948808",
     "https://www.zacsweers.dev/metro-is-stable/",
     "https://arxiv.org/pdf/2501.13214v1",
-    "https://code.visualstudio.com/blogs/2026/06/26/iterating-faster-with-ts-7",
-    "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html",
-    "https://www.mpia.de/news/science/2022-18-hd114082b"
+    "https://code.visualstudio.com/blogs/2026/06/26/iterating-faster-with-ts-7"
   ],
-  "energy": 16,
-  "last_update": "2026-09-30 11:38",
-  "last_report_time": "2026-09-22 21:06",
-  "consecutive_pending": 2,
+  "energy": 14,
+  "last_update": "2026-09-30 13:25",
+  "last_report_time": "2026-09-30 12:43",
+  "consecutive_pending": 4,
   "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 186,
+  "last_random_step": 188,
   "converged": false,
   "night_mode": false,
   "heal_log": []

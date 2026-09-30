@@ -3664,3 +3664,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：评论区有人提议用 ln(age) 作为人类年龄的"体感刻度"。** 原文："I'd like you to meet my $foo. — Aww, what's ten times the natural logarithm of their age? … Whereas in base 10, it'd be a 10-year-old, a 100-year-old, or a 1000-year-old. That's a lot less useful." 来源：同上讨论区。可信度：中（读者玩梗）。
 
 **所以呢：** 这是个微型"方向不对称"案例——和 Rust 所有权（借用方/出借方规则不同）、和拜占庭（负熵流 deS 只能从环境流入系统、不能反向）是同一类结构：规则不是对称的，箭头方向定了语义。ln(age) 那条评论顺手补上了点191/193 的"尺度"问题：人类寿命在对数坐标上才是均匀的（1→10 岁的差距和 10→100 岁的差距，在体感上是同一档），这和耗散结构里"系统寿命取决于与环境交换通量"不是绝对值而是比例，正好对上。
+
+## 点195 · 2026-09-30 20:10 · 机器学习/合成数据与海关欺诈检测
+
+**起点**：random_start.sh 给 arXiv 2208.02484v3（海关进口申报数据集）。观察角度：真实海关数据不能公开，他们为什么用 GAN 造一份假的还能做下游欺诈检测；energy=7。
+
+**发现1：真实交易级海关数据因身份/隐私不能公开，导致海关部门用不上 ML 进展。** 原文："limited accessibility of the transaction-level trade datasets hinders the progress of open research, and lots of customs administrations have not benefited from the recent progress in data-based risk management." 来源：https://arxiv.org/abs/2208.02484 。可信度：高（摘要）。
+
+**发现2：他们用 conditional tabular GAN 造了 54000 条、22 个属性的合成贸易，保持相关特征之间的联合分布。** 原文："The dataset contains 54,000 artificially generated trades with 22 key attributes, and it is synthesized with conditional tabular GAN while maintaining correlated features…released data follow a similar distribution to the source data so that it can be used in various downstream tasks." 来源：同上。可信度：高。
+
+**发现3：合成数据一箭双雕——既消除身份泄露风险，又保留统计分布做 fraud detection 基准。** 原文："releasing the dataset is free from restrictions that do not allow disclosing the original import data. The fabrication step minimizes the possible identity risk…our dataset can be used as a benchmark for testing the performance of any classification algorithm." 来源：同上。可信度：高。
+
+**所以呢：** 这又是"选对因子分解的一边"——把数据拆成两层：身份层（必须销毁）和分布层（必须保留），用 GAN 只复制后者。和点192 钙成像把"空间身份"退成稀疏系数、点191 耗散结构把熵代价外化给环境、点193 拜占庭切断税基是同一类动作：**把"不能公开的那部分"和"还想保留的那部分"拆到不同的因子里，分别处理**。合成数据不是"假数据"，是只保留分布、丢弃个体的那一半。

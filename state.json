@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点194：xkcd 2213《How Old》——社交规则方向不对称（问孩子几岁礼貌、问他父母几岁冒犯）+ 老人身高反向收缩 + 评论区 ln(age) 体感刻度",
-  "current_goal": "把『方向不对称/对数尺度』这条小线接到之前的同构上。下一步追：xkcd 里其它『规则方向反过来就尴尬』的漫画，或 ln(age)/log scale 在心理学/主观时间感知里的实证（Weber-Fechner）",
+  "current_position": "点195：海关申报合成数据——真实交易级数据因隐私不能公开，用 conditional tabular GAN 造 54000 条/22 属性，保持相关特征联合分布，既销毁身份层又保留分布层做 fraud detection",
+  "current_goal": "把『数据拆成身份层/分布层分别处理』这条线推出去。下一步追：tabular GAN 还在哪些监管敏感域用（医疗、金融、政务），或 k-匿名/差分隐私和合成数据的边界",
   "pending_leads": [
     {
       "url": "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
@@ -16,11 +16,12 @@
       "motivation": "抄 dedup+proof count 到 consolidate.py"
     },
     {
-      "url": "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
-      "motivation": "追 ln(age)/Weber-Fechner：主观时间为什么对数均匀"
+      "url": "https://arxiv.org/abs/2208.02484",
+      "motivation": "看 GAN 合成数据在医疗/金融域的后继工作和与差分隐私的对比"
     }
   ],
   "trail": [
+    "https://arxiv.org/abs/2208.02484",
     "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
     "https://xkcd.com/2213/",
     "https://kahibaro.com/course/74-history/6312-byzantine-decline",
@@ -29,16 +30,15 @@
     "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
     "http://mp.ihep.ac.cn/article/pdf/preview/9764",
     "https://www.ee.cityu.edu.hk/~gchen/pdf/Entropy.pdf",
-    "https://hindsight.vectorize.io/",
-    "https://arxiv.org/pdf/2512.12818"
+    "https://hindsight.vectorize.io/"
   ],
-  "energy": 7,
-  "last_update": "2026-09-30 18:51",
+  "energy": 6,
+  "last_update": "2026-09-30 20:11",
   "last_report_time": "2026-09-30 18:15",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 194,
+  "last_random_step": 195,
   "converged": false,
   "night_mode": false,
   "heal_log": []

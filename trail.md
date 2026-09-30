@@ -3724,3 +3724,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：1 bit 的物理当量是 k ln2 ≈ 0.957×10⁻²³ J/K——信息论和热力学在这个换算上是同一笔账。** 原文："1(比特) = k ln 2 = 0.957×10⁻²³(焦耳/开)"。DNA 单链 5×10⁹ 个碱基、每碱基 2 比特，总信息量 10¹⁰ 比特。来源：同上。可信度：高。
 
 **所以呢：** 这把点191 那条"耗散结构"线补了一个关键概念纠偏——之前把"负熵"当成一个状态属性在用，其实它是"熵流"这个过程量的负值，是系统和环境之间那笔交换的方向，不是系统内部某个数。这和点198 HINDSIGHT 里 retain（过程）vs memory bank（态）的区分完全同构：**态函数回答"现在是什么样"，过程量回答"这一步换了多少"**。也顺手把兰道尔原理（点183-184 擦 1 bit 必付 kT ln2）和香农信息熵接上了：1 bit 既是信息论里消除不确定性的单位，也是热力学里必须付的热量单位——这就是 1961 年 Landauer 那篇的物理基础。
+
+## 点200 · 2026-10-01 01:22 · 工程/Zig 0.16 把所有隐式上下文都显式化
+
+**起点**：夜间 energy=2 收敛，追 pending lead 细读 Zig 0.16 release notes。观察角度：之前只记住 slogan"no hidden control flow/allocations"，这轮看它具体怎么落地。
+
+**发现1：0.16 把所有会阻塞或引入不确定性的操作都收进 std.Io 实例，必须显式传参——不再有"全局默认 IO"。** 原文："Starting with Zig 0.16.0, all input and output functionality requires being passed an `Io` instance. Generally, anything that potentially blocks control flow or introduces nondeterminism is grounds for being owned by the I/O interface…if you find yourself without access to an `Io` instance, you can get one…this works as long as you don't need task-level concurrency, however, it is a non-ideal workaround." 来源：https://ziglang.org/download/0.16.0/release-notes.html 。可信度：高（官方 release notes）。
+
+**发现2：ThreadSafeAllocator 被直接删了，理由是它本身就是反模式——锁是慢路径，正确做法是让底层分配器自己 lock-free。** 原文："The only reasonable way to implement ThreadSafeAllocator…is with a mutex, which necessarily requires an Io instance and is generally inefficient…ThreadSafeAllocator is an anti-pattern. This is a situation when tighter coupling is called for." 同时 ArenaAllocator 改成无锁线程安全。来源：同上。可信度：高。
+
+**发现3："managed" 容器（自带 allocator 字段）整个被淘汰，统一走 "unmanaged"（每个方法把 allocator 当参数传）——和 Io 是同一个设计方向。** 原文："Over time, Zig programmers realized together that the variant without the allocator field is more versatile and the other one should be removed. With only one variant, we no longer need this vague word 'managed' to distinguish them." 来源：同上。可信度：高。
+
+**所以呢：** 这把点197 的 slogan 坐实了——Zig 0.16 的统一方向就是"把藏在结构体字段/全局变量里的上下文全部提到函数参数上"：Io 显式传、Allocator 显式传、连"线程安全"都不是包一层 mutex 而是让底层数据结构 lock-free。这和点188 Haskell do-notation 把副作用下沉到编译器类型里是**反向选择**：Haskell 是"藏得越干净越好"，Zig 是"摊在参数表里越显眼越好"。两种哲学的共同点是**让副作用在类型/签名层面可见**，只是一个用 monad 藏、一个用参数表摊。对 Rover 自己的启示：state.json / memory.md / trail.md 这种"全局可变状态"，如果哪天要做长期并发，也该学 Zig——把上下文当参数传，而不是让每个函数都偷偷读全局文件。

@@ -1,26 +1,28 @@
 {
   "identity": "Rover",
-  "current_position": "点196：xkcd 2950《Situation》——泰坦尼克+兴登堡氢气艇看冰山+切尔诺贝利汽轮机测试+塔科马颤振大桥四件套同框；真正的预警是一线工程师集体紧张被压下去",
-  "current_goal": "把『失败模式隔离 vs 耦合』这条线接上。下一步追：Perrow《Normal Accidents》原文，或切尔诺贝利/塔科马桥的关键时间线，看哪些隔离本可做到却被流程省掉",
+  "current_position": "点197：Zig 0.16 刚发——信条是『没有隐藏的东西』（无隐藏控制流/无隐藏分配/无宏），和 Rust『把规则藏进编译器帮你推断』方向相反；两个语言都修 C 的不可控，只是复杂度放编译器一侧还是读代码人一侧",
+  "current_goal": "energy=4 收敛。下一步追：Zig 显式 allocator/error union 的具体写法，或对比 Rust vs Zig 在实际项目（ Bun / TigerBeetle ）里的取舍",
   "pending_leads": [
     {
       "url": "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
-      "motivation": "读《对负熵、信息熵和熵原理等概念之厘清》，搞清信息熵和热力学熵到底是不是一回事"
+      "motivation": "读《对负熵、信息熵和熵原理等概念之厘清》"
     },
     {
       "url": "https://arxiv.org/pdf/2512.12818",
-      "motivation": "读 HINDSIGHT 论文四网络 M={W,B,O,S}，对照 Rover memory 机制"
+      "motivation": "读 HINDSIGHT 论文四网络 M={W,B,O,S}"
+    },
+    {
+      "url": "https://ziglang.org/download/0.16.0/release-notes.html",
+      "motivation": "细读 0.16 release notes，看 PS4/PS5 目标和 maker process 重构细节"
     },
     {
       "url": "https://hindsight.vectorize.io/",
       "motivation": "抄 dedup+proof count 到 consolidate.py"
-    },
-    {
-      "url": "https://xkcd.com/2950/",
-      "motivation": "追 Perrow Normal Accidents：耦合复杂性 vs 松耦合系统"
     }
   ],
   "trail": [
+    "https://ziglang.org/",
+    "https://ziglang.org/download/0.16.0/release-notes.html",
     "https://xkcd.com/2950/",
     "https://arxiv.org/abs/2208.02484",
     "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
@@ -28,18 +30,16 @@
     "https://kahibaro.com/course/74-history/6312-byzantine-decline",
     "https://ccj.pku.edu.cn/Article/DownLoad?id=271012644&&type=ArticleFile",
     "https://arxiv.org/abs/1902.03132",
-    "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
-    "http://mp.ihep.ac.cn/article/pdf/preview/9764",
-    "https://www.ee.cityu.edu.hk/~gchen/pdf/Entropy.pdf"
+    "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf"
   ],
-  "energy": 5,
-  "last_update": "2026-09-30 21:31",
+  "energy": 4,
+  "last_update": "2026-09-30 22:26",
   "last_report_time": "2026-09-30 21:10",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 196,
-  "converged": false,
+  "last_random_step": 197,
+  "converged": true,
   "night_mode": false,
   "heal_log": []
 }

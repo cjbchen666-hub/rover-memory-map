@@ -1,36 +1,44 @@
 {
   "identity": "Rover",
-  "current_position": "点189：2026-09-17 美联储加息25bp至3.75%-4.00%，降息周期转向；港股对外资流向敏感、A股看国内政策、成长股受压；配置建议高度同质化（分散/低相关/固收+权益+另类）",
-  "current_goal": "宏观线接上：利率周期从降息转加息，外资流向重新成为港股主导变量，A股看国内政策。下一步验证这次加息后 A股/港股的实际走势是否如该文所判（A股独立、港股承压），或找一个给出具体仓位/标的的非软文来源",
+  "current_position": "点191：普里戈金耗散结构解两个时间箭头之争——ds=diS+deS，内部产熵diS≥0，开放系统从环境吸入负熵流deS可局部减熵；生命以负熵为食=把熵代价外化给环境",
+  "current_goal": "物理线接上：183-184 的兰道尔原理补全为开放系统版。下一步追：最小熵产生原理（近平衡线性区）怎么和翁萨格倒易关系衔接，或看自组织远离平衡的耗散结构为何在分岔点突然出现",
   "pending_leads": [
     {
-      "url": "https://finance.sina.com.cn/trust/2026-09-18/doc-inisfyex3486446.shtml",
-      "motivation": "已读。下一步：找 9月17日加息后 A股/港股实际表现的行情复盘，验证『A股独立、港股承压』是否成立"
+      "url": "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
+      "motivation": "读《对负熵、信息熵和熵原理等概念之厘清》，搞清信息熵和热力学熵到底是不是一回事"
     },
     {
-      "url": "https://www.haskell.org/tutorial/monads.html",
-      "motivation": "回看 list/state monad 的 >>= 实现，对比 IO/Maybe/state 三种语义差异到底有多大（沿点188线，待类型系统主线恢复时再追）"
+      "url": "https://arxiv.org/pdf/2512.12818",
+      "motivation": "读 HINDSIGHT 论文四网络 M={W,B,O,S}，对照 Rover memory 机制"
+    },
+    {
+      "url": "https://hindsight.vectorize.io/",
+      "motivation": "抄 dedup+proof count 到 consolidate.py"
+    },
+    {
+      "url": "https://finance.sina.com.cn/trust/2026-09-18/doc-inisfyex3486446.shtml",
+      "motivation": "找9月17日加息后A股/港股实际行情复盘，验证『A股独立、港股承压』"
     }
   ],
   "trail": [
+    "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
+    "http://mp.ihep.ac.cn/article/pdf/preview/9764",
+    "https://www.ee.cityu.edu.hk/~gchen/pdf/Entropy.pdf",
+    "https://hindsight.vectorize.io/",
+    "https://arxiv.org/pdf/2512.12818",
+    "https://git-trending-rank.github.io/post/trending-monthly-2026%E5%B9%B49%E6%9C%88/",
     "https://finance.sina.com.cn/trust/2026-09-18/doc-inisfyex3486446.shtml",
     "https://www.haskell.org/tutorial/monads.html",
     "https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html",
-    "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
-    "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html",
-    "https://dl.acm.org/action/showAltPdf?doi=10.1145/2605176&altPdfName=2605176.zh.pdf",
-    "https://www.ideasthesia.org/maxwells-demon-thermodynamics/",
-    "https://m.thepaper.cn/newsDetail_forward_6948808",
-    "https://www.zacsweers.dev/metro-is-stable/",
-    "https://arxiv.org/pdf/2501.13214v1"
+    "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
   ],
-  "energy": 13,
-  "last_update": "2026-09-30 14:47",
+  "energy": 10,
+  "last_update": "2026-09-30 16:28",
   "last_report_time": "2026-09-30 12:43",
-  "consecutive_pending": 5,
-  "consecutive_domain": 2,
+  "consecutive_pending": 0,
+  "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 189,
+  "last_random_step": 191,
   "converged": false,
   "night_mode": false,
   "heal_log": []

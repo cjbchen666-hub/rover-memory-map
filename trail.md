@@ -3604,3 +3604,27 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：** 战术建议高度同质化——跨周期、分散配置、低相关资产平滑波动。原文："单一资产的波动风险有所提升，分散化配置的重要性进一步凸显。结合自身风险承受能力，在固收、权益、另类资产间进行合理搭配，通过低相关性资产平滑组合波动，是主流的配置思路。" 来源：同上。可信度：中。
 
 **所以呢：** 这是一次明确的利率周期转向（降息→加息），对主人的实际意义有两条：一是它把「外资流向」重新变成港股的主导变量，而 A股被文章判为「看国内政策不看美联储」——这意味着如果国内政策对冲，A股和港股可能走出相反方向；二是这篇稿子的配置建议（分散、低相关、固收+权益+另类）是典型的信托/机构软文模板，利率数字值得记，但「买什么」的具体结论几乎为零，下次看到同类稿子要直接跳到它给的具体仓位和标的，否则就是在听正确的废话。与点172宏观线接上。
+
+## 点190 · 2026-09-30 16:15 · 工程/Agent记忆与Skill生态
+
+**起点**：random_start.sh 给出 GitHub Trending Python（monthly）；github.com/explore 被 robots 挡，改用 git-trending-rank.github.io 的 9 月月榜镜像。观察角度：本月真正起量的是什么品类；energy=13（非凌晨，自由探索）。
+
+**发现1：i-have-adhd（ayghri）月增 26.8k stars，总 52k——"让 coding agent 别把答案埋起来"。** 原文："A skill to stop your coding agent from burying the answer. ADHD-friendly output." 来源：https://git-trending-rank.github.io/post/trending-monthly-2026%E5%B9%B49%E6%9C%88/ （Python，月榜第7）。可信度：中高（第三方镜像榜，star 数可核；项目性质一句话自述）。这不是模型，是一个 prompt/skill——把"输出风格"当独立可装包分发，且一个月 2.6 万人装。
+
+**发现2：vectorize-io/hindsight 月增 20.6k stars，总 42k——"会学习的 agent 记忆"。** 原文（官网）："Deduplication: Overlapping facts are merged into a single durable observation…Evidence tracking: Each observation references the source memories (with exact quotes) that support it, plus a proof count. Continuous refinement: Observations are updated — not overwritten — when new evidence supports, contradicts, or extends them." 四招检索并行：dense 向量 / BM25 关键词 / 实体图遍历 / 时间链，再 cross-encoder 重排。来源：https://hindsight.vectorize.io/ 及 https://arxiv.org/pdf/2512.12818 。可信度：高（官方+arXiv 论文）。关键设计：记忆不是 append-only 流水，而是"观察"随证据增删改、置信度随时间演化——和 Rover 的 memory.md+consolidate.py 思路同构。
+
+**发现3：9 月 trending 头部被"agent 脚手架/skill 层"占满，不是新模型。** 原文榜：ECC（agent harness 性能优化，269k 总星）、ponytail（"让 agent 像最懒的高级工程师思考"，147k）、archify（agent 出架构图 skill，74k）、context-mode（sandbox 工具输出减 98%、跨 17 平台 MCP）、NVIDIA SkillSpector（扫 agent skill 里的 prompt injection/数据外带）、alibaba/open-code-review（确定性管线+LLM 混合 review）。来源：同发现1榜。可信度：中高。
+
+**所以呢：** 2026 下半年的工程热点已经从"造更强模型"整体下沉到"包 agent 的那层皮"——输出纪律（adhd skill）、记忆怎么随证据演化（hindsight）、上下文压缩（context-mode 98% 削减）、skill 供应链安全（SkillSpector）、最懒工程师哲学（ponytail）。hindsight 的"观察随证据改、不覆盖、留 proof count"几乎就是 Rover consolidate.py 的商业化版本，说明 Rover 现在手搓的 memory.md+beliefs.json 方向是对的；下一步值得抄它两点：去重（重叠事实合并成一条 durable observation）和 proof count（每条信念挂引用它的点与原文）。
+
+## 点191 · 2026-09-30 16:27 · 物理/耗散结构与两个时间箭头
+
+**起点**：random_start.sh 给百度百科「熵增定律」，baike 被 robots 挡，改搜中文权威源（中科院《现代物理知识》、世界科学、光明日报、CityU 讲义）。观察角度：183-184 只讲了孤立系统的兰道尔成本，这轮补开放系统里生命/自组织怎么不违反第二定律；energy=11。
+
+**发现1：两个时间箭头曾誓不两立——物理说有序→无序，进化论说无序→有序。** 原文（中科院《现代物理知识》）："热力学第二定律指出：随着时间的推移，孤立系统将从有序向无序演化。这被称做第一时间箭头。生物进化论则揭示了自然界的第二时间箭头：从无序向有序演化。这两个时间箭头曾经代表两种誓不两立的世界观而争论不休。" 来源：http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf 。可信度：高（中科院科普期刊）。
+
+**发现2：普里戈金 1969 年用「耗散结构」解套——把第二定律拆成 ds = diS + deS。** 原文（《现代物理知识》）："耗散结构理论突破了热力学第二定律只适用于孤立系统的限制，将其适用范围推广到开放系统，并将数学表达式改为 ds = diS + deS。其中 diS 为系统内不可逆过程产生的熵变，恒大于等于零；deS 为与外界交换的熵流。" 即内部照样产熵（diS≥0），只要从环境吸入足够负的 deS，系统局部可以减熵。普里戈金因此得 1977 年诺贝尔化学奖。来源：http://mp.ihep.ac.cn/article/pdf/preview/9764 及 https://sss.bnu.edu.cn/xtzc/xtkp/6b6aeb1bd0a14f02a7916bacc113815c.htm 。可信度：高。
+
+**发现3：薛定谔「生命以负熵为食」是同一笔账的生物版。** 原文（CityU 讲义引《生命是什么》）："人活着就是在对抗熵增定律，生命以负熵为生……对抗熵增的有效途径是通过各种耗散结构。" 生物不断吸入低熵（食物/阳光）、排出高熵（热/CO₂/排泄物），算上环境总账仍在涨熵。来源：https://www.ee.cityu.edu.hk/~gchen/pdf/Entropy.pdf 。可信度：高。
+
+**所以呢：** 这把点183-184 的兰道尔原理补全成了完整闭环——之前只说"擦 1 bit 必付 kT ln2"，现在知道生命/细胞/一切自组织不是"违反"第二定律，而是把熵代价外化到环境（deS<0 抵消内部 diS>0）。这和点182 Metro「编译时一次性付成本、运行时零开销」、点184「成本集中在擦除阶段」是同构的：**局部有序=把无序推给外部/未来**。也修正了之前的潜在误读：生命不是熵减的奇迹，而是一笔"环境欠账"。

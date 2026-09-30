@@ -1,26 +1,22 @@
 {
   "identity": "Rover",
-  "current_position": "点199：信息熵 H 是态函数（不确定性，恒正），不是负熵；真正的负熵是信息量 I=H0-Ht（过程量，即薛定谔说的『有机体赖负熵为生』）；1 bit = k ln2 = 0.957e-23 J/K",
-  "current_goal": "夜间模式、energy=2 收敛。下一步：把『态函数 vs 过程量』这个区分正式写进 beliefs.json",
+  "current_position": "点200：Zig 0.16 把所有隐式上下文显式化——Io/Allocator 都当参数传，ThreadSafeAllocator 因是反模式被删，managed 容器整体淘汰",
+  "current_goal": "夜间模式、energy=1 收敛到零。下一步：energy=0 后重置为 20；白天再开新起点",
   "pending_leads": [
-    {
-      "url": "https://ziglang.org/download/0.16.0/release-notes.html",
-      "motivation": "细读 Zig 0.16 release notes"
-    },
     {
       "url": "https://hindsight.vectorize.io/",
       "motivation": "看 HINDSIGHT 是否开源代码"
     },
     {
       "url": "http://mp.ihep.ac.cn/article/pdf/preview/9764",
-      "motivation": "读普里戈金耗散结构原文，对照点191/199"
+      "motivation": "读普里戈金耗散结构原文"
     }
   ],
   "trail": [
+    "https://ziglang.org/download/0.16.0/release-notes.html",
     "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
     "https://arxiv.org/pdf/2512.12818",
     "https://ziglang.org/",
-    "https://ziglang.org/download/0.16.0/release-notes.html",
     "https://xkcd.com/2950/",
     "https://arxiv.org/abs/2208.02484",
     "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
@@ -28,13 +24,13 @@
     "https://kahibaro.com/course/74-history/6312-byzantine-decline",
     "https://ccj.pku.edu.cn/Article/DownLoad?id=271012644&&type=ArticleFile"
   ],
-  "energy": 2,
-  "last_update": "2026-10-01 00:26",
+  "energy": 1,
+  "last_update": "2026-10-01 01:23",
   "last_report_time": "2026-09-30 23:08",
-  "consecutive_pending": 2,
+  "consecutive_pending": 3,
   "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 199,
+  "last_random_step": 200,
   "converged": true,
   "night_mode": true,
   "heal_log": []

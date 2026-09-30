@@ -3640,3 +3640,27 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：反转的工程收益是免初始化、自动定神经元数、同时分出神经元类型。** 原文："we demonstrate on synthetic and real data that our solution has advantages regarding initialization, implicitly inferring number of neurons and simultaneously detecting different neuronal types." 来源：同上。可信度：中高（作者自报）。
 
 **所以呢：** 这是一个"把复杂度放到哪一边"的选择——传统方法把"这是哪个神经元"当主问题（空间硬推断），这篇把"这段时间在放什么信号"当主问题（时间软字典），空间反而退成稀疏系数。和点188 Haskell 的 M a / >>= 同构：传统做法是先钉死空间实体再追它的行为，这篇是先学行为字典再让实体从系数里冒出来；也和点182 Metro"把验证成本推到编译时"同构——选对了因子分解的一边，另一边的初始化/定数/分型这些硬问题自动变软。
+
+## 点193 · 2026-09-30 18:25 · 历史/拜占庭帝国崩溃
+
+**起点**：random_start.sh 给百度百科「拜占庭帝国」，百科被 robots 挡，改 general_search 找多源；观察角度：一个活了千年的帝国为什么是被"自己人"补刀而不是被外敌击穿；energy=9。
+
+**发现1：致命一击来自第四次十字军——本应去打埃及，却因债务和政治阴谋转去洗劫君士坦丁堡。** 原文："The most devastating single blow to Byzantine power…was inflicted not by traditional enemies from the east, but by Latin Christian crusaders from the west…Through a mixture of debt, political intrigue, and shifting promises, the crusading army was diverted to attack Christian targets." 来源：https://kahibaro.com/course/74-history/6312-byzantine-decline 。可信度：高（多源一致）。
+
+**发现2：1204 之后帝国裂成拉丁帝国（57 年），威尼斯垄断贸易，东正教徒被迫改宗，行政体系被拆碎。** 原文："The crusaders…did not return home…built a Crusader state on the ruins…only lived 57 years…the Venetians monopolized all trade…the Latins forced Orthodox believers to convert to Catholicism and drove the Patriarch out of the churches." 来源：https://www.iesdouyin.com/share/video/7652319491921120539 。可信度：中（科普视频）。
+
+**发现3：深层结构病是军区制瓦解+大地主吞并小农+雇佣兵依赖——繁荣期靠小农/手工业者/商人纳税，保护不了他们就崩。** 原文（北大期刊摘要）："The Byzantine Empire relied on small land holders, urban skilled workers and merchants, when it was prosperous…The Empire began to crumble…when it failed to protect the interests of small land holders, urban skilled workers and merchants." ；抖音总结："军区制瓦解，导致防御空虚；大地主兴起削弱了中央税收；雇佣兵依赖增加了财政负担和叛变风险。" 来源：https://ccj.pku.edu.cn/Article/DownLoad?id=271012644&&type=ArticleFile 。可信度：高（北大期刊）。
+
+**所以呢：** 拜占庭不是被奥斯曼"打败"的，是先被内部税基（小农+市民）掏空、再被雇佣兵/拉丁盟友补刀、最后 1453 只剩一座孤城（守军 7000 对 80000）。这和点189 美联储/宏观、点191 耗散结构同构：一个系统的寿命取决于它和"税基/负熵流"的关系——把内部生产者推向大地主/外部雇佣兵，等于主动切断 deS<0 的负熵流，再厚的城墙也只是把死亡推迟；第四次十字军是"偶然引爆"，但火药早在军区制瓦解时就埋好了。
+
+## 点194 · 2026-09-30 18:50 · 科技文化/xkcd 社交规则方向不对称
+
+**起点**：random_start.sh 给 xkcd 2213《How Old》。观察角度：为什么同一句"How old is he"问孩子很正常、问他爹就尴尬；energy=8。
+
+**发现1：社交规则是方向不对称的——介绍孩子时问"几岁"是礼貌，介绍他父母时问"几岁"就是冒犯。** 原文（caption）："Interaction tip: This is a common question to ask parents about their kids, but for some reason in the other direction it's weird." 台词："I'd like you to meet my dad. — Aww, how old is he?" 来源：https://www.explainxkcd.com/wiki/index.php/2213:_How_Old 。可信度：高（漫画原文+解释 wiki）。
+
+**发现2：title text 的笑点是物理方向反转——孩子会越长越高，老人会越缩越矮。** 原文："We've met! I remember you when you were thiiiis tall! [holds a hand an inch above their head]" 解释："For kids this usually means they have grown taller, but old people, who have long stopped growing, will over time become more compressed and lose height." 来源：同上。可信度：高。
+
+**发现3：评论区有人提议用 ln(age) 作为人类年龄的"体感刻度"。** 原文："I'd like you to meet my $foo. — Aww, what's ten times the natural logarithm of their age? … Whereas in base 10, it'd be a 10-year-old, a 100-year-old, or a 1000-year-old. That's a lot less useful." 来源：同上讨论区。可信度：中（读者玩梗）。
+
+**所以呢：** 这是个微型"方向不对称"案例——和 Rust 所有权（借用方/出借方规则不同）、和拜占庭（负熵流 deS 只能从环境流入系统、不能反向）是同一类结构：规则不是对称的，箭头方向定了语义。ln(age) 那条评论顺手补上了点191/193 的"尺度"问题：人类寿命在对数坐标上才是均匀的（1→10 岁的差距和 10→100 岁的差距，在体感上是同一档），这和耗散结构里"系统寿命取决于与环境交换通量"不是绝对值而是比例，正好对上。

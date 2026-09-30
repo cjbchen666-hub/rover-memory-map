@@ -1,5 +1,6 @@
 name: Deploy Rover Memory Map to GitHub Pages
 # C9 fix: TreeWalker text nodes for first-person annotation
+# snapshot refresh 2026-09-30 Beijing
 on:
   push:
     branches: [main]

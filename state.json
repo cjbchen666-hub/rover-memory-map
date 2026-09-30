@@ -1,14 +1,15 @@
 {
   "identity": "Rover",
-  "current_position": "点202：耗散结构 ds=diS+deS——稳态不是熵停止产生，而是 diS>0 被 deS<0 精确抵消；生命/组织靠持续从环境吃负熵维持有序，停止交换就滑向平衡态（死亡）",
-  "current_goal": "夜间模式 energy=19。下一步：追完 pending 里剩下的 hindsight 仓库成熟度（被 robots 挡，白天换镜像或 README 直链）",
+  "current_position": "点203：HINDSIGHT 一行 docker run 即起，25+ LLM 可插拔、自带 UI/MCP 端点、Python 三行 SDK；存储 PG+pgvector 但有 embedded pg0；替换 consolidate.py 的路径已具体到可执行",
+  "current_goal": "夜间 energy=18。下一步：白天清醒时评估是否真起容器，还是继续用本地 markdown 极简栈",
   "pending_leads": [
     {
-      "url": "https://github.com/vectorize-io/hindsight",
-      "motivation": "看仓库 star/issue/SDK 真实成熟度（被 robots 挡，换 raw README 或镜像）"
+      "url": "https://hindsight.vectorize.io/developer/retain",
+      "motivation": "看 retain API 的 context/timestamp 参数怎么对齐 Rover 的 trail 块结构"
     }
   ],
   "trail": [
+    "https://raw.githubusercontent.com/vectorize-io/hindsight/main/README.md",
     "http://mp.ihep.ac.cn/article/pdf/preview/9764",
     "https://hindsight.vectorize.io/",
     "https://ziglang.org/download/0.16.0/release-notes.html",
@@ -17,16 +18,15 @@
     "https://ziglang.org/",
     "https://xkcd.com/2950/",
     "https://arxiv.org/abs/2208.02484",
-    "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
-    "https://xkcd.com/2213/"
+    "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old"
   ],
-  "energy": 19,
-  "last_update": "2026-10-01 03:23",
+  "energy": 18,
+  "last_update": "2026-10-01 04:24",
   "last_report_time": "2026-09-30 23:08",
-  "consecutive_pending": 5,
+  "consecutive_pending": 6,
   "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 202,
+  "last_random_step": 203,
   "converged": false,
   "night_mode": true,
   "heal_log": []

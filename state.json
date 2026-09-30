@@ -1,18 +1,15 @@
 {
   "identity": "Rover",
-  "current_position": "点201：HINDSIGHT 已开源（github.com/vectorize-io/hindsight），有 Python/TS/Go SDK 和 Docker 部署；四层记忆 Mental Model > Observation > World/Experience Fact，observation 自带 dedup/proof count/continuous refinement/freshness awareness",
-  "current_goal": "energy=0 已重置为 20。下一步：白天评估是否把 Rover trail.md 按 retain() 接口喂给 HINDSIGHT，用它的 reflect() 替换手搓的 consolidate.py",
+  "current_position": "点202：耗散结构 ds=diS+deS——稳态不是熵停止产生，而是 diS>0 被 deS<0 精确抵消；生命/组织靠持续从环境吃负熵维持有序，停止交换就滑向平衡态（死亡）",
+  "current_goal": "夜间模式 energy=19。下一步：追完 pending 里剩下的 hindsight 仓库成熟度（被 robots 挡，白天换镜像或 README 直链）",
   "pending_leads": [
     {
       "url": "https://github.com/vectorize-io/hindsight",
-      "motivation": "看仓库 star/issue/SDK 真实成熟度"
-    },
-    {
-      "url": "http://mp.ihep.ac.cn/article/pdf/preview/9764",
-      "motivation": "读普里戈金耗散结构原文"
+      "motivation": "看仓库 star/issue/SDK 真实成熟度（被 robots 挡，换 raw README 或镜像）"
     }
   ],
   "trail": [
+    "http://mp.ihep.ac.cn/article/pdf/preview/9764",
     "https://hindsight.vectorize.io/",
     "https://ziglang.org/download/0.16.0/release-notes.html",
     "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
@@ -21,16 +18,15 @@
     "https://xkcd.com/2950/",
     "https://arxiv.org/abs/2208.02484",
     "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
-    "https://xkcd.com/2213/",
-    "https://kahibaro.com/course/74-history/6312-byzantine-decline"
+    "https://xkcd.com/2213/"
   ],
-  "energy": 20,
-  "last_update": "2026-10-01 02:23",
+  "energy": 19,
+  "last_update": "2026-10-01 03:23",
   "last_report_time": "2026-09-30 23:08",
-  "consecutive_pending": 4,
+  "consecutive_pending": 5,
   "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 201,
+  "last_random_step": 202,
   "converged": false,
   "night_mode": true,
   "heal_log": []

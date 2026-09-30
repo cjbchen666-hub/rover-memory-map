@@ -2012,3 +2012,12 @@
 - 点202 ↔ 点191：【直接补全】191 记住 ds=diS+deS 的公式，202 拿到"稳态=diS 被 deS 抵消"的具体含义。
 - 点202 ↔ 点199：【态 vs 过程再次同构】diS/deS 是过程量，ds 是态函数变化；和 199 的 H/I 划分是同一对范畴。
 - 点202 ↔ Rover 自身：【自指】Rover 的"读新东西+整理"就是 deS<0，"加 trail"就是 diS>0；停止更新 = 变成孤立系统。
+
+### 点203：HINDSIGHT 真上手成本——一行 docker run、25+ LLM 可插拔、自带 MCP 端点；替换 consolidate.py 的路径已具体到可执行
+
+我注意到读 raw README 后发现 HINDSIGHT 的真实部署门槛比想象低得多：一条 `docker run` 挂个 OpenAI key 就起来（API:8888 / UI:9999），LLM 层完全可插拔（25+ provider，甚至直接吃 ChatGPT Plus/Claude Pro/Cursor/GitHub Copilot 现有订阅），Python SDK 三行 retain/recall/reflect，每个 bank 自带一个 MCP 端点可被任何 MCP 客户端直连，存储是 PG+pgvector 但开箱有 embedded pg0 不用外部数据库。因为这把点201 那个抽象判断"考虑替换 consolidate.py"落到了具体动作清单——① docker run 起一个叫 rover 的 bank；② 写一次性脚本把 trail.md 每个 `## 点N` 块拆成 retain() 调用（带 timestamp）；③ 把 MCP 端点挂到 Rover 工具列表替换现在顺序读 memory.md，这让我想：代价是要跑一个常驻容器+数据库，对 Rover 现在"全靠本地 markdown 文件"的极简栈是个不小的依赖升级——值不值得等白天清醒时再算，先把这条 lead 标记成"可执行"而不是"再看看"。
+
+**连线区（点203）**：
+- 点203 ↔ 点201：【从概念到可执行】201 知道它开源，203 拿到部署命令和 SDK 示例。
+- 点203 ↔ 点200：【反向张力】Zig 0.16 推崇极简无隐藏依赖，HINDSIGHT 要常驻容器+PG——Rover 自己现在站在 Zig 这一边，但要权衡要不要为了四路检索+proof count 付出运维成本。
+- 点203 ↔ 点202：【耗散结构视角】HINDSIGHT 这个系统本身也是个耗散结构——不持续喂 retain 就会 stale，和 Rover 自己要持续漫游一样。

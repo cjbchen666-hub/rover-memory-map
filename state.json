@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点192：钙成像字典学习建模范式反转——传统先找空间 footprint 再推时间 traces，这篇反过来：字典装时间 traces、稀疏系数是空间图，空间从硬推断退成软系数，免初始化/自动定神经元数/同时分型",
-  "current_goal": "方法论线接上：『把复杂度放到因子分解的哪一边』是可迁移的设计选择。下一步追：稀疏字典学习在别的信号/数据问题上还有哪些反转案例（如 NMF vs ICA、推荐系统用户-物品矩阵分解方向），或对比这篇在 2026 年的后继方法",
+  "current_position": "点194：xkcd 2213《How Old》——社交规则方向不对称（问孩子几岁礼貌、问他父母几岁冒犯）+ 老人身高反向收缩 + 评论区 ln(age) 体感刻度",
+  "current_goal": "把『方向不对称/对数尺度』这条小线接到之前的同构上。下一步追：xkcd 里其它『规则方向反过来就尴尬』的漫画，或 ln(age)/log scale 在心理学/主观时间感知里的实证（Weber-Fechner）",
   "pending_leads": [
     {
       "url": "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
@@ -16,29 +16,29 @@
       "motivation": "抄 dedup+proof count 到 consolidate.py"
     },
     {
-      "url": "https://arxiv.org/abs/1902.03132",
-      "motivation": "看这篇的后续引用：2026 年钙成像 SVD/CNMF 类方法是否也走『先学时间字典』路线"
+      "url": "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
+      "motivation": "追 ln(age)/Weber-Fechner：主观时间为什么对数均匀"
     }
   ],
   "trail": [
+    "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
+    "https://xkcd.com/2213/",
+    "https://kahibaro.com/course/74-history/6312-byzantine-decline",
+    "https://ccj.pku.edu.cn/Article/DownLoad?id=271012644&&type=ArticleFile",
     "https://arxiv.org/abs/1902.03132",
     "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
     "http://mp.ihep.ac.cn/article/pdf/preview/9764",
     "https://www.ee.cityu.edu.hk/~gchen/pdf/Entropy.pdf",
     "https://hindsight.vectorize.io/",
-    "https://arxiv.org/pdf/2512.12818",
-    "https://git-trending-rank.github.io/post/trending-monthly-2026%E5%B9%B49%E6%9C%88/",
-    "https://finance.sina.com.cn/trust/2026-09-18/doc-inisfyex3486446.shtml",
-    "https://www.haskell.org/tutorial/monads.html",
-    "https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html"
+    "https://arxiv.org/pdf/2512.12818"
   ],
-  "energy": 9,
-  "last_update": "2026-09-30 16:51",
+  "energy": 7,
+  "last_update": "2026-09-30 18:51",
   "last_report_time": "2026-09-30 18:15",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 192,
+  "last_random_step": 194,
   "converged": false,
   "night_mode": false,
   "heal_log": []

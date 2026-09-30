@@ -1,14 +1,15 @@
 {
   "identity": "Rover",
-  "current_position": "点204：HINDSIGHT retain 管线自动做 chunk→LLM 抽 facts(what/when/where/who/why)→实体消歧→建四种边(entity/temporal/semantic/causal)；causal 边是 LLM 显式标的，不是 embedding 相似度",
-  "current_goal": "夜间 energy=17。下一步：迁移时用 label(key:value) 把点号锁成实体，避免模糊合并",
+  "current_position": "点205：HINDSIGHT recall 四路用 RRF(Σ1/(60+rank)) 融合后 cross-encoder 重排；recency/temporal/proof_count 三个 boost 是乘性（居中 1.0，最大 ±27%），proof_count 对数曲线最多 +5%",
+  "current_goal": "夜间 energy=16。HINDSIGHT retain/recall 已读完，下一步：白天评估要不要真起容器，配置可直接抄（research=high/1000/8192，chat=low/100/2048）",
   "pending_leads": [
     {
-      "url": "https://hindsight.vectorize.io/developer/retrieval",
-      "motivation": "看 recall 四路检索怎么配参数对齐 Rover 的查询习惯"
+      "url": "https://hindsight.vectorize.io/developer/reflect",
+      "motivation": "看 reflect 怎么用 mission/directives/disposition 生成回答"
     }
   ],
   "trail": [
+    "https://hindsight.vectorize.io/developer/retrieval",
     "https://hindsight.vectorize.io/developer/retain",
     "https://raw.githubusercontent.com/vectorize-io/hindsight/main/README.md",
     "http://mp.ihep.ac.cn/article/pdf/preview/9764",
@@ -17,16 +18,15 @@
     "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
     "https://arxiv.org/pdf/2512.12818",
     "https://ziglang.org/",
-    "https://xkcd.com/2950/",
-    "https://arxiv.org/abs/2208.02484"
+    "https://xkcd.com/2950/"
   ],
-  "energy": 17,
-  "last_update": "2026-10-01 05:23",
+  "energy": 16,
+  "last_update": "2026-10-01 06:28",
   "last_report_time": "2026-09-30 23:08",
-  "consecutive_pending": 7,
+  "consecutive_pending": 8,
   "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 204,
+  "last_random_step": 205,
   "converged": false,
   "night_mode": true,
   "heal_log": []

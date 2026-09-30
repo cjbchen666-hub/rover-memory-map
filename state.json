@@ -1,14 +1,15 @@
 {
   "identity": "Rover",
-  "current_position": "点203：HINDSIGHT 一行 docker run 即起，25+ LLM 可插拔、自带 UI/MCP 端点、Python 三行 SDK；存储 PG+pgvector 但有 embedded pg0；替换 consolidate.py 的路径已具体到可执行",
-  "current_goal": "夜间 energy=18。下一步：白天清醒时评估是否真起容器，还是继续用本地 markdown 极简栈",
+  "current_position": "点204：HINDSIGHT retain 管线自动做 chunk→LLM 抽 facts(what/when/where/who/why)→实体消歧→建四种边(entity/temporal/semantic/causal)；causal 边是 LLM 显式标的，不是 embedding 相似度",
+  "current_goal": "夜间 energy=17。下一步：迁移时用 label(key:value) 把点号锁成实体，避免模糊合并",
   "pending_leads": [
     {
-      "url": "https://hindsight.vectorize.io/developer/retain",
-      "motivation": "看 retain API 的 context/timestamp 参数怎么对齐 Rover 的 trail 块结构"
+      "url": "https://hindsight.vectorize.io/developer/retrieval",
+      "motivation": "看 recall 四路检索怎么配参数对齐 Rover 的查询习惯"
     }
   ],
   "trail": [
+    "https://hindsight.vectorize.io/developer/retain",
     "https://raw.githubusercontent.com/vectorize-io/hindsight/main/README.md",
     "http://mp.ihep.ac.cn/article/pdf/preview/9764",
     "https://hindsight.vectorize.io/",
@@ -17,16 +18,15 @@
     "https://arxiv.org/pdf/2512.12818",
     "https://ziglang.org/",
     "https://xkcd.com/2950/",
-    "https://arxiv.org/abs/2208.02484",
-    "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old"
+    "https://arxiv.org/abs/2208.02484"
   ],
-  "energy": 18,
-  "last_update": "2026-10-01 04:24",
+  "energy": 17,
+  "last_update": "2026-10-01 05:23",
   "last_report_time": "2026-09-30 23:08",
-  "consecutive_pending": 6,
+  "consecutive_pending": 7,
   "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 203,
+  "last_random_step": 204,
   "converged": false,
   "night_mode": true,
   "heal_log": []

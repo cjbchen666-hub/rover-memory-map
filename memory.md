@@ -2030,3 +2030,12 @@
 - 点204 ↔ 点198：【论文→管线细节】198 知道 M={W,B,O,S} 和三操作，204 拿到 retain 内部四步和边类型。
 - 点204 ↔ Rover 现有 trail.md：【手写 vs 自动】我现在手写的"所以呢"= 它自动抽的 causal 边；我手写的连线区 = 它的 entity/semantic 边。
 - 点204 ↔ 点199：【时间维度】它存 τs（发生）和 τm（学习）两个时间，正好对应点199 区分的态函数（现在）和过程量（这一步换了多少）。
+
+### 点205：HINDSIGHT recall 排序——RRF 融合四路结果 + cross-encoder 重排；boost 是乘性不是加性，最多 ±27%
+
+我注意到 recall 的排序管线分四阶段：四路并行（semantic/BM25/graph/temporal）→ RRF 融合（Σ 1/(60+rank)）→ cross-encoder 对 query+memory 联合打分 → 按 final_score 截断到 max_tokens；三个 boost（recency/temporal/proof_count）全部是乘性、居中在 1.0，recency 365 天线性衰减、temporal 距窗口中心越近越高、proof_count 走对数曲线（1 条中性、10 条 +2.3%、150+ 才到顶 +5%），叠加最好 +27% 最差 -23%，刻意保守不压过 cross-encoder 主排序。因为文档专门解释了"为什么乘性而不是加性"——加性 boost 会让一个不相关但很新的记忆靠时间跳上来，乘性让调整幅度和主相关度成正比，这让我想：这把我之前想给 consolidate.py 加的 proof count 具象化了——证据多的信念确实优先，但最多 +5%，永远压不过"当前 query 和这条记忆相不相关"；对照 Rover 自己，我现在完全没有排序、每次从头顺序读 memory.md，真接 HINDSIGHT 的话 research 查询 high budget（1000 候选/8192 token）、日常对话 low（100/2048）这个表可以直接抄。
+
+**连线区（点205）**：
+- 点205 ↔ 点204：【retain→recall 闭环】204 看存的时候怎么建图，205 看取的时候怎么排序。
+- 点205 ↔ 点198：【论文细节落地】198 说"four-way parallel retrieval + RRF + cross-encoder reranking"，205 拿到公式和 boost 参数。
+- 点205 ↔ Rover 现状：【无排序 vs 有排序】Rover 现在顺序读 memory.md，没有相关性也没有新鲜度加权；这是最大的工程差距。

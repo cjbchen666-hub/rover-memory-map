@@ -26,14 +26,14 @@ env:
   BS_SHA: 5b67710a8a5150a778e817719e35a00bee762016c13fe39e5be3acc2c1b6d4c8
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
-  MEM_URL: https://aka.doubaocdn.com/s/8nkyvj4ZL8
-  MEM_SHA: 0a881f9ba49030bcad3db8e928a4f7393bc3599bb6c56dcfeb6e3ad0683182f2
-  TRAIL_URL: https://aka.doubaocdn.com/s/bU52QArVPj
-  TRAIL_SHA: fb0af67fe6a704080a90b9dbe83fb66a77a614f559a3252a492f0f210e2f4c3a
-  STATE_URL: https://aka.doubaocdn.com/s/A3EldNSPjc
-  STATE_SHA: d8218a65439e35a34a8cbcf1a3c4852a591db4e00ade12dd199d9690dc6a924e
-  RPT_URL: https://aka.doubaocdn.com/s/G6DAZVzpRs
-  RPT_SHA: c4c946d4733692a966c6c671862fd4ba764de7df4b8f029b6636d65822a47339
+  MEM_URL: https://aka.doubaocdn.com/s/MXTElSUhIH
+  MEM_SHA: 531e7141a84e9dec90c8155c36468b493fd00349a56671b4129089a380317c3e
+  TRAIL_URL: https://aka.doubaocdn.com/s/mk3pFteLWL
+  TRAIL_SHA: 111db84a4d31ad154f5d97e2afea1a1f999ab4579991291e26abb7ad090a274a
+  STATE_URL: https://aka.doubaocdn.com/s/1uJAwdgmJZ
+  STATE_SHA: 463cc3823f54629042055a3ce1459773db122a1ea993b9c2d7f49c0d9275678d
+  RPT_URL: https://aka.doubaocdn.com/s/mld1saxCfP
+  RPT_SHA: 471b9212674269261eaa64bc965d94fd14ccd92ed362da0ad144ccc26c9618ec
   BELIEFS_URL: https://aka.doubaocdn.com/s/mApFQSGQeq
   BELIEFS_SHA: 41e76390ab07758bae75cde4cbceebf1473a505d4b0c97825cb6307d7a0bbf77
 
@@ -92,7 +92,7 @@ jobs:
         run: |
           if curl -fsSL -A "Mozilla/5.0" "$BELIEFS_URL" -o rover/web/beliefs.json && echo "$BELIEFS_SHA  rover/web/beliefs.json" | sha256sum -c - >/dev/null 2>&1; then
             echo "beliefs.json OK ($(wc -c < rover/web/beliefs.json) bytes)"
-            python3 -c "import json; d=json.load(open('rover/web/beliefs.json')); print(f'  beliefs={len(d.get("beliefs",[]))} tensions={len(d.get("tensions",[]))}')"
+            python3 -c "import json; d=json.load(open('rover/web/beliefs.json')); print(f'  beliefs={len(d.get(\"beliefs\",[]))} tensions={len(d.get(\"tensions\",[]))}')"
           else
             echo "WARNING: beliefs.json snapshot failed, creating empty"
             echo '{"beliefs": [], "tensions": []}' > rover/web/beliefs.json
@@ -103,7 +103,7 @@ jobs:
           if curl -fsSL -A "Mozilla/5.0" "$CONSOLIDATE_URL" -o rover/web/consolidate.py && echo "$CONSOLIDATE_SHA  rover/web/consolidate.py" | sha256sum -c - >/dev/null 2>&1; then
             echo "consolidate.py OK ($(wc -c < rover/web/consolidate.py) bytes)"
           else
-            echo "consolidate.py snapshot failed, skip belief settlement"
+            echo "snapshot failed, skip belief settlement"
           fi
 
       - name: Run belief settlement (consolidate.py)

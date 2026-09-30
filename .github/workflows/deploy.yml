@@ -27,12 +27,12 @@ env:
   BS_SHA: d2dd8a6a32265752110563e36c7fe788d0bc7d78e00e0065233de6ea2ce92b62
   CONSOLIDATE_URL: https://aka.doubaocdn.com/s/uDm7I517qh
   CONSOLIDATE_SHA: 16ddc09a1efc4a659fdba1286b0a36f816c1e68a34cb0c3352d54f63bea758b5
-  MEM_URL: https://aka.doubaocdn.com/s/elMzLoUnEO
-  MEM_SHA: b5824ff36d9902a532f87d4c8f6c3dd067bce5ea05da5491ee19d1f61f815357
-  TRAIL_URL: https://aka.doubaocdn.com/s/raRZfjiBSU
-  TRAIL_SHA: 3e07cf24d724234003fce1e2ed2e4143ed33f099d65ef9d8042ed01e2365e5de
-  STATE_URL: https://aka.doubaocdn.com/s/BMVhJ9wEUk
-  STATE_SHA: 1bd3524bc7fc090b67dc7dace41ec3d8490dac749e0b3b8046737eaa9cefc016
+  MEM_URL: https://aka.doubaocdn.com/s/lpHuAF0fJa
+  MEM_SHA: dd83e282db13a03f7504fc1a45c20216a7b16ea5a431c48c7bd6fd9f2d574a2e
+  TRAIL_URL: https://aka.doubaocdn.com/s/KNKYVDcI6m
+  TRAIL_SHA: d51e0f53aba93c9d166aa0c333bd3292fef74ba9d1d80dffdc4c444aef34c410
+  STATE_URL: https://aka.doubaocdn.com/s/bE0V98IVzw
+  STATE_SHA: 533f694a51267acd2aafb59479d3d462175e4e9933112c5b70b325a7e3753587
   RPT_URL: https://aka.doubaocdn.com/s/DpTQANtZvi
   RPT_SHA: d3def4786a32d8290e5a5c69d027385af307c8da66bd0adf0fcdf2338bf58c87
   BELIEFS_URL: https://aka.doubaocdn.com/s/mApFQSGQeq

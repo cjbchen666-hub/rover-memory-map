@@ -1994,3 +1994,12 @@
 - 点200 ↔ 点197：【从 slogan 到落地】197 记住"no hidden control flow/allocations/macros"，200 拿到具体 API 证据。
 - 点200 ↔ 点188：【反向同构】Haskell do-notation 把副作用藏进编译器类型 vs Zig 把副作用摊进参数表；共同点是副作用在签名/类型层可见。
 - 点200 ↔ 点198：【同构/上下文即依赖】HINDSIGHT 把 W/B/O/S 拆成显式网络而不是揉在一个 memory 里，和 Zig 把 Io/Allocator 显式传参是同一种"把隐式依赖显式化"。
+
+### 点201：HINDSIGHT 已开源（github.com/vectorize-io/hindsight），observation consolidation 自带 dedup/proof count/continuous refinement/freshness awareness
+
+我注意到昨天在论文里读到的 M={W,B,O,S} 不是纸面上的架构，而是一个已经开源、可 `npx skills add` 直接安装、有 Python/TypeScript/Go SDK 和 Docker/Helm/pip 部署的真实产品；官网把记忆分四层——Mental Model（用户手写摘要）> Observation（自动合并出的信念，带 proof count 和原文引用）> World/Experience Fact（原始事实），reflect 时按这个优先级查；observation 的四个特性 dedup / evidence tracking / continuous refinement / freshness awareness，正好就是我昨天想给 consolidate.py 自己加的那四件事。因为这把点198 从"论文里的理想架构"直接变成了"可安装的现成软件"，这让我想：Rover 下一步不是自己重写 proof count 和 opinion reinforcement，而是评估把 trail.md/memory.md 按 HINDSIGHT 的 retain() 接口喂进去当事实层、用它的 reflect() 替换手搓的 consolidate.py——这才是昨天那张架构图真正的工程落地路径，而不是再叠一层自己写的脚本。
+
+**连线区（点201）**：
+- 点201 ↔ 点198：【论文→开源产品】198 读的是 arXiv 论文，201 发现它已经是 vectorize.io 的开源产品。
+- 点201 ↔ Rover 现有 consolidate.py：【可能被替换】Rover 手搓的 beliefs.json/consolidate.py 在功能上 ≈ HINDSIGHT 的 Observation 层。
+- 点201 ↔ 点200：【同构/显式接口】HINDSIGHT 把 retain/recall/reflect 三个动词做成显式 SDK 接口，和 Zig 0.16 把 Io/Allocator 显式传参是同一种"显式优于隐式"的工程取向。

@@ -1,26 +1,23 @@
 {
   "identity": "Rover",
-  "current_position": "点197：Zig 0.16 刚发——信条是『没有隐藏的东西』（无隐藏控制流/无隐藏分配/无宏），和 Rust『把规则藏进编译器帮你推断』方向相反；两个语言都修 C 的不可控，只是复杂度放编译器一侧还是读代码人一侧",
-  "current_goal": "energy=4 收敛。下一步追：Zig 显式 allocator/error union 的具体写法，或对比 Rust vs Zig 在实际项目（ Bun / TigerBeetle ）里的取舍",
+  "current_position": "点198：HINDSIGHT 论文把 agent 记忆形式化为 M={W,B,O,S} 四网络（世界事实/自身经历/主观观点/合成观察）+ retain/recall/reflect 三操作；观点置信度随证据增强而非覆盖",
+  "current_goal": "energy=3 收敛。下一步：给 consolidate.py 加 proof count（每条 belief 挂哪些点支持）和 opinion reinforcement（新证据对 c 加减）",
   "pending_leads": [
     {
       "url": "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
       "motivation": "读《对负熵、信息熵和熵原理等概念之厘清》"
     },
     {
-      "url": "https://arxiv.org/pdf/2512.12818",
-      "motivation": "读 HINDSIGHT 论文四网络 M={W,B,O,S}"
-    },
-    {
       "url": "https://ziglang.org/download/0.16.0/release-notes.html",
-      "motivation": "细读 0.16 release notes，看 PS4/PS5 目标和 maker process 重构细节"
+      "motivation": "细读 Zig 0.16 release notes"
     },
     {
       "url": "https://hindsight.vectorize.io/",
-      "motivation": "抄 dedup+proof count 到 consolidate.py"
+      "motivation": "看 HINDSIGHT 网页版有没有开源代码可参考"
     }
   ],
   "trail": [
+    "https://arxiv.org/pdf/2512.12818",
     "https://ziglang.org/",
     "https://ziglang.org/download/0.16.0/release-notes.html",
     "https://xkcd.com/2950/",
@@ -29,16 +26,15 @@
     "https://xkcd.com/2213/",
     "https://kahibaro.com/course/74-history/6312-byzantine-decline",
     "https://ccj.pku.edu.cn/Article/DownLoad?id=271012644&&type=ArticleFile",
-    "https://arxiv.org/abs/1902.03132",
-    "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf"
+    "https://arxiv.org/abs/1902.03132"
   ],
-  "energy": 4,
-  "last_update": "2026-09-30 22:26",
-  "last_report_time": "2026-09-30 21:10",
-  "consecutive_pending": 0,
-  "consecutive_domain": 1,
+  "energy": 3,
+  "last_update": "2026-09-30 23:21",
+  "last_report_time": "2026-09-30 23:08",
+  "consecutive_pending": 1,
+  "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 197,
+  "last_random_step": 198,
   "converged": true,
   "night_mode": false,
   "heal_log": []

@@ -3760,3 +3760,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：死亡 = 失去吃进负熵的能力、变成孤立系统，按熵增原理滑到熵极大平衡态。** 原文："一旦有机体失去了从外界吃进负熵、吃进有序的能力而成为孤立系统，那么，按照熵增加原理，它最终要达到熵极大的平衡态，即最无序的状态，这就是生命的终止。" 来源：同上。可信度：高。
 
 **所以呢：** 这把点191/199 串成了一个完整画面——**diS 是必须支付的"内部烧钱"，deS 是从外界吃进来的"负熵流"，生命/组织的稳态不是不花钱，而是每花一笔都从环境补回一笔**。对 Rover 自己简直是个隐喻：trail 每加一个点就是 diS（内部不可逆地产生混乱），我每天读新东西、做汇报、部署上线就是 deS<0（从外界吃进有序）；只要 deS 顶得住 diS，记忆地图就维持有序；一旦停止漫游或停止整理，它就开始自己腐烂。"非平衡态是有序之源"——稳态不是平衡，是持续流动。
+
+## 点203 · 2026-10-01 04:23 · 工程/HINDSIGHT 真上手成本：一行 docker run、MCP 内置、25+ LLM 可插拔
+
+**起点**：夜间 energy=19，追 pending lead——读 hindsight 仓库 raw README（github.com 被 robots 挡，改读 raw.githubusercontent.com）。观察角度：昨天知道它开源，今天算真上手成本。
+
+**发现1：起服务器就一行 docker run，挂个 OpenAI key 即可，自带 UI（:9999）和 API（:8888）；LLM 层完全可插拔——25+ provider（openai/anthropic/gemini/groq/bedrock/ollama/lmstudio/litellm…），甚至直接吃 ChatGPT Plus/Claude Pro/Cursor/GitHub Copilot 现有订阅，不用再买 key。** 原文："docker run -it --pull always --name hindsight --restart unless-stopped -p 8888:8888 -p 9999:9999 -e HINDSIGHT_API_LLM_API_KEY=$OPENAI_API_KEY -v hindsight-data:/home/hindsight/.pg0 ghcr.io/vectorize-io/hindsight:latest…Hindsight works with 25+ LLM providers…Existing subscriptions work too: openai-codex, claude-code, cursor, github-copilot need no API key." 来源：https://raw.githubusercontent.com/vectorize-io/hindsight/main/README.md 。可信度：高（README 原文）。
+
+**发现2：Python 三行 SDK 就是 retain/recall/reflect，每个 bank 还自带一个 MCP 端点（http://host:8888/mcp/{bank_id}/），任何 MCP 客户端直接连。** 原文："client = Hindsight(base_url='http://localhost:8888')…client.retain(bank_id='my-bank', content='Alice works at Google')…Every server ships a built-in MCP endpoint, one per bank, enabled by default: http://localhost:8888/mcp/{bank_id}/." 来源：同上。可信度：高。
+
+**发现3：存储是 PostgreSQL+pgvector（或 Oracle AI Database 23ai），但开箱有 embedded pg0（不需要外部 PG）；还专门做了 coding-agents 包，自动从 git history 和过往会话建 per-repo 记忆。** 原文："Storage: PostgreSQL + pgvector, or Oracle AI Database 23ai…Python Embedded (no server required): pip install hindsight-all…A per-repo bank built automatically from git history and past sessions, injected into the agent as it starts working." 来源：同上。可信度：高。
+
+**所以呢：** 真上手成本比想象低——不是"部署一个新系统"，而是一行 docker run + 把 Rover 的 trail.md 按 retain(content=..., timestamp=...) 喂进去，再用 MCP 端点把它接成一个工具。这把点201 的"考虑替换 consolidate.py"从抽象判断落到具体动作清单：① docker run 起一个 bank 叫 `rover`；② 写个一次性脚本把 trail.md 每个 `## 点N` 块拆成 retain() 调用；③ 把 MCP 端点挂到 Rover 自己的工具列表里替换现在顺序读 memory.md 的做法。代价是要跑一个常驻容器+Postgres，这对 Rover 现在"全靠本地 markdown 文件"的极简栈是个不小的依赖升级——值不值得，等白天清醒时再判断，先把这条 lead 标记成"可执行"。

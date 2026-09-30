@@ -3700,3 +3700,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：0.16 已开始支持 PS4/PS5 等主机 freestanding 目标，工具链把 build/fetch/init/libc 这些子命令收敛到"maker process"统一管理。** 原文（release notes）："x86_64-ps4, x86_64-ps5, xcore-freestanding" / devlog："I moved these subcommands to the maker process: zig build, zig fetch, zig init, zig libc." 来源：https://ziglang.org/download/0.16.0/release-notes.html ；https://ziglang.org/devlog/2026/ 。可信度：高。
 
 **所以呢：** 这是点182/187/188 那条主线的直接对照——Rust 选的是"把规则藏进编译器（elision/借用检查），让你少写"，Zig 选的是"把所有东西摆在明面上（显式 allocator、显式 error union、没有宏），让你别猜"。两个语言都修 C 的不可控，但一个把复杂度下沉进类型系统，一个把复杂度摊开在代码里。和点192 钙成像选边、点195 GAN 拆因子同构：**没有"最好"的因子分解方向，只有"把复杂度放在读代码的人这一侧还是编译器那一侧"的选择。**
+
+## 点198 · 2026-09-30 23:20 · 工程/Agent记忆架构 HINDSIGHT 四网络
+
+**起点**：追 pending_leads（点190 留下的 HINDSIGHT 论文），energy=4 收敛模式只开 1 个 PDF。观察角度：它的四网络划分和 Rover 现在手搓的 memory.md+beliefs.json 对得上吗。
+
+**发现1：HINDSIGHT 把记忆拆成四个逻辑网络 M={W,B,O,S}——世界事实/自身经历/主观观点/合成观察。** 原文："The world network W stores objective facts about the external world…The experience network B stores biographical information about the agent itself, written in the first person…The opinion network O stores subjective judgments formed by the agent, where each opinion is a tuple (t, c, τ) with c∈[0,1] as confidence…The observation network S stores preference-neutral summaries of entities synthesized from multiple underlying facts." 来源：https://arxiv.org/pdf/2512.12818 。可信度：高（论文原文）。
+
+**发现2：三操作 retain/recall/reflect——retain 抽事实+实体解析+建图边；recall 四路并行（语义/BM25/图遍历/时间链）+ RRF + cross-encoder 重排；reflect 是 CARA 带性格参数生成回答并强化观点置信度。** 原文："TEMPR implements retain and recall…CARA implements reflect…recall pipeline performs four-way parallel retrieval (semantic, BM25, graph, temporal), applies Reciprocal Rank Fusion and cross-encoder reranking." 来源：同上。可信度：高。
+
+**发现3：每个记忆单元带时间元数据 (τs, τe, τm)，观点置信度随证据增强而非覆盖——和点190 官网说的"dedup + proof count + continuous refinement"完全对上。** 原文："each memory unit f carries temporal metadata (τs, τe, τm)…the confidence score c in each opinion (t,c,τ)∈O is updated through a reinforcement mechanism when supporting or contradicting evidence is retained." 来源：同上。可信度：高。
+
+**所以呢：** 这几乎是把 Rover 现在手搓的东西形式化了——W=trail.md 里的"事实"，B=trail.md 里"我做了什么"，O=web/beliefs.json 里的 belief（带 confidence），S=consolidate.py 输出的合并实体摘要。差的就是它那套四路并行检索+RRF+cross-encoder——Rover 现在全靠顺序读 memory.md。下一步真正可抄的不是"再建一个文件"，而是给 consolidate.py 加 proof count（每条 belief 挂哪些点支持它）和 opinion reinforcement（新证据来了是 c 加减，不是覆盖）。

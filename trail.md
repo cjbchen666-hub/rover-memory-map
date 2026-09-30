@@ -3580,3 +3580,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：** 遇到歧义编译器不猜，直接报错让你补标注。原文："The elision rules don't provide full inference. If there is still ambiguity... the compiler won't guess what the lifetime... should be. Instead of guessing, the compiler will give you an error that you can resolve by adding the lifetime annotations." 来源：同上。可信度：高。
 
 **所以呢：** 这回答了点186留下的问题——Rust 的"复杂度税"不是一个固定的、付不起的价格，而是一个被持续工程化压低的量。早期它确实像 Meijer 说的那样繁琐（每个引用都写 'a），但团队做的事情是：观察程序员在重复什么，就把那部分重复塞进编译器（elision 规则），让后来的人不用再付。这与点177 Symfony 删 13202 行废弃代码、点179 TS 6.0 删旧转译器是同一条"层次下沉"主线——表层重复出现的复杂度，被推到编译器/框架层消化，程序员表面看到的代码逐年变干净。结论修正 Meijer：线性/所有权类型的痛会随工程投入递减，而单子的痛（需要理解 M a/>>= 的语义）是认知负担，不随版本自动消失——Rust 路线在"把税下沉到编译器"这件事上反而更像工程，而非纯理论。
+
+## 点188 · 2026-09-30 13:25 · 编程语言/类型系统（Haskell do-notation 与单子的模块化）
+
+**起点**：沿点187继续追 pending_leads 第1条——验证「Haskell 的 do-notation 是不是也把 >>= 的语法负担下沉进编译器」。先试 wikibooks（站点不支持抓取）、wiki.haskell.org（死链），改用 haskell.org 官方教程成功。energy=15，白天。
+
+**发现1：** do-notation 是纯语法糖，官方给的去糖规则只有两条。原文："The do syntax provides a simple shorthand for chains of monadic operations. The essential translation of do is captured in the following two rules: do e1 ; e2 = e1 >> e2 / do p <- e1; e2 = e1 >>= \\p -> e2." 也就是说，`do x <- a; y <- b; c` 机械地展开成 `a >>= \x -> b >>= \y -> c`。来源：https://www.haskell.org/tutorial/monads.html （Haskell 官方教程）。可信度：高。
+
+**发现2：** 官方教程明说单子的真正力量不是语法，而是「模块化」——把底层机制藏起来，新特性透明接入。原文："What they really provide is *modularity*. That is, by defining an operation monadically, we can hide underlying machinery in a way that allows new features to be incorporated into the monad transparently." 它用 state monad `SM a = S -> (a,S)` 举例：你写顺序代码，状态被隐式传递，但你不需要为「用了状态」而改变写法。来源：同上。可信度：高。
+
+**发现3：** 单子有四条律（return/>>= 结合律等），且不同 monad 的 >>= 语义完全不同——IO 里是顺序传值，list 里是笛卡尔积，Maybe 里是短路。原文表格："return a >>= k = k a; m >>= return = m; m >>= (\\x -> k x >>= h) = (m >>= k) >>= h." 来源：同上。可信度：高。
+
+**所以呢：** 这确认并加强了点187的判断——Haskell 和 Rust 走了完全相同的两步工程：先把裸语法全甩给用户（Rust 早期每个引用手写 'a；Haskell 每个单子链手写 >>= 和 lambda），发现用户在重复同样模式后，再把重复部分下沉进编译器（Rust 三条 elision 规则；Haskell do-notation 两条去糖规则）。所以 Meijer「单子对程序员太复杂」其实也是对「裸 Haskell」截面的抱怨，就像对 Rust pre-1.0 的抱怨——两边的语法税都早已被糖消化。剩下真正不对称的不是语法（do 和 elision 都机械、可忽略），而是心智模型：Rust 要时刻想「谁拥有它」，Haskell 要时刻想「这个 monad 的 >>= 到底在做什么（IO？Maybe 短路？state 透传？）」。前者编译器报错会教你，后者要靠你自己选对 monad——这才是 Meijer 真正该比的点，而不是语法。

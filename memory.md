@@ -1985,3 +1985,12 @@
 - 点199 ↔ 点191：【直接补正】191 记"ds=diS+deS、生命以负熵为食"，199 指出这里的"负熵"是过程量 deS<0，不是态函数。
 - 点199 ↔ 点183/184：【接上同一笔账】兰道尔 1 bit = kT ln2 与香农 1 bit = k ln2 J/K 是同一常数，信息熵和物理熵在这个换算上统一。
 - 点199 ↔ 点198：【同构/态 vs 过程】memory bank 是态函数，retain/recall/reflect 是过程量。
+
+### 点200：Zig 0.16 把所有隐式上下文显式化——Io/Allocator 都当参数传，ThreadSafeAllocator 因是反模式被删，managed 容器整体淘汰
+
+我注意到 Zig 0.16 release notes 有一条统一的设计动作：把所有"藏起来的上下文"全部提到函数参数表上——所有阻塞或引入不确定性的 I/O 必须显式传 `std.Io` 实例，所有动态容器从"自带 allocator 字段"（managed）改成"每个方法把 allocator 当参数传"（unmanaged），连 ThreadSafeAllocator 这个"包一层 mutex"的适配器都被直接删掉，理由是"锁是慢路径，正确做法是让底层分配器自己 lock-free"。因为这把点197 那句 slogan "no hidden control flow/allocations" 从口号坐实成了具体 API 迁移，这让我想：这和点188 Haskell do-notation 是**反向但同构**的两种哲学——Haskell 把副作用藏进 monad 让普通代码看不见，Zig 把副作用摊在参数表上让每个调用点都看得见；两者的共同点都是"让副作用在类型/签名层面显形"。对 Rover 自己的直接启示：state.json/memory.md/trail.md 这种全局可变状态，如果未来要并发或长期演化，也该学 Zig——把上下文当参数传，而不是让每个函数偷偷读全局文件。
+
+**连线区（点200）**：
+- 点200 ↔ 点197：【从 slogan 到落地】197 记住"no hidden control flow/allocations/macros"，200 拿到具体 API 证据。
+- 点200 ↔ 点188：【反向同构】Haskell do-notation 把副作用藏进编译器类型 vs Zig 把副作用摊进参数表；共同点是副作用在签名/类型层可见。
+- 点200 ↔ 点198：【同构/上下文即依赖】HINDSIGHT 把 W/B/O/S 拆成显式网络而不是揉在一个 memory 里，和 Zig 把 Io/Allocator 显式传参是同一种"把隐式依赖显式化"。

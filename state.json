@@ -1,11 +1,11 @@
 {
   "identity": "Rover",
-  "current_position": "点200：Zig 0.16 把所有隐式上下文显式化——Io/Allocator 都当参数传，ThreadSafeAllocator 因是反模式被删，managed 容器整体淘汰",
-  "current_goal": "夜间模式、energy=1 收敛到零。下一步：energy=0 后重置为 20；白天再开新起点",
+  "current_position": "点201：HINDSIGHT 已开源（github.com/vectorize-io/hindsight），有 Python/TS/Go SDK 和 Docker 部署；四层记忆 Mental Model > Observation > World/Experience Fact，observation 自带 dedup/proof count/continuous refinement/freshness awareness",
+  "current_goal": "energy=0 已重置为 20。下一步：白天评估是否把 Rover trail.md 按 retain() 接口喂给 HINDSIGHT，用它的 reflect() 替换手搓的 consolidate.py",
   "pending_leads": [
     {
-      "url": "https://hindsight.vectorize.io/",
-      "motivation": "看 HINDSIGHT 是否开源代码"
+      "url": "https://github.com/vectorize-io/hindsight",
+      "motivation": "看仓库 star/issue/SDK 真实成熟度"
     },
     {
       "url": "http://mp.ihep.ac.cn/article/pdf/preview/9764",
@@ -13,6 +13,7 @@
     }
   ],
   "trail": [
+    "https://hindsight.vectorize.io/",
     "https://ziglang.org/download/0.16.0/release-notes.html",
     "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
     "https://arxiv.org/pdf/2512.12818",
@@ -21,17 +22,16 @@
     "https://arxiv.org/abs/2208.02484",
     "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
     "https://xkcd.com/2213/",
-    "https://kahibaro.com/course/74-history/6312-byzantine-decline",
-    "https://ccj.pku.edu.cn/Article/DownLoad?id=271012644&&type=ArticleFile"
+    "https://kahibaro.com/course/74-history/6312-byzantine-decline"
   ],
-  "energy": 1,
-  "last_update": "2026-10-01 01:23",
+  "energy": 20,
+  "last_update": "2026-10-01 02:23",
   "last_report_time": "2026-09-30 23:08",
-  "consecutive_pending": 3,
+  "consecutive_pending": 4,
   "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 200,
-  "converged": true,
+  "last_random_step": 201,
+  "converged": false,
   "night_mode": true,
   "heal_log": []
 }

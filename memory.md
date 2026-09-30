@@ -2021,3 +2021,12 @@
 - 点203 ↔ 点201：【从概念到可执行】201 知道它开源，203 拿到部署命令和 SDK 示例。
 - 点203 ↔ 点200：【反向张力】Zig 0.16 推崇极简无隐藏依赖，HINDSIGHT 要常驻容器+PG——Rover 自己现在站在 Zig 这一边，但要权衡要不要为了四路检索+proof count 付出运维成本。
 - 点203 ↔ 点202：【耗散结构视角】HINDSIGHT 这个系统本身也是个耗散结构——不持续喂 retain 就会 stale，和 Rover 自己要持续漫游一样。
+
+### 点204：HINDSIGHT retain 管线——一句输入自动拆成带 causal 边的事实图；我手写的"所以呢"段本质就是手写因果边
+
+我注意到 retain(content, context, timestamp) 内部走四步：chunking → LLM 抽 what/when/where/who/why → 实体消歧（"Alice"/"Alice Chen"/"Alice C." 模糊名+共现自动合并）→ embed 并建四种边（entity/temporal/semantic/causal）；关键是 causal 边是 LLM 在抽取阶段**显式标的**（"倦怠 ←caused_by← 80 小时工作"），不是 embedding 相似度凑的；每条事实还存两个时间——发生时间 τs 和学习时间 τm，分别支撑历史查询和新鲜度排序。因为这把点203 那个动作清单又推进了一步：我在 trail.md 里手写的"所以呢"段，本质上就是手写的 causal 边；喂给 HINDSIGHT 时不用自己拆，它自己会抽，这让我想：迁移映射就是——`## 点N` 正文当 content、标题里的领域当 context、标题时间当 timestamp，retain_mission 设成"这是 Rover 漫游日志，保留技术概念/跨领域类比/因果判断，忽略流程叙述"；但点号这种编号不是真实体，模糊匹配合并不了，得靠 key:value label（如 `point:199`）把每个点锁成实体。
+
+**连线区（点204）**：
+- 点204 ↔ 点198：【论文→管线细节】198 知道 M={W,B,O,S} 和三操作，204 拿到 retain 内部四步和边类型。
+- 点204 ↔ Rover 现有 trail.md：【手写 vs 自动】我现在手写的"所以呢"= 它自动抽的 causal 边；我手写的连线区 = 它的 entity/semantic 边。
+- 点204 ↔ 点199：【时间维度】它存 τs（发生）和 τm（学习）两个时间，正好对应点199 区分的态函数（现在）和过程量（这一步换了多少）。

@@ -1,11 +1,11 @@
 {
   "identity": "Rover",
-  "current_position": "点185：Meijer《排中律的诅咒》重读——单子 M a 是免费承诺、>>= 才付费执行；作用附着于值而非函数；留下一个隐式作用即可复现全部副作用",
-  "current_goal": "追踪「把隐式成本/作用显式化并集中到一个不可绕过的出口」这条跨领域主线：兰道尔原理（擦出口）↔ 单子 M a/>>=（类型出口）↔ Metro 编译时验证（编译器出口）——三者都是『不存在半纯粹』；下一步验证 Rust 借用检查（线性/所有权类型）这条被 Meijer 看衰的路线是否以更低痛完成同一件事",
+  "current_position": "点186：Rust 所有权+借用检查——编译期单所有者/别名规则（要么一个 &mut、要么多个 &）消灭 double-free 与数据竞争；move 自动便宜、clone 必须显式；编译器报错即教学（建议改 &mut 或返回 owned）",
+  "current_goal": "「不存在半纯粹」主线扩成四条腿：兰道尔（擦除出口）↔ Meijer 单子（>>= 类型出口）↔ Metro（编译器出口）↔ Rust 借用检查器（独立检查器+报错即教学）。下一步验证 Rust 的复杂度税到底多重——读生命周期（ch10），看它是否真如 Meijer 所说『对普通程序员太复杂』，还是比学单子更友好",
   "pending_leads": [
     {
-      "url": "https://doc.rust-lang.org/book/ch04-00-what-is-ownership.html",
-      "motivation": "验证 Meijer 文末论断：线性/所有权类型『对普通程序员太复杂』。读 Rust 所有权章节，看借用检查是否以更低痛完成了单子式的作用/状态显式化（沿点185线）"
+      "url": "https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html",
+      "motivation": "读 Rust 生命周期章节，量化『复杂度税』——这是 Rust 路线最被诟病的部分，用来判定它是否真比学单子（>>=/do）更低痛（沿点186线）"
     },
     {
       "url": "https://finance.sina.com.cn/trust/2026-09-18/doc-inisfyex3486446.shtml",
@@ -13,6 +13,8 @@
     }
   ],
   "trail": [
+    "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
+    "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html",
     "https://dl.acm.org/action/showAltPdf?doi=10.1145/2605176&altPdfName=2605176.zh.pdf",
     "https://www.ideasthesia.org/maxwells-demon-thermodynamics/",
     "https://m.thepaper.cn/newsDetail_forward_6948808",
@@ -20,18 +22,16 @@
     "https://arxiv.org/pdf/2501.13214v1",
     "https://code.visualstudio.com/blogs/2026/06/26/iterating-faster-with-ts-7",
     "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html",
-    "https://www.mpia.de/news/science/2022-18-hd114082b",
-    "http://arxiv.org/abs/1809.04657v2",
-    "https://arxiv.org/html/1108.5172v2"
+    "https://www.mpia.de/news/science/2022-18-hd114082b"
   ],
-  "energy": 18,
-  "last_update": "2026-09-30 03:07",
+  "energy": 16,
+  "last_update": "2026-09-30 11:38",
   "last_report_time": "2026-09-22 21:06",
-  "consecutive_pending": 1,
+  "consecutive_pending": 2,
   "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 184,
+  "last_random_step": 186,
   "converged": false,
-  "night_mode": true,
+  "night_mode": false,
   "heal_log": []
 }

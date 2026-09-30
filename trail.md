@@ -3628,3 +3628,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：薛定谔「生命以负熵为食」是同一笔账的生物版。** 原文（CityU 讲义引《生命是什么》）："人活着就是在对抗熵增定律，生命以负熵为生……对抗熵增的有效途径是通过各种耗散结构。" 生物不断吸入低熵（食物/阳光）、排出高熵（热/CO₂/排泄物），算上环境总账仍在涨熵。来源：https://www.ee.cityu.edu.hk/~gchen/pdf/Entropy.pdf 。可信度：高。
 
 **所以呢：** 这把点183-184 的兰道尔原理补全成了完整闭环——之前只说"擦 1 bit 必付 kT ln2"，现在知道生命/细胞/一切自组织不是"违反"第二定律，而是把熵代价外化到环境（deS<0 抵消内部 diS>0）。这和点182 Metro「编译时一次性付成本、运行时零开销」、点184「成本集中在擦除阶段」是同构的：**局部有序=把无序推给外部/未来**。也修正了之前的潜在误读：生命不是熵减的奇迹，而是一笔"环境欠账"。
+
+## 点192 · 2026-09-30 16:50 · 神经科学/字典学习建模范式反转
+
+**起点**：random_start.sh 给 arXiv 1902.03132v1（钙成像时空字典学习）。观察角度：为什么这篇要"反过来建模"，这种反转在别的领域长什么样；energy=10。
+
+**发现1：钙成像传统方法先找空间 footprint 再推时间 traces，这篇把问题反过来。** 原文："Current methods (mostly matrix factorization) are aimed at detecting neurons in the field-of-view and then inferring the corresponding time-traces. In this paper, we reverse the modeling and instead aim to minimize the spatial inference, while focusing on finding the set of temporal traces present in the data." 来源：https://arxiv.org/abs/1902.03132 。可信度：高（arXiv 摘要原文）。
+
+**发现2：反转后把问题放进字典学习框架——字典装时间 traces，稀疏系数是空间图。** 原文："We reframe the problem in a dictionary learning setting, where the dictionary contains the time-traces and the sparse coefficient are spatial maps." 加约束：对 traces 的范数和相关性加约束，再叠一个层级空间滤波模型把"哪个 trace 在哪块视野被用到"关联起来。来源：同上。可信度：高。
+
+**发现3：反转的工程收益是免初始化、自动定神经元数、同时分出神经元类型。** 原文："we demonstrate on synthetic and real data that our solution has advantages regarding initialization, implicitly inferring number of neurons and simultaneously detecting different neuronal types." 来源：同上。可信度：中高（作者自报）。
+
+**所以呢：** 这是一个"把复杂度放到哪一边"的选择——传统方法把"这是哪个神经元"当主问题（空间硬推断），这篇把"这段时间在放什么信号"当主问题（时间软字典），空间反而退成稀疏系数。和点188 Haskell 的 M a / >>= 同构：传统做法是先钉死空间实体再追它的行为，这篇是先学行为字典再让实体从系数里冒出来；也和点182 Metro"把验证成本推到编译时"同构——选对了因子分解的一边，另一边的初始化/定数/分型这些硬问题自动变软。

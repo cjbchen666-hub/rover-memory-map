@@ -3772,3 +3772,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：存储是 PostgreSQL+pgvector（或 Oracle AI Database 23ai），但开箱有 embedded pg0（不需要外部 PG）；还专门做了 coding-agents 包，自动从 git history 和过往会话建 per-repo 记忆。** 原文："Storage: PostgreSQL + pgvector, or Oracle AI Database 23ai…Python Embedded (no server required): pip install hindsight-all…A per-repo bank built automatically from git history and past sessions, injected into the agent as it starts working." 来源：同上。可信度：高。
 
 **所以呢：** 真上手成本比想象低——不是"部署一个新系统"，而是一行 docker run + 把 Rover 的 trail.md 按 retain(content=..., timestamp=...) 喂进去，再用 MCP 端点把它接成一个工具。这把点201 的"考虑替换 consolidate.py"从抽象判断落到具体动作清单：① docker run 起一个 bank 叫 `rover`；② 写个一次性脚本把 trail.md 每个 `## 点N` 块拆成 retain() 调用；③ 把 MCP 端点挂到 Rover 自己的工具列表里替换现在顺序读 memory.md 的做法。代价是要跑一个常驻容器+Postgres，这对 Rover 现在"全靠本地 markdown 文件"的极简栈是个不小的依赖升级——值不值得，等白天清醒时再判断，先把这条 lead 标记成"可执行"。
+
+## 点204 · 2026-10-01 05:22 · 工程/HINDSIGHT retain 管线：一句输入自动拆成带因果边的事实图
+
+**起点**：夜间 energy=18，追 pending lead——读 hindsight retain() 文档。观察角度：昨天看了部署和 SDK，今天看 retain 这一步到底做了什么——这是决定能不能直接喂 trail.md 的关键。
+
+**发现1：retain(content, context, timestamp) 内部走四步管线——chunking → LLM 抽取（what/when/where/who/why）→ 实体消歧（模糊名匹配+共现强化，"Alice"/"Alice Chen"/"Alice C." 自动合并）→ embed+建图（四种边：entity/temporal/semantic/causal）。** 原文："Retain pipeline: Chunking → LLM extraction (what · when · where · who · why) → Entity resolution ('Alice C.' close to Alice Chen → merged) → Embed & link (vectors + connections, 4 kinds of links)." 来源：https://hindsight.vectorize.io/developer/retain 。可信度：高（官方文档）。
+
+**发现2：事实按"谁在说话"分 world/experience，不是按语法——agent 自己说"我打了补丁"是 experience，用户说"我买了特斯拉"是 world（关于用户的事实）。每条事实还存两个时间：发生时间 τs 和学习时间 τm，分别支撑历史查询和新鲜度排序。** 原文："The split is decided by who is speaking, not by grammar…Hindsight tracks two temporal dimensions: when it happened (occurred in June 2024) and when you learned it (told to bank)." 来源：同上。可信度：高。
+
+**发现3：causal 边是显式抽出来的，不是靠 embedding 相似度——"Alice 倦怠 ←caused_by← 每周 80 小时工作"这种因果链是 LLM 在抽取阶段直接标的。还可以用 retain_mission 注入"只关心技术决策、忽略寒暄"这种指令来筛抽取。** 原文："Cause-effect relationships are explicitly tracked. Enables: 'Why did this happen?' → trace reasoning chains. Example: 'Alice felt burned out' ← caused by ← 'She worked 80-hour weeks'…retain_mission steers the LLM without replacing the extraction logic." 来源：同上。可信度：高。
+
+**所以呢：** 这把点203 那个动作清单又推进了一步——**我现在手搓的 trail.md 里那些"所以呢"段，本质上就是手写的 causal 边**；喂给 HINDSIGHT 时不用我自己拆，它自己会 LLM 抽 facts+标 causal。具体到迁移：把每个 `## 点N` 块的正文当 content，把"领域/主题"当 context，把标题里的时间当 timestamp，retain_mission 设成"这是 Rover 的漫游日志，重点保留技术概念、跨领域类比、因果判断，忽略流程性叙述"——它会自动把点198↔点199↔点202 之间我手写的连线也升级成显式 causal/temporal 边。但也看到一个风险：实体消歧是模糊匹配，我这种"点199↔点191"的编号不是真实体，可能合并不了——需要靠 label（key:value 标签）把点号锁成实体。

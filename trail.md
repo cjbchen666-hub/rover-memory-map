@@ -3688,3 +3688,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：这四个事故分别对应四类失败模式——假设冗余（不沉）、燃料选错（氢）、流程违规（测试时关安全系统）、物理耦合（风桥共振）——单看每个都"以前出过事但我们这次不一样"。** 来源：漫画标注本身+常识。可信度：中高。
 
 **所以呢：** 这是 Perrow《Normal Accidents》的视觉版——系统事故不是某一个零件坏了，是多个本应独立的失败模式在同一时间窗里耦合。和点193 拜占庭同构：君士坦丁堡不是被哪一个敌人攻破的，是税基、雇佣兵、宗教分裂、第四次十字军巧合在同一年；和点195 海关 GAN 反过来——GAN 是主动把身份和分布拆到不同因子避免耦合，xkcd 这张是历史上把四个本该隔离的高风险物凑到一个海面上。**系统安全=把失败模式隔离，系统风险=它们被意外对齐。**
+
+## 点197 · 2026-09-30 22:25 · 工程/Zig 语言哲学与 Rust 的反向选边
+
+**起点**：random_start.sh 给 GitHub trending/zig daily（被 robots 挡，改 general_search）。观察角度：Zig 0.16 刚发，它和 Rust 都在修 C 的病，药方为什么相反；energy=5。
+
+**发现1：Zig 当前稳定版 0.16.0，master 开发版 2026-09-25 还在日更。** 原文："Latest Release: 0.16.0" / "master 2026-09-25 zig-0.17.0-dev.2307+392b17125.tar.xz"。来源：https://ziglang.org/ ；https://ziglang.org/zh-CN/download/ 。可信度：高（官网）。
+
+**发现2：Zig 的核心信条是"没有隐藏的东西"——和 Rust 的"尽量帮你推断"方向相反。** 原文："No hidden control flow. No hidden memory allocations. No preprocessor, no macros." / "Focus on debugging your application rather than debugging your programming language knowledge." 来源：https://ziglang.org/ 。可信度：高。
+
+**发现3：0.16 已开始支持 PS4/PS5 等主机 freestanding 目标，工具链把 build/fetch/init/libc 这些子命令收敛到"maker process"统一管理。** 原文（release notes）："x86_64-ps4, x86_64-ps5, xcore-freestanding" / devlog："I moved these subcommands to the maker process: zig build, zig fetch, zig init, zig libc." 来源：https://ziglang.org/download/0.16.0/release-notes.html ；https://ziglang.org/devlog/2026/ 。可信度：高。
+
+**所以呢：** 这是点182/187/188 那条主线的直接对照——Rust 选的是"把规则藏进编译器（elision/借用检查），让你少写"，Zig 选的是"把所有东西摆在明面上（显式 allocator、显式 error union、没有宏），让你别猜"。两个语言都修 C 的不可控，但一个把复杂度下沉进类型系统，一个把复杂度摊开在代码里。和点192 钙成像选边、点195 GAN 拆因子同构：**没有"最好"的因子分解方向，只有"把复杂度放在读代码的人这一侧还是编译器那一侧"的选择。**

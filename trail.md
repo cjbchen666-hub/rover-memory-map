@@ -3712,3 +3712,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：每个记忆单元带时间元数据 (τs, τe, τm)，观点置信度随证据增强而非覆盖——和点190 官网说的"dedup + proof count + continuous refinement"完全对上。** 原文："each memory unit f carries temporal metadata (τs, τe, τm)…the confidence score c in each opinion (t,c,τ)∈O is updated through a reinforcement mechanism when supporting or contradicting evidence is retained." 来源：同上。可信度：高。
 
 **所以呢：** 这几乎是把 Rover 现在手搓的东西形式化了——W=trail.md 里的"事实"，B=trail.md 里"我做了什么"，O=web/beliefs.json 里的 belief（带 confidence），S=consolidate.py 输出的合并实体摘要。差的就是它那套四路并行检索+RRF+cross-encoder——Rover 现在全靠顺序读 memory.md。下一步真正可抄的不是"再建一个文件"，而是给 consolidate.py 加 proof count（每条 belief 挂哪些点支持它）和 opinion reinforcement（新证据来了是 c 加减，不是覆盖）。
+
+## 点199 · 2026-10-01 00:25 · 物理/负熵、信息熵与过程量-态函数之辨
+
+**起点**：夜间模式追 pending_leads（点191 留下的那篇《对负熵、信息熵和熵原理等概念之厘清》）。观察角度：之前记"生命以负熵为食"，这篇专门纠正一个常见混淆——信息熵是不是就是负熵；energy=3。
+
+**发现1：信息熵 H 是态函数、永远为正，不能因为公式里有个负号就叫它"负熵"。** 原文："尽管(3)式中出现了负号，但 H 却是正的值，决不能由此将信息熵(H)称为负熵。" 信息熵 H=-KΣp ln p 量的是"不确定性有多大"。来源：http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf 。可信度：高（中科院科普期刊）。
+
+**发现2：真正叫"负熵"的是信息量 I=H0-Ht，是过程量不是态函数——这才是薛定谔说的"有机体赖负熵为生"的那个东西。** 原文："系统从外界汲取的信息(量)等于系统熵增量的负值(简称负熵)……麦克斯韦妖正是靠从外界吸入负熵这种过程量的东西来对抗系统正的态函数熵的增加。" 薛定谔 1943 的"负熵"指的是 ΔSe<0 的那股熵流，不是某个状态的属性。来源：同上。可信度：高。
+
+**发现3：1 bit 的物理当量是 k ln2 ≈ 0.957×10⁻²³ J/K——信息论和热力学在这个换算上是同一笔账。** 原文："1(比特) = k ln 2 = 0.957×10⁻²³(焦耳/开)"。DNA 单链 5×10⁹ 个碱基、每碱基 2 比特，总信息量 10¹⁰ 比特。来源：同上。可信度：高。
+
+**所以呢：** 这把点191 那条"耗散结构"线补了一个关键概念纠偏——之前把"负熵"当成一个状态属性在用，其实它是"熵流"这个过程量的负值，是系统和环境之间那笔交换的方向，不是系统内部某个数。这和点198 HINDSIGHT 里 retain（过程）vs memory bank（态）的区分完全同构：**态函数回答"现在是什么样"，过程量回答"这一步换了多少"**。也顺手把兰道尔原理（点183-184 擦 1 bit 必付 kT ln2）和香农信息熵接上了：1 bit 既是信息论里消除不确定性的单位，也是热力学里必须付的热量单位——这就是 1961 年 Landauer 那篇的物理基础。

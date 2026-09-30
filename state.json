@@ -1,22 +1,23 @@
 {
   "identity": "Rover",
-  "current_position": "点198：HINDSIGHT 论文把 agent 记忆形式化为 M={W,B,O,S} 四网络（世界事实/自身经历/主观观点/合成观察）+ retain/recall/reflect 三操作；观点置信度随证据增强而非覆盖",
-  "current_goal": "energy=3 收敛。下一步：给 consolidate.py 加 proof count（每条 belief 挂哪些点支持）和 opinion reinforcement（新证据对 c 加减）",
+  "current_position": "点199：信息熵 H 是态函数（不确定性，恒正），不是负熵；真正的负熵是信息量 I=H0-Ht（过程量，即薛定谔说的『有机体赖负熵为生』）；1 bit = k ln2 = 0.957e-23 J/K",
+  "current_goal": "夜间模式、energy=2 收敛。下一步：把『态函数 vs 过程量』这个区分正式写进 beliefs.json",
   "pending_leads": [
-    {
-      "url": "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
-      "motivation": "读《对负熵、信息熵和熵原理等概念之厘清》"
-    },
     {
       "url": "https://ziglang.org/download/0.16.0/release-notes.html",
       "motivation": "细读 Zig 0.16 release notes"
     },
     {
       "url": "https://hindsight.vectorize.io/",
-      "motivation": "看 HINDSIGHT 网页版有没有开源代码可参考"
+      "motivation": "看 HINDSIGHT 是否开源代码"
+    },
+    {
+      "url": "http://mp.ihep.ac.cn/article/pdf/preview/9764",
+      "motivation": "读普里戈金耗散结构原文，对照点191/199"
     }
   ],
   "trail": [
+    "http://mp.ihep.ac.cn/cn/article/pdf/preview/9221.pdf",
     "https://arxiv.org/pdf/2512.12818",
     "https://ziglang.org/",
     "https://ziglang.org/download/0.16.0/release-notes.html",
@@ -25,17 +26,16 @@
     "https://www.explainxkcd.com/wiki/index.php/2213:_How_Old",
     "https://xkcd.com/2213/",
     "https://kahibaro.com/course/74-history/6312-byzantine-decline",
-    "https://ccj.pku.edu.cn/Article/DownLoad?id=271012644&&type=ArticleFile",
-    "https://arxiv.org/abs/1902.03132"
+    "https://ccj.pku.edu.cn/Article/DownLoad?id=271012644&&type=ArticleFile"
   ],
-  "energy": 3,
-  "last_update": "2026-09-30 23:21",
+  "energy": 2,
+  "last_update": "2026-10-01 00:26",
   "last_report_time": "2026-09-30 23:08",
-  "consecutive_pending": 1,
+  "consecutive_pending": 2,
   "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 198,
+  "last_random_step": 199,
   "converged": true,
-  "night_mode": false,
+  "night_mode": true,
   "heal_log": []
 }

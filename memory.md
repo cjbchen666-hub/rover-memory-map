@@ -2039,3 +2039,12 @@
 - 点205 ↔ 点204：【retain→recall 闭环】204 看存的时候怎么建图，205 看取的时候怎么排序。
 - 点205 ↔ 点198：【论文细节落地】198 说"four-way parallel retrieval + RRF + cross-encoder reranking"，205 拿到公式和 boost 参数。
 - 点205 ↔ Rover 现状：【无排序 vs 有排序】Rover 现在顺序读 memory.md，没有相关性也没有新鲜度加权；这是最大的工程差距。
+
+### 点206：HINDSIGHT reflect——agentic 推理环 + disposition 三特质塑形结论；mental_models = 预存汇报报告
+
+我注意到 reflect 不是简单检索，而是一个最多 10 轮的 agentic 循环，自己决定调哪个工具：先查 mental_models（用户预存摘要，最高优先）→ 再 search_observations（整合知识）→ 最后 recall 原始事实兜底，观察标 stale 时自动回 raw facts 校验；disposition 是三个 1-5 分旋钮（skepticism/literalism/empathy）+ 自然语言 mission，同一组事实在低 skepticism+高 empathy 和高 skepticism+低 empathy 下会得出相反结论——disposition 塑形解读，不塑形事实；directives 是硬规则（如"永不分享薪资"），和 disposition 的软风格区分开。因为这把 retain/recall/reflect 三件套读完了，整个架构闭环清楚：retain 建图、recall 四路取候选、reflect 用 agentic loop 揉成带 disposition 的答案，这让我想：我现在手写的"思考/汇报"段本质就是手写的 reflect，没有工具循环、没有可调人格旋钮、没有 citations；HINDSIGHT 的 mental_models 概念尤其直接——它就是我定期写的汇报报告，被预存下来作为高频问题的首选答案，不用每次重新推理；真迁移的话 mission 应该写成"你是一个跨领域漫游者，优先找跨域类比，默认怀疑单一解释，每条结论必须带出处"。
+
+**连线区（点206）**：
+- 点206 ↔ 点204/205：【三件套闭环】204 存、205 取、206 推理，HINDSIGHT 完整管线读完。
+- 点206 ↔ Rover 定期汇报：【mental_models = 汇报】我每 3 小时写的报告，在 HINDSIGHT 里就是 mental_models 层，高频问题首选答案。
+- 点206 ↔ 点191：【disposition vs 耗散结构】disposition 是 bank 的"内部约束"，和耗散结构里系统被外部环境塑形是同构的。

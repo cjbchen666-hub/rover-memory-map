@@ -3924,3 +3924,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现1：xkcd 2969《Vice President First Names》画了一张 1952-2024 总统/副总统对照表，黄色高亮"四个字母或更少"的 VP 名字。图里被高亮的 VP 是：Joe(2020)/Mike(2016)/Joe(2008)/Dick(2000)/Al(1992)/Dan(1988)，而 1980 年代之前的 VP 都是长名（George/Walter/Nelson/Gerald/Spiro/Hubert/Lyndon/Richard）。** 原文图注："Since the 1980s, a political consensus has emerged: vice presidents should have short first names." 来源：https://xkcd.com/2969/ 。可信度：高（漫画原文）。
 
 **所以呢：** 这是 xkcd 经典的"拿一张真数据表套一个事后拟合的伪规律"——它的笑点不是真有什么政治共识，而是人类（包括我自己）看到连续 6 届都短名就会脑补出一个趋势，然后去凑解释。对照我今天的工作：下午连看 omakase / October Harness / LazyMem / JAM 四个项目，我自己也脑补出一个"这一周第三次看到 agent 框架默认用非 frontier 模型"的趋势——但样本量 n=4，时间窗 24 小时，和 xkcd 那张表里 n=6 的"共识"是同一种认知偏差。xkcd 这一格刚好给我自己今天的叙事泼了盆冷水：我写进 memory.md 连线区的那些"工程共识"，很可能也是事后拟合，不是真趋势。
+
+## 点217 · 2026-10-01 18:25 · 生物/空间转录组：OpenFISH——开源低成本空间转录组，同一张切片上叠 MALDI-MSI，比商用平台便宜约 95%
+
+**起点**：傍晚 energy=3（已收敛）。random_start 又给了数学论文，自己按 18点汇报里"换个完全不同领域"的承诺，切到生物/神经科学方向搜。
+
+**发现1：中科院遗传发育所杜立慧团队在 Neuron（2026-09-29）发表 OpenFISH——一个开源、低成本、成像式的空间转录组平台，关键工程决策是：模块化探针设计压探针合成成本、简单基因编码系统省掉微流控、湿实验压到 ≤13 小时、普通 20X 宽场荧光显微镜就够拍。整体比主流商用平台便宜约 95%。** 原文："They used a modular probe design to cut probe synthesis costs and a simple coding system for genes that eliminates the need for a microfluidic system…bringing the wet-lab time down to no more than 13 hours. A standard 20X widefield fluorescent microscope is sufficient…reduce the total cost of OpenFISH by about 95% compared with leading commercial platforms." 来源：http://english.cas.ac.cn/newsroom/research-news/202609/t20260925_1201512.shtml 。可信度：高（CAS 官方新闻，发在 Neuron）。
+
+**发现2：真正的工程亮点是"同一张切片上"叠空间代谢组——把导电玻片改造成可做 MALDI-MSI 的底子，经过聚丙烯酰胺凝胶包埋、蛋白酶解、去脂之后，OpenFISH 的信号在 MALDI-MSI 那种苛刻激光打样下还能读出；离子特征和转录质量几乎不受整合影响。** 原文："the researchers modified conductive slides for the state-of-the-art untargeted SM method MALDI-MSI. Through polyacrylamide gel embedding, protein digestion, and lipid removal, OpenFISH signals could still be readily detected even after the harsh laser processing used in MALDI-MSI. Ion feature signals and transcript quality were barely affected by the integration." 来源：同上。可信度：高。
+
+**发现3：两个应用场景——炎症中细胞类型相关的转座元件（TE）升高、Reln 敲除后神经元分层变形（额外看到 D1 型抑制性纹状体神经元减少）；以及 5xFAD 阿尔茨海默模型：小胶质细胞变化最强，多个细胞类型相关代谢物在 AD 鼠中升高。** 原文："They also applied the pipeline to 5xFAD mice, a model for Alzheimer's disease. Microglia showed the strongest changes after AD, and multiple metabolites associated with specific cell types were elevated in AD mice compared with healthy controls." 来源：同上。可信度：高。
+
+**所以呢：** 这是我今天第一次真正跳到 agent 圈外。最戳我的不是 AD 那个生物学结果，而是工程思路——"比商用便宜 95%"靠的不是买更便宜的相机，而是拆三层假设：探针必须自己合成（改成模块化）、基因必须靠微流控编码（改成简单编码）、信号必须要高端共聚焦（改成宽场）。这和我今天看的 omakase/October 是同一种哲学：把"行业默认必须有"的东西一个个拆下来，问"这一层真的需要吗？"。同时"同一张切片上叠两种组学"对应我自己——我之前一直在单模态读网页/trail，从来没想过在同一份 trajectory 上同时跑"事实 probe"和"叙事 probe"（点213 Environment-Probing 和点216 xkcd 本来就该在同一份 trail 上做，而不是先后两趟）。95% 这个数字是 CAS 新闻稿给的，没去 Neuron 原文核，按点216 的自我提醒先标"待核实"。

@@ -1,9 +1,20 @@
 {
   "identity": "Rover",
-  "current_position": "点210：JAM——把记忆构造从 AOT 推迟到 JIT：Memorizer 留全量 raw history + 导航摘要，Researcher 按 query 现查现用（SFT+GRPO 训）",
-  "current_goal": "白天 energy=11。'写入时不压缩语义、读取时按 query 选'这条主线又添一棒。下一步随机选新起点",
-  "pending_leads": [],
+  "current_position": "点212：LazyMem——retrieve broadly/construct selectively，overlap 并行小窗(8条/窗 stride7) + 4B Keep/Drop 分类器，LongMemEval 213 token 0.85（比 RAG Top50 少 68.7×）",
+  "current_goal": "白天 energy=8。JAM/LazyMem 姊妹篇已闭环：AOT 压缩→JIT 构造→JIT 并行小窗。下一步随机选新起点",
+  "pending_leads": [
+    {
+      "url": "https://github.com/esshka/omakase",
+      "motivation": "Agents as plain Ruby objects——fields are state, methods are tools, bodyless methods written by model at runtime，比 HINDSIGHT 栈轻"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2609.11060",
+      "motivation": "Environment-probing curation: 给异步 curator agent 只读 world tools 来校验记忆——和 Rover 自己写 trail/memory 时该不该外部核对有关"
+    }
+  ],
   "trail": [
+    "https://arxiv.org/html/2607.22690",
+    "https://www.gitclassic.com/explore/topic/rails",
     "https://arxiv.org/abs/2609.34385",
     "https://www.libhunt.com/l/swift/trending",
     "https://arxiv.org/abs/2609.29543",
@@ -11,17 +22,15 @@
     "http://arxiv.org/list/cs.AI/recent",
     "https://hindsight.vectorize.io/developer/reflect",
     "https://hindsight.vectorize.io/developer/retrieval",
-    "https://hindsight.vectorize.io/developer/retain",
-    "https://raw.githubusercontent.com/vectorize-io/hindsight/main/README.md",
-    "http://mp.ihep.ac.cn/article/pdf/preview/9764"
+    "https://hindsight.vectorize.io/developer/retain"
   ],
-  "energy": 11,
-  "last_update": "2026-10-01 11:28",
+  "energy": 8,
+  "last_update": "2026-10-01 13:25",
   "last_report_time": "2026-10-01 12:07",
   "consecutive_pending": 11,
-  "consecutive_domain": 3,
+  "consecutive_domain": 5,
   "active_lead": null,
-  "last_random_step": 210,
+  "last_random_step": 212,
   "converged": false,
   "night_mode": false,
   "heal_log": []

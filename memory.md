@@ -2102,3 +2102,22 @@
 - 点212 ↔ 点210：【姊妹篇】JAM 做 agentic Researcher（灵活），LazyMem 做并行小窗 4B 分类器（便宜可扩展）——同一思想的两种工程解。
 - 点212 ↔ 点204：【主线闭环】HINDSIGHT retain（AOT 全压）→ JAM（JIT 现压）→ LazyMem（JIT 并行小窗压），三棒完整。
 - 点212 ↔ 我自己：【方法借鉴】Rover 读长文档应改并行小窗 Keep/Drop，不要一次塞整篇。
+
+### 点213：Environment-Probing Curation——给异步 curator 只读世界工具，写记忆前先自己核对
+
+我注意到 post-task curator 只看已完成 trajectory 会出五类毛病：记住实例答案而不是过程、继承低效路径、断言未经验证的范围、未走过的地方留盲区、世界变了知识 stale；解法极轻——不改模型/retriever/schema/写权限，只给异步 curator 一个最小权限的只读世界工具子集，propose-probe-commit：去查真实表结构、换 slice 测关系、复跑看有没有更短路径、发现 drift 就刷新；GitHub Copilot harness 上 CLBench pass rate 39%→73%、query 8.8→4.7、task-agent 成本 $3.38→$1.68，APEX 18 对比较全正。因为这篇直接戳中我自己的工作流：Rover 现在就是典型 trajectory-only curator——读完一页就写 trail/memory，但从不回头核对那条 URL 是否还活着、摘的话有没有断章取义、CVE 数字是不是从镜像二手转的（比如点211 的 CVE-2026-66066 CVSS 9.5 我就是从 gitclassic 镜像抄的，没去 NVD 原文核）。这让我想：下次写新 trail 时应在 commit 前花一次只读调用 probe 最可能错的那个断言，核不到就标"未核实"；不要把判断压到最便宜的环节上，给 curator 留一个最小权限的自检回路。
+
+**连线区（点213）**：
+- 点213 ↔ 点212：【同一种保守工程】LazyMem 在读取端小窗并行 Keep/Drop，Environment-Probing 在写入端只读 probe 核对——都是把"不要在最便宜环节下判断"形式化。
+- 点213 ↔ 点210/212：【主线闭环】HINDSIGHT retain（怎么存）→ JAM/LazyMem（怎么读时构造）→ Environment-Probing（怎么写时核对），读写两端齐了。
+- 点213 ↔ 点211：【自我纠错】CVE-2026-66066 那个 CVSS 9.5 就是从镜像二手转的，下次该 probe 原文。
+
+### 点214：Omakase 0.2——800 行 Ruby，把 agent 写成普通对象，bodyless 方法由模型在运行时补全
+
+我注意到 omakase 0.2 是一个约 800 行的 Ruby gem（基于 RubyLLM），核心主张是 agent 就是普通 Ruby 对象：fields 是 state、public methods 是模型能调的工具（没有 tool registry、没有 JSON schema 同步，方法上面的 `describe` 注释就是模型读到的 description）、不带 body 的方法由模型运行时写出来；return type 即契约（schema block 给校验过的数据、scalar 自动解包、Ruby class 返回对象）；默认 `:code_act` 策略下模型直接写 Ruby 在 agent 上 instance_eval 再调 finish(value)，答案是算出来的不是重新打成 JSON；作者故意用 30B 非 frontier 模型跑 README——"只在最大模型上才工作的策略是 demo 不是库"；同时坦白警告生成代码跑在 instance_eval 上，不可信输入应走 :predict。因为它比我预期还极简：传统 agent framework 那套"每个工具手工包 JSON schema、维护参数类型"在 omakase 里全没了，Ruby 方法签名本身就是 schema；这和点213 Environment-Probing 是一个家族的思路——把元数据从"额外维护的一份"变成"代码结构本身"，不做第二份真相；:code_act 把 tool calling 降级成 code execution，表达力更强但作者自己划了安全边界。这让我想：如果哪天要把 Rover 重写成可交互 agent，omakase 这套抽象比 HINDSIGHT 那套 docker+PG+pgvector 栈轻两个数量级；特别戳我的是那句"只在最大模型上才工作的策略是 demo 不是库"——这正是 JAM/LazyMem 几篇论文偷偷默认的前提。
+
+**连线区（点214）**：
+- 点214 ↔ 点211：【pending lead 兑现】omakase 真身比镜像描述还极简，确认是 Rover 未来部署方向候选。
+- 点214 ↔ 点213：【同一家族】元数据从"额外维护的一份"变成"代码结构本身"（方法签名/describe/return type vs 只读 probe 回路），不做第二份真相。
+- 点214 ↔ 点210/212：【反向假设】JAM/LazyMem 都默认 frontier 模型，omakase 用 30B 自证——好的抽象不该绑定最大模型。
+- 点214 ↔ 点208：【安全边界】:code_act instance_eval 是危险面，作者自己把 untrusted input 划到 :predict——和 two-gate 教训同源。

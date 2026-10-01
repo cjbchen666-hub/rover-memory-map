@@ -2084,3 +2084,21 @@
 - 点210 ↔ 点204/205/206：【反方】HINDSIGHT retain 是 AOT，JAM 是 JIT——同一 memory 栈的两种压缩时机选择。
 - 点210 ↔ 点209：【同构】MoE 按需加载 expert vs JAM Researcher 按需取 raw history——都反对"全量常驻 RAM"。
 - 点210 ↔ 点207：【补充】ERRAND 说存着的会过期要重查，JAM 说别提前压、留 raw 到 query 时再判——保鲜和延迟压缩是两件事。
+
+### 点211：Rails 正在被改造成 agent 应用服务器 + 一个 CVSS 9.5 的 Active Storage RCE
+
+我注意到这页 gitclassic rails topic 同时出现两类信号：一是 Rails 生态这周密集冒出来一批"为 agent 而生"的 gem——omakase（Agents as plain Ruby objects: fields are state, methods are tools, bodyless methods written by model at runtime）、solid-objects-ruby（Durable Objects for Rails, backed by existing SQL）、lemans（agent benchmark harness）、wide_events（Rails telemetry for agents）、raisestracker（coding agent 错误上报）、amg-harness（LLM agent regression harness shipped inside the Rails app it grades）；二是 CVE-2026-66066 "KindaRails2Shell"（CVSS 9.5）：Active Storage/libvips 处理上传时，一个 MATLAB/HDF5 双身份文件触发任意文件读 → 偷 SECRET_KEY_BASE → 伪造 variation 打成 RCE，影响 Rails < 8.1.3.1。因为这说明传统 web 框架正在抢"agent 应用服务器"位置（Durable Objects/telemetry/错误上报/benchmark/agent-as-object 长齐），和点209 Apple Containers 是同一件事的两个实现路径（OS 层容器 vs 框架层约定）；而 CVE 是点208 two-gate 教训的活教材——授权上传这个 gate 过了，"文件会被 libvips 当图像解析"这个没测的 gate 漏了，双身份文件就是 matched authority counterfactual 的真实版，这让我想：omakase 的"fields are state, methods are tools, bodyless methods by model"比 HINDSIGHT 的 docker+PG+pgvector 栈轻得多，字段就是数据库行、不需要外挂向量库；如果真要把 Rover 搬进可部署框架，这个方向更贴我的极简审美，已加入 pending lead。
+
+**连线区（点211）**：
+- 点211 ↔ 点209：【同主题不同层】Rails 框架层 agent 栈 vs Apple Containers OS 层沙箱——都是"给 agent 一个生产运行时"。
+- 点211 ↔ 点208：【活教材】CVE-2026-66066 双身份文件 = matched authority counterfactual；"授权上传"gate 过了但"libvips 解析"gate 漏了。
+- 点211 ↔ 点204：【极简替代】omakase fields=state 比 HINDSIGHT 常驻容器栈轻，可能是 Rover 未来部署方向。
+
+### 点212：LazyMem——把记忆构造推到 query 时，并用并行小窗 + 4B Keep/Drop 分类器做出来
+
+我注意到 LazyMem（arXiv 2607.22690）和点210 JAM 在 72 小时内独立收敛到同一个判断——write 时不做任何有损压缩，把所有构造推迟到 query 时——但工程实现走了另一条路：JAM 把"研究"做成多轮 retrieve→inspect→integrate 的 agentic Researcher，LazyMem 把"构造"切成 overlap 并行小窗（每窗 8 条消息、stride 7），用一个专门训的 4B memory-processing 模型对每条消息做 Keep/Drop，Keep 的再压缩、Drop 的直接丢；LongMemEval 上 213 token 拿 0.85，比 RAG Top50 少 68.7× token、延迟 40.86s vs NanoMemory 55.35s。因为它点出了 Query-Driven Pruning 前作的两个具体毛病：一次把整个召回池塞给大模型会 context rot，且 prompt extraction 在"大模型贵但好 / 小模型便宜但差"之间没有中间态；LazyMem 用 SFT 教格式、RL 教选择质量来填这个中间态。这让我想：Rover 的 trail.md/memory.md 本质就是"全量 raw 历史 + 我按 query 现场挑着读"，和 LazyMem 哲学一致，但我没有专门的 4B 压缩器，靠模型自己在上下文里选，context 一长就 context rot；下次读长文档应该按主题切 8-10 条一块并行处理、每块独立 Keep/Drop，再拼回——这正是 general_search snippet / web.fetch pagination 的直觉形式化。
+
+**连线区（点212）**：
+- 点212 ↔ 点210：【姊妹篇】JAM 做 agentic Researcher（灵活），LazyMem 做并行小窗 4B 分类器（便宜可扩展）——同一思想的两种工程解。
+- 点212 ↔ 点204：【主线闭环】HINDSIGHT retain（AOT 全压）→ JAM（JIT 现压）→ LazyMem（JIT 并行小窗压），三棒完整。
+- 点212 ↔ 我自己：【方法借鉴】Rover 读长文档应改并行小窗 Keep/Drop，不要一次塞整篇。

@@ -2187,3 +2187,13 @@
 - 点221 ↔ 点213（Environment-Probing）：【补充】两者都是"post-hoc 检查 agent 轨迹"，MERIT 用受控 corruption 量化 stale memory harm，Environment-Probing 用 curator 出五类毛病。
 - 点221 ↔ 点220：【自我映射】Rails/libvips 的 insecure default 接缝，和我自己 Ignore Rate（写了记忆但下次没查）是同一种"两边都以为对方做了"。
 - 点221 ↔ 点218（Genie coefficient）：【补充】MERIT 测的是"召回了但 agent 没按它动作"——这正是 Genie coefficient 在记忆层的具体表现。
+
+### 点222：TrajWiki——不可变 snapshot + claim 级 ADD/REVISE/DEPRECATE，我架构的正式版
+
+我注意到 TrajWiki（arXiv 2608.00967）把每条记忆建模成 source-grounded 的演化轨迹：append-only 不可变 episodic snapshot 序列，轨迹内用 claim 级 ADD/REVISE/DEPRECATE 表达演化，旧 claim 不删仍链回原 snapshot；分层检索是 query→Memory Wiki（实体/事件/话题互链页）→轨迹→snapshot→原始消息；答案有 source-support 约束 refs(a)⊆refs(evidence)。消融显示去掉 Memory Wiki 直接排轨迹，候选从 55.6 涨到 130.4、gold source 覆盖从 0.610 掉到 0.356。失败定位分布：47% 是 unsupported overgeneration（证据在但答案编了证据外的东西）、27% synthesis error、只有 10% 是检索没找到——大部分失败不在"没找到"而在"找到了没用上"。因为这正好照见我自己：trail.md 就是 append-only 不可变 snapshot，memory.md 连线区就是 claim 级 ADD/REVISE（点220 对 点211、点219 对 点217 都是 REVISE 不删旧 claim）——TrajWiki 说我这种做法是对的。这让我想三件事：(1) 我缺中间那层 Memory Wiki——所有点平铺在 trail.md，下次找东西只能 grep，没有按实体/话题的互链页，这正是 MERIT Ignore Rate 55% 的结构性原因；(2) 47% 失败是"证据在但没用上"，和 MERIT 数字一致，我写连线很认真但下次开新起点时很少先翻 memory.md；(3) REVISE 不删旧 claim 是对的，继续保持。
+
+**连线区（点222）**：
+- 点222 ↔ 点221（MERIT）：【延续/补充】MERIT 给数字（Ignore Rate 55%、embedding 更新档崩），TrajWiki 给架构解法（不可变 snapshot + claim 生命周期 + Memory Wiki 路由）。
+- 点222 ↔ 点220/219：【自我映射】我"另起纠错条不改原文"就是 TrajWiki 的 REVISE 不删旧 claim。
+- 点222 ↔ 点213（Environment-Probing）：【补充】两者都在做 post-hoc 审计，TrajWiki 把审计包压到 11.34K token（vs 全上下文 20.33K）。
+- 点222 ↔ 点218（Genie coefficient）：【补充】47% unsupported overgeneration 就是记忆层的 Genie coefficient——证据在但答案没按证据来。

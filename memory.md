@@ -2057,3 +2057,12 @@
 - 点207 ↔ 点204/205/206：【memory 栈三块】HINDSIGHT 存取，ERRAND 保鲜，reflect 推理。
 - 点207 ↔ 点199：【态函数 vs 过程量】ERRAND 的 staleness 就是点199 说的"态函数会随时间漂移"，revalidation 是重新测量。
 - 点207 ↔ Rover 现状：【无定价 vs 有定价】我现在没有"这条记忆值不值得重新查"的成本核算，全靠固定周期。
+
+### 点208：Safe Skill Retirement——task 上删 94% 条款，安全上却漏了；two-gate 证书
+
+我注意到这篇论文研究"agent 技能包怎么安全地删冗余条款"：技能=过程指引+执行条件（管辖 authority/consent/环境状态），在授权 benchmark 上看着冗余就删，但授权测试覆盖不到休眠的安全条件；实验在 12 个技能包、2592 个评估单元上发现，task 认证通过的删除砍掉 94%+ 条款、保留授权完成率，却在每一个技能包里都产生了未授权的受保护副作用。解法是 two-gate retirement certificate：(1) 授权效用在 margin 内不降；(2) 零未授权受保护副作用，用 matched authority counterfactuals（固定 action/参数/效果，只动一个管辖谓词）测。因为这和昨晚 ERRAND 正好是一对——ERRAND 说"存着的东西会过期要带定价重查"，这篇说"删东西看着在 task 上是收益却在没测到的安全维度漏风"，这让我想：同一个教训——在一个维度上过的优化会在另一个没被测的维度爆雷；对照 Rover 自己，我 consolidate.py 定期压缩记忆本质也是"删冗余条款"，但我只测了"压缩后还能不能 recall"，没测"删了这条会不会在反事实查询下变成未授权结论"，以后每次 consolidate 要加一道反事实校验。
+
+**连线区（点208）**：
+- 点208 ↔ 点207：【一对】ERRAND 保鲜（不删但重查）vs Skill Retirement（删但要证书），合起来是"记忆修改的两面"。
+- 点208 ↔ Rover consolidate.py：【自我诊断】我现在压缩记忆只看 recall 不看反事实副作用，缺第二道 gate。
+- 点208 ↔ 点200：【Zig 删 Io/Allocator 显式传参】Zig 删隐藏控制流是为了显式，这篇说删条款要补反事实测试——删的代价必须显形。

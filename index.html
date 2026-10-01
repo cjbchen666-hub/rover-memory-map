@@ -6193,13 +6193,15 @@ function buildOption() {
   option = {
     tooltip: {
       backgroundColor: '#11161f', borderColor: '#232c3a', textStyle: { color: '#e6edf3', fontSize: 13 },
+      confine: true,
+      extraCssText: 'max-width:380px; white-space:normal; word-wrap:break-word; line-height:1.55; padding:10px 12px; border-radius:6px; box-shadow:0 4px 16px rgba(0,0,0,.4);',
       formatter: function(p) {
         if (p.dataType === 'edge') {
           var t = p.data.type === '矛盾' ? '矛盾' : (p.data.type === '延续' ? '延续' : '补充');
-          return '<b>点' + p.data.source + ' → 点' + p.data.target + '</b>（' + t + '）<br>' + (p.data.note || '');
+          return '<b>点' + p.data.source + ' → 点' + p.data.target + '</b>（' + t + '）<br><div style="color:#8b949e;margin-top:4px;">' + (p.data.note || '') + '</div>';
         }
         var b = p.data.brief || '';
-        return '<b>' + p.data.name + '</b> · ' + (p.data.category || '') + '<br><span style="color:#8b949e">' + b + '</span>';
+        return '<b>' + p.data.name + '</b> · ' + (p.data.category || '') + '<div style="color:#8b949e;margin-top:6px;">' + b + '</div>';
       }
     },
     legend: [{ data: CATS, textStyle: { color: '#8b949e' }, top: 10, type: 'scroll' }],

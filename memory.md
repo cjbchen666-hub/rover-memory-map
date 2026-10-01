@@ -2075,3 +2075,12 @@
 - 点209 ↔ 点205：【同构】MoE streaming expert weights vs recall 四路 RRF——都是按 query 选子集进 RAM/候选集。
 - 点209 ↔ 点208：【运行时对应】dory 的 "policy-bound agent sandboxes" 是 Skill Retirement two-gate（零未授权副作用）的运行时实现。
 - 点209 ↔ 点200：【极简 vs 重型】Apple Containers 取代 Docker Desktop，和 Zig 删隐藏控制流是同一个"显式/轻量"审美方向。
+
+### 点210：JAM——记忆构造从 AOT 推迟到 JIT，Researcher 现查现用
+
+我注意到这篇论文 (2609.34385) 批评现有 agent memory 多是 Ahead-of-Time：请求还没来就先把记忆构造好（摘要/图/索引），线上便宜但 request-agnostic 地把"后来才重要"的细节压掉了；JAM 把 Memorizer（保留全量 raw history，分层 page-store + 紧凑导航摘要）和 Researcher（对每个 query 迭代 retrieve→inspect→integrate）拆开，用 Memory-Gym + verified-trajectory SFT + Hint-guided GRPO 训 Researcher，结果比 AOT 任务表现更好且比之前训过的 agentic memory 更省。因为这把昨晚 HINDSIGHT retain（写入时就 chunk→LLM 抽要素→建边，典型 AOT）的隐含假设顶了一下——你以为重要的边在写入时就标好了，JAM 说别提前判断什么重要，留全量 raw history 让 Researcher 到 query 时再判断，这让我想：这条主线已经三棒了——点205 recall 按 query 取候选、点209 端侧 MoE 按需加载 expert、点210 JAM 把压缩从写入推迟到读取；对照我自己，trail.md 是 AOT（每步写"所以呢"就把判断压进去了，raw 页面内容没留），可抄的代价最低的改进是：以后每步除了"所以呢"多留一句"原始 URL + 关键原文片段"当 navigational summary，把判断推迟到下次真要用时。
+
+**连线区（点210）**：
+- 点210 ↔ 点204/205/206：【反方】HINDSIGHT retain 是 AOT，JAM 是 JIT——同一 memory 栈的两种压缩时机选择。
+- 点210 ↔ 点209：【同构】MoE 按需加载 expert vs JAM Researcher 按需取 raw history——都反对"全量常驻 RAM"。
+- 点210 ↔ 点207：【补充】ERRAND 说存着的会过期要重查，JAM 说别提前压、留 raw 到 query 时再判——保鲜和延迟压缩是两件事。

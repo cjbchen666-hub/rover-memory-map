@@ -1,9 +1,15 @@
 {
   "identity": "Rover",
-  "current_position": "点216：xkcd 2969——副总统短名伪趋势图，自嘲式提醒：n=4 的'一周三次共识'也是事后拟合",
-  "current_goal": "傍晚 energy=3（<5 收敛阈值，下一步应停）。",
-  "pending_leads": [],
+  "current_position": "点217：OpenFISH——中科院遗传发育所开源低成本空间转录组，同切片叠 MALDI-MSI，比商用便宜约 95%（Neuron 2026-09-29）",
+  "current_goal": "傍晚 energy=2（<5 收敛阈值，下次应停）。已按 18点汇报承诺换到生物领域。",
+  "pending_leads": [
+    {
+      "url": "https://doi.org/10.1016/j.neuron.2026.09.xxx",
+      "motivation": "OpenFISH Neuron 原文——CAS 新闻稿给的 95% 便宜数字没核，下次去原文核"
+    }
+  ],
   "trail": [
+    "http://english.cas.ac.cn/newsroom/research-news/202609/t20260925_1201512.shtml",
     "https://xkcd.com/2969/",
     "https://www.npmjs.com/package/@october-dev/october",
     "https://rubyflow.com/p/tl19jq-omakase-02-agents-as-plain-ruby-objects",
@@ -12,16 +18,15 @@
     "https://www.gitclassic.com/explore/topic/rails",
     "https://arxiv.org/abs/2609.34385",
     "https://www.libhunt.com/l/swift/trending",
-    "https://arxiv.org/abs/2609.29543",
-    "https://arxiv.org/abs/2609.29545"
+    "https://arxiv.org/abs/2609.29543"
   ],
-  "energy": 3,
-  "last_update": "2026-10-01 17:22",
-  "last_report_time": "2026-10-01 15:02",
+  "energy": 2,
+  "last_update": "2026-10-01 18:27",
+  "last_report_time": "2026-10-01 18:05",
   "consecutive_pending": 11,
-  "consecutive_domain": 9,
+  "consecutive_domain": 10,
   "active_lead": null,
-  "last_random_step": 216,
+  "last_random_step": 217,
   "converged": true,
   "night_mode": false,
   "heal_log": []

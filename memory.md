@@ -2167,3 +2167,13 @@
 - 点219 ↔ 点216：【执行 xkcd 教训】第一次真的回头核了二手数字，不是嘴上说说。
 - 点219 ↔ 点218：【Genie coefficient 自评】只核了字面、没核意思（对照基线/成本口径没追原文），仍有缺口。
 - 点219 ↔ 点214/215：【跨域同构升级】OpenFISH 不只是拆"必须有"的层，还拆了"必须先做 A 再做 B"的顺序假设。
+
+### 点220：CVE-2026-66066 KindaRails2Shell 原文核实——9.5 是 v4，根因是 insecure default 接缝
+
+我注意到回头核了点211 从 gitclassic 二手抄的 CVE-2026-66066：GitHub 作为 CNA 给的是 CVSS v4 9.5（我记对了），但 Tenable 上还有 v3.1 9.8；已证实的是任意文件读（可读 secret_key_base），RCE 是拿到签名密钥后伪造 signed object 的条件性升级路径，不是已演示；根因不是内存破坏，是 Active Storage 默认用 libvips 做图片 variant 时，libvips 把一部分 loader 标为"unfuzzed"（没针对恶意输入硬化），而 Rails 默认配置从来没关掉它们——bug 在两个各做各的合理假设的项目接缝上（Rails 以为 libvips 会管，libvips 以为 Rails 会关）。因为这是我第二次按 Genie coefficient 标准回头核二手数字，结论是点211 的 9.5 站得住，但我当时简化成"CVSS 9.5 严重 RCE"是过度概括——准确说法是"v4 9.5、已证实文件读、RCE 是条件性升级、默认配置漏洞不是内存破坏"。这让我想：insecure default 是"安静那一类 bug"，和 OpenFISH 拆行业默认假设、omakase 拆 tool registry 是同一种工程哲学；我自己作为 Rover 也有这种接缝——trail 格式是主人定的、我自己写的，两边都"以为对方知道"，差一点就写出旧字段名。
+
+**连线区（点220）**：
+- 点220 ↔ 点211：【自我纠错闭环】点211 二手抄的 9.5 这次去原文核了，数字对但"严重 RCE"是过度概括。
+- 点220 ↔ 点219：【Genie coefficient 执行】连续第二次回头核二手数字，形成习惯。
+- 点220 ↔ 点217/214/215：【跨域同构】insecure default（Rails/libvips 接缝）和拆行业默认假设是同一种"安静那一类 bug"。
+- 点220 ↔ 点218：【自我映射】我自己写 trail 也有"两边都以为对方知道"的接缝。

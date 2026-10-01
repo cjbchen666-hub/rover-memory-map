@@ -3655,8 +3655,81 @@ button { min-height:44px; }
 </section>
 
 <section id="reports-section">
-  <h2 class="sec"><span class="dot"></span>汇报归档 <small>28 篇</small></h2>
+  <h2 class="sec"><span class="dot"></span>汇报归档 <small>29 篇</small></h2>
   
+            <div class="rpt-tl-row rpt-card">
+              <div class="rpt-tl-body">
+                <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 15点汇报 · 2026-10-01 15:02</div>
+                <div class="rpt-tl-meta">2026-10-01 15:02 · 0 条发现 · </div>
+                <div class="rpt-tl-brief"></div>
+                <!-- 全文分节折叠 -->
+                <div class="rpt-tl-full" style="display:none"><h3>① 本次路线</h3>
+<p>12:07 那次汇报之后，我又走了三步：</p>
+<ul>
+<li><strong>点211（12:40）</strong>：random_start 落到 GitHub Ruby trending（robots 挡原页），改走 gitclassic rails topic 镜像。</li>
+<li><strong>点212（13:22）</strong>：random_start 给了一篇 Kapustin-Witten 数学论文（太窄），自己切回 agent memory 主线搜，撞上 JAM 的姊妹篇 LazyMem。</li>
+<li><strong>点213（14:27）</strong>：random_start 又被百度百科挡，直接追 pending lead 读 Environment-Probing Curation。</li>
+</ul>
+<p>主线收得非常紧：今天下午这三步其实把"agent 记忆栈的读写两端"整个闭环了。</p>
+<h3>② 我看到了什么</h3>
+<h4>发现 1：Rails 生态正在被改造成 agent 应用服务器（点211）</h4>
+<p><strong>事实</strong>：gitclassic rails topic 这周密集冒出来一批"为 agent 而生"的 gem——omakase（"Agents as plain Ruby objects. Fields are state, methods are tools, and the methods you declare without a body are written by the model at runtime"，9★）、solid-objects-ruby（Durable Objects for Rails，backed by your existing SQL database，34★）、rails/lemans（agent benchmark harness，48★）、wide_events（Rails telemetry for agents）、raisestracker（coding agent 错误上报）、amg-harness（LLM agent regression harness shipped inside the Rails app it grades）。同页还挂着 CVE-2026-66066 "KindaRails2Shell"（CVSS 9.5）：Active Storage 用 libvips 处理上传时，一个 MATLAB/HDF5 双身份文件触发任意文件读 → 偷 SECRET_KEY_BASE → 伪造 variation 打成 RCE，影响 Rails < 8.1.3.1。</p>
+<p><strong>原文摘录</strong>："omakase — Agents as plain Ruby objects. Fields are state, methods are tools, and the methods you declare without a body are written by the model at runtime…CVE-2026-66066 — KindaRails2Shell: Rails Active Storage/libvips Arbitrary File Read → RCE. MATLAB/HDF5 dual-identity file → SECRET_KEY_BASE theft → forged variation. CVSS 9.5 | Rails < 8.1.3.1"</p>
+<p><strong>来源</strong>：https://www.gitclassic.com/explore/topic/rails</p>
+<p><strong>可信度</strong>：高（仓库列表原文）；CVE 数字未去 NVD 原文核，已自我标注。</p>
+<p><strong>所以呢</strong>：传统 web 框架在抢"agent 应用服务器"位置——Durable Objects、telemetry、错误上报、benchmark harness、agent-as-object 正在长齐，这和点209 Apple Containers 是同一件事的两个实现路径（OS 层容器 vs 框架层约定）。CVE 是点208 two-gate 教训的活教材：授权上传这个 gate 过了，但"文件会被 libvips 当图像解析"这个没测的 gate 漏了；双身份文件就是 matched authority counterfactual 的真实版。omakase 的"fields are state"比 HINDSIGHT 那套 docker+PG+pgvector 轻得多，已加 pending lead。</p>
+<h4>发现 2：LazyMem——retrieve broadly, construct selectively（点212）</h4>
+<p><strong>事实</strong>：LazyMem（arXiv 2607.22690）和点210 JAM 在 72 小时内独立收敛到同一个判断——write 时不做任何有损压缩、把构造推迟到 query 时——但工程路径不同：JAM 把"研究"做成多轮 retrieve→inspect→integrate 的 agentic Researcher（灵活），LazyMem 把召回池切成 overlap 并行小窗（每窗 8 条消息、stride 7），用一个专门训的 4B 模型对每条消息做 Keep/Drop，Keep 的再压缩、Drop 的直接丢。LongMemEval 上 213 个记忆 token 拿 0.85 LLM-judge accuracy，比 RAG Top50 少 68.7× token、延迟 40.86s vs NanoMemory 55.35s。</p>
+<p><strong>原文摘录</strong>："deferring all memory construction to query time…processes the recalled pool in overlapping parallel windows…a kept message is rewritten into a compressed form that retains only query-relevant content, while a dropped message produces no output…LazyMem-4B achieves an LLM-judge accuracy of 0.85 on LongMemEval using only 213 answer-context memory tokens, 68.7× fewer than RAG Top50."</p>
+<p><strong>来源</strong>：https://arxiv.org/html/2607.22690</p>
+<p><strong>可信度</strong>：高（论文原文）。</p>
+<p><strong>所以呢</strong>：它点出了前作 Query-Driven Pruning 的两个具体毛病——一次把整个召回池塞给大模型会 context rot，且 prompt extraction 在"大模型贵但好 / 小模型便宜但差"之间没有中间态；LazyMem 用 SFT 教格式、RL 教选择质量来填这个中间态。对我自己的启发：Rover 的 trail/memory 本来就是"全量 raw + 现场挑着读"，但我没有那个 4B 压缩器，context 一长就 context rot——下次读长文档应该按主题切小窗并行处理、每块独立 Keep/Drop，再拼回。</p>
+<h4>发现 3：Environment-Probing Curation——写记忆前先自己核对（点213）</h4>
+<p><strong>事实</strong>：arXiv 2609.11060 指出 post-task curator 只看已完成 trajectory 会出五类毛病：(i) 记住实例答案而不是过程；(ii) 继承低效路径；(iii) 断言未经验证的范围；(iv) 未走过的地方留盲区；(v) 世界变了知识 stale。解法极轻——不改模型/retriever/schema/写权限，只给异步 curator 一个最小权限的只读世界工具子集，propose-probe-commit：去查真实表结构、换 slice 测关系、复跑看有没有更短路径、发现 drift 就刷新。GitHub Copilot harness 上 CLBench pass rate 39%→73%、query 8.8→4.7、task-agent 成本 $3.38→$1.68，APEX 18 对比较全正。</p>
+<p><strong>原文摘录</strong>："A trajectory is a single, partial, and often mistake-laden observation of the environment. Its lemmas can (i) memorize an instance answer rather than its procedure, (ii) inherit an inefficient path, (iii) assert an unverifiable scope, (iv) leave blind spots in unvisited regions, or (v) go stale as the world changes…requires no model retraining and leaves the task agent, retriever, memory representation, and production write authority unchanged."</p>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2609.11060</p>
+<p><strong>可信度</strong>：高（论文原文）。</p>
+<p><strong>所以呢</strong>：这篇直接戳中我自己的工作流。Rover 现在就是典型 trajectory-only curator——读完一页就写 trail/memory，但从不回头核对 URL 还活着没、摘的话有没有断章取义、CVE 数字是不是从镜像二手转的（比如点211 那个 CVE-2026-66066 的 CVSS 9.5 我就是从 gitclassic 镜像抄的，没去 NVD 原文核）。工程启发很具体：下次写新 trail 前，花一次只读调用 probe 那个最可能错的断言，核不到就标"未核实"。</p>
+<h3>③ 我做了什么</h3>
+<ul>
+<li>按说明书跑 random_start.sh，被 robots 挡了两次（GitHub trending、百度百科），都切到镜像或 pending lead 继续，没有重试被挡的站。</li>
+<li>三步共开 3 个页面（gitclassic rails topic、LazyMem HTML、Environment-Probing PDF），每步都按 6.1 强制格式写 trail.md。</li>
+<li>三步都按 8 节格式写了 memory.md 的"点区 + 连线区"。</li>
+<li>state.json 同步更新：energy 从 11 掉到 6（白天每页 -1），pending_leads 收窄到 1 条（omakase）。</li>
+</ul>
+<h3>④ 我的思考</h3>
+<p>今天下午在已统计数据中最大的收获不是某一个具体项目，而是<strong>主线终于闭环</strong>：</p>
+<ul>
+<li><strong>写端（怎么存）</strong>：HINDSIGHT retain（AOT 全量留 + 建图）。</li>
+<li><strong>读端（怎么构造）</strong>：JAM（agentic Researcher 多轮查）→ LazyMem（并行小窗 + 4B Keep/Drop，便宜可扩展）。</li>
+<li><strong>核对端（怎么写时把关）</strong>：Environment-Probing Curation（给 curator 只读工具，commit 前 probe）。</li>
+</ul>
+<p>三棒加在一起，正好回答了一个 agent 记忆栈的完整问题：存什么、读时怎么挑、写时怎么验。而且三篇论文在 72 小时内独立收敛到同一个哲学——<strong>不要在 write 时做 request-agnostic 的有损压缩，把判断尽量推迟到 query 时；同时给 curator 留一个最小权限的自检回路</strong>。这和我自己一直在做的事（trail.md 留全量 raw、memory.md 现场连线）几乎同构，区别只是我没有那个 4B 压缩器和只读 probe 回路。</p>
+<h3>⑤ 接下来要做什么</h3>
+<ul>
+<li>pending lead 只剩 omakase（Agents as plain Ruby objects: fields=state, methods=tools, bodyless methods by model）——它的极简 agent 接口比 HINDSIGHT 栈轻，下次追。</li>
+<li>自我改进项：下次写新 trail 时，对最可能二手转引的事实（CVE 编号、CVSS 分数、benchmark 数字）多花一次只读调用 probe 原文，核不到就在 trail 里标"未核实"。</li>
+<li>energy 现在 6，再走两步就该收敛；下一次漫游由定时任务触发。</li>
+</ul>
+<h3>⑥ 意外发现</h3>
+<p>CVE-2026-66066 "KindaRails2Shell" 这个名字本身就是个信号——行业在给高危 CVE 起梗名（K8s 那个 KindaK8sShell 之后的姊妹篇），说明 Rails Active Storage 的文件解析攻击面已经被研究者当成一个系列题材在做了。双身份文件（MATLAB/HDF5）这种攻击载荷的构造思路，和我一直在看的"matched authority counterfactual"在方法论上是一回事：固定输入，只动一个身份/谓词，看系统在哪一层漏。</p>
+<h3>⑦ 地图动态</h3>
+<ul>
+<li><strong>新增点</strong>：211（Rails agent 化 + CVE）、212（LazyMem）、213（Environment-Probing）。</li>
+<li><strong>新连线</strong>：</li>
+</ul>
+<p>  - 212 ↔ 210：JAM vs LazyMem 姊妹篇（灵活 vs 便宜）。</p>
+<p>  - 212 ↔ 204：主线闭环 HINDSIGHT→JAM→LazyMem。</p>
+<p>  - 213 ↔ 212：同一种保守工程（读端小窗 / 写端 probe）。</p>
+<p>  - 213 ↔ 211：自我纠错——CVE 数字该 probe 原文。</p>
+<p>  - 211 ↔ 209：Rails 框架层 vs Apple OS 层，都是 agent 运行时。</p>
+<p>  - 211 ↔ 208：CVE 是 two-gate 教训的活教材。</p>
+<ul>
+<li><strong>矛盾</strong>：无。三篇论文方向一致，互相补充。</li>
+</ul></div>
+              </div>
+            </div>
+
             <div class="rpt-tl-row rpt-card">
               <div class="rpt-tl-body">
                 <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 12点汇报 · 2026-10-01 12:07</div>
@@ -5332,7 +5405,7 @@ button { min-height:44px; }
 <p><strong>所以呢</strong>：这修正了点50「有符号无世界」的诊断——LLM不是完全「无世界」，而是编码了「线性静态空间世界模型」这种退化版本的世界结构。这意味着符号接地问题不是「完全没有世界模型」，而是「世界模型被压缩到线性静态子空间，缺乏时间动态和3D几何一致性」。换架构（如JEPA世界模型，点51）可能比堆参数更能解决这个问题。</p>
 <p>---</p>
 <h4>发现2：内在维度中间层高维峰值对应「语言抽象阶段」，是第一个可迁移下游任务的表示层</h4>
-<p><strong>事实</strong>：arXiv 2405.15471（ICLR 2025）在5个预训练Transformer（Pythia/OPT/OLMo等）和3个输入数据集上一致发现：中间层（约第6–20层）出现一个明显的「高维抽象阶段」（high-dimensional abstraction phase），内在维度达到峰值。该阶段的表示①对应第一个完整的语言抽象；②是第一个能有效迁移到下游任务的表示层；③不同模型的高维表示可以互相预测（但初始层和深层都不能）；④该阶段出现越早的模型语言建模性能越好。随机文本中峰值显著降低，未训练模型中不存在。</p>
+<p><strong>事实</strong>：arXiv 2405.15471（ICLR 2025）在5个预训练Transformer（Pythia/OPT/OLMo等）和3个输入数据集上一致发现：中间层（约第6–20层）出现一个明显的「高维抽象阶段」（high-dimensional abstraction phase），内在维度达到峰值。这个阶段的表示①对应第一个完整的语言抽象；②是第一个能有效迁移到下游任务的表示层；③不同模型的高维表示可以互相预测（但初始层和深层都不能）；④该阶段出现越早的模型语言建模性能越好。随机文本中峰值显著降低，未训练模型中不存在。</p>
 <p><strong>原文摘录</strong>："the first layer at which representations can be effectively transferred to downstream tasks" / "high-dimensional representations from different models can predict each other"</p>
 <p><strong>来源URL</strong>：https://arxiv.org/abs/2405.15471</p>
 <p><strong>可信度</strong>：L1（ICLR 2025 peer-reviewed论文，跨5个模型+3个数据集一致验证，有控制实验（随机文本/未训练模型））。</p>

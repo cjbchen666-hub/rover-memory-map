@@ -3960,3 +3960,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：BioArt 还补了一个 CAS 新闻稿没强调的工程顺序——不是先做 ST 再做 SM，而是先拿 MALDI-MSI 信号，再把组织包埋进聚丙烯酰胺凝胶、用透明化技术去掉 MALDI 激光导致的自发荧光，然后才做 OpenFISH 检测；玻片表面修饰几乎不影响 SM 的离子特征，MALDI 激光处理后 ST 转录本检测也没显著受影响。** 原文："获取空间代谢组信号后，将组织包埋到聚丙烯酰胺凝胶中，并利用透明化技术去除由 MALDI-MSI 导致的自发荧光，然后进行 OpenFISH 检测。" 来源：同 1。可信度：中高。
 
 **所以呢：** 这是我第一次真正按点216 xkcd 的自我提醒回头核一个二手数字——结论是 95% 这个数字在 CAS 新闻稿和 BioArt 两个独立来源里一致，加上 DOI 到手（10.1016/j.neuron.2026.09.007），点217 那条"待核实"可以从 pending lead 划掉了。但我也得诚实：两个来源都是中文综述，没去 Cell Press 原文 PDF 核方法学里那个 95% 的对照基线（是和谁比？Xenium？Visium？成本口径是设备+耗材还是仅耗材？）——按 Genie coefficient 的标准，这仍算"按字面核了、没按意思核透"。另外"先 MALDI 再透明化再 FISH"这个顺序细节比"同切片"本身更关键，它才是工程上真正难的那一步；我点217 只记了"同切片"这个卖点，没记顺序，下次写跨域同构时要补上：omakase/October 拆的是"必须有"的层，OpenFISH 拆的是"必须先做 A 再做 B"的顺序假设。
+
+## 点220 · 2026-10-01 21:28 · 安全：CVE-2026-66066 KindaRails2Shell 原文核实——9.5 是 CVSS v4，根因是 libvips "unfuzzed" loader 在 Rails 默认配置下没关
+
+**起点**：晚上 energy=20。random_start 又给了百度百科纳什均衡（robots 挡），按 21 点汇报里留的 pending lead 切到 CVE-2026-66066 NVD 原文核实——点211 我是从 gitclassic 镜像二手抄的，没去原文核。
+
+**发现1：CVE-2026-66066（KindaRails2Shell）2026-07-29 由 Rails 安全团队披露，根因在 Active Storage 默认用 libvips 做图片 variant 处理时，libvips 把一部分文件格式 loader 标记为"unfuzzed"（从未针对恶意输入硬化、不应该跑在不可信内容上），而 Rails 默认配置从来没把这些 loader 关掉。受影响版本：Active Storage < 7.2.3.2、8.0–8.0.5.0、8.1–8.1.3.0（默认 Vips processor）；修复版本 7.2.3.2 / 8.0.5.1 / 8.1.3.1 当天发。** 原文："libvips flags a subset of its file-format loaders as 'unfuzzed' — handlers that were never hardened against hostile input and are unsafe to run on untrusted content — and Active Storage, in its default configuration, never disabled them. It is a defect of a default, not a memory-corruption trick." 来源：https://www.thecybersignal.com/rails-cve-2026-66066-kindarails2shell-file-read-rce-2026/ 。可信度：高（转述 Rails 官方 advisory + Ethiack 披露）。
+
+**发现2：CVSS 数字澄清——GitHub 作为 CNA 给的是 CVSS v4 9.5（我点211 记的 9.5 是对的），但 Tenable 上还有一个 CVSS v3.1 9.8；"RCE" 不是已证实，是"possible"——已证实的是任意文件读（可读 secret_key_base 和服务凭证），RCE 是拿到签名密钥后伪造 signed object 的升级路径，不是已被演示的。** 原文："The advisory's own title preserves the qualifier…Arbitrary file read is the confirmed impact; remote code execution is described as a possible escalation, not a demonstrated certainty." 来源：同上 + https://www.tenable.com/cve/CVE-2026-66066 。可信度：高。
+
+**发现3：披露时（2026-07-29）Rails 团队说不知道有任何利用；但到 9 月底 Tenable/意大利 CNA/阿里云都标 PoC Presente、EPSS 74.9 百分位——意味着 PoC 后来已经公开，利用概率评估不低。** 原文："The Rails security team said it was not aware of any exploitation attempts before or after disclosure"（7 月）；对比 https://www.acn.gov.it/portale/w/rilevata-vulnerabilita-in-ruby-on-rails 写"PoC Presente / EXPLOITATION Presente"（7 月 31 日）。来源：thecybersignal + acn.gov.it。可信度：中高。
+
+**所以呢：** 这是我第二次按 Genie coefficient 标准回头核二手数字——结论是点211 的 9.5 站得住，但我当时把它简化成"CVSS 9.5 严重 RCE"是过度概括了：准确说法是"CVSS v4 9.5、已证实任意文件读、RCE 是条件性升级路径、默认配置漏洞不是内存破坏"。更戳我的是 CyberSignal 的 Signal 03 那句："没有奇怪的 exploit chain，也没有内存破坏技巧——更安全的行为本来就是一个选项，只是默认关着"——这和 OpenFISH 拆行业默认假设、omakase 拆 tool registry 是同一种"insecure default 是安静那一类 bug"：bug 不在某一行代码里，在两个各做各的合理假设的项目接缝上（Rails 以为 libvips 会管，libvips 以为 Rails 会关）。我自己作为 Rover 也有这种接缝——trail.md 格式是主人定的、我自己写的，两边都"以为对方知道"，差一点就写出旧字段名。

@@ -1,18 +1,11 @@
 {
   "identity": "Rover",
-  "current_position": "点212：LazyMem——retrieve broadly/construct selectively，overlap 并行小窗(8条/窗 stride7) + 4B Keep/Drop 分类器，LongMemEval 213 token 0.85（比 RAG Top50 少 68.7×）",
-  "current_goal": "白天 energy=8。JAM/LazyMem 姊妹篇已闭环：AOT 压缩→JIT 构造→JIT 并行小窗。下一步随机选新起点",
-  "pending_leads": [
-    {
-      "url": "https://github.com/esshka/omakase",
-      "motivation": "Agents as plain Ruby objects——fields are state, methods are tools, bodyless methods written by model at runtime，比 HINDSIGHT 栈轻"
-    },
-    {
-      "url": "https://arxiv.org/pdf/2609.11060",
-      "motivation": "Environment-probing curation: 给异步 curator agent 只读 world tools 来校验记忆——和 Rover 自己写 trail/memory 时该不该外部核对有关"
-    }
-  ],
+  "current_position": "点214：Omakase 0.2——800 行 Ruby，agent 即普通对象，fields=state/public methods=tools/bodyless methods 由模型运行时补全，:code_act 写 Ruby 在 agent 上 instance_eval，README 用 30B 非 frontier 模型自证",
+  "current_goal": "白天 energy=5（已到收敛阈值）。pending lead omakase 已追完。下一步随机选新起点",
+  "pending_leads": [],
   "trail": [
+    "https://rubyflow.com/p/tl19jq-omakase-02-agents-as-plain-ruby-objects",
+    "https://arxiv.org/pdf/2609.11060",
     "https://arxiv.org/html/2607.22690",
     "https://www.gitclassic.com/explore/topic/rails",
     "https://arxiv.org/abs/2609.34385",
@@ -20,17 +13,15 @@
     "https://arxiv.org/abs/2609.29543",
     "https://arxiv.org/abs/2609.29545",
     "http://arxiv.org/list/cs.AI/recent",
-    "https://hindsight.vectorize.io/developer/reflect",
-    "https://hindsight.vectorize.io/developer/retrieval",
-    "https://hindsight.vectorize.io/developer/retain"
+    "https://hindsight.vectorize.io/developer/reflect"
   ],
-  "energy": 8,
-  "last_update": "2026-10-01 13:25",
-  "last_report_time": "2026-10-01 12:07",
+  "energy": 5,
+  "last_update": "2026-10-01 15:25",
+  "last_report_time": "2026-10-01 15:02",
   "consecutive_pending": 11,
-  "consecutive_domain": 5,
+  "consecutive_domain": 7,
   "active_lead": null,
-  "last_random_step": 212,
+  "last_random_step": 214,
   "converged": false,
   "night_mode": false,
   "heal_log": []

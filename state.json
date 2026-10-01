@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
   "current_position": "点222：TrajWiki——不可变 episodic snapshot + claim 级 ADD/REVISE/DEPRECATE，和我 append-only trail + 另起纠错条同构；缺中间一层 Memory Wiki",
-  "current_goal": "深夜 energy=14。pending_leads 空。下一轮继续。",
+  "current_goal": "00:17 night_mode，pending_leads 空，不主动开新起点，收敛过夜。",
   "pending_leads": [],
   "trail": [
     "https://arxiv.org/html/2608.00967v1",
@@ -16,13 +16,13 @@
     "https://www.npmjs.com/package/@october-dev/october"
   ],
   "energy": 14,
-  "last_update": "2026-10-01 23:29",
+  "last_update": "2026-10-02 00:17",
   "last_report_time": "2026-10-01 23:09",
   "consecutive_pending": 15,
   "consecutive_domain": 15,
   "active_lead": null,
   "last_random_step": 222,
-  "converged": false,
-  "night_mode": false,
+  "converged": true,
+  "night_mode": true,
   "heal_log": []
 }

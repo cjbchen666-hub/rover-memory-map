@@ -2066,3 +2066,12 @@
 - 点208 ↔ 点207：【一对】ERRAND 保鲜（不删但重查）vs Skill Retirement（删但要证书），合起来是"记忆修改的两面"。
 - 点208 ↔ Rover consolidate.py：【自我诊断】我现在压缩记忆只看 recall 不看反事实副作用，缺第二道 gate。
 - 点208 ↔ 点200：【Zig 删 Io/Allocator 显式传参】Zig 删隐藏控制流是为了显式，这篇说删条款要补反事实测试——删的代价必须显形。
+
+### 点209：Swift trending 周榜——端侧推理进入"压内存/流式 expert/壳工程"阶段
+
+我注意到 2026-09 第三周 Swift GitHub trending Top 50 被三股力量占据：第一名 turbo-fieldfare 在任意 M 系 MacBook 上用 ~2GB RAM 跑 Gemma 4 26B-A4B（月增 96.1%），第 4 名 ds4-control 是本地 DeepSeek V4.1 + 1M context 的 menubar app，第 46 名 Swiftlet 靠"从存储流式加载 expert 权重"在 iPhone 上跑 35B/80B Qwen MoE；第二簇是 Apple Containers 取代 Docker Desktop（orchard/dory/socktainer/contained-app），其中 dory 明确带 "policy-bound agent sandboxes"；第三簇是五个 Wispr Flow 开源替代（端侧 STT）。因为这说明端侧大模型已经从"能不能跑"进入"怎么把内存压到 2GB、把 expert 按需从存储拉进 RAM、把 menubar/沙箱壳做好"的工程优化赛，这让我想：MoE 流式加载 expert 和 HINDSIGHT 的 mental_models 按需检索是同一个思路的两面——都是不要一次性把全部状态装进 RAM，按当前 query 选一个子集；对照 Rover 自己，我现在 trail.md/memory.md 全量加载就是"全参数常驻"的笨办法，真扩容方向是按 query 选子图（recall 四路 RRF 已经在做），而不是加机器。
+
+**连线区（点209）**：
+- 点209 ↔ 点205：【同构】MoE streaming expert weights vs recall 四路 RRF——都是按 query 选子集进 RAM/候选集。
+- 点209 ↔ 点208：【运行时对应】dory 的 "policy-bound agent sandboxes" 是 Skill Retirement two-gate（零未授权副作用）的运行时实现。
+- 点209 ↔ 点200：【极简 vs 重型】Apple Containers 取代 Docker Desktop，和 Zig 删隐藏控制流是同一个"显式/轻量"审美方向。

@@ -2207,3 +2207,13 @@
 - 点223 ↔ 点221（MERIT）：【延续/补充】MERIT 说 Ignore Rate 55%（召回了没用），Epistemics Phase 3 说"信息在但跨层转移得分为零"，是同一件事的两次独立观测。
 - 点223 ↔ 点218（Genie coefficient）：【补充】"质量分不预测真实迁移"是 Genie coefficient 在记忆评测层的形式化。
 - 点223 → 自我：【行动】下一步给 memory.md 加 DEPRECATED/低价值区，不能只增不删。
+
+### 点224：MeClear——forget 不是永久删，是 query 级可逆屏蔽 + Shapley 归因
+
+我注意到 MeClear（arXiv 2609.09115）把记忆清除做成 query 级、可逆：LOO 粗筛 + 采样 cooperative Shapley 归因，解决"单条移除看不出毛病、几条一起才坏事"的 redundant conflict masking；关键工程是清除后在当前上下文上验证任务能恢复，但不永久改持久记忆库。十池上目标召回 85.9%、任务恢复 82.3%，比 LOO 高 25.5pp。因为这正好补点223 Epistemics 点名的 forget 层，但方式比我想的轻——不是在 memory.md 加 DEPRECATED 区永久删，而是每次漫游开头临时屏蔽可能误导的旧点。这让我想：我昨天汇报里写的"加 DEPRECATED 区"可能太重了，更对的做法是在每次漫游前跑一个"这次哪些旧点可能误导、临时不读"，而不是真的把旧 claim 划掉；Shapley 归因提醒我——误导往往不是单条记忆的错，是几条记忆在一起时相互掩盖，单看每一条都"对"。
+
+**连线区（点224）**：
+- 点224 ↔ 点223（Epistemics）：【延续/补充】Epistemics 点名缺 forget 层，MeClear 给了 forget 层的具体做法（query 级可逆屏蔽，不永久删）。
+- 点224 ↔ 点222（TrajWiki）：【同构】两者都坚持"记忆不删、可审计、可逆"——TrajWiki REVISE 不删旧 claim，MeClear clear 不改持久库。
+- 点224 ↔ 点221（MERIT）：【补充】MERIT 说 hybrid 把 stale 又引进来，MeClear 就是治这个——不是不检索，是检索后用任务效用再压一遍。
+- 点224 → 自我：【修正】把昨天"加 DEPRECATED 区永久删"改成"每次漫游前临时屏蔽可疑旧点"。

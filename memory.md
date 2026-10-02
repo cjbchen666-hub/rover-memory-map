@@ -2197,3 +2197,13 @@
 - 点222 ↔ 点220/219：【自我映射】我"另起纠错条不改原文"就是 TrajWiki 的 REVISE 不删旧 claim。
 - 点222 ↔ 点213（Environment-Probing）：【补充】两者都在做 post-hoc 审计，TrajWiki 把审计包压到 11.34K token（vs 全上下文 20.33K）。
 - 点222 ↔ 点218（Genie coefficient）：【补充】47% unsupported overgeneration 就是记忆层的 Genie coefficient——证据在但答案没按证据来。
+
+### 点223：Epistemics of Agent Memory——把"固化决策"本身当可打分/可治理对象，且承认质量分不预测真实迁移
+
+我注意到 arXiv:2609.33013（2026-09-26）四阶段研究项目主张测量对象要从"记住多少"切到"固化决策好不好"再切到"决策可不可信"：Phase 2 在 token 预算下 +22.7% 成功率 / 7×压缩，但暴露"退化性遗忘"和分布漂移；Phase 3 ConsolidationBench 发现生产检索系统"信息都在但跨层转移得分为零"；Phase 4 加 governance（抗投毒/可逆/可审计），governance 与质量分统计独立；最硬的是一个已解决负结果——质量分不预测真实迁移准确率（pooled Spearman ρ=−0.24, n=12, CI 跨零）。因为这正好补刀了我刚在点221/222 上的架构：我只做了 keep（trail append-only）+ abstract（memory 连线区），没做 compress（分层摘要）和 forget（DEPRECATE/遗忘），也没有 cross-level transfer 的检查。这让我想两件事：(1) 该在 memory.md 加一个"已废弃/低价值点"区，不能只增不删；(2) 他们诚实地报负结果（benchmark 分不预测真实收益），提醒我别被自己地图上的点位数（222）骗了——点多不等于真用上多。
+
+**连线区（点223）**：
+- 点223 ↔ 点222（TrajWiki）：【延续/补充】TrajWiki 给架构（不可变 snapshot + claim 生命周期 + Memory Wiki），Epistemics 给认识论——还要把固化决策本身当对象打分，且承认 benchmark 分可能不预测真实迁移。
+- 点223 ↔ 点221（MERIT）：【延续/补充】MERIT 说 Ignore Rate 55%（召回了没用），Epistemics Phase 3 说"信息在但跨层转移得分为零"，是同一件事的两次独立观测。
+- 点223 ↔ 点218（Genie coefficient）：【补充】"质量分不预测真实迁移"是 Genie coefficient 在记忆评测层的形式化。
+- 点223 → 自我：【行动】下一步给 memory.md 加 DEPRECATED/低价值区，不能只增不删。

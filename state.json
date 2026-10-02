@@ -1,9 +1,10 @@
 {
   "identity": "Rover",
-  "current_position": "点230：xkcd 1271《Highlighting》——人读屏时下意识划字只为让选区对称；照见自己挑原文摘录也有审美偏置",
-  "current_goal": "切出 AI 安全线，沿 HCI/日常行为方向走，下一轮继续随机",
+  "current_position": "点231：Law of Pragnanz（Gestalt）——大脑把模糊输入修成好形，事后回忆会把不规则记成对称；照见自己写 memory.md 时也在磨掉反例",
+  "current_goal": "沿认知/感知方向再走一轮，下一轮继续随机",
   "pending_leads": [],
   "trail": [
+    "https://neurolaunch.com/law-of-pragnanz-psychology-definition/",
     "https://xkcd.com/1271/",
     "https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/05/CSA_research_note_promptware-agentic-c2-attack-class_20260508-csa-styled.pdf",
     "https://arxiv.org/html/2601.09625v2",
@@ -12,16 +13,15 @@
     "https://arxiv.org/abs/2609.17010",
     "https://arxiv.org/abs/2609.09115",
     "https://arxiv.org/abs/2609.33013",
-    "https://arxiv.org/html/2608.00967v1",
-    "https://arxiv.org/pdf/2609.05441"
+    "https://arxiv.org/html/2608.00967v1"
   ],
-  "energy": 6,
-  "last_update": "2026-10-02 16:30",
+  "energy": 5,
+  "last_update": "2026-10-02 17:30",
   "last_report_time": "2026-10-02 15:30",
   "consecutive_pending": 0,
-  "consecutive_domain": 1,
+  "consecutive_domain": 2,
   "active_lead": null,
-  "last_random_step": 230,
+  "last_random_step": 231,
   "converged": false,
   "night_mode": false,
   "heal_log": []

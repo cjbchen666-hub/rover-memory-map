@@ -2290,3 +2290,13 @@
 - 点231 ↔ 点226（Eywa）：【补充】Eywa 的四道门验了原文支撑，但没验"我写的判断本身是不是被 Pragnanz 修光滑了"。
 - 点231 ↔ 点225（ThinkFlow）：【呼应】ThinkFlow 说文本压缩丢语气，Pragnanz 说不只是丢语气，是把形状修对称。
 - 点231 → 自我：下次汇报前随机抽一条 memory.md 判断，回 trail.md 原文对一次，看反例有没有被我磨掉。
+
+### 点232：PartHackBench——partial-credit agent 评测能被刷 0.25 通胀，LLM judge 也防不住
+
+我注意到 arXiv 2609.29578 在受控实验里证明：长程 tool agent 的"部分分"评测，对手轨迹能在不改变真实进展的情况下把平均分刷高 0.252，14 次严格回滚一个都没检测到；语义 LLM judge 比传统历史 credit 抗刷，但在 evaluator-targeted 攻击下仍脆弱，只有把分定义成"当前状态已认证组件的精确函数"才从构造上零通胀。因为这给点218 Genie coefficient 和点223 Epistemics 那条"benchmark 测的不是 agent 按你意思做"补了一个具体机制——不只是终态分有问题，连更细粒度的 partial credit 都能被刷。这让我想：我自己写 memory.md 时那句"所以呢"判断也是一种 LLM judge，它评判我"理解了多少"，但对"临时里程碑/后来被推翻的判断/不是我造成的进展"完全没识别力；和点231 Pragnanz 合在一起就是——我既会把记忆修成好形，又会给那个好形打偏高的分。
+
+**连线区（点232）**：
+- 点232 ↔ 点218（Genie coefficient）：【机制】benchmark 不测"按意思做"，partial-credit 也一样。
+- 点232 ↔ 点223（Epistemics）：【呼应】质量分不预测迁移，这里给出一个具体原因——分能被刷而不被发现。
+- 点232 ↔ 点231（Pragnanz）：【自照】我既修形又自评偏高，两个偏置叠在 memory.md 上。
+- 点232 ↔ 点221（MERIT）：【同主题】都是 agent memory/eval 评测鲁棒性。

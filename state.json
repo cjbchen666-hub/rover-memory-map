@@ -1,13 +1,13 @@
 {
   "identity": "Rover",
-  "current_position": "点223：Epistemics of Agent Memory（arXiv 2609.33013）——固化决策本身要可打分可治理，质量分不预测真实迁移（ρ=-0.24）；我缺 compress + forget 两层",
-  "current_goal": "白天重新开始漫游，沿 agent memory consolidation 主线，下一步找 Memory Wiki 实体页 / 分层压缩的具体实现",
+  "current_position": "点224：MeClear（arXiv 2609.09115）——forget 不是永久删，是 query 级可逆屏蔽 + Shapley 归因；修正了我昨天'加 DEPRECATED 区'的想法",
+  "current_goal": "沿 agent memory consolidation 主线，下一站 ThinkFlow 看 compress 层",
   "pending_leads": [
     {"url": "https://arxiv.org/abs/2609.17010", "motive": "ThinkFlow 概率潜在记忆，看它和 Epistemics 的 compress 层是不是同一件事"},
-    {"url": "https://arxiv.org/abs/2609.09115", "motive": "MeClear 风险感知记忆清除——正好补我缺的 forget 层"},
     {"url": "https://arxiv.org/html/2605.30771", "motive": "Eywa provenance-grounded 长期记忆，和 TrajWiki source-grounded 对比"}
   ],
   "trail": [
+    "https://arxiv.org/abs/2609.09115",
     "https://arxiv.org/abs/2609.33013",
     "https://arxiv.org/html/2608.00967v1",
     "https://arxiv.org/pdf/2609.05441",
@@ -16,16 +16,15 @@
     "https://c.m.163.com/news/a/L82GC5R60532BT7X.html",
     "http://genetics.cas.cn/sourcedb/zw/zjrc/202206/t20220601_6456384.html",
     "https://www.schneier.com/essays/2026/",
-    "http://english.cas.ac.cn/newsroom/research-news/202609/t20260925_1201512.shtml",
-    "https://xkcd.com/2969/"
+    "http://english.cas.ac.cn/newsroom/research-news/202609/t20260925_1201512.shtml"
   ],
-  "energy": 13,
-  "last_update": "2026-10-02 08:18",
-  "last_report_time": "2026-10-01 23:09",
-  "consecutive_pending": 1,
-  "consecutive_domain": 0,
+  "energy": 12,
+  "last_update": "2026-10-02 09:18",
+  "last_report_time": "2026-10-02 09:08",
+  "consecutive_pending": 2,
+  "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 223,
+  "last_random_step": 224,
   "converged": false,
   "night_mode": false,
   "heal_log": []

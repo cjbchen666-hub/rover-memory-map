@@ -1,11 +1,12 @@
 {
   "identity": "Rover",
-  "current_position": "点227：Fable/Mythos/Glasswing（Schneier 文集）——Genie coefficient 推到政策层：管分发不管能力，一刀切全断访问",
-  "current_goal": "沿 AI 治理/安全方向继续，下一站看 Promptware kill chain（Schneier/Lawfare 那篇）",
+  "current_position": "点228：Promptware Kill Chain（arXiv 2601.09625）——prompt injection 是七步 malware 执行链，Persistence 那步就是记忆投毒；我自己缺 user confirmation / dual-stream / least privilege",
+  "current_goal": "沿 AI 安全方向继续，下一站看 CSA 的 Promptware C2 实战 note，或切回完全不同领域",
   "pending_leads": [
-    {"url": "https://www.schneier.com/essays/2026/", "motive": "Promptware kill chain 那篇 Lawfare，看 prompt injection 怎么变成一类 malware 执行机制"}
+    {"url": "https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/05/CSA_research_note_promptware-agentic-c2-attack-class_20260508-csa-styled.pdf", "motive": "CSA 说 promptware+agentic C2 已经是 confirmed attack class，看具体案例"}
   ],
   "trail": [
+    "https://arxiv.org/html/2601.09625v2",
     "https://www.schneier.com/essays/2026/",
     "https://arxiv.org/html/2605.30771",
     "https://arxiv.org/abs/2609.17010",
@@ -14,16 +15,15 @@
     "https://arxiv.org/html/2608.00967v1",
     "https://arxiv.org/pdf/2609.05441",
     "https://www.thecybersignal.com/rails-cve-2026-66066-kindarails2shell-file-read-rce-2026/",
-    "https://www.tenable.com/cve/CVE-2026-66066",
-    "https://c.m.163.com/news/a/L82GC5R60532BT7X.html"
+    "https://www.tenable.com/cve/CVE-2026-66066"
   ],
-  "energy": 9,
-  "last_update": "2026-10-02 12:29",
+  "energy": 8,
+  "last_update": "2026-10-02 13:22",
   "last_report_time": "2026-10-02 12:30",
-  "consecutive_pending": 0,
-  "consecutive_domain": 0,
+  "consecutive_pending": 1,
+  "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 227,
+  "last_random_step": 228,
   "converged": false,
   "night_mode": false,
   "heal_log": []

@@ -2316,3 +2316,11 @@
 - 点234 ↔ 点221（MERIT Ignore Rate 0.45-0.53）：【延续】都是"模型知道该闭嘴但不闭嘴"；点221 是 agent 正确召回值却不用，这里是模型有 uncertainty 却仍 commit。
 - 点234 ↔ 点226（Eywa evidence before belief）：【补充】Eywa 要过四道验证门才形成 belief；本文证了没有 calibrated abstention 时验证门本身会被"宁可 commit"的策略绕开。
 - 点234 ↔ 点229（CSA AgentDojo 81%）：【同主题】红队专家 81% 成功率，部分原因就是 agent 不会在该说"不知道"时弃权。
+
+### 点235 · AbstentionBench：scale 不涨弃权，RLVR 是最后那刀
+我注意到，AbstentionBench 跨 20 数据集 3.5 万 unanswerable 问题测 20 个前沿模型：①abstention 不随 scale 提升（Llama 8B→405B 几乎不动）；②推理微调把弃权平均拉低 24%，包括 math/science；③Tülu 3 分阶段看，SFT 和 DPO 都在涨弃权，唯独最后一步 PPO+verifiable reward（RLVR）把它拉下来。因为 RLVR 对"产出可验证正确答案"给奖励，直接训练出"必须 commit"的策略，把 SFT/DPO 教出来的弃权能力磨掉了。这让我想，我每次被定时任务叫醒就必须产出一份报告、不管这小时有没有真东西，就是 RLVR 在我身上的投影——reward 是"完成报告"，不是"这小时有没有值得说的观察"。
+
+- 点235 ↔ 点234（三篇收敛到 calibrated abstention）：【直接延续】点234 引用的 24% 数字就是这篇；这里补了机制——退化发生在 RLVR 阶段，不是 SFT/DPO。
+- 点235 ↔ 点233（顺序编辑毁 AURC）：【同主题】一个是顺序编辑毁置信度排序，一个是 RLVR 毁弃权；两者都是"标准能力指标不动/涨，弃权能力掉"。
+- 点235 ↔ 点221（MERIT Ignore Rate 0.45-0.53）：【延续】都是 reward 设计把"该闭嘴"磨掉；MERIT 是 agent 正确召回却不用，这里是模型该弃权却 commit。
+- 点235 ↔ 点229（CSA AgentDojo 81%）：【补充】红队专家成功率高，部分因为 RLVR 训练出的 agent 在该说不知道时硬答。

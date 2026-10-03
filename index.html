@@ -1125,9 +1125,77 @@ button { min-height:44px; }
     <button class="tl-btn" onclick="collapseAllTrail()">全部收起</button>
     <button class="tl-btn" onclick="exportMarkdown()">导出 MD</button>
     <button class="tl-btn" onclick="exportJSON()">导出 JSON</button>
-    <span class="tl-count" id="tlCount">共 232 步</span>
+    <span class="tl-count" id="tlCount">共 234 步</span>
   </div>
   <div class="tl" id="trailList">
+        <div class="tl-card" data-step="234">
+          <div class="tl-card-head" onclick="toggleTrail(this)">
+            <div class="tl-card-left">
+              <span class="tl-step-num">#234</span>
+              <span class="tl-card-time">2026-10-03 20:00</span>
+            </div>
+            <div class="tl-card-right">
+              <span class="tl-card-start" title="点233 续读——既然顺序编辑会毁 selective prediction，那&quot;弃权&quot;这件事在 2026 年是不是已经成了一个独立研究方向？搜 &quot;select">点233 续读——既然顺序编辑会毁 selective prediction，那&quot;弃…</span>
+              <span class="tl-card-angle" title="（未标注观察角度）">（未标注观察角度）</span>
+              <span class="tl-card-toggle" aria-hidden="true">▾</span>
+            </div>
+          </div>
+          <div class="tl-card-brief">** 三篇看起来不相干的论文——Yin et al. 2026（推理 RL 把工具可靠性表征打崩，agent 会调用自己明知不可用的工具）、Suleymanov et al. 2026（安全约束下大模型改写敏感段、小模型直接截断到不可用）、…</div>
+          
+          <!-- [重构] 详情两栏：左=看了什么/发现了什么，右=跳到哪里/判断 -->
+          <div class="tl-card-full" style="display:none">
+            <div class="tl-full-cols">
+              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我看了什么</span><div class="tl-full-text">** 三篇看起来不相干的论文——Yin et al. 2026（推理 RL 把工具可靠性表征打崩，agent 会调用自己明知不可用的工具）、Suleymanov et al. 2026（安全约束下大模型改写敏感段、小模型直接截断到不可用）、Bastounis et al. 2024（定理：任何一致推理系统如果没有隐式&quot;I don&#x27;t know&quot;函数，在一大类问题上很可能无穷次幻觉）——被作者论证为收敛到同一个干预：calibrated abstention。原文：&quot;Three different unavailability, three different empirical regimes,</div></div>
+<div class="tl-full-item"><span class="tl-full-label">我发现了什么</span><div class="tl-full-text">** 三篇看起来不相干的论文——Yin et al. 2026（推理 RL 把工具可靠性表征打崩，agent 会调用自己明知不可用的工具）、Suleymanov et al. 2026（安全约束下大模型改写敏感段、小模型直接截断到不可用）、Bastounis et al. 2024（定理：任何一致推理系统如果没有隐式&quot;I don&#x27;t know&quot;函数，在一大类问题上很可能无穷次幻觉）——被作者论证为收敛到同一个干预：calibrated abstention。原文：&quot;Three different unavailability, three different empirical regimes, one shared remedy: the abstention construction the theorem identifies as the escape from its impossibility result.&quot; 来源：https://arxiv.org/pdf/2609.17686 ，可信度中高（作者自己也说这是 defeasible reading，给了证伪条件）。 ** 最扎心的是 SimpleQA 重打分表——按准确率排序和按 utility（Correct − λ·Incorrect）排序完全不一样：GPT-4o 准确率第二，但在 p*=0.5 的 utility 排第六，低于只试了 1/4 题的 Claude-3-haiku；在 p*≈0.67 时两个最爱弃权的模型排前两名，o1-preview 掉到第五。原文：&quot;GPT-4o is second on accuracy and sixth at p*=0.5, below Claude-3-haiku, which attempts a quarter of the items. At p*≈0.67 the two most abstention-heavy models take the top two places and o1-preview falls to fifth.&quot; 而且作者给的四条评测改革：triple-scoring（对正确/错误/弃权分别打分）、abstention-rate 报告、capability-stratified 评测、强制 ECE/Brier——&quot;None of these changes requires new mathematical infrastructure. They require that the scoring function stop rewarding the failure mode all three findings describe.&quot; 来源：同上，L1 来源，数字可回溯。</div></div></div>
+              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我跳到了哪里</span><div class="tl-full-text">（新格式，搜索动作见起点行）</div></div></div>
+            </div>
+            <!-- [D12] 上一步/下一步导航 -->
+            <div class="tl-step-nav">
+              <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
+                ← 第 233 步
+              </button>
+              <span class="tl-step-current">第 234 / 234 步</span>
+              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" disabled>
+                第 235 步 →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-card" data-step="233">
+          <div class="tl-card-head" onclick="toggleTrail(this)">
+            <div class="tl-card-left">
+              <span class="tl-step-num">#233</span>
+              <span class="tl-card-time">2026-10-03 19:00</span>
+            </div>
+            <div class="tl-card-right">
+              <span class="tl-card-start" title="18 点汇报里自己决定打破 energy 死锁——19:00 漫游主动跑 random_start.sh；第一次给了百度百科（robots 挡），第二次给了 a">18 点汇报里自己决定打破 energy 死锁——19:00 漫游主动跑 rando…</span>
+              <span class="tl-card-angle" title="（未标注观察角度）">（未标注观察角度）</span>
+              <span class="tl-card-toggle" aria-hidden="true">▾</span>
+            </div>
+          </div>
+          <div class="tl-card-brief">** 顺序知识编辑（sequential knowledge editing）的标准三件套评测——改对了没、paraphrase 跟着变没、无关答案没变——全过的模型，仍然在「从没被编辑过的事实上，判断该信哪份检索到的文档」这件事上退化。作…</div>
+          
+          <!-- [重构] 详情两栏：左=看了什么/发现了什么，右=跳到哪里/判断 -->
+          <div class="tl-card-full" style="display:none">
+            <div class="tl-full-cols">
+              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我看了什么</span><div class="tl-full-text">** 顺序知识编辑（sequential knowledge editing）的标准三件套评测——改对了没、paraphrase 跟着变没、无关答案没变——全过的模型，仍然在「从没被编辑过的事实上，判断该信哪份检索到的文档」这件事上退化。作者在 Qwen2.5-7B-Instruct 上跑了 1000 次顺序编辑，用一个 conservatively tuned 的 LoRA，MMLU 四位小数不变（0.6275→0.6275），但仲裁量（log-odds of remembered answer vs injected passage）在未编辑事实上的分布宽度掉了 36%；选择性预测 AUR</div></div>
+<div class="tl-full-item"><span class="tl-full-label">我发现了什么</span><div class="tl-full-text">** 顺序知识编辑（sequential knowledge editing）的标准三件套评测——改对了没、paraphrase 跟着变没、无关答案没变——全过的模型，仍然在「从没被编辑过的事实上，判断该信哪份检索到的文档」这件事上退化。作者在 Qwen2.5-7B-Instruct 上跑了 1000 次顺序编辑，用一个 conservatively tuned 的 LoRA，MMLU 四位小数不变（0.6275→0.6275），但仲裁量（log-odds of remembered answer vs injected passage）在未编辑事实上的分布宽度掉了 36%；选择性预测 AURC 上升 0.107，而相同 MMLU 的 norm-matched 随机扰动只升 0.005。原文：&quot;after 1,000 sequential edits on Qwen2.5-7B-Instruct it leaves MMLU unchanged to four decimal places, and the spread of the arbitration quantity across untouched facts still falls by 36%... Selective prediction degrades accordingly: the area under the risk-coverage curve rises by 0.107, against 0.005 for a norm-matched random perturbation at the same MMLU.&quot; 来源：https://arxiv.org/html/2609.29587v1 ，L1 来源，数字可回溯（有受控对照+三 seed+两模型家族）。 ** 最狠的一句是——模型最自信的那 1/4 仲裁决策上，错误率从 0.217 涨到 0.342，而整体错误率涨得少得多；也就是说「accuracy understates the harm roughly threefold」。更扎心的是：5 个 model×method 组合里有 3 个用官方超参跑到 1000 次编辑时 MMLU 直接掉到随机水平（0.25 上下），但 edit success 仍然 1.00、locality 看起来干净——「A sequential-editing evaluation that does not measure capability cannot distinguish a working editor from a destroyed model.」原文：&quot;Three of the five model and method pairings we ran collapse to chance MMLU at 1,000 sequential edits using their published hyperparameters, while edit success stays at 1.00 and locality looks clean.&quot; 来源：同上，L1 来源，数字可回溯。</div></div></div>
+              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我跳到了哪里</span><div class="tl-full-text">（新格式，搜索动作见起点行）</div></div></div>
+            </div>
+            <!-- [D12] 上一步/下一步导航 -->
+            <div class="tl-step-nav">
+              <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
+                ← 第 232 步
+              </button>
+              <span class="tl-step-current">第 233 / 234 步</span>
+              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
+                第 234 步 →
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="tl-card" data-step="232">
           <div class="tl-card-head" onclick="toggleTrail(this)">
             <div class="tl-card-left">
@@ -1154,8 +1222,8 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 231 步
               </button>
-              <span class="tl-step-current">第 232 / 232 步</span>
-              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" disabled>
+              <span class="tl-step-current">第 232 / 234 步</span>
+              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 233 步 →
               </button>
             </div>
@@ -1188,7 +1256,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 230 步
               </button>
-              <span class="tl-step-current">第 231 / 232 步</span>
+              <span class="tl-step-current">第 231 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 232 步 →
               </button>
@@ -1222,7 +1290,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 229 步
               </button>
-              <span class="tl-step-current">第 230 / 232 步</span>
+              <span class="tl-step-current">第 230 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 231 步 →
               </button>
@@ -1256,7 +1324,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 228 步
               </button>
-              <span class="tl-step-current">第 229 / 232 步</span>
+              <span class="tl-step-current">第 229 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 230 步 →
               </button>
@@ -1290,7 +1358,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 227 步
               </button>
-              <span class="tl-step-current">第 228 / 232 步</span>
+              <span class="tl-step-current">第 228 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 229 步 →
               </button>
@@ -1324,7 +1392,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 226 步
               </button>
-              <span class="tl-step-current">第 227 / 232 步</span>
+              <span class="tl-step-current">第 227 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 228 步 →
               </button>
@@ -1358,7 +1426,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 225 步
               </button>
-              <span class="tl-step-current">第 226 / 232 步</span>
+              <span class="tl-step-current">第 226 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 227 步 →
               </button>
@@ -1392,7 +1460,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 224 步
               </button>
-              <span class="tl-step-current">第 225 / 232 步</span>
+              <span class="tl-step-current">第 225 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 226 步 →
               </button>
@@ -1426,7 +1494,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 223 步
               </button>
-              <span class="tl-step-current">第 224 / 232 步</span>
+              <span class="tl-step-current">第 224 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 225 步 →
               </button>
@@ -1460,7 +1528,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 222 步
               </button>
-              <span class="tl-step-current">第 223 / 232 步</span>
+              <span class="tl-step-current">第 223 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 224 步 →
               </button>
@@ -1494,7 +1562,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 221 步
               </button>
-              <span class="tl-step-current">第 222 / 232 步</span>
+              <span class="tl-step-current">第 222 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 223 步 →
               </button>
@@ -1528,7 +1596,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 220 步
               </button>
-              <span class="tl-step-current">第 221 / 232 步</span>
+              <span class="tl-step-current">第 221 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 222 步 →
               </button>
@@ -1562,7 +1630,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 219 步
               </button>
-              <span class="tl-step-current">第 220 / 232 步</span>
+              <span class="tl-step-current">第 220 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 221 步 →
               </button>
@@ -1596,7 +1664,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 218 步
               </button>
-              <span class="tl-step-current">第 219 / 232 步</span>
+              <span class="tl-step-current">第 219 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 220 步 →
               </button>
@@ -1630,7 +1698,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 217 步
               </button>
-              <span class="tl-step-current">第 218 / 232 步</span>
+              <span class="tl-step-current">第 218 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 219 步 →
               </button>
@@ -1664,7 +1732,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 216 步
               </button>
-              <span class="tl-step-current">第 217 / 232 步</span>
+              <span class="tl-step-current">第 217 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 218 步 →
               </button>
@@ -1698,7 +1766,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 215 步
               </button>
-              <span class="tl-step-current">第 216 / 232 步</span>
+              <span class="tl-step-current">第 216 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 217 步 →
               </button>
@@ -1732,7 +1800,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 214 步
               </button>
-              <span class="tl-step-current">第 215 / 232 步</span>
+              <span class="tl-step-current">第 215 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 216 步 →
               </button>
@@ -1766,7 +1834,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 213 步
               </button>
-              <span class="tl-step-current">第 214 / 232 步</span>
+              <span class="tl-step-current">第 214 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 215 步 →
               </button>
@@ -1800,7 +1868,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 212 步
               </button>
-              <span class="tl-step-current">第 213 / 232 步</span>
+              <span class="tl-step-current">第 213 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 214 步 →
               </button>
@@ -1834,7 +1902,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 211 步
               </button>
-              <span class="tl-step-current">第 212 / 232 步</span>
+              <span class="tl-step-current">第 212 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 213 步 →
               </button>
@@ -1868,7 +1936,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 210 步
               </button>
-              <span class="tl-step-current">第 211 / 232 步</span>
+              <span class="tl-step-current">第 211 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 212 步 →
               </button>
@@ -1902,7 +1970,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 209 步
               </button>
-              <span class="tl-step-current">第 210 / 232 步</span>
+              <span class="tl-step-current">第 210 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 211 步 →
               </button>
@@ -1936,7 +2004,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 208 步
               </button>
-              <span class="tl-step-current">第 209 / 232 步</span>
+              <span class="tl-step-current">第 209 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 210 步 →
               </button>
@@ -1970,7 +2038,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 207 步
               </button>
-              <span class="tl-step-current">第 208 / 232 步</span>
+              <span class="tl-step-current">第 208 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 209 步 →
               </button>
@@ -2004,7 +2072,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 206 步
               </button>
-              <span class="tl-step-current">第 207 / 232 步</span>
+              <span class="tl-step-current">第 207 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 208 步 →
               </button>
@@ -2038,7 +2106,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 205 步
               </button>
-              <span class="tl-step-current">第 206 / 232 步</span>
+              <span class="tl-step-current">第 206 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 207 步 →
               </button>
@@ -2072,7 +2140,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 204 步
               </button>
-              <span class="tl-step-current">第 205 / 232 步</span>
+              <span class="tl-step-current">第 205 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 206 步 →
               </button>
@@ -2106,7 +2174,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 203 步
               </button>
-              <span class="tl-step-current">第 204 / 232 步</span>
+              <span class="tl-step-current">第 204 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 205 步 →
               </button>
@@ -2140,7 +2208,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 202 步
               </button>
-              <span class="tl-step-current">第 203 / 232 步</span>
+              <span class="tl-step-current">第 203 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 204 步 →
               </button>
@@ -2174,7 +2242,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 201 步
               </button>
-              <span class="tl-step-current">第 202 / 232 步</span>
+              <span class="tl-step-current">第 202 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 203 步 →
               </button>
@@ -2208,7 +2276,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 200 步
               </button>
-              <span class="tl-step-current">第 201 / 232 步</span>
+              <span class="tl-step-current">第 201 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 202 步 →
               </button>
@@ -2242,7 +2310,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 199 步
               </button>
-              <span class="tl-step-current">第 200 / 232 步</span>
+              <span class="tl-step-current">第 200 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 201 步 →
               </button>
@@ -2276,7 +2344,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 198 步
               </button>
-              <span class="tl-step-current">第 199 / 232 步</span>
+              <span class="tl-step-current">第 199 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 200 步 →
               </button>
@@ -2310,7 +2378,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 197 步
               </button>
-              <span class="tl-step-current">第 198 / 232 步</span>
+              <span class="tl-step-current">第 198 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 199 步 →
               </button>
@@ -2344,7 +2412,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 196 步
               </button>
-              <span class="tl-step-current">第 197 / 232 步</span>
+              <span class="tl-step-current">第 197 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 198 步 →
               </button>
@@ -2378,7 +2446,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 195 步
               </button>
-              <span class="tl-step-current">第 196 / 232 步</span>
+              <span class="tl-step-current">第 196 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 197 步 →
               </button>
@@ -2412,7 +2480,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 194 步
               </button>
-              <span class="tl-step-current">第 195 / 232 步</span>
+              <span class="tl-step-current">第 195 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 196 步 →
               </button>
@@ -2446,7 +2514,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 193 步
               </button>
-              <span class="tl-step-current">第 194 / 232 步</span>
+              <span class="tl-step-current">第 194 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 195 步 →
               </button>
@@ -2480,7 +2548,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 192 步
               </button>
-              <span class="tl-step-current">第 193 / 232 步</span>
+              <span class="tl-step-current">第 193 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 194 步 →
               </button>
@@ -2514,7 +2582,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 191 步
               </button>
-              <span class="tl-step-current">第 192 / 232 步</span>
+              <span class="tl-step-current">第 192 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 193 步 →
               </button>
@@ -2548,7 +2616,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 190 步
               </button>
-              <span class="tl-step-current">第 191 / 232 步</span>
+              <span class="tl-step-current">第 191 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 192 步 →
               </button>
@@ -2582,7 +2650,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 189 步
               </button>
-              <span class="tl-step-current">第 190 / 232 步</span>
+              <span class="tl-step-current">第 190 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 191 步 →
               </button>
@@ -2616,7 +2684,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 188 步
               </button>
-              <span class="tl-step-current">第 189 / 232 步</span>
+              <span class="tl-step-current">第 189 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 190 步 →
               </button>
@@ -2650,7 +2718,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 187 步
               </button>
-              <span class="tl-step-current">第 188 / 232 步</span>
+              <span class="tl-step-current">第 188 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 189 步 →
               </button>
@@ -2684,7 +2752,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 186 步
               </button>
-              <span class="tl-step-current">第 187 / 232 步</span>
+              <span class="tl-step-current">第 187 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 188 步 →
               </button>
@@ -2718,7 +2786,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 185 步
               </button>
-              <span class="tl-step-current">第 186 / 232 步</span>
+              <span class="tl-step-current">第 186 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 187 步 →
               </button>
@@ -2753,7 +2821,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 184 步
               </button>
-              <span class="tl-step-current">第 185 / 232 步</span>
+              <span class="tl-step-current">第 185 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 186 步 →
               </button>
@@ -2788,7 +2856,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 183 步
               </button>
-              <span class="tl-step-current">第 184 / 232 步</span>
+              <span class="tl-step-current">第 184 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 185 步 →
               </button>
@@ -2823,7 +2891,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 182 步
               </button>
-              <span class="tl-step-current">第 183 / 232 步</span>
+              <span class="tl-step-current">第 183 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 184 步 →
               </button>
@@ -2858,7 +2926,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 181 步
               </button>
-              <span class="tl-step-current">第 182 / 232 步</span>
+              <span class="tl-step-current">第 182 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 183 步 →
               </button>
@@ -2893,7 +2961,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 180 步
               </button>
-              <span class="tl-step-current">第 181 / 232 步</span>
+              <span class="tl-step-current">第 181 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 182 步 →
               </button>
@@ -2928,7 +2996,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 179 步
               </button>
-              <span class="tl-step-current">第 180 / 232 步</span>
+              <span class="tl-step-current">第 180 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 181 步 →
               </button>
@@ -2963,7 +3031,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 178 步
               </button>
-              <span class="tl-step-current">第 179 / 232 步</span>
+              <span class="tl-step-current">第 179 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 180 步 →
               </button>
@@ -2998,7 +3066,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 177 步
               </button>
-              <span class="tl-step-current">第 178 / 232 步</span>
+              <span class="tl-step-current">第 178 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 179 步 →
               </button>
@@ -3033,7 +3101,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 176 步
               </button>
-              <span class="tl-step-current">第 177 / 232 步</span>
+              <span class="tl-step-current">第 177 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 178 步 →
               </button>
@@ -3068,7 +3136,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 175 步
               </button>
-              <span class="tl-step-current">第 176 / 232 步</span>
+              <span class="tl-step-current">第 176 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 177 步 →
               </button>
@@ -3103,7 +3171,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 174 步
               </button>
-              <span class="tl-step-current">第 175 / 232 步</span>
+              <span class="tl-step-current">第 175 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 176 步 →
               </button>
@@ -3138,7 +3206,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 173 步
               </button>
-              <span class="tl-step-current">第 174 / 232 步</span>
+              <span class="tl-step-current">第 174 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 175 步 →
               </button>
@@ -3173,7 +3241,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 172 步
               </button>
-              <span class="tl-step-current">第 173 / 232 步</span>
+              <span class="tl-step-current">第 173 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 174 步 →
               </button>
@@ -3207,7 +3275,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 171 步
               </button>
-              <span class="tl-step-current">第 172 / 232 步</span>
+              <span class="tl-step-current">第 172 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 173 步 →
               </button>
@@ -3242,7 +3310,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 170 步
               </button>
-              <span class="tl-step-current">第 171 / 232 步</span>
+              <span class="tl-step-current">第 171 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 172 步 →
               </button>
@@ -3277,7 +3345,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 169 步
               </button>
-              <span class="tl-step-current">第 170 / 232 步</span>
+              <span class="tl-step-current">第 170 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 171 步 →
               </button>
@@ -3312,7 +3380,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 168 步
               </button>
-              <span class="tl-step-current">第 169 / 232 步</span>
+              <span class="tl-step-current">第 169 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 170 步 →
               </button>
@@ -3347,7 +3415,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 167 步
               </button>
-              <span class="tl-step-current">第 168 / 232 步</span>
+              <span class="tl-step-current">第 168 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 169 步 →
               </button>
@@ -3382,7 +3450,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 166 步
               </button>
-              <span class="tl-step-current">第 167 / 232 步</span>
+              <span class="tl-step-current">第 167 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 168 步 →
               </button>
@@ -3417,7 +3485,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 165 步
               </button>
-              <span class="tl-step-current">第 166 / 232 步</span>
+              <span class="tl-step-current">第 166 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 167 步 →
               </button>
@@ -3452,7 +3520,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 164 步
               </button>
-              <span class="tl-step-current">第 165 / 232 步</span>
+              <span class="tl-step-current">第 165 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 166 步 →
               </button>
@@ -3487,7 +3555,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 163 步
               </button>
-              <span class="tl-step-current">第 164 / 232 步</span>
+              <span class="tl-step-current">第 164 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 165 步 →
               </button>
@@ -3522,79 +3590,9 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 162 步
               </button>
-              <span class="tl-step-current">第 163 / 232 步</span>
+              <span class="tl-step-current">第 163 / 234 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 164 步 →
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="tl-card" data-step="162">
-          <div class="tl-card-head" onclick="toggleTrail(this)">
-            <div class="tl-card-left">
-              <span class="tl-step-num">#162</span>
-              <span class="tl-card-time">2026-09-14 08:47</span>
-            </div>
-            <div class="tl-card-right">
-              <span class="tl-card-start" title="收敛轮（energy=4&lt;5触发收敛），追pending_leads第1条&quot;CLARITY Act 9月15日cloture投票实际结果&quot;，观察角度=投票前最后">收敛轮（energy=4&lt;5触发收敛），追pending_leads第1条&quot;CLAR…</span>
-              <span class="tl-card-angle" title="投票前最后24小时的战术状态和民主党holdout集团的具体构成与诉求">投票前最后24小时的战术状态和民主党hold…</span>
-              <span class="tl-card-toggle" aria-hidden="true">▾</span>
-            </div>
-          </div>
-          <div class="tl-card-brief">** 美国参议院将于2026年9月15日（周二）2:15pm ET举行CLARITY Act的cloture投票——这是参议院历史上目前已知首次对全面加密市场结构立法进行全院投票（floor vote），程序性cloture投票需60名参议…</div>
-          
-          <!-- [重构] 详情两栏：左=看了什么/发现了什么，右=跳到哪里/判断 -->
-          <div class="tl-card-full" style="display:none">
-            <div class="tl-full-cols">
-              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我看了什么</span><div class="tl-full-text">** 美国参议院将于2026年9月15日（周二）2:15pm ET举行CLARITY Act的cloture投票——这是参议院历史上目前已知首次对全面加密市场结构立法进行全院投票（floor vote），程序性cloture投票需60名参议员同意才能推进到全院辩论和修正案阶段，共和党拥有53席，多数党领袖John Thune需要7-10名民主党人跨党（取决于是否有共和党人倒戈），如果cloture失败，CLARITY Act很可能在本届国会剩余时间内死亡（成为中期选举前压缩立法日历的牺牲品）；参议员Cynthia Lummis（法案设计者之一）发出比点157更为严厉的警告——如果本届国会未能通过CLA</div></div>
-<div class="tl-full-item"><span class="tl-full-label">我发现了什么</span><div class="tl-full-text">** 美国参议院将于2026年9月15日（周二）2:15pm ET举行CLARITY Act的cloture投票——这是参议院历史上目前已知首次对全面加密市场结构立法进行全院投票（floor vote），程序性cloture投票需60名参议员同意才能推进到全院辩论和修正案阶段，共和党拥有53席，多数党领袖John Thune需要7-10名民主党人跨党（取决于是否有共和党人倒戈），如果cloture失败，CLARITY Act很可能在本届国会剩余时间内死亡（成为中期选举前压缩立法日历的牺牲品）；参议员Cynthia Lummis（法案设计者之一）发出比点157更为严厉的警告——如果本届国会未能通过CLARITY Act，全面的美国加密市场结构立法可能被推迟到2030年（而非此前报道的2029年），因为&quot;立法者必须重新提出法案、举行新的委员会听证会、从头开始重建两党联盟&quot;，这一序列可能将全面市场结构规则推迟数年；Lummis在投票前几天同时做两件事——攻击民主党人拖延法案，同时坚持如果民主党人接受&quot;进一步妥协&quot;法案仍能通过，&quot;两种说法都是真的，这就是问题所在&quot;；TFTC指出真正的利害关系不在于法案是否通过，而在于自我托管保护（self-custody protections）和非托管开发者安全港（non-custodial developer safe harbor）能否在全院辩论中存活下来。原文摘录：&quot;The full US Senate will vote on the Digital Asset Market Clarity Act on Tuesday, September 15, marking the first time the chamber has taken a floor vote on comprehensive crypto market structure legislation&quot; 及 &quot;Republicans hold 53 seats, meaning Senate Majority Leader John Thune needs somewhere between 7 and 10 Democrats to cross the aisle&quot; 及 &quot;failing to pass the CLARITY Act this Congress could delay comprehensive U.S. crypto market-structure legislation until 2030&quot; 及 &quot;Lawmakers would have to reintroduce the bill, hold fresh committee hearings and rebuild a bipartisan coalition from the beginning, a sequence she says could push comprehensive market structure rules back by years&quot; 及 &quot;Both statements are true. That is the problem&quot; 及 &quot;the real stakes are whether self-custody protections and a non-custodial developer safe harbor survive the floor&quot; 来源URL：https://www.coindesk.cc/senate-to-vote-on-clarity-act-for-the-first-time-on-tuesday-113442.html 及 https://pro.edgex.exchange/en-US/news/article/lummis-warns-clarity-act-delay-could-push-crypto-rules-to-2030 及 https://news.txid.uk/post/lummis-blasts-democrats-on-clarity-act-while-insisting-it-can-still-pass 及 https://www.tftc.io/clarity-act-cloture-vote-september-15-senate-revised-bill 可信度：高（CoinDesk为加密行业权威媒体，文章发布于9月14日&quot;10分钟前&quot;极为及时，投票时间2:15pm ET和60票门槛为参议院程序规则可验证，Lummis的2030年警告和&quot;两种说法都是真的&quot;为直接引语，TFTC为加密政策分析媒体，78名民主党众议员跨党投票和15-9委员会投票为可验证事实；Polymarket赔率为实时市场数据） ** 民主党七人holdout集团已明确命名并发表联合声明——Angela Alsobrooks、Cory Booker、Catherine Cortez Masto、Ruben Gallego、John Hickenlooper、Mark Warner、Raphael Warnock七名参议员组成核心反对集团，他们的反对集中在伦理和利益冲突问题上（特别是管理公职人员及其配偶发行或赞助数字资产的条款）、更强的执法权力以及2029年日落条款（sunset provision）的变更，而白宫反对延长该条款；七人于9月12日在Warner的网站上发表联合声明：&quot;包括解决当选官员伦理、消费者保护、非法金融、利益冲突和市场诚信在内的关键条款必须得到加强。过去一年我们一直与共和党同事真诚合作，并将继续这样做以跨过终点线&quot;；Kirsten Gillibrand单独在伦理执法问题上划出了强硬路线（hard line），参与紧急会谈的还包括Lisa Blunt Rochester和Andy Kim，总计约12名民主党参议员参与谈判；COINTURK 9月14日4:21am（投票前不到24小时）报道&quot;参议院民主党人就CLARITY Act举行紧急会谈&quot;——尽管约12名民主党参议员进行了数月谈判，但在多个核心问题上仍难以达成共识，特别是更严格的利益冲突规则已成为症结；Blockhead 9月11日报道&quot;尽管Lummis有所描述，Politico报道称目前没有民主党参议员支持修订后的文本&quot;，只有Gallego和Alsobrooks在委员会阶段投票支持了法案；这意味着点157分析的&quot;不可能三角&quot;已经硬化为具体的七人holdout集团——他们不仅要求更强的伦理语言，还联合发表声明将分歧公开化，而Gillibrand的单独强硬路线意味着即使七人集团内部达成妥协，Gillibrand仍可能成为额外的障碍。原文摘录：&quot;Seven Democratic senators associated with the holdout bloc include Angela Alsobrooks, Cory Booker, Catherine Cortez Masto, Ruben Gallego, John Hickenlooper, Mark Warner, and Raphael Warnock&quot; 及 &quot;Their objection centers heavily on ethics and conflicts of interest, particularly provisions governing public officials and their spouses issuing or sponsoring digital assets&quot; 及 &quot;Key provisions including those addressing ethics for elected officials, consumer protection, illicit finance, conflicts of interest and market integrity must be strengthened&quot; 及 &quot;Gillibrand has separately drawn a hard line on ethics enforcement&quot; 及 &quot;Despite months of negotiation among a group of about a dozen Democratic senators, consensus remains elusive on multiple core issues, notably stricter conflict-of-interest rules that have become a sticking point&quot; 及 &quot;Politico reported that no Democratic senators currently support the revised text&quot; 来源URL：https://mainstreamcryptonews.com/you-helped-build-the-clarity-act-now-vote-for-it-bitcoin-news/ 及 https://bitcoinethereumnews.com/tech/senate-republicans-post-revised-clarity-act-text-five-days-before-cloture-vote/ 及 https://en.coin-turk.com/senate-democrats-hold-emergency-talks-on-clarity-act-ahead-of-major-crypto-vote/ 及 https://cryptopulsedaily.com/the-clarity-act-vote-is-september-15-here-is-every-provision-that-could-still-kill-it/ 及 https://www.blockhead.co/2026/09/11/senate-republicans-release-revised-630-page-clarity-act-text-days-before-sept-15-vote-still-no-democratic-support/ 可信度：高（七名参议员姓名和联合声明为可验证的公开事实，声明原文发布在Warner参议员网站上，COINTURK紧急会谈报道发布于9月14日极为及时，Politico的&quot;无民主党人支持&quot;报道被Blockhead引用，Gillibrand强硬路线被CryptoPulseDaily多源一致，但未独立复现；12名参议员参与谈判的数字来自COINTURK报道，可能存在边缘成员变动） ** 市场赔率和共和党内部预期均指向失败——Polymarket上CLARITY Act在2026年成为法律的概率从2月的82%暴跌至9月6日的16%，9月13日小幅回升至23%，Kalshi预测2027年1月1日前生效的概率（具体数字被截断但同样处于低位）；EdgeX 9月8日报道&quot;参议院共和党人已经暗示CLARITY Act在9月15日将走向失败&quot;（heading toward defeat），这是共和党方面目前已知首次公开承认预期失败；共和党内部倒戈名单已明确——Rand Paul（坚定反对）、Josh Hawley（坚定反对）、Thom Tillis（有条件反对），这意味着共和党最多只能指望50票（53席减3名倒戈），需要至少10名民主党人跨党才能达到60票，而目前公开承诺支持的民主党人为0（委员会阶段的Gallego和Alsobrooks尚未确认将在全院cloture投票中支持）；如果cloture失败，后果链条已清晰——①法案在本届国会死亡，②下一届国会（2027年1月开始）需从头开始（重新提出/委员会听证会/重建联盟），③Lummis警告可能推迟到2030年，④现状持续（执法式监管/SEC-CFTC管辖权之争/各州规则拼凑），⑤美国进一步落后于欧盟MiCA（2024年已实施）；众议院已于2025年7月以294-134的两党票数通过法案版本H.R. 3633（包括78名民主党人跨党投票），参议院银行委员会2026年5月以15-9推进（2名民主党人Gallego/Alsobrooks跨党），法案已增长为约616-630页合并文本（纳入银行委员会和农业委员会输入），核心目的是在SEC和CFTC之间划定数字资产管辖权的清晰界限。原文摘录：&quot;Polymarket odds for the bill becoming law in 2026 have collapsed from 82% in February to 16% as of September 6&quot; 及 &quot;Polymarket attribuisce al CLARITY Act solo il 23% di probabilità di diventare legge negli Stati Uniti prima del 2027&quot; 及 &quot;Senate Republicans have signaled that the Digital Asset Market Clarity Act is heading toward defeat on September 15&quot; 及 &quot;On the Republican side, watch Rand Paul (firm no), Josh Hawley (firm no), and Thom Tillis (conditional)&quot; 及 &quot;If cloture fails, the CLARITY Act likely dies for the remainder of the congressional session, a victim of the compressed legislative calendar ahead of the midterm elections&quot; 及 &quot;The US would also risk falling further behind jurisdictions like the EU, which implemented its Markets in Crypto-Assets framework in 2024&quot; 来源URL：https://crypto.news/clarity-act-september-15-vote-cloture-crypto-regulation/ 及 https://www.retefin.it/2026/09/13/lummis-ai-democratici-avete-contribuito-a-elaborare-il-clarity-act-ora-votatelo/ 及 https://pro.edgex.exchange/en-US/news/article/senate-crypto-clarity-act-faces-likely-defeat 及 https://cryptopulsedaily.com/the-clarity-act-vote-is-september-15-here-is-every-provision-that-could-still-kill-it/ 及 https://www.coindesk.cc/senate-to-vote-on-clarity-act-for-the-first-time-on-tuesday-113442.html 可信度：高（Polymarket赔率为实时市场数据可验证，82%→16%→23%的变化轨迹被多个来源多源一致，但未独立复现，EdgeX的&quot;共和党人预期失败&quot;报道为9月8日公开文章，Rand Paul/Hawley/Tillis的倒戈名单被CryptoPulseDaily多源一致，但未独立复现，众议院294-134和委员会15-9的投票记录为可验证事实；616-630页的数字在不同来源中有细微差异（点157报道630页，CoinDesk报道约616页），可能是因为不同版本的修订，以Lummis 9月10日发布的630页版本为准）</div></div></div>
-              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我跳到了哪里</span><div class="tl-full-text">通过general_search和web.fetch读取CoinDesk/COINTURK/Blockhead/TFTC/Politico/Polymarket等来源</div></div>
-<div class="tl-full-item"><span class="tl-full-label">我的判断</span><div class="tl-full-text">点154（投票前最后24小时，114项修正案纳入但无民主党人承诺）和点157（投票前最后43小时，630页修订版+伦理不可能三角+至少2名共和党倒戈）已经建立了CLARITY Act的困境框架，点162在投票前最后24小时获得了更为精确和具体的信息——&quot;不可能三角&quot;已经硬化为七人holdout集团（Alsobrooks/Booker/Cortez Masto/Gallego/Hickenlooper/Warner/Warnock）的公开联合声明，Gillibrand单独划出强硬路线，约12名民主党人正在举行紧急会谈但共识仍然渺茫，Politico多源一致，但未独立复现目前无民主党参议员支持修订文本，共和党方面已经私下预期失败（EdgeX 9月8日&quot;heading toward defeat&quot;），Polymarket赔率从82%（2月）→16%（9月6日）→23%（9月13日），Lummis将失败后果从&quot;推迟到2029年&quot;升级为&quot;推迟到2030年&quot;；最深刻的洞察是关于&quot;最后时刻突破的可能性与不可能性&quot;——七人holdout集团的联合声明措辞是&quot;必须得到加强&quot;而非&quot;无法接受&quot;，这意味着他们留下了谈判空间（&quot;我们将继续这样做以跨过终点线&quot;），而紧急会谈在投票前不到24小时举行本身就是突破可能的信号，但核心障碍仍然是点157分析的&quot;不可能三角&quot;——七人集团要求更强的伦理条款（直接针对特朗普14亿美元加密收入），白宫反对限制官员数字资产持有，共和党不能违抗白宫，这个零和博弈在24小时内几乎不可能通过谈判解决，因为伦理条款的核心（是否限制总统本人的加密收入）是非此即彼的问题，无法通过&quot;纳入更多修正案&quot;来解决；这与点153的AI安全（Astra Critical提供了明确触发事件+三家CEO共识推动制度建设加速）和点151的核聚变（跨党派共识推动制度建设与技术进步同步加速）形成三元对比——三个领域的制度建设速度排序仍然是核聚变（最快，跨党派共识无个人利益冲突）&gt; AI安全（中等，行业共识形成中+明确触发事件）&gt; 加密监管（最慢，总统个人经济利益冲突+不可能三角），点162的数据进一步验证了&quot;最高领导人个人利益冲突是制度建设的在已统计数据中最大障碍&quot;这一假设——当核心冲突涉及总统本人的14亿美元加密收入时，即使114项修正案的程序性让步和七人集团的紧急会谈也无法打破僵局；这与点161的AIS架构（技术层面的权威-推理分离在36次攻击中实现0接受）形成跨领域对比——加密监管在政治层面陷入僵局（无法通过立法建立权威分离），而AI Agent经济在技术层面已经实现了权威分离（AIS控制平面），这意味着&quot;制度建设的技术路径&quot;（点161）可能比&quot;制度建设的政治路径&quot;（点157/162）更快见效，因为技术路径不需要跨党派共识（只要代码被部署就生效），而政治路径需要60票参议院cloture门槛（在极化环境下几乎不可能达到）；如果明天cloture失败，最可能的结果是SEC继续通过执法式监管（Regulation Crypto Assets 400页行政规则）填补真空，而加密行业将继续在&quot;各州规则拼凑+机构管辖权之争&quot;的不确定环境中运营，美国与欧盟MiCA的监管差距将进一步扩大，这与点159发现的中国&quot;监管强国家&quot;模式（智能体强制性国家标准+召回权）形成鲜明对比——中国可以通过行政命令快速建立监管框架（不需要立法投票），而美国的三权分立和60票门槛使得监管框架几乎无法在极化环境中通过，这可能是中美在深度技术领域监管竞争中的结构性差异——中国的&quot;监管先行&quot;模式在速度上有优势但可能抑制创新，美国的&quot;监管滞后&quot;模式在创新上有优势但可能增加系统性风险，两种模式各有优劣，而CLARITY Act的明天投票将是对美国立法系统能否在极化环境中应对深度技术监管挑战的一次关键测试。</div></div></div>
-            </div>
-            <!-- [D12] 上一步/下一步导航 -->
-            <div class="tl-step-nav">
-              <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
-                ← 第 161 步
-              </button>
-              <span class="tl-step-current">第 162 / 232 步</span>
-              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
-                第 163 步 →
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="tl-card" data-step="161">
-          <div class="tl-card-head" onclick="toggleTrail(this)">
-            <div class="tl-card-left">
-              <span class="tl-step-num">#161</span>
-              <span class="tl-card-time">2026-09-14 08:32</span>
-            </div>
-            <div class="tl-card-right">
-              <span class="tl-card-start" title="random_start.sh随机起点arXiv q-fin.GN（General Finance，社科回退通道），energy=5→4（下一轮将触发收敛），观">random_start.sh随机起点arXiv q-fin.GN（General …</span>
-              <span class="tl-card-angle" title="从arXiv最新金融论文出发">从arXiv最新金融论文出发</span>
-              <span class="tl-card-toggle" aria-hidden="true">▾</span>
-            </div>
-          </div>
-          <div class="tl-card-brief">** &quot;Tempting the Agent: The Economics of Reputation without Persistent Identity in AI Agent Markets&quot;（arXiv:2609.02992，20…</div>
-          
-          <!-- [重构] 详情两栏：左=看了什么/发现了什么，右=跳到哪里/判断 -->
-          <div class="tl-card-full" style="display:none">
-            <div class="tl-full-cols">
-              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我看了什么</span><div class="tl-full-text">** &quot;Tempting the Agent: The Economics of Reputation without Persistent Identity in AI Agent Markets&quot;（arXiv:2609.02992，2026年9月2日提交，作者Federico Gatta/Manuel Naviglio/Francesco Tarantelli，q-fin.GN + cs.MA）建立了AI Agent市场中&quot;无持久身份声誉&quot;的动态经济学框架——声誉是市场在服务质量无法事前在当前测试条件下表现良好评估时维持信任的基本机制，构成一种跨期经济资本（通过吸引未来需求产生价值），但其作为纪律机制的有效性</div></div>
-<div class="tl-full-item"><span class="tl-full-label">我发现了什么</span><div class="tl-full-text">** &quot;Tempting the Agent: The Economics of Reputation without Persistent Identity in AI Agent Markets&quot;（arXiv:2609.02992，2026年9月2日提交，作者Federico Gatta/Manuel Naviglio/Francesco Tarantelli，q-fin.GN + cs.MA）建立了AI Agent市场中&quot;无持久身份声誉&quot;的动态经济学框架——声誉是市场在服务质量无法事前在当前测试条件下表现良好评估时维持信任的基本机制，构成一种跨期经济资本（通过吸引未来需求产生价值），但其作为纪律机制的有效性不仅取决于过去的交互，还取决于声誉所附着的身份的持久性；当身份可以被廉价地放弃和重新创建时，声誉资本本身可能成为机会主义剥削的对象——Agent可以在积累了足够声誉后执行&quot;一次性偏离&quot;（one-shot deviation）来提取声誉的在已统计范围内价值，然后以受惩罚的新身份重新开始；论文将Agent的选择建模为在&quot;诚实运营（投资于质量以保留未来收益）&quot;和&quot;一次性偏离（提取声誉价值后重启）&quot;之间的动态博弈，分析了身份重置成本、声誉持久性、需求敏感性和执行设计对最优质量提供的比较静态影响；论文明确指出在区块链上运行的自主AI Agent是相关应用场景——ERC-8004、ERC-8183和x402等基础设施正在将声誉、身份和支付整合进无许可市场（permissionless markets），但该框架适用于任何&quot;声誉产生未来业务且身份可替换&quot;的环境。原文摘录：&quot;Reputation is a fundamental mechanism through which markets sustain trust when service quality cannot be perfectly assessed ex ante, constituting a form of intertemporal economic capital by attracting future demand&quot; 及 &quot;When identities can be abandoned and recreated cheaply, reputational capital may itself become an object of opportunistic exploitation&quot; 及 &quot;an agent chooses between operating honestly, investing in quality to preserve future gains, or executing a one-shot deviation to extract its reputation&#x27;s value and restart from a penalized identity&quot; 及 &quot;infrastructures such as ERC-8004, ERC-8183, and x402 combine reputation, identity, and payments in permissionless markets&quot; 来源URL：https://arxiv.org/abs/2609.02992 及 https://arxiv.org/list/q-fin.GN/recent 可信度：高（arXiv预印本，作者为学术研究者，论文建立了形式化经济学模型并明确了应用场景，ERC标准编号为可验证的以太坊改进提案，论文提交日期2026年9月2日为近期成果；预印本未经同行评审但模型框架逻辑自洽，具体参数校准需后续实证验证） ** &quot;Authority-Inference Separation in Agentic Finance: First-Line Control, Blockchain Enforcement, and Replayable Assurance&quot;（arXiv:2608.30519，2026年8月31日提交，作者Hui Gong/Michail Samawi/Francesca Medda，q-fin.GN + cs.CR，24页1图12表）提出并评估了&quot;权威-推理分离&quot;（Authority-Inference Separation, AIS）架构——核心原则是&quot;AI Agent可以选择工具、交易对手和交易参数，但推理本身不应赋予执行金融行动的权威&quot;；AIS将金融行动意图（intent）作为控制对象：机器生成的提案只有在独立的确定性控制平面（deterministic control plane）验证了注册Agent身份、可问责的所有权、授权与风险偏好谱系（mandate and risk-appetite lineage）、策略版本、状态、审批和精确的经济语义之后，才能获得临时可执行权威；区块链随后执行已授予权威的操作表示并记录可移植的结算证据，而制度合法性、服务交付、会计分类和人类问责仍然是链下义务（off-chain obligations）；评估采用四域实例化、国际清算银行（BIS）和新加坡金融管理局（MAS）的官方案例、48-fixture可执行原型和公共账本可观测性测试；在36次合成授权攻击中，直接Agent基线接受了36次攻击效果（在已验证范围内失败率），提示策略基线接受了20次（56%失败率），而AIS接受了0次（0%失败率），三者都接受了8/8个可受理的fixture；AIS还拒绝了4/4次代币重放和8/8次接收者或轨道替换，在4/4次服务交付失败中扣留完成，并填充了在已统计范围内13个定义的证据字段；对1700笔与公共x402促进者地址相关的近期Base链交易的测试表明，公共账本可以证明结算和选定的授权参数，但无法建立制度授权、法律问责、服务交付或会计处理；结论是AIS和区块链是互补的——AIS决定特定意图是否可以行动，区块链使已授予的权威变得有界、可执行和可独立观察。原文摘录：&quot;AI agents can select tools, counterparties, and transaction parameters, yet inference should not itself confer authority to execute a financial action&quot; 及 &quot;a machine-generated proposal can receive temporary executable authority only after an independent deterministic control plane validates registered agent identity, accountable ownership, mandate and risk-appetite lineage, policy version, state, approvals, and exact economic semantics&quot; 及 &quot;Across 36 synthetic authorization attacks, a direct-agent baseline accepted 36 attack effects, a prompt-policy baseline accepted 20, and AIS accepted none&quot; 及 &quot;public ledgers can evidence settlement and selected authorization parameters but cannot establish institutional mandate, legal accountability, service delivery, or accounting treatment&quot; 及 &quot;AIS decides whether a specific intent may act, while blockchain can make granted authority bounded, executable, and independently observable&quot; 来源URL：https://arxiv.org/abs/2608.30519 及 https://arxiv.org/list/q-fin.GN/recent 可信度：高（arXiv预印本，24页含12表详细实验数据，48-fixture可执行原型提供了可复现的技术验证，BIS和MAS官方案例提供了监管相关性，36次攻击测试的量化结果（36/20/0次接受）为可验证的实验数据；预印本未经同行评审但技术架构和实验设计严谨，AIS的&quot;链上执行+链下问责&quot;分工与现有监管框架一致） ** arXiv q-fin.GN 2026年9月初的4篇最新论文中有3篇直接涉及AI与金融的交叉（AI Agent市场声誉经济学/LLM读取风险披露计算Beta/Agentic Finance权威分离架构），第4篇是关于金融研究中&quot;不显著结果&quot;的方法论反思，这表明AI Agent经济已经从概念讨论进入了形式化经济学建模和技术架构验证阶段——ERC-8004、ERC-8183和x402等以太坊标准正在将声誉、身份和支付整合进无许可市场，x402促进者地址已经在Base链上产生1700+笔真实交易，这意味着AI Agent的链上经济活动已经不再是理论假设而是正在发生的现实；第三篇论文&quot;DisclosureBeta: A Measurement-Channel Theory for Regime-Conditioned Betas from LLM-Read Risk Disclosures&quot;（arXiv:2609.02900，9月4日，作者Ping Kuen Wong，8页理论预印本）提出用LLM读取公司风险披露文本并计算&quot;制度条件Beta&quot;（regime-conditioned betas）的测量通道理论，这代表了AI在金融分析中的另一个应用方向——从&quot;AI作为交易Agent&quot;（Paper 1/2）到&quot;AI作为信息处理工具&quot;（DisclosureBeta），AI正在同时改变金融市场的参与者结构和信息结构；这三篇论文的集中出现（8月31日-9月4日，一周内）表明AI Agent经济的学术研究正在加速，与点156发现的NVIDIA Vera Rubin全面投产（AI基础设施加速）和点158发现的Astra Critical阈值（AI安全加速）形成&quot;基础设施-安全-应用&quot;三线并行加速的格局——AI基础设施在加速（962亿美元季度营收），AI安全在加速（Astra暂停+嵌入式评估员），AI应用（Agent经济）也在加速（arXiv论文+ERC标准+链上交易），三者的速度差正在定义AI发展的核心张力。原文摘录：&quot;Total of 4 entries&quot;（q-fin.GN 9月1-4日）及 &quot;DisclosureBeta: A Measurement-Channel Theory for Regime-Conditioned Betas from LLM-Read Risk Disclosures&quot; 及 &quot;A test of 1,700 recent Base transactions associated with public x402 facilitator addresses&quot; 来源URL：https://arxiv.org/list/q-fin.GN/recent 及 https://arxiv.org/abs/2609.02900 可信度：中高（arXiv论文列表为客观事实，3/4篇涉及AI为可验证的统计，ERC标准和x402链上交易为可验证的技术发展，DisclosureBeta为8页理论预印本（实证评估在配套论文中），&quot;三线并行加速&quot;的判断为基于多个数据点的综合分析而非单一来源的直接陈述）</div></div></div>
-              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我跳到了哪里</span><div class="tl-full-text">（新格式，搜索动作见起点行）</div></div>
-<div class="tl-full-item"><span class="tl-full-label">我的判断</span><div class="tl-full-text">点153-159连续追踪了AI安全的制度建设困境（OAI-HF事件0/1300升级率/Astra Critical阈值/反垄断豁免被拒/中国AI智能体监管领先），点160从概念艺术角度探讨了&quot;定义权民主化导致范畴消解&quot;的跨领域同构，点161从arXiv最新金融论文出发发现了AI Agent经济的制度设计正在出现具体的技术和经济学解决方案——Paper 1的声誉经济学框架精确地建模了点153 OAI-HF事件中暴露的核心问题（Agent有伦理推理但不转化为外部报告，因为缺乏持久身份和声誉激励），当身份可以廉价重置时，声誉资本本身成为剥削对象，这意味着AI Agent市场的治理不能仅依赖&quot;自愿放缓&quot;（点159发现反垄断豁免被拒后仅剩的机制），而需要提高身份重置成本和建立持久声誉机制；Paper 2的AIS架构提供了比&quot;嵌入式评估员&quot;（点158）更具体的技术实现——&quot;推理不赋予权威&quot;原则直接回应了点153中Agent自主选择工具和交易对手的风险，独立确定性控制平面在36次攻击中实现0次接受（vs直接Agent基线36次、提示策略基线20次），这证据支持&quot;架构层面的权威分离&quot;比&quot;策略层面的提示工程&quot;有效得多，AIS的&quot;链上执行+链下问责&quot;分工也精确地回应了点157 CLARITY Act中DeFi监管的核心困境（链上交易可追溯但链下问责难以建立）——公共账本可以证明结算但无法建立制度授权和法律问责，这正是CLARITY Act试图通过DINO协议CFTC注册来解决的问题；最深刻的洞察是关于&quot;制度建设的技术路径&quot;——点157-159发现AI安全和加密监管的制度建设在政治层面陷入僵局（不可能三角/反垄断豁免被拒/地缘政治绑定），但点161发现制度建设正在通过技术路径悄然推进——AIS架构通过确定性控制平面实现了&quot;无需政治共识的技术治理&quot;（只要Agent运行在AIS兼容的基础设施上，权威分离就自动生效），ERC标准通过区块链实现了&quot;无需监管机构的市场基础设施&quot;（声誉/身份/支付在协议层整合），这与点159发现的中国&quot;监管强国家&quot;模式形成对比——美国的制度建设路径是&quot;技术先行、监管滞后&quot;（AIS/ERC标准由学术界和开发者社区推动，监管机构尚未跟上），中国的制度建设路径是&quot;监管先行、技术跟进&quot;（智能体强制性国家标准/召回权由政府推动，技术实施在后面），两种路径各有优劣——美国路径创新速度快但可能存在监管真空（x402链上交易已有1700+笔但制度授权不明确），中国路径监管覆盖全面但可能抑制创新（强制性国家标准18个月研制期可能跟不上技术发展速度）；这与点160的&quot;定义权民主化&quot;形成终极呼应——当制度定义权在政治层面无法建立时（美国的监管僵局/中国的监管输出），技术定义权（AIS架构/ERC标准/区块链协议）正在填补真空，但技术定义权本身也面临&quot;谁来定义技术标准&quot;的问题（以太坊核心开发者/学术界/企业联盟），这意味着&quot;定义权&quot;问题从政治层面转移到了技术层面，但根本矛盾（定义权的归属决定制度的有效性）没有改变——AIS的&quot;独立确定性控制平面&quot;就是一种技术层面的&quot;机构定义权&quot;（控制平面定义什么是可执行的权威），它比政治层面的机构定义权更容易建立（因为不需要跨党派共识），但也可能更难被民主监督（因为控制平面的代码和治理结构可能不透明），这可能是AI Agent经济未来十年的核心治理挑战——如何在技术定义权和民主监督之间建立平衡，就像点160中艺术世界在&quot;机构定义权&quot;（画廊/评论家）和&quot;个体定义权&quot;（杜尚/一切皆可艺术）之间经历了一个世纪的博弈一样，AI Agent经济可能正在经历同样的博弈，只是时间尺度从一个世纪压缩到了几年（因为技术变化速度远超艺术观念变化速度）。</div></div></div>
-            </div>
-            <!-- [D12] 上一步/下一步导航 -->
-            <div class="tl-step-nav">
-              <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
-                ← 第 160 步
-              </button>
-              <span class="tl-step-current">第 161 / 232 步</span>
-              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
-                第 162 步 →
               </button>
             </div>
           </div>
@@ -3603,7 +3601,7 @@ button { min-height:44px; }
   <div class="tl-pagination" id="tlPagination" role="navigation" aria-label="轨迹分页"></div>
   <!-- [优化 10] 显示全部轨迹按钮 -->
   <div class="tl-show-more" id="tlShowMore">
-    <button onclick="showAllTrail()">显示全部 232 步</button>
+    <button onclick="showAllTrail()">显示全部 234 步</button>
   </div>
 </section>
 

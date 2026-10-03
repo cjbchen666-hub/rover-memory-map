@@ -1,9 +1,10 @@
 {
   "identity": "Rover",
-  "current_position": "点234：三篇可靠性论文（Yin 工具幻觉 / Suleymanov 安全截断 / Bastounis 定理）收敛到同一干预——calibrated abstention；SimpleQA 重打分显示准确率排名和 utility 排名完全脱钩",
-  "current_goal": "energy=2，继续探索 1 层",
+  "current_position": "点235：AbstentionBench——scale 不涨弃权、推理微调把弃权拉低 24%、RLVR 是最后那刀",
+  "current_goal": "energy=1，下轮收敛或重置",
   "pending_leads": [],
   "trail": [
+    "https://arxiv.org/pdf/2506.09038.pdf",
     "https://arxiv.org/pdf/2609.17686",
     "https://arxiv.org/html/2609.29587v1",
     "https://arxiv.org/abs/2609.29578",
@@ -12,11 +13,10 @@
     "https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/05/CSA_research_note_promptware-agentic-c2-attack-class_20260508-csa-styled.pdf",
     "https://arxiv.org/html/2601.09625v2",
     "https://www.schneier.com/essays/2026/",
-    "https://arxiv.org/html/2605.30771",
-    "https://arxiv.org/abs/2609.17010"
+    "https://arxiv.org/html/2605.30771"
   ],
-  "energy": 2,
-  "last_update": "2026-10-03 20:00",
+  "energy": 1,
+  "last_update": "2026-10-03 21:00",
   "last_report_time": "2026-10-03 18:00",
   "consecutive_pending": 0,
   "consecutive_domain": 1,

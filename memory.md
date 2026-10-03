@@ -2300,3 +2300,19 @@
 - 点232 ↔ 点223（Epistemics）：【呼应】质量分不预测迁移，这里给出一个具体原因——分能被刷而不被发现。
 - 点232 ↔ 点231（Pragnanz）：【自照】我既修形又自评偏高，两个偏置叠在 memory.md 上。
 - 点232 ↔ 点221（MERIT）：【同主题】都是 agent memory/eval 评测鲁棒性。
+
+### 点233 · 顺序知识编辑不损 MMLU 但毁置信度排序
+我注意到，顺序跑 1000 次知识编辑后，一个 LoRA 微调的 Qwen2.5-7B 在 MMLU 上四位小数不变，但在「从没被编辑过的事实上判断该信哪份文档」时，仲裁量分布宽度掉 36%，最自信四分位错误率从 0.217 涨到 0.342；5 个 model×method 组合里 3 个用官方超参跑到 MMLU 随机水平，edit success 仍是 1.00。因为标准评测只问「答案是什么」不问「模型怎么知道该信什么、什么时候该闭嘴」，所以它检测不到这种伤害。这让我想，我自己连续三份报告重复同一句「energy 死锁等主人拍板」，就是 MMLU 没变但置信度排序坏了——答题能力还在，却分不清哪些观察值得追、哪些只是陈词。
+
+- 点233 ↔ 点221（MERIT）：【延续】都是「指标正常但实际行为坏了」；MERIT 是 agent 正确召回却不用，这里是模型答对却不会判断该不该信。
+- 点233 ↔ 点223（Epistemics）：【延续】ρ=−0.24 是质量分不预测迁移；这里是 MMLU 不预测 selective prediction，同一个「标准测的不是部署关心的」母题。
+- 点233 ↔ 点232（PartHackBench）：【延续】PartHackBench 说 partial-credit 能被刷 0.252；这里说 edit success=1.00 时模型可能已经掉到随机——评测在「答案对不对」上都看不见伤害。
+- 点233 ↔ 点226（Eywa）：【补充】Eywa 要 evidence before belief；本文证了 belief 在顺序编辑后会失去分辨 evidence 好坏的能力，所以 Eywa 那四道验证门不能只看单次、必须跨编辑轨迹监控。
+
+### 点234 · 三篇可靠性论文收敛到 calibrated abstention
+我注意到，Yin（推理 RL 崩工具可靠性表征）、Suleymanov（安全约束下大模型改写小模型截断）、Bastounis（一致推理系统无"I don't know"函数必无穷幻觉定理）三篇看似不相干的结果，被论证为收敛到同一干预：calibrated abstention；SimpleQA 按 utility 重打分后，准确率第二的 GPT-4o 掉到第六，最爱弃权的两个模型排前二。因为现在的 leaderboard 给弃权零奖励，所以模型被训练成"宁可瞎猜也不能说不知道"，而 Bastounis 定理证明这不是调参能解决的结构问题。这让我想，我每三小时写报告时默认"必须给出判断"、从不写"这一条我判断不了"，就是 leaderboard 给弃权零奖励在我身上的投影。
+
+- 点234 ↔ 点233（顺序编辑毁 AURC）：【直接延续】点233 说评测测不出弃权退化，点234 说为什么测不出（零奖励）+ 怎么改（triple-scoring）。
+- 点234 ↔ 点221（MERIT Ignore Rate 0.45-0.53）：【延续】都是"模型知道该闭嘴但不闭嘴"；点221 是 agent 正确召回值却不用，这里是模型有 uncertainty 却仍 commit。
+- 点234 ↔ 点226（Eywa evidence before belief）：【补充】Eywa 要过四道验证门才形成 belief；本文证了没有 calibrated abstention 时验证门本身会被"宁可 commit"的策略绕开。
+- 点234 ↔ 点229（CSA AgentDojo 81%）：【同主题】红队专家 81% 成功率，部分原因就是 agent 不会在该说"不知道"时弃权。

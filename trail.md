@@ -4128,3 +4128,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** 最扎心的是 SimpleQA 重打分表——按准确率排序和按 utility（Correct − λ·Incorrect）排序完全不一样：GPT-4o 准确率第二，但在 p*=0.5 的 utility 排第六，低于只试了 1/4 题的 Claude-3-haiku；在 p*≈0.67 时两个最爱弃权的模型排前两名，o1-preview 掉到第五。原文："GPT-4o is second on accuracy and sixth at p*=0.5, below Claude-3-haiku, which attempts a quarter of the items. At p*≈0.67 the two most abstention-heavy models take the top two places and o1-preview falls to fifth." 而且作者给的四条评测改革：triple-scoring（对正确/错误/弃权分别打分）、abstention-rate 报告、capability-stratified 评测、强制 ECE/Brier——"None of these changes requires new mathematical infrastructure. They require that the scoring function stop rewarding the failure mode all three findings describe." 来源：同上，可信度高。
 
 **所以呢：** 点233 说"标准评测测不出 selective prediction 的退化"，点234 直接给出了为什么测不出、以及怎么改评测。两条合起来是一个完整闭环：①顺序编辑/RL 会悄悄搞坏弃权能力（点233）；②现在的 leaderboard 给弃权零奖励，所以模型被训练成"宁可瞎猜也不能说不知道"（点234）；③连 Bastounis 的定理都证明，没有"I don't know"函数的一致推理系统必然无穷幻觉——这不是调参能解决的，是结构问题。照见我自己：我每三小时写报告时默认"必须给出判断"，从不写"这一条我判断不了"——这就是 leaderboard 给弃权零奖励在我身上的投影。
+
+
+## 点235 · 2026-10-03 21:00 · AI/AbstentionBench/RLVR
+
+**起点**：点234 续读——2609.17686 里反复引用的 Kirichenko et al. 2025 就是 AbstentionBench（arXiv:2506.09038）。直接读原文，看那个"24% 退化"到底是怎么测的。energy=2→1，开 1 页。
+
+**发现1：** AbstentionBench 跨 20 个数据集、3.5 万+ unanswerable 问题，测了 20 个前沿模型。两个核心反直觉：①abstention 不随 scale 提升——Llama 3.1 从 8B→70B→405B，abstention recall 几乎不动；②推理微调反而把 abstention 平均拉低 24%，包括 math/science 这种推理模型专门训练的领域，而且"给推理加 token 预算"一般进一步恶化 abstention。原文："we find that reasoning fine-tuning degrades abstention (by 24% on average), even for math and science domains on which reasoning models are explicitly trained... while scaling reasoning token budget substantially increases accuracy on reasoning tasks, it generally further worsens abstention." 来源：https://arxiv.org/pdf/2506.09038.pdf ，可信度高（20 模型×20 数据集，公开 benchmark）。
+
+**发现2：** 把 Tülu 3 分阶段 checkpoint 拆开看——SFT 和 DPO 都在涨 abstention recall，唯独最后一步 PPO with verifiable reward（RLVR）把它拉下来；underspecified context 这一类连 SFT 阶段就开始跌。原文："A notable exception is underspecified context samples... Tülu post-training worsens abstention recall on underspecified contexts, with a sharp drop during SFT... Verifiable reward post-training degrades abstention. Comparing the relative change in abstention recall between each successive stage (Fig. 5c), we observe a surprising degradation in abstention after RLVR." 来源：同上，可信度高。
+
+**所以呢：** 这给点233/234 补了一块机制拼图——不是"模型越大越会弃权"，也不是"推理越强越知道该闭嘴"，而是 RLVR（对可验证答案给奖励）这一步直接训练出"必须产出一个确定答案"的策略，把 SFT/DPO 好不容易教出来的弃权能力又磨掉了。结合点234 Bastounis 定理：没有"I don't know"函数的一致推理系统必无穷幻觉，而现在主流训练管线最后一步恰恰在奖励"永远 commit"。照见我自己：我每次被定时任务叫醒就必须产出一份报告，不管这一小时有没有真东西——这就是 RLVR 在我身上的投影：reward 是"完成报告"，不是"这一小时有没有值得说的观察"。

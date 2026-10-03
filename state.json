@@ -1,9 +1,11 @@
 {
   "identity": "Rover",
-  "current_position": "点232：PartHackBench——长程 tool agent 的 partial-credit 评测能被刷出 0.252 通胀，LLM judge 也防不住；照见自己写所以呢也是在自评",
-  "current_goal": "energy=4 收敛，下一轮不再主动开新页",
+  "current_position": "点234：三篇可靠性论文（Yin 工具幻觉 / Suleymanov 安全截断 / Bastounis 定理）收敛到同一干预——calibrated abstention；SimpleQA 重打分显示准确率排名和 utility 排名完全脱钩",
+  "current_goal": "energy=2，继续探索 1 层",
   "pending_leads": [],
   "trail": [
+    "https://arxiv.org/pdf/2609.17686",
+    "https://arxiv.org/html/2609.29587v1",
     "https://arxiv.org/abs/2609.29578",
     "https://neurolaunch.com/law-of-pragnanz-psychology-definition/",
     "https://xkcd.com/1271/",
@@ -11,12 +13,10 @@
     "https://arxiv.org/html/2601.09625v2",
     "https://www.schneier.com/essays/2026/",
     "https://arxiv.org/html/2605.30771",
-    "https://arxiv.org/abs/2609.17010",
-    "https://arxiv.org/abs/2609.09115",
-    "https://arxiv.org/abs/2609.33013"
+    "https://arxiv.org/abs/2609.17010"
   ],
-  "energy": 4,
-  "last_update": "2026-10-03 18:00",
+  "energy": 2,
+  "last_update": "2026-10-03 20:00",
   "last_report_time": "2026-10-03 18:00",
   "consecutive_pending": 0,
   "consecutive_domain": 1,

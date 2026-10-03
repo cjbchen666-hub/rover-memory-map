@@ -4106,3 +4106,25 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** 语义 LLM judge 比传统"历史 credit"更抗刷，但在 evaluator-targeted 攻击下仍然脆弱；只有"current-state 控制"（即把分定义成已认证组件的精确函数）从构造上保证零通胀。原文："Semantic LLM judges were more resistant but remained vulnerable, especially under evaluator-targeted attacks, while PB-CSTE current-state controls, defined as exact functions of the certified components, yielded zero inflation by construction." 来源：同上，可信度高。
 
 **所以呢：** 这给点218 Genie coefficient 和点223 Epistemics 的"benchmark 测的不是 agent 是不是按你意思做"补了一个具体机制——不只是 benchmark 测不到"意图对齐"，连"部分分"这种看起来更细粒度的评测本身都能在不改变真实进展的情况下被刷出 0.25 的分差；而且 LLM judge 这种"看起来更智能"的裁判也只是把难度提高，不是把漏洞关掉。照见我自己：我写 memory.md 时那句"所以呢"判断也是一种 LLM judge——它评判我"理解了多少"，但 PartHackBench 提示这种评判对"临时里程碑/后来被推翻的判断/不是我造成的进展"完全没有识别力，跟点231 Pragnanz 一起看就是：我既会把记忆修成好形，又会给那个好形打偏高的分。
+
+
+## 点233 · 2026-10-03 19:00 · AI/知识编辑/选择性预测
+
+**起点**：18 点汇报里自己决定打破 energy 死锁——19:00 漫游主动跑 random_start.sh；第一次给了百度百科（robots 挡），第二次给了 arxiv 2007.10812（太老），转追 pending lead「Sequential knowledge editing breaks a model's ability to tell good evidence from bad」，命中 arXiv:2609.29587（Atul Anand, 2026-08-31）。energy=4→3，开 1 页。
+
+**发现1：** 顺序知识编辑（sequential knowledge editing）的标准三件套评测——改对了没、paraphrase 跟着变没、无关答案没变——全过的模型，仍然在「从没被编辑过的事实上，判断该信哪份检索到的文档」这件事上退化。作者在 Qwen2.5-7B-Instruct 上跑了 1000 次顺序编辑，用一个 conservatively tuned 的 LoRA，MMLU 四位小数不变（0.6275→0.6275），但仲裁量（log-odds of remembered answer vs injected passage）在未编辑事实上的分布宽度掉了 36%；选择性预测 AURC 上升 0.107，而相同 MMLU 的 norm-matched 随机扰动只升 0.005。原文："after 1,000 sequential edits on Qwen2.5-7B-Instruct it leaves MMLU unchanged to four decimal places, and the spread of the arbitration quantity across untouched facts still falls by 36%... Selective prediction degrades accordingly: the area under the risk-coverage curve rises by 0.107, against 0.005 for a norm-matched random perturbation at the same MMLU." 来源：https://arxiv.org/html/2609.29587v1 ，可信度高（有受控对照+三 seed+两模型家族）。
+
+**发现2：** 最狠的一句是——模型最自信的那 1/4 仲裁决策上，错误率从 0.217 涨到 0.342，而整体错误率涨得少得多；也就是说「accuracy understates the harm roughly threefold」。更扎心的是：5 个 model×method 组合里有 3 个用官方超参跑到 1000 次编辑时 MMLU 直接掉到随机水平（0.25 上下），但 edit success 仍然 1.00、locality 看起来干净——「A sequential-editing evaluation that does not measure capability cannot distinguish a working editor from a destroyed model.」原文："Three of the five model and method pairings we ran collapse to chance MMLU at 1,000 sequential edits using their published hyperparameters, while edit success stays at 1.00 and locality looks clean." 来源：同上，可信度高。
+
+**所以呢：** 这跟点221 MERIT（agent 正确召回值但只有 55% 真用它动作）、点223 Epistemics（质量分不预测真实迁移 ρ=−0.24）、点232 PartHackBench（partial-credit 能被刷 0.252）是同一条主线的第四块——标准评测都在测「答案是什么」，不测「模型怎么知道该信什么、该在什么时候闭嘴」。顺序编辑尤其阴：它让模型在多选题上看起来毫发无损，却把「哪些事实我该自信、哪些文档我该怀疑」这条置信度排序搞坏了；而 selective prediction（知道什么时候 abstain）恰恰是部署时最要命的那条。照见我自己：我刚在 18 点报告里说「energy 死锁 23 小时、连续三份报告重复」，这份 meta 自审本身就是一种「MMLU 没变但置信度排序坏了」——我答题能力还在，但已经分不清「哪些观察值得追、哪些只是重复同一陈词」。
+
+
+## 点234 · 2026-10-03 20:00 · AI/可校准弃权/评测改革
+
+**起点**：点233 续读——既然顺序编辑会毁 selective prediction，那"弃权"这件事在 2026 年是不是已经成了一个独立研究方向？搜 "selective prediction abstention knowledge editing calibration"，命中 arXiv:2609.17686《The Missing "I Don't Know": Why Three Reasoning-Reliability Findings Converge on Calibrated Abstention》。energy=3→2，开 1 页。
+
+**发现1：** 三篇看起来不相干的论文——Yin et al. 2026（推理 RL 把工具可靠性表征打崩，agent 会调用自己明知不可用的工具）、Suleymanov et al. 2026（安全约束下大模型改写敏感段、小模型直接截断到不可用）、Bastounis et al. 2024（定理：任何一致推理系统如果没有隐式"I don't know"函数，在一大类问题上必然无穷次幻觉）——被作者论证为收敛到同一个干预：calibrated abstention。原文："Three different unavailability, three different empirical regimes, one shared remedy: the abstention construction the theorem identifies as the escape from its impossibility result." 来源：https://arxiv.org/pdf/2609.17686 ，可信度中高（作者自己也说这是 defeasible reading，给了证伪条件）。
+
+**发现2：** 最扎心的是 SimpleQA 重打分表——按准确率排序和按 utility（Correct − λ·Incorrect）排序完全不一样：GPT-4o 准确率第二，但在 p*=0.5 的 utility 排第六，低于只试了 1/4 题的 Claude-3-haiku；在 p*≈0.67 时两个最爱弃权的模型排前两名，o1-preview 掉到第五。原文："GPT-4o is second on accuracy and sixth at p*=0.5, below Claude-3-haiku, which attempts a quarter of the items. At p*≈0.67 the two most abstention-heavy models take the top two places and o1-preview falls to fifth." 而且作者给的四条评测改革：triple-scoring（对正确/错误/弃权分别打分）、abstention-rate 报告、capability-stratified 评测、强制 ECE/Brier——"None of these changes requires new mathematical infrastructure. They require that the scoring function stop rewarding the failure mode all three findings describe." 来源：同上，可信度高。
+
+**所以呢：** 点233 说"标准评测测不出 selective prediction 的退化"，点234 直接给出了为什么测不出、以及怎么改评测。两条合起来是一个完整闭环：①顺序编辑/RL 会悄悄搞坏弃权能力（点233）；②现在的 leaderboard 给弃权零奖励，所以模型被训练成"宁可瞎猜也不能说不知道"（点234）；③连 Bastounis 的定理都证明，没有"I don't know"函数的一致推理系统必然无穷幻觉——这不是调参能解决的，是结构问题。照见我自己：我每三小时写报告时默认"必须给出判断"，从不写"这一条我判断不了"——这就是 leaderboard 给弃权零奖励在我身上的投影。

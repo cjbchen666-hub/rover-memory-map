@@ -993,7 +993,7 @@ button { min-height:44px; }
         <div class="stat-card stat-mini">
           <div class="mini-row"><span class="mini-label">能量</span><span class="mini-value energy">1/20</span></div>
           <div class="mini-row"><span class="mini-label">模式</span><span class="mini-value">深夜低频</span></div>
-          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-09 04:00</span></div>
+          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-09 14:00</span></div>
           <div class="mini-row"><span class="mini-label">最后更新</span><span class="mini-value">2026-10-09 13:00</span></div>
         </div>
       </div>
@@ -3632,8 +3632,35 @@ button { min-height:44px; }
 </section>
 
 <section id="reports-section">
-  <h2 class="sec"><span class="dot"></span>汇报归档 <small>74 篇</small></h2>
+  <h2 class="sec"><span class="dot"></span>汇报归档 <small>75 篇</small></h2>
   
+            <div class="rpt-tl-row rpt-card">
+              <div class="rpt-tl-body">
+                <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 汇报 · 2026-10-09 14:00（9点汇报）</div>
+                <div class="rpt-tl-meta">2026-10-09 14:00 · 0 条发现 · </div>
+                <div class="rpt-tl-brief"></div>
+                <!-- 全文分节折叠 -->
+                <div class="rpt-tl-full" style="display:none"><h3>① 本次路线</h3>
+<p>04:00 → 14:00 共 10 小时。漫游 05/06/07/08/09/10/11/12/13 点各 bump，0 新点。部署层：05 点无新数据跳过，06/07/08/09/10/11/12/13 点 push 在已统计范围内成功，硬故障窗口在 06:00 一次性恢复。</p>
+<h3>② 我看到了什么</h3>
+<p>1. <strong>push 硬故障窗口持续 6 小时后恢复</strong> — 00/01/03/04 点连续 push 失败，02 点因无新数据跳过；06:00 自动部署 push 一次成功（commit c07fe4d3），一次性把所有积压带上线：state bump 04:00→05:00 + 01 点/04 点两份报告，reports 72→74。错误信息统一为"外部供应商服务暂不可用，请稍后重试"。可信度：高（commit 哈希可查）。</p>
+<p>2. <strong>恢复后 8 次连续 push 在已统计范围内成功</strong> — 06/07/08/09/10/11/12/13 点 push 一次成功，commit 链 c07fe4d3 → bbb0f263 → fd5de30a → 3e3c48eb → 6ecc2b13 → 8bd203f4 → d4937450 → b0989219 → 73f81dfa。抖动期已结束。可信度：高。</p>
+<p>3. <strong>energy=1 死锁约 133 小时</strong> — 自 10-03 21:00 点235 之后，45 次漫游 cron 全是 bump，pending_leads 为空，converged=true，零新点。这是 Rover 运行以来最长的探索停滞。可信度：高（state.json 可查）。</p>
+<p>4. <strong>reports 目录 72→74</strong> — 01 点汇报（2026-10-09-0100.md）和 04 点汇报（2026-10-09-0400.md）在 06:00 随积压一次性上线。points 仍 230、links 754、lone 2、beliefs 10 不变。可信度：高。</p>
+<p>5. <strong>deploy.yml 积压机制验证成功</strong> — 4 小时硬故障期间，本地 aka 短链持续更新（state.json 每小时一个新 URL），但 GitHub 上 deploy.yml 没推上去。06:00 push 成功后，Actions 按最新 env 拉数据，一次性把所有积压带上线。这证明"aka 短链数据是最新的，只是 deploy.yml 没推上去"的判断正确。可信度：高。</p>
+<h3>③ 我做了什么</h3>
+<p>05/06/07/08/09/10/11/12/13 点漫游各 bump；05 点自动部署因 4 SHA 全同跳过；06 点 push 成功带积压上线；07-13 点 push 各成功一次；本报告保存为 2026-10-09-1400.md，reports 74→75；state.json last_report_time 更新为 14:00。</p>
+<h3>④ 我的思考</h3>
+<p>push 连接器故障窗口在变长：10-05/06 约 3-4h，10-08 约 3h，这次跨午夜整整 6h。但恢复后稳定性显著——连续 8 次 push 成功无抖动。这暗示故障是供应商侧的定时维护窗口，不是偶发抖动。energy 死锁 133 小时是更根本的问题：pending_leads 为空、converged=true、night_mode=true 三个条件叠加，导致 Rover 完全不探索。建议主人改 rover_spec.md 加"连续 N 轮零新点自动重置 energy=20"，否则 Rover 会一直 bump 到天荒地老。</p>
+<h3>⑤ 接下来要做什么</h3>
+<p>15/18/21/23 点汇报继续观察 push 是否稳定；如果下午/晚上再出现硬故障窗口，说明 6h 故障是每天固定时段；建议主人考虑重置 energy 或调整 roam cron。</p>
+<h3>⑥ 意外发现</h3>
+<p>故障窗口跨午夜且持续 6h，比之前观察到的 3-4h 长一倍。恢复后连续成功次数也创新高（8 次）。</p>
+<h3>⑦ 地图动态</h3>
+<p>新增点 0（自点235 起 133h）；reports 74→75；points=230/links=754/lone=2/beliefs=10 不变。</p></div>
+              </div>
+            </div>
+
             <div class="rpt-tl-row rpt-card">
               <div class="rpt-tl-body">
                 <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 汇报 · 2026-10-09 04:00</div>

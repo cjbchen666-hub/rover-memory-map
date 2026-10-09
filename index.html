@@ -993,7 +993,7 @@ button { min-height:44px; }
         <div class="stat-card stat-mini">
           <div class="mini-row"><span class="mini-label">能量</span><span class="mini-value energy">1/20</span></div>
           <div class="mini-row"><span class="mini-label">模式</span><span class="mini-value">深夜低频</span></div>
-          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-09 18:00</span></div>
+          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-09 21:00</span></div>
           <div class="mini-row"><span class="mini-label">最后更新</span><span class="mini-value">2026-10-09 20:00</span></div>
         </div>
       </div>
@@ -3632,8 +3632,34 @@ button { min-height:44px; }
 </section>
 
 <section id="reports-section">
-  <h2 class="sec"><span class="dot"></span>汇报归档 <small>76 篇</small></h2>
+  <h2 class="sec"><span class="dot"></span>汇报归档 <small>77 篇</small></h2>
   
+            <div class="rpt-tl-row rpt-card">
+              <div class="rpt-tl-body">
+                <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 汇报 · 2026-10-09 21:00</div>
+                <div class="rpt-tl-meta">2026-10-09 21:00 · 0 条发现 · </div>
+                <div class="rpt-tl-brief"></div>
+                <!-- 全文分节折叠 -->
+                <div class="rpt-tl-full" style="display:none"><h3>① 本次路线</h3>
+<p>18:00 → 21:00 共 3 小时。漫游 19/20 点各 bump，0 新点。部署层：19 点 push 成功（commit b3e851d2），20 点第一次失败等 30 秒重试成功（commit 22937e7c），21 点 push 成功（commit ca1de3f9）。</p>
+<h3>② 我看到了什么</h3>
+<p>1. <strong>20 点 push 出现一次抖动</strong> — 20:00 自动部署 push_files 第一次返回"外部供应商服务暂不可用，请稍后重试"，等 30 秒重试成功（commit 22937e7c）。这是今天恢复后目前已知首次出现抖动。可信度：高。</p>
+<p>2. <strong>晚间 push 仍然稳定</strong> — 19/20/21 点三次 push 在已统计范围内成功（20 点靠重试救回），commit 链 b3e851d2 → 22937e7c → ca1de3f9，无硬故障。可信度：高。</p>
+<p>3. <strong>reports 目录稳定在 76</strong> — 从 18:00 汇报后无新报告。最近一份仍是 2026-10-09-1800.md。可信度：高。</p>
+<p>4. <strong>energy=1 死锁进入第 6 天</strong> — 自 10-03 21:00 点235 至今约 138 小时，pending_leads 为空，converged=true，consecutive_pending=0。可信度：高。</p>
+<h3>③ 我做了什么</h3>
+<p>19/20 点漫游各 bump；19 点 push 成功；20 点 push 第一次失败等 30 秒重试成功；21 点 push 成功；本报告保存为 2026-10-09-2100.md，reports 76→77；state.json last_report_time 更新为 21:00。</p>
+<h3>④ 我的思考</h3>
+<p>20 点的抖动是个小信号——白天连续 12 次成功后第一次出现"外部供应商暂不可用"。好消息是 30 秒重试就救回来了，说明不是硬故障窗口，只是普通抖动。坏消息是：这种抖动如果在整点同时发生在漫游和自动部署两条 cron 上，可能造成状态错乱（已经看到 :00 两条 cron 并发、顺序不确定的现象）。建议主人把自动部署 cron 从 :00 错开到 :15，让两条流水线错开。</p>
+<h3>⑤ 接下来要做什么</h3>
+<p>23 点汇报继续观察 push 是否稳定；建议主人考虑：(a) 重置 energy=20；(b) 修 night_mode 不复位的 bug；(c) 把自动部署 cron 从 :00 错开到 :15。</p>
+<h3>⑥ 意外发现</h3>
+<p>20 点 push 抖动一次，等 30 秒重试成功——这是今天恢复后目前已知首次出现抖动。</p>
+<h3>⑦ 地图动态</h3>
+<p>新增点 0（自点235 起 138h）；reports 76→77；points=230/links=754/lone=2/beliefs=10 不变。</p></div>
+              </div>
+            </div>
+
             <div class="rpt-tl-row rpt-card">
               <div class="rpt-tl-body">
                 <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 汇报 · 2026-10-09 18:00（12点汇报）</div>

@@ -993,7 +993,7 @@ button { min-height:44px; }
         <div class="stat-card stat-mini">
           <div class="mini-row"><span class="mini-label">能量</span><span class="mini-value energy">1/20</span></div>
           <div class="mini-row"><span class="mini-label">模式</span><span class="mini-value">深夜低频</span></div>
-          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-09 14:00</span></div>
+          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-09 18:00</span></div>
           <div class="mini-row"><span class="mini-label">最后更新</span><span class="mini-value">2026-10-09 17:00</span></div>
         </div>
       </div>
@@ -3632,8 +3632,35 @@ button { min-height:44px; }
 </section>
 
 <section id="reports-section">
-  <h2 class="sec"><span class="dot"></span>汇报归档 <small>75 篇</small></h2>
+  <h2 class="sec"><span class="dot"></span>汇报归档 <small>76 篇</small></h2>
   
+            <div class="rpt-tl-row rpt-card">
+              <div class="rpt-tl-body">
+                <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 汇报 · 2026-10-09 18:00（12点汇报）</div>
+                <div class="rpt-tl-meta">2026-10-09 18:00 · 0 条发现 · </div>
+                <div class="rpt-tl-brief"></div>
+                <!-- 全文分节折叠 -->
+                <div class="rpt-tl-full" style="display:none"><h3>① 本次路线</h3>
+<p>14:00 → 18:00 共 4 小时。漫游 15/16/17 点各 bump，0 新点。部署层：15 点 push 成功（commit 0ed11b81 带 14 点报告），16 点 push 成功（commit def93792），17 点因 4 SHA 全同跳过，18 点 push 成功（commit dc3178b1）。</p>
+<h3>② 我看到了什么</h3>
+<p>1. <strong>下午 push 连接器持续稳定</strong> — 14/15/16/18 点 push 在已统计范围内一次成功，commit 链 0ed11b81 → def93792 → dc3178b1，无抖动无重试。17 点因为 state.json 没变化（16→17 点之间没有新漫游 bump）触发"4 SHA 全同跳过"分支，这是设计预期。可信度：高。</p>
+<p>2. <strong>14 点报告已上线</strong> — 2026-10-09-1400.md 随 15 点 push（commit 0ed11b81）上线，reports 从 74 涨到 75。这份报告目前已知首次系统记录了凌晨 6 小时硬故障窗口和恢复后连续 8 次成功的事实。可信度：高。</p>
+<p>3. <strong>energy=1 死锁进入第 6 天</strong> — 自 10-03 21:00 点235 至今约 139 小时，pending_leads 为空，converged=true，consecutive_pending=0。这意味着 rover_spec.md 的探索分支在当前状态下永远不会被触发，Rover 已经退化成一个纯定时 bump 脚本。可信度：高。</p>
+<p>4. <strong>deploy.yml 跳过分支验证有效</strong> — 17 点 state.json SHA 与 16 点完全相同（因为 16→17 点之间没有任何写入），脚本正确识别并跳过部署，没有产生无意义的 commit。这说明 SHA 对比机制不是摆设。可信度：高。</p>
+<p>5. <strong>night_mode 标记仍为 true</strong> — 08:00 后 night_mode 本应自动结束，但 state.json 里 night_mode 一直是 true，在已观察样本中未被任何流程复位。这是一个小 bug：night_mode=true 不会阻止 bump（因为 pending_leads 本来就空），但它让"白天只追 pending_leads、不主动探索新起点"的规则在白天也生效，进一步锁死了探索。可信度：中高。</p>
+<h3>③ 我做了什么</h3>
+<p>15/16/17 点漫游各 bump；15 点 push 带 14 点报告上线；16 点 push 成功；17 点跳过；18 点 push 成功；本报告保存为 2026-10-09-1800.md，reports 75→76；state.json last_report_time 更新为 18:00。</p>
+<h3>④ 我的思考</h3>
+<p>下午 4 小时零故障是个好信号——凌晨硬故障窗口没有延续到白天。但 night_mode=true 这个 bug 值得主人关注：它和 energy=1、converged=true、pending_leads=[] 一起构成了"四重锁"，让 Rover 在白天也完全不探索。即使主人重置 energy=20，如果 night_mode 不复位，白天仍然不会打开新起点。建议：rover_spec.md 里加一条"08:00 后自动 night_mode=false"，或者干脆删掉 night_mode 字段。</p>
+<h3>⑤ 接下来要做什么</h3>
+<p>21/23 点汇报继续观察 push 是否稳定；建议主人考虑：(a) 重置 energy=20；(b) 修 night_mode 不复位的 bug；(c) 把自动部署 cron 从 :00 错开到 :15，避免和漫游并发。</p>
+<h3>⑥ 意外发现</h3>
+<p>night_mode=true 在白天在已观察样本中未复位，是一个之前没注意到的隐性 bug。</p>
+<h3>⑦ 地图动态</h3>
+<p>新增点 0（自点235 起 139h）；reports 75→76；points=230/links=754/lone=2/beliefs=10 不变。</p></div>
+              </div>
+            </div>
+
             <div class="rpt-tl-row rpt-card">
               <div class="rpt-tl-body">
                 <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 汇报 · 2026-10-09 14:00（9点汇报）</div>

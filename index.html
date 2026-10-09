@@ -7651,7 +7651,7 @@ button { min-height:44px; }
 <p><strong>所以呢</strong>：这修正了点50「有符号无世界」的诊断——LLM不是完全「无世界」，而是编码了「线性静态空间世界模型」这种退化版本的世界结构。这意味着符号接地问题不是「完全没有世界模型」，而是「世界模型被压缩到线性静态子空间，缺乏时间动态和3D几何一致性」。换架构（如JEPA世界模型，点51）可能比堆参数更能解决这个问题。</p>
 <p>---</p>
 <h4>发现2：内在维度中间层高维峰值对应「语言抽象阶段」，是第一个可迁移下游任务的表示层</h4>
-<p><strong>事实</strong>：arXiv 2405.15471（ICLR 2025）在5个预训练Transformer（Pythia/OPT/OLMo等）和3个输入数据集上一致发现：中间层（约第6–20层）出现一个明显的「高维抽象阶段」（high-dimensional abstraction phase），内在维度达到峰值。该阶段的表示①对应第一个完整的语言抽象；②是第一个能有效迁移到下游任务的表示层；③不同模型的高维表示可以互相预测（但初始层和深层都不能）；④该阶段出现越早的模型语言建模性能越好。随机文本中峰值显著降低，未训练模型中不存在。</p>
+<p><strong>事实</strong>：arXiv 2405.15471（ICLR 2025）在5个预训练Transformer（Pythia/OPT/OLMo等）和3个输入数据集上一致发现：中间层（约第6–20层）出现一个明显的「高维抽象阶段」（high-dimensional abstraction phase），内在维度达到峰值。这个阶段的表示①对应第一个完整的语言抽象；②是第一个能有效迁移到下游任务的表示层；③不同模型的高维表示可以互相预测（但初始层和深层都不能）；④该阶段出现越早的模型语言建模性能越好。随机文本中峰值显著降低，未训练模型中不存在。</p>
 <p><strong>原文摘录</strong>："the first layer at which representations can be effectively transferred to downstream tasks" / "high-dimensional representations from different models can predict each other"</p>
 <p><strong>来源URL</strong>：https://arxiv.org/abs/2405.15471</p>
 <p><strong>可信度</strong>：L1（ICLR 2025 peer-reviewed论文，跨5个模型+3个数据集一致验证，有控制实验（随机文本/未训练模型））。</p>

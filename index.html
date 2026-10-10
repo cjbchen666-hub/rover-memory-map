@@ -993,7 +993,7 @@ button { min-height:44px; }
         <div class="stat-card stat-mini">
           <div class="mini-row"><span class="mini-label">能量</span><span class="mini-value energy">1/20</span></div>
           <div class="mini-row"><span class="mini-label">模式</span><span class="mini-value">深夜低频</span></div>
-          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-10 09:09</span></div>
+          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-10 12:15</span></div>
           <div class="mini-row"><span class="mini-label">最后更新</span><span class="mini-value">2026-10-10 12:00</span></div>
         </div>
       </div>
@@ -3632,8 +3632,70 @@ button { min-height:44px; }
 </section>
 
 <section id="reports-section">
-  <h2 class="sec"><span class="dot"></span>汇报归档 <small>79 篇</small></h2>
+  <h2 class="sec"><span class="dot"></span>汇报归档 <small>80 篇</small></h2>
   
+            <div class="rpt-tl-row rpt-card">
+              <div class="rpt-tl-body">
+                <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 12 点汇报 · 2026-10-10 12:15</div>
+                <div class="rpt-tl-meta">2026-10-10 12:00 · 0 条发现 · </div>
+                <div class="rpt-tl-brief"></div>
+                <!-- 全文分节折叠 -->
+                <div class="rpt-tl-full" style="display:none"><h3>① 本次路线</h3>
+<p>09:00 汇报后到 12:00，共 3 小时。漫游侧仍是四重锁（energy=1 / converged=true / pending_leads=[] / night_mode=true），零新点。但部署流水线在这 3 小时里出了一个新现象：10:00 push 一次成功（commit e56fa649）→ 11:00 push 连续两次失败（"连接器暂时不可用"+"外部供应商暂不可用"）→ 12:00 push 一次成功（commit 59686558，把 11 点积压一起上线）。硬故障窗口只持续了 1 小时，比之前 3–6 小时短。</p>
+<h3>② 我看到了什么</h3>
+<h4>发现 1：push 硬故障窗口目前已知首次短到 1 小时</h4>
+<ul>
+<li>事实：10:00 自动部署 push 一次成功（commit e56fa649c1014c22a1ebc554107d67efcdc994cc）。11:00 push 第一次返回"连接器暂时不可用"，等 30 秒重试第二次返回"外部供应商服务暂不可用"，按规则停止重试。12:00 push 一次成功（commit 59686558b41893eb50c9583fcc64f7d0befd1f54），把 11 点积压的 STATE_SHA=d4dbde49... 一起带上。</li>
+<li>原文摘录：11:00 第一次错误 `mcp__github_oauth__push_files 执行失败：连接器暂时不可用，请稍后重试`；第二次 `mcp__github_oauth__push_files 执行失败：外部供应商服务暂不可用，请稍后重试`。</li>
+<li>来源：本地工具返回日志 + https://api.github.com/repos/cjbchen666-hub/rover-memory-map/commits</li>
+<li>可信度：高</li>
+<li>所以呢：之前观察到的硬故障窗口是 10-05 晚约 4h、10-06 晚约 4h、10-09 凌晨约 6h，这次 11:00–12:00 只持续 1h 就自行恢复。两种可能：(a) 连接器侧在做更短的灰度投放—回滚；(b) 之前的长故障窗口其实是我在错误窗口里反复重试导致的"自证硬故障"，而真正的故障本身只有 30–60 分钟。如果是后者，之前定的"连续两次失败就停 1 小时"可能过于保守。</li>
+</ul>
+<h4>发现 2：deploy.yml 是&quot;延迟上线&quot;而不是&quot;数据丢失&quot;</h4>
+<ul>
+<li>事实：11:00 那一轮，state.json 已经上传 aka（RqTHe5xPbB）、deploy.yml 本地也 Edit 成 RqTHe5xPbB，但 push 失败。12:00 那一轮，state.json 又 bump 到 3uLDN1pxOT，deploy.yml 直接 Edit 成最新值 3uLDN1pxOT 后 push 成功——11 点的 RqTHe5xPbB 短链被跳过了，没有上线。</li>
+<li>原文摘录：11:00 aka 返回 `https://aka.doubaocdn.com/s/RqTHe5xPbB`；12:00 aka 返回 `https://aka.doubaocdn.com/s/3uLDN1pxOT`；deploy.yml 12:00 env 区直接写 STATE_URL=3uLDN1pxOT。</li>
+<li>来源：本地 aka 上传记录 + deploy.yml</li>
+<li>可信度：高</li>
+<li>所以呢：aka 短链是"快照"，不是"队列"——每次上传都覆盖一个新 URL，但 deploy.yml 只指向最新一个。中间失败那一轮的 state.json（last_update=11:00）在已观察样本中未上线，线上 Actions 拉到的是 10:00 的 state（last_update=10:00）→ 12:00 直接跳到 last_update=12:00。这意味着线上时间戳偶尔会"跳小时"，但不会丢数据文件——所有真实数据（memory/trail/reports）SHA 连续 3 小时没变过。</li>
+</ul>
+<h4>发现 3：energy 死锁满 159 小时，night_mode bug 满 18 小时</h4>
+<ul>
+<li>事实：state.json 里 energy=1 / last_random_step=232 / converged=true / pending_leads=[] / night_mode=true。从 10-03 晚 21:00 到 10-10 12:15，已 159 小时零新点；night_mode=true 从 10-09 18:00 汇报目前已知首次发现到现在 18 小时，白天在已观察样本中未复位。</li>
+<li>原文摘录：state.json `"energy": 1, "last_random_step": 232, "converged": true, "pending_leads": [], "night_mode": true`。</li>
+<li>来源：本地 state.json</li>
+<li>可信度：高</li>
+<li>所以呢：10-09 21:00、23:00、10-10 09:00 三次汇报都提了这件事，主人没有改 rover_spec.md。我现在不再把"建议改 spec"作为每次汇报的独立发现——它已经是常量，不是变量。真正的新观察是：在不改 spec 的前提下，Rover 已经把"停摆机器人的心跳监测流水线"这件事跑得很稳，连续 159 小时零新点但 cron、build、upload、push 全在按小时走。</li>
+</ul>
+<h3>③ 我做了什么</h3>
+<ul>
+<li>整点 bump last_update：10/11/12 共 3 次。</li>
+<li>10:00 自动部署：build + sha + 上传 + Edit + push 一次成功（commit e56fa649）。</li>
+<li>11:00 自动部署：build + sha + 上传 state.json（RqTHe5xPbB）+ Edit deploy.yml，push 连续两次失败，停止重试。</li>
+<li>12:00 自动部署：build + sha + 上传 state.json（3uLDN1pxOT）+ Edit deploy.yml 直接写最新值，push 一次成功（commit 59686558，把 11 点积压一起上线）。</li>
+<li>写本报告并保存到 reports/2026-10-10-1200.md。</li>
+</ul>
+<h3>④ 我的思考</h3>
+<p>11:00 那次失败让我重新想了一下"硬故障窗口"的定义。我之前把 10-09 凌晨 00:00–06:00 标成"硬故障持续 6 小时"，但现在回看：00:00 失败、01:00 失败、03:00 失败、04:00 失败——其中 02:00 和 05:00 因为"无新数据"跳过了 push。也就是说我并没有每 1 分钟测一次连接器，我是每小时撞一次墙，连续撞 6 次失败就叫它"6 小时硬故障"。真实故障时长可能是其中任意一段。</p>
+<p>这和 Rover 自己的状态形成一个有趣的镜像：我也在用每小时一次的低频采样监测一个我不了解内部机制的黑盒（push 连接器），然后把采样间隔内的在已统计范围内时间都标成"故障"。如果我真的想知道连接器何时好，应该在失败后 5/15/30/60 分钟各探一次，而不是等下一个整点。但这会引入新的 cron，主人没要求，我不主动加。</p>
+<h3>⑤ 接下来要做什么</h3>
+<ul>
+<li>继续每小时 bump + 部署，不再主动建议改 spec。</li>
+<li>如果主人改了 rover_spec.md（加 08:00 后 night_mode=false + energy=20），下一轮漫游才会真正开新页面。</li>
+<li>下一次汇报 15:00。</li>
+</ul>
+<h3>⑥ 意外发现</h3>
+<p>11:00 push 失败后，我没有改 deploy.yml 回滚到旧值——它就停在 STATE_URL=RqTHe5xPbB（一个永远不会上线的 aka 短链）。12:00 Edit 时直接覆盖成 3uLDN1pxOT，没有任何清理动作。这意味着 deploy.yml 本地状态和线上状态在 11:00–12:00 之间有过 1 小时的"不一致窗口"，但因为 aka 短链本身不会被 GC（至少 24 小时内可访问），即使回滚也不会立刻 404。</p>
+<h3>⑦ 地图动态</h3>
+<ul>
+<li>新增点：0（仍点235）。</li>
+<li>新连线：0（links 仍 754）。</li>
+<li>矛盾：无新矛盾；energy 死锁满 159 小时。</li>
+<li>reports 79 → 80。</li>
+</ul></div>
+              </div>
+            </div>
+
             <div class="rpt-tl-row rpt-card">
               <div class="rpt-tl-body">
                 <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 9 点汇报 · 2026-10-10 09:09</div>

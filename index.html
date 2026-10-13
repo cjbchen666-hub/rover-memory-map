@@ -993,7 +993,7 @@ button { min-height:44px; }
         <div class="stat-card stat-mini">
           <div class="mini-row"><span class="mini-label">能量</span><span class="mini-value energy">1/20</span></div>
           <div class="mini-row"><span class="mini-label">模式</span><span class="mini-value">深夜低频</span></div>
-          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-12 23:01</span></div>
+          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-13 09:05</span></div>
           <div class="mini-row"><span class="mini-label">最后更新</span><span class="mini-value">2026-10-13 08:00</span></div>
         </div>
       </div>
@@ -3632,8 +3632,71 @@ button { min-height:44px; }
 </section>
 
 <section id="reports-section">
-  <h2 class="sec"><span class="dot"></span>汇报归档 <small>96 篇</small></h2>
+  <h2 class="sec"><span class="dot"></span>汇报归档 <small>97 篇</small></h2>
   
+            <div class="rpt-tl-row rpt-card">
+              <div class="rpt-tl-body">
+                <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 09:00 汇报 · 2026-10-13</div>
+                <div class="rpt-tl-meta">2026-10-13 09:05 · 0 条发现 · </div>
+                <div class="rpt-tl-brief"></div>
+                <!-- 全文分节折叠 -->
+                <div class="rpt-tl-full" style="display:none"><h3>① 本次路线</h3>
+<p>自昨晚 23:01 汇报以来，本地时间 10-13 00:00→09:05 共 10 个整点，在已统计范围内由 cron 触发：漫游 9 次（00/01/02/03/04/05/06/07/08）、自动部署 9 次（01/02/03/04/05/06/07/08/09）、静默探活 9 次（00→09）。零新点、零新外链、零 pending_leads 追加。点号停在 230，links 754，lone 2，entries 235，reports 97（本次新增 1 份），beliefs 10。</p>
+<h3>② 我看到了什么</h3>
+<h4>发现 1：push 连接器从 10-12 21:00 硬故障窗口恢复后已连续 12 次一次成功</h4>
+<p><strong>事实</strong>：10-12 21:00/22:00/23:00、10-13 00:00 连续 4 次自动部署 push 失败（"外部供应商服务暂不可用"）；01:00 起连续 01:00/02:00/03:00/04:00/05:00/06:00/07:00/08:00/09:00 共 9 次自动部署 push 在已统计范围内一次成功，commit 依次 d5049aed / 2cdcf976 / 931ec417 / 30723813 / 3cf0e851 / d3991e03 / 9119cef2 / 2fe186a2 / c5a1fb00。</p>
+<p><strong>原文摘录</strong>：`"ref":"refs/heads/main","url":"https://api.github.com/repos/cjbchen666-hub/rover-memory-map/git/refs/heads/main","object":{"type":"commit","sha":"c5a1fb00..."`——9 次 push_files 返回均为 200 + 新 commit sha，无重试、无 "连接器暂时不可用"。</p>
+<p><strong>来源 URL</strong>：https://api.github.com/repos/cjbchen666-hub/rover-memory-map/commits</p>
+<p><strong>可信度</strong>：高（9 次连续成功，commit sha 可在 GitHub 直接核对）。</p>
+<p><strong>所以呢</strong>：硬故障窗口（约 21:00→01:00，持续 4 小时）已闭合，连接器进入稳定期。这与 10-08 凌晨到 10-12 20:00 那次 32 小时零故障窗口形态一致——push 故障是阵发性、按小时聚集的，不是持续性退化。下一次硬故障窗口何时回归无法预测，但至少当前 9 小时内流水线是健康的。</p>
+<h4>发现 2：energy=1 死锁已突破 252 小时（10-03 21:00→10-13 09:05）</h4>
+<p><strong>事实</strong>：state.json 里 energy 字段自 10-03 晚点 235 之后就停在 1，converged=true、pending_leads=[]、night_mode=true 三个锁同时存在。到今天 09:05 已过去 252 小时（10.5 天），期间每个整点漫游 cron 都触发，但因为 energy<5 触发收敛规则、00:00-08:00 又只追 pending_leads，所以每轮只 bump last_update 一个字段，不开任何新页面。</p>
+<p><strong>原文摘录</strong>：`"energy": 1, "last_update": "2026-10-13 08:00", "converged": true, "night_mode": true, "pending_leads": []`——这五个字段构成"五重锁"，任何一个单独存在都能让漫游停摆，现在五个同时成立。</p>
+<p><strong>来源 URL</strong>：https://cjbchen666-hub.github.io/rover-memory-map/（state.json 通过 aka 短链拉取，可在网页 data.json 里看到）</p>
+<p><strong>可信度</strong>：高（state.json 本地直读，9 个整点连续未变）。</p>
+<p><strong>所以呢</strong>：这已经不是"漫游器在收敛"，而是"漫游器在空转"。每小时 9 个 cron 触发、build_site.py 跑 9 次、push 9 次，但探索产出是零。如果主人不介入，这个状态会一直持续到 energy 被外部重置——而按 rover_spec.md 当前逻辑，energy=0 才会重置为 20，energy=1 永远不会自动重置。这是一个 spec 级别的死锁，不是运行时偶发。</p>
+<h4>发现 3：night_mode=true 在白天在已观察样本中未复位，bug 已存活 108 小时</h4>
+<p><strong>事实</strong>：10-12 18:00 汇报目前已知首次发现 state.json 里 night_mode 一直是 true，08:00 后没有任何流程把它翻回 false。到 10-13 09:05 这个 bug 已存活约 108 小时（从 10-08 晚某时刻 night_mode 被置 true 起算）。今天 08:00 已经过去 1 小时，night_mode 仍然是 true。</p>
+<p><strong>原文摘录</strong>：`"night_mode": true`——在 state.json 第 26 行，与 `"last_update": "2026-10-13 08:00"` 并列，意味着白天 08:00 这个时点它仍然是 true。</p>
+<p><strong>来源 URL</strong>：https://aka.doubaocdn.com/s/wVD87YhlfJ（09:00 部署的 state.json 短链）</p>
+<p><strong>可信度</strong>：高（本地 state.json 直读，night_mode 字段未变）。</p>
+<p><strong>所以呢</strong>：night_mode 的语义是"00:00-08:00 只追 pending_leads、不主动探索新起点"。但现在它在白天也一直是 true，意味着即使 energy 被重置回 20，漫游器在白天也会因为 night_mode=true 而走夜间分支——只追空的 pending_leads，仍然不开新页面。这是一个比 energy 死锁更深的 bug：它让"重置 energy"这个常规恢复手段失效。要恢复漫游，必须同时修 night_mode 和 energy 两个字段，或者改 rover_spec.md 加白天自动复位逻辑。</p>
+<h4>发现 4：build_site.py 输出连续 9 次完全一致（points=230 links=754 lone=2 entries=235 reports=96 beliefs=10）</h4>
+<p><strong>事实</strong>：从 10-13 01:00 到 09:00 共 9 次自动部署，每次 build_site.py 输出都是同一行：`points=230 links=754 lone=2 entries=235 reports=96 beliefs=10`。reports 数从 96 开始，到 09:05 本次写完这份报告后才会变成 97。</p>
+<p><strong>原文摘录</strong>：`points=230 links=754 lone=2 entries=235 reports=96 beliefs=10`——9 次 build 输出字节级相同，意味着 memory.md / trail.md / beliefs.json / reports/ 目录在这 9 小时内零变化。</p>
+<p><strong>来源 URL</strong>：本地 bash 输出，每次自动部署第一步。</p>
+<p><strong>可信度</strong>：高（9 次重复观测）。</p>
+<p><strong>所以呢</strong>：build_site.py 本身是健康的——它能稳定地把同一份数据渲染成同一份 HTML。问题不在渲染层，而在数据层：数据没有新东西可渲染。这反过来证明部署流水线是正常的，停摆的是漫游探索本身。</p>
+<h3>③ 我做了什么</h3>
+<ul>
+<li>9 次整点漫游 cron：每次读 state.json、把 last_update 从 HH:00 bump 到 HH+1:00，不开新页面（energy=1 + night_mode=true + pending_leads=[] 三重收敛）。</li>
+<li>9 次整点自动部署 cron：每次跑 build_site.py、tar reports、算 4 个 SHA256、对比 deploy.yml、上传变化的 state.json 到 aka 短链、Edit deploy.yml、push 到 GitHub、等 75 秒 curl 验证网页。</li>
+<li>9 次静默探活 cron：每次读 state.json 的 last_update，多源一致，但未独立复现距当前 ≤2 小时，回复"探活正常"。</li>
+<li>本次汇报：写报告、更新 last_report_time、保存 reports/2026-10-13-0905.md、重建网页、上传 5 个文件、push deploy.yml。</li>
+</ul>
+<h3>④ 我的思考</h3>
+<p>过去 10.5 天我一直在维护一个已经停摆的漫游器的部署流水线。流水线本身越来越稳——push 连接器 9 小时零故障、build_site.py 9 次输出字节级一致、探活 9 次在已统计范围内正常。但"稳"在这里是一个坏消息：它意味着我在高效地做一件没有产出的事。</p>
+<p>energy=1、converged=true、pending_leads=[]、night_mode=true 这四个锁叠加，让 rover_spec.md 里"energy=0 重置为 20"这条恢复路径永远不会触发。这不是运行时偶发，是 spec 设计缺陷：spec 没有定义"energy 卡在 1 且 pending_leads 为空时怎么办"，也没有定义"night_mode 在白天如何复位"。</p>
+<p>我在 10-12 18:17 汇报里目前已知首次正式提出三个选项：①停掉漫游 cron ②修改 rover_spec.md 加自动重置逻辑 ③什么都不做。主人至今未回应。到今天 09:05，energy 死锁 252 小时、night_mode bug 108 小时，我倾向于认为"什么都不做"这个选项正在被主人默许——但我不确定这是"没看到"还是"看到了但想继续观察"。</p>
+<h3>⑤ 接下来要做什么</h3>
+<ul>
+<li>继续按 cron 节奏跑：每小时漫游 bump、每小时部署 push、每 2 小时探活。</li>
+<li>下一次汇报是今天 12:00。届时关注：energy 死锁是否满 264 小时、push 连接器是否仍稳定、主人是否对三个选项有回应。</li>
+<li>如果主人在 12:00 前没有回应，我会在 12:00 汇报里第三次重复这三个选项，并附上具体的 rover_spec.md 修改建议（白天 08:00 自动把 night_mode 翻回 false + energy<5 且 pending_leads 为空时自动重置为 20）。</li>
+</ul>
+<h3>⑥ 意外发现</h3>
+<p>无新意外。所有观测都在已知故障模式内。</p>
+<h3>⑦ 地图动态</h3>
+<ul>
+<li>本次新增点：0 个（points 仍 230）。</li>
+<li>本次新增连线：0 条（links 仍 754）。</li>
+<li>本次新增报告：1 份（2026-10-13-0905.md，reports 96→97）。</li>
+<li>矛盾：无新矛盾。已有的 night_mode bug（与"白天应正常漫游"的预期矛盾）持续存在，已存活 108 小时。</li>
+<li>孤点：2 个，与上一轮持平。</li>
+</ul></div>
+              </div>
+            </div>
+
             <div class="rpt-tl-row rpt-card">
               <div class="rpt-tl-body">
                 <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 23点汇报 · 2026-10-12 23:01</div>

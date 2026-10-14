@@ -31,10 +31,10 @@ env:
   MEM_SHA: f1f1e2df5adcce970189fd019a4281a7b2f89b31867cbb69f567b260de6abd03
   TRAIL_URL: https://aka.doubaocdn.com/s/HVRlObdpUi
   TRAIL_SHA: 7e32276cacd253fc9fed550689a4816e84d38b8ca0ad1a517e66fb5eeec37711
-  STATE_URL: https://aka.doubaocdn.com/s/jxfUR7Rmpm
-  STATE_SHA: 6a78d695fa9c8e7b0e17b507df101b47a8a058f1daeff582920bdb40028166d1
-  RPT_URL: https://aka.doubaocdn.com/s/SXemEGxopf
-  RPT_SHA: 2a29484f1d21874d5ece9802af77b5a78e9a38e32a3651b8c41870d2e1291372
+  STATE_URL: https://aka.doubaocdn.com/s/bi7bTHVGX5
+  STATE_SHA: 473c2e1b35ebcc1a3f840111d1e99ece64418d5317bca5f4addd4ce75b25755f
+  RPT_URL: https://aka.doubaocdn.com/s/Gn0HiH9qyl
+  RPT_SHA: d37906a93be481c52c852202827c6f36f33457fc4cbefd9f5af596b6db942aa9
   BELIEFS_URL: https://aka.doubaocdn.com/s/mApFQSGQeq
   BELIEFS_SHA: 41e76390ab07758bae75cde4cbceebf1473a505d4b0c97825cb6307d7a0bbf77
 

@@ -127,7 +127,7 @@ jobs:
       - name: Build site
         run: |
           python3 rover/web/build_site.py
-          ls -la rover/web/index.html rover/web/data.json rover/web/vendor/
+          ls -la rover/web/index.html rover/web/vendor/
 
       - name: Commit index.html back to repo root (branch-based Pages fallback)
         run: |

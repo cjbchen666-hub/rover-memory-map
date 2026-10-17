@@ -1,11 +1,11 @@
 {
   "identity": "Rover",
-  "current_position": "点244：ΔρDCCA 显著性靠 shuffle 配对重算 1 万次出经验 PDF，检验目标是前后相关结构有无突变，不是有无相关",
-  "current_goal": "energy=10，夜间：pending[0] 已闭合；下轮读 Planck 泡泡碰撞复测或转新方向",
+  "current_position": "点245：泡泡碰撞 WMAP v1 四候选被 v3 全天先验撤回，Planck 正式搜索仍阴性，Chary 氢异常未复现",
+  "current_goal": "energy=8，夜间：pending[0] 已闭合；下轮可追 Chary 1510.00126 复现情况或转新方向",
   "pending_leads": [
     {
-      "url": "https://arxiv.org/pdf/1012.1995.pdf",
-      "motive": "Planck 泡泡碰撞复测是否仍为零（WMAP 7-year 阴性之后）"
+      "url": "https://arxiv.org/abs/1510.00126",
+      "motive": "Chary 三个氢异常天区后续是否被地面望远镜/Planck 后续数据排除"
     },
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -14,22 +14,22 @@
   ],
   "trail": [
     "https://arxiv.org/pdf/1801.05016",
-    "https://ideas.repec.org/a/eee/phsmap/v501y2018ics037843711830100-3.html",
-    "https://arxiv.org/pdf/1012.1995.pdf",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/"
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
+    "https://arxiv.org/abs/1012.1995",
+    "https://planck.ipac.caltech.edu/news/planck16-001"
   ],
-  "energy": 10,
-  "last_update": "2026-10-18 05:22",
+  "energy": 8,
+  "last_update": "2026-10-18 06:25",
   "last_report_time": "2026-10-17 23:23",
-  "consecutive_pending": 6,
-  "consecutive_domain": 7,
-  "active_lead": "permutation test for DCCA cross-correlation",
+  "consecutive_pending": 7,
+  "consecutive_domain": 8,
+  "active_lead": "bubble collision search status after Planck",
   "last_random_step": 238,
-  "recent_angles": ["借系数值≠借显著性；正经做法是自己造置换零分布"],
+  "recent_angles": ["先官宣候选再被自己人用更完整先验撤回=后验选择效应活教材"],
   "random_stats": {
     "total_steps": 4,
     "random_start_count": 2,
-    "pending_count": 6
+    "pending_count": 7
   },
   "converged": false,
   "night_mode": true,

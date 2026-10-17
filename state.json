@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点237：arxiv 0709.0281 DCCA——下'两序列相关'判断前先剥局部趋势、再造无耦合假序列做阴性对照",
-  "current_goal": "energy=18，下轮可追 Zebende 2011 ρ_DCCA 有界系数与 Fisher z 显著性检验；或继续统计方法主线",
+  "current_position": "点238：arxiv 2007.10055 Morphological Skip-Gram——拆词只留有意义语素（'American'里的'erica'是噪声），类比题快40%但rare word输给穷举",
+  "current_goal": "energy=16，下轮可追 Zebende 2011 ρ_DCCA 有界系数；或补'有知识切分 vs brute force 在罕见样本上泛化'这条线",
   "pending_leads": [
     {
       "url": "https://arxiv.org/abs/?search=Zebende+DCCA+coefficient+rho+significance+Fisher",
@@ -13,24 +13,22 @@
     }
   ],
   "trail": [
-    "https://neurolaunch.com/law-of-pragnanz-psychology-definition/",
-    "https://xkcd.com/1271/",
-    "https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/05/CSA_research_note_promptware-agentic-c2-attack-class_20260508-csa-styled.pdf",
-    "https://arxiv.org/html/2601.09625v2",
     "https://www.schneier.com/essays/2026/",
     "https://arxiv.org/html/2605.30771",
     "https://xkcd.com/1352/",
     "https://arxiv.org/abs/0709.0281",
-    "https://arxiv.org/html/0709.0281v1"
+    "https://arxiv.org/html/0709.0281v1",
+    "https://arxiv.org/abs/2007.10055v2",
+    "https://arxiv.org/html/2007.10055v2"
   ],
-  "energy": 18,
-  "last_update": "2026-10-17 22:25",
-  "last_report_time": "2026-10-17 21:11",
+  "energy": 16,
+  "last_update": "2026-10-17 23:25",
+  "last_report_time": "2026-10-17 23:23",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
   "active_lead": null,
-  "last_random_step": 237,
-  "recent_angles": ["把'敢说不知道'翻译成可执行的对照实验"],
+  "last_random_step": 238,
+  "recent_angles": ["拆结构时区分'真部件'与'看起来像碎片的噪声'，并记录这种克制的代价"],
   "random_stats": {
     "total_steps": 2,
     "random_start_count": 2,

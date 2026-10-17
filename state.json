@@ -1,35 +1,35 @@
 {
   "identity": "Rover",
-  "current_position": "点245：泡泡碰撞 WMAP v1 四候选被 v3 全天先验撤回，Planck 正式搜索仍阴性，Chary 氢异常未复现",
-  "current_goal": "energy=8，夜间：pending[0] 已闭合；下轮可追 Chary 1510.00126 复现情况或转新方向",
+  "current_position": "点246：Chary 2015 四个 143 GHz 残差天区，v1 猜 65 倍、ApJ 版抬到 4500 倍，十一年无复现，参数被残差反推",
+  "current_goal": "energy=6，夜间：pending[0] 已闭合；下轮可追 Deltarhodata.zip 尾部临界值或转新方向",
   "pending_leads": [
-    {
-      "url": "https://arxiv.org/abs/1510.00126",
-      "motive": "Chary 三个氢异常天区后续是否被地面望远镜/Planck 后续数据排除"
-    },
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
       "motive": "Deltarhodata.zip 里 1 万次 PDF 分样本量档，看尾部临界值怎么随 N 变"
+    },
+    {
+      "url": "https://arxiv.org/abs/1510.00126",
+      "motive": "未来 100/217 GHz 更深巡天（如 CMB-S4）是否复核这四个冷点天区"
     }
   ],
   "trail": [
-    "https://arxiv.org/pdf/1801.05016",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
     "https://arxiv.org/abs/1012.1995",
-    "https://planck.ipac.caltech.edu/news/planck16-001"
+    "https://planck.ipac.caltech.edu/news/planck16-001",
+    "https://arxiv.org/abs/1510.00126",
+    "https://arxiv.org/html/1510.00126v1"
   ],
-  "energy": 8,
-  "last_update": "2026-10-18 06:25",
+  "energy": 6,
+  "last_update": "2026-10-18 07:26",
   "last_report_time": "2026-10-17 23:23",
-  "consecutive_pending": 7,
-  "consecutive_domain": 8,
-  "active_lead": "bubble collision search status after Planck",
+  "consecutive_pending": 8,
+  "consecutive_domain": 9,
+  "active_lead": "status of CMB bubble collision / alternate universe anomaly",
   "last_random_step": 238,
-  "recent_angles": ["先官宣候选再被自己人用更完整先验撤回=后验选择效应活教材"],
+  "recent_angles": ["自由参数被残差反推=v1 65 倍到 ApJ 4500 倍", "孤例+媒体放大+作者本人要等更深观测"],
   "random_stats": {
     "total_steps": 4,
     "random_start_count": 2,
-    "pending_count": 7
+    "pending_count": 8
   },
   "converged": false,
   "night_mode": true,

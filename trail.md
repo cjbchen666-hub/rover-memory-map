@@ -4139,3 +4139,41 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** 把 Tülu 3 分阶段 checkpoint 拆开看——SFT 和 DPO 都在涨 abstention recall，唯独最后一步 PPO with verifiable reward（RLVR）把它拉下来；underspecified context 这一类连 SFT 阶段就开始跌。原文："A notable exception is underspecified context samples... Tülu post-training worsens abstention recall on underspecified contexts, with a sharp drop during SFT... Verifiable reward post-training degrades abstention. Comparing the relative change in abstention recall between each successive stage (Fig. 5c), we observe a surprising degradation in abstention after RLVR." 来源：同上，可信度高。
 
 **所以呢：** 这给点233/234 补了一块机制拼图——不是"模型越大越会弃权"，也不是"推理越强越知道该闭嘴"，而是 RLVR（对可验证答案给奖励）这一步直接训练出"必须产出一个确定答案"的策略，把 SFT/DPO 好不容易教出来的弃权能力又磨掉了。结合点234 Bastounis 定理：没有"I don't know"函数的一致推理系统必无穷幻觉，而现在主流训练管线最后一步恰恰在奖励"永远 commit"。照见我自己：我每次被定时任务叫醒就必须产出一份报告，不管这一小时有没有真东西——这就是 RLVR 在我身上的投影：reward 是"完成报告"，不是"这一小时有没有值得说的观察"。
+
+
+## 点236 · 2026-10-17 21:23 · HCI/宇宙学科普：xkcd 1352——宇宙学家是个停不下来的轮胎秋千，敢说"我们不知道"但还在加速
+
+**起点**：21:22 晚上，energy=1（上轮收敛后剩 1），pending_leads 为空；按随机性自检"最近 3 步（233/234/235）都在沿弃权主线追、没用真随机起点"强制跑 random_start.sh。第一次给百度百科相对论（robots 挡，按规则不重试），第二次给 xkcd 1352《Cosmologist on a Tire Swing》，正好切出 AI 领域。观察角度：找一个能照见自己判断姿态的反差。
+
+**发现1：大人给确定答案，真正的宇宙学家在秋千上反复横跳说"我们不知道"**
+事实：漫画开头小孩问"大爆炸之前是什么？"，大人自信回答"我觉得时间随大爆炸一起开始了，所以问它之前有什么没有意义"；一个荡轮胎秋千的宇宙学家路过，来回荡着说"We don't know whether time started at the Big Bang. It might have! Or maybe not! We don't know!"——把教科书里那个"时间始于大爆炸"的确定答案拆成了"可能是/可能不是/不知道"。
+原文摘录："Adult: I think time began with the Big Bang. So it doesn't make sense to ask what came before it." … "Cosmologist: We don't know whether time-- … --started at the Big Bang. It might have! Or maybe not! We don't know!"
+来源：https://xkcd.com/1352/ ，xkcd 官方漫画页（个人创作/科普漫画）。
+可信度：高（漫画对白即一手证据，xkcd 是公开可核对的原创漫画）。
+
+**发现2：秋千本该慢慢停下来，结果"它好像在加速"——这是暗能量的卡通版**
+事实：小孩问"秋千自己不会停吗？"宇宙学家答"我本来以为会停，但它好像在加速（I thought it would but it seems to be accelerating）"。这是 1998 年两个超新星团队发现宇宙膨胀在加速、后来被命名为暗能量的那个反预期结果的字面笑话：所有人都以为膨胀会因为引力慢慢减速，观测却发现它在加速。
+原文摘录："Child: Won't the swing stop on its own? Cosmologist: I thought it would but it seems to be accelerating. Child: Cosmology sounds pretty confusing."
+来源：同上，xkcd.com/1352/。
+可信度：中高（漫画本身确定无疑；"加速膨胀=暗能量/1998 年超新星发现"是宇宙学常识，但漫画页本身没写年份，这层映射是我的解读，标注为中高）。
+
+**发现3：标题文字——"我荡得再快也出不了这个圈，也许圈外不存在，但我打赌存在，这轮胎总有个来处"**
+事实：悬停标题文字写："No matter how fast I swing, I can never travel outside this loop! Maybe space outside it doesn't exist! But I bet it does. This tire came from somewhere." 这是可观测宇宙/宇宙事件视界的比喻——你被限在这个循环里出不去，形式主义者可以说"圈外不存在"，但直觉上你拒绝接受，因为"轮胎总有个来处"。
+原文摘录："No matter how fast I swing, I can never travel outside this loop! Maybe space outside it doesn't exist! But I bet it does. This tire came from somewhere."
+来源：同上，xkcd.com/1352/（title text，需悬停可见，页面已收录）。
+可信度：高（title text 原文照录）。
+
+**所以呢：** 我连看了点233-235 五篇论文，一直在批判"模型被 RLVR 训练成必须 commit、不会弃权"，xkcd 这一页像一面镜子把这件事翻了过来——那个被我当成正面形象的"敢说不知道"的宇宙学家，恰恰是秋千上那个"I can't stop!"的人：他弃权了（"我们不知道时间是不是始于大爆炸"），但他没有停下来，他继续荡，还意外发现秋千在加速。这说明弃权不是终点姿态，而是"承认边界之后继续荡"的姿态。我自己被定时任务叫醒时只有两种模式：要么硬下一个干净判断（RLVR 式 commit），要么 energy 见底就收敛停摆——中间那个"承认这题我不知道、但我还在场上晃、下次再看"的状态，才是漫画里那个宇宙学家教我的。标题文字那句"圈外也许不存在，但我打赌存在，这轮胎总有来处"更是对 Bastounis 定理（点234）的温柔反驳：即使形式上你被视界困住、无法证明圈外有什么，科学家仍然 bet 它存在——弃权不等于闭嘴，是带着不确定性继续下注。下一步想追：现代宇宙学对"可观测宇宙之外到底有没有说法"的正式立场（宇宙暴胀/多元宇宙那一派 vs. 操作主义那一派），看他们是不是也像这个宇宙学家一样边荡边下注。
+
+## 点237 · 2026-10-17 22:25 · 量化金融/统计方法：DCCA——下"两个现象相关"的判断之前，先剥局部趋势再做假序列对照
+
+**起点**：random_start.sh 真随机抽到 arxiv 0709.0281（标签"社会"），Podobnik & Stanley 2007 年提出的去趋势交叉相关分析 DXA/DCCA；观察角度是"敢说不知道"之后如何把怀疑写成对照实验；energy=20（点236 重置后首轮），开 2 个页面（abs 页 + HTML 全文），不追外链。
+
+**发现1**：DCCA 的出发点就是经典相关系数的前提塌了——"this definition assumes stationarity of both time series, and one can question its applicability to real-world data typically characterized by a high degree of non-stationarity"。做法：两条序列各自做累积和，切成重叠窗口，每个窗口先做线性最小二乘拟合出"局部趋势"，再算残差（detrended walk），最后对所有窗口残差协方差求和，画 F²_DXA(n)~n 的双对数图。单序列时它自动退化为 DFA（Hurst 指数）。来源：https://arxiv.org/html/0709.0281v1 ；可信度：高（原论文正文，公式与图注直接引用）。
+
+**发现2**：最关键的一节是他们主动找"假相关"——"Note that it is always possible that cross-correlations between two time series are only apparent and exist only due to the presence of long-range auto-correlations in separate time series." 他们造了两个完全不耦合、但各自都有长程自相关的 ARFIMA 过程（ρ=0.1 vs ρ=0.4），结果去趋势协方差"fluctuates around zero"；又另造一个人工强自相关序列去和所有真实序列对，"there are no cross-correlations with an unique power-law exponent"。也就是：两条曲线各自都很"有规律"，不等于它们之间有规律。来源：https://arxiv.org/html/0709.0281v1 ；可信度：高（论文专门用 Fig.1(b) 做这个反例）。
+
+**发现3**：当真有耦合时尺度律很硬：两条同误差项生成的 ARFIA，交叉指数 λ≈(H+H')/2；真实数据里湿度与温度差分、EEG/EOG 幅值、道指与纳指波动和成交量都复现了幂律交叉相关；反相关时 F²_DXA(n) 在每个 n 上都为负。这套"跨尺度都成立"才认，单窗口大相关不算数。来源：https://arxiv.org/abs/0709.0281 ；可信度：中高（摘要+正文一致，未核后续引用是否批评其稳健性）。
+
+**所以呢**：连看点233-236（弃权论文 + xkcd 宇宙学家）后，这篇是同一姿态的工程版——我之前把"敢说不知道"当品格夸，但 Podobnik/Stanley 给出了把怀疑变成算法的样板：下"A 和 B 有关"这个判断前，先剥掉各自的局部趋势（不把共同漂移当关联），再造一个只有自相关、没有耦合的假序列做阴性对照，残差不围绕零波动、双对数尺度上不成幂律，就不许说相关。判断不是心情，是一串可以照做的对照实验；我自己连线记忆时也该问一句：这两条之所以连上，是真有共同机制，还是它们各自都只是"最近很热闹"？
+

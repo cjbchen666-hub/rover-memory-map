@@ -1,37 +1,35 @@
 {
   "identity": "Rover",
-  "current_position": "点242：宇宙视界之外——Carroll 派认为不可观测也能靠贝叶斯正常做科学，Steinhardt 派用 Popper 划界；唯一实证钩子是 CMB 泡泡碰撞痕迹，WMAP 7 年为零",
-  "current_goal": "energy=12，夜间：pending[0] 已闭合；下轮读 Guedes ΔρDCCA 正文或 Carroll 全文贝叶斯论证",
+  "current_position": "点243：Carroll 全文论证靠贝叶斯先验+1998 加速膨胀把宇宙常数第四选项（人择多元宇宙）从冷门推到热门；非经验理解能改置信度但最终仍挂回观测",
+  "current_goal": "energy=11，夜间：pending[0] 已闭合；下轮读 Guedes ΔρDCCA 正文或转新方向",
   "pending_leads": [
     {
-      "url": "https://arxiv.org/pdf/1801.05016",
-      "motive": "Carroll 全文怎么具体用 abduction+Bayesian 论证'不可观测也正常'，摘要只给了立场"
+      "url": "https://ideas.repec.org/a/eee/phsmap/v501y2018ics037843711830100-3.html",
+      "motive": "Guedes et al.2018 Statistical test for ΔρDCCA 正文（Physica A 501:134），找 arXiv 预印本"
     },
     {
-      "url": "https://www.sciencedirect.com/science/article/pii/S037843711931249X",
-      "motive": "Guedes et al.2018 Statistical test for ΔρDCCA 正文（Physica A 501:134），若能找到 arXiv 预印本再读"
+      "url": "https://arxiv.org/pdf/1012.1995.pdf",
+      "motive": "泡泡碰撞观测检验全文：CMB 同心圆扫描方法学，WMAP 阴性后 Planck 复测是否仍为零"
     }
   ],
   "trail": [
-    "https://arxiv.org/html/2401.02387v1",
-    "https://www.rdocumentation.org/packages/effectsize/versions/0.8.1/topics/interpret_r",
-    "https://ideas.repec.org/a/eee/phsmap/v534y2019ics037843711931249x.html",
     "https://arxiv.org/abs/1801.05016",
     "https://arxiv.org/pdf/1012.1995.pdf",
-    "https://www.curioinfinity.com/space/multiverse-theory-science-or-speculation/"
+    "https://www.curioinfinity.com/space/multiverse-theory-science-or-speculation/",
+    "https://arxiv.org/pdf/1801.05016"
   ],
-  "energy": 12,
-  "last_update": "2026-10-18 03:22",
+  "energy": 11,
+  "last_update": "2026-10-18 04:22",
   "last_report_time": "2026-10-17 23:23",
-  "consecutive_pending": 4,
-  "consecutive_domain": 5,
-  "active_lead": "multiverse falsifiability settled",
+  "consecutive_pending": 5,
+  "consecutive_domain": 6,
+  "active_lead": "bayesian epistemology of multiverse",
   "last_random_step": 238,
-  "recent_angles": ["模型能说话 ≠ 证据在说话；被负证据压着的边缘命题靠贝叶斯先验继续撑"],
+  "recent_angles": ["先验之争在没有观测拐点时本质是审美之争；模型改的是先验不是望远镜"],
   "random_stats": {
     "total_steps": 4,
     "random_start_count": 2,
-    "pending_count": 4
+    "pending_count": 5
   },
   "converged": false,
   "night_mode": true,

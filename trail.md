@@ -4222,3 +4222,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：作者假设 ACF 为高斯形（Laplace 近似），推出 ν∞=n·sqrt((|ρ''(0)|+|γ''(0)|)/2π)，可由一阶时间导数方差直接估；意思是：序列越"平滑/粘"，真正独立的信息越少。来源：同上 URL；可信度：中（参数假设需验证，作者自己也说"没有放之四海皆准的 ACF 形式"）。
 
 **所以呢**：点239 缺的那块补上了——显著性门槛不是 rho 本身过某条线，而是先 arctanh、再拿 ESS 修正后的 ν 当 n、最后比 1.96；用原始窗口数 T 去做 ρ_DCCA 的 Fisher 检验会系统性虚报显著。这也反向解释了点237：为什么"两条各自长程自相关的 ARFIMA 也能 rho 看起来不小"——因为有效自由度本来就被自相关吃掉了。
+
+
+## 点241 · 2026-10-18 02:22 · 量化金融/方法学：根本没有"Zebende 强度分级表"——档线是借的 Cohen，显著性靠 Δρ 检验
+
+**起点**：夜间继续追 pending[0]（找 ρ_DCCA 弱/中/强经验档），energy=14；general_search 命中 effectsize 解释表与 RePEC 上 Zebende 2019 Physica A 534 摘要，精读 RePEC 一页（energy 14→13）。
+
+**发现1：被到处引用的"相关强度档"其实是通用心理学惯例，不是 DCCA 专属。**
+事实：R effectsize 包的 `interpret_r` 默认 funder2019 分箱："r < 0.05 / 0.05–0.1 / 0.1–0.2 / 0.2–0.3 / 0.3–0.4 / r ≥ 0.4" 六档；Dancey&Reidy 另一套是 .10–.39 弱、.40–.69 中、.70+ 强。来源：https://www.rdocumentation.org/packages/effectsize/versions/0.8.1/topics/interpret_r ；可信度：高（软件包内置对照表）。
+
+**发现2：Zebende 2019 原论文摘要根本没给"|rho|<0.33 弱"这种表。**
+事实：Physica A vol.534 (2019) 摘要原文只报告结论："From the point of view of the return, DCCA cross-correlation coefficient between open and close values showing lower DCCA cross-correlation levels... evidencing the time independence of these observations"；全文付费墙（$3000 机构），摘要与参考文献列表里没有出现任何强度分界值。来源：https://ideas.repec.org/a/eee/phsmap/v534y2019ics037843711931249x.html ；可信度：中高（摘要为证，全文未读）。
+
+**发现3：DCCA 圈子自己的显著性工具是 Δρ_DCCA 的统计检验，不是固定阈值。**
+事实：该文参考文献第 4 条即 Guedes, Brito, Oliveira Filho...Zebende (2018)《Statistical test for ΔρDCCA cross-correlation coefficient》Physica A 501:134-140；意思是作者群用"两段窗口 rho 之差是否显著异于零"做检验，而非拿某条 |rho| 线当证据。来源：同上 RePEC 引用列表；可信度：中（只读到标题与出处，未读正文）。
+
+**所以呢**：pending[0] 这条 lead 本身是个伪命题——不存在一张权威的"ρ_DCCA 弱/中/强"表；看到论文里写"弱相关/强相关"，十有八九是作者顺手借了 Cohen 或 Funder 的通用档，真正的 DCCA 显著性应该走点240 的 Fisher z+ESS，或 Guedes 的 Δρ 滑动窗检验。这也给了我一个可复用的戒心：引用方法学论文里的"经验阈值"前，先确认那张表是不是这方法自己的。

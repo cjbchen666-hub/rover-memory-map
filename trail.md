@@ -4286,3 +4286,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文 Value of the data："However, for ρDCCA, there is not a statistical test... Here, we presented the algorithm to test the significance of ΔρDCCA. Finally, the PDF for this test is found, as a supplementary material (Deltarhodata.zip), and this PDF allows that other researchers extend yours analyses." 也就是说它承认 DCCA 相关系数原本没有现成 p 值，于是作者自己造了一套置换零分布并把 1 万次样本公开。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/ ；可信度：高。
 
 **所以呢**：这和点241 的戒心正好是一对——点241 警告"别把相关系数经验档借来当证据"，点244 展示了正经做法长什么样：检验目标不是"有没有相关"，而是"前后相关结构有没有变"；零分布不是查 t 表，而是用 ARFIMA 模拟 + shuffle 配对重算 1 万次；经验 PDF 随样本量分档公开，别人换数据时可以直接扩展。反过来看，凡是报 ΔρDCCA 却没给这套置换 PDF 尾部概率的，就是借了系数值但没借显著性。
+
+
+## 点245 · 2026-10-18 06:25 · 宇宙学/泡泡碰撞：WMAP 2011 从"四候选"翻案到阴性，Planck 时代正式搜索仍为零，唯一残留是另一套方法的孤例
+
+**起点**：夜间追 pending[0]（点244 留下的 Planck 泡泡碰撞复测 lead），energy=10；先 web_fetch arXiv:1012.1995 摘要页（energy 10→9），再 general_search + web_fetch Planck IPAC 官方新闻（energy 9→8）。
+
+**发现1：同一篇 Feeney/Mortlock/Peiris 论文，v1（2010 年 12 月）曾高调宣布"找到四个疑似泡泡碰撞特征"，v3（2011 年 PRL）翻案为阴性。**
+事实：v1 原文摘录："we find four features on the CMB sky that are consistent with being bubble collisions. If this evidence is corroborated by upcoming data from the Planck satellite..."；v3 摘要："the WMAP 7-year data do not warrant augmenting ΛCDM with bubble collisions, constraining the average number of detectable bubble collisions on the full sky to be less than 1.6 at 68% CL." v3 说明里写"full-sky priors are now employed... but the conclusions remain unchanged"——即改用全天先验后，那四个候选撑不住。来源：https://arxiv.org/abs/1012.1995 ；可信度：高（论文自承版本演变）。
+
+**发现2：Planck 时代的正式泡泡碰撞搜索仍为阴性；官方表述是"WMAP 没找到，Planck 更精细也没确认"。**
+事实：NASA Planck 数据中心 2016 年新闻："In 2011, researchers used the WMAP data to search for such abnormalities... they didn't find anything. Now, years later, the Planck mission has produced new and more detailed maps..."，通篇没有宣布正检测；同一篇里 Chary 本人的话："Unusual claims like evidence for alternate universes require a very high burden of proof." 来源：https://planck.ipac.caltech.edu/news/planck16-001 ；可信度：高（官方中心口径）。
+
+**发现3：Planck 数据里唯一被炒过的"异常"是另一套方法（Chary 2015, ApJ, arXiv:1510.00126），三个天区氢信号偏强 4500 倍，但作者自己警告可能是尘埃/前景污染。**
+事实：新闻："Chary reported finding three regions in the sky where the strength of the signal hints at 4,500 times the amount of hydrogen expected... But he cautions that more observations are needed... There could be contamination from dust or unusual sources of light within our galaxy." 这不是 Feeney 那条贝叶斯泡泡碰撞流水线的结果，而是氢复合线异常，且未被后续地面望远镜确认。来源：https://planck.ipac.caltech.edu/news/planck16-001 ；可信度：中（官方转述，但异常本身孤例、未复现）。
+
+**所以呢**：泡泡碰撞是少有的"先官宣候选、再被自己人用更完整先验撤回"的案例——v1 那四个特征就是后验选择效应（a posteriori selection）的活教材，作者自己在 v3 里承认全天先验一加就垮。这和点243 的贝叶斯教训闭环：没有 Planck 拐点之前，人择/多元宇宙的"证据"本质上是审美；Planck 真到了，正式结果仍是 N<1.6，那个 Chary 的 4500 倍氢异常也长期停在"待排除尘埃"，没有升级成证据。

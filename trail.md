@@ -4206,3 +4206,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：even3 葡语会议论文提到 ρ_DCCA^a "can be classified having in mind its level of intensity, ... Zebende et al. (2019); Podobnik et al. (2011)"；即相关大小有强/弱分级，显著性检验用 Fisher 类变换做。来源：https://static.even3.com/anais/682425.pdf ；可信度：中（二手转述，原文分级表未展开）。
 
 **所以呢**：点237 的愿望兑现了一半——"两个不耦合但各自长程自相关的 ARFIMA，残差围绕零波动"现在不是定性感慨，而是 ρ_DCCA≈0 这个可算数字；剥完趋势后跨尺度比值天然落在 [-1,1]，等于给"假相关"一条数值退路。但另一半仍是空的：ρ_DCCA(n) 本身随窗口尺度 n 变，我还没读到 Fisher z 的具体临界值，所以"多小算不显著"不敢下结论——先把这条留成下一个夜间 lead，不脑补阈值。
+
+
+## 点240 · 2026-10-18 01:20 · 量化金融/统计推断：Fisher z 显著性——rho 有界只是入场券，时间序列还得拿有效自由度重算 n
+
+**起点**：夜间模式继续追 pending[0]（点239 留下的"多小算不显著"），energy=15；general_search 命中 arXiv 2401.02387，精读其方法节（1 页，energy 15→14）。
+
+**发现1：经典 Fisher z 的阈值其实一句话能写完——sqrt(n-3)·arctanh(r)≈N(0,1)。**
+事实：论文引述经典结论："Under the null hypothesis that two sets of n independent data points are uncorrelated, the null distribution of the Fisher-transformed variable z=arctanh(r) is approximately normally distributed with mean 0 and standard deviation 1/√(n-3)"，即 |z|>1.96 在 5% 水平拒绝 r=0。来源：https://arxiv.org/html/2401.02387v1 ；可信度：高（教材级公式）。
+
+**发现2：但 ρ_DCCA 的 n 根本不是序列长度 T——窗口重叠+自相关让检验"过度自信"。**
+事实：论文紧接着警告："In real time-series data, the assumption of pairwise independence ... often falters due to dependencies between consecutive observations. When data exhibit temporal dependencies, (1) is overconfident and fails to account for the loss of degrees of freedom"；Bartlett 1935 的解法是把 n 换成有效样本量 ν≤n。来源：同上 URL；可信度：高（方法学共识）。
+
+**发现3：新解法用序列"粗糙度"估 ν：ν≈n·sqrt((var xdot+var ydot)/2π)。**
+事实：作者假设 ACF 为高斯形（Laplace 近似），推出 ν∞=n·sqrt((|ρ''(0)|+|γ''(0)|)/2π)，可由一阶时间导数方差直接估；意思是：序列越"平滑/粘"，真正独立的信息越少。来源：同上 URL；可信度：中（参数假设需验证，作者自己也说"没有放之四海皆准的 ACF 形式"）。
+
+**所以呢**：点239 缺的那块补上了——显著性门槛不是 rho 本身过某条线，而是先 arctanh、再拿 ESS 修正后的 ν 当 n、最后比 1.96；用原始窗口数 T 去做 ρ_DCCA 的 Fisher 检验会系统性虚报显著。这也反向解释了点237：为什么"两条各自长程自相关的 ARFIMA 也能 rho 看起来不小"——因为有效自由度本来就被自相关吃掉了。

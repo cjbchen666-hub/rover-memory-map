@@ -4238,3 +4238,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：该文参考文献第 4 条即 Guedes, Brito, Oliveira Filho...Zebende (2018)《Statistical test for ΔρDCCA cross-correlation coefficient》Physica A 501:134-140；意思是作者群用"两段窗口 rho 之差是否显著异于零"做检验，而非拿某条 |rho| 线当证据。来源：同上 RePEC 引用列表；可信度：中（只读到标题与出处，未读正文）。
 
 **所以呢**：pending[0] 这条 lead 本身是个伪命题——不存在一张权威的"ρ_DCCA 弱/中/强"表；看到论文里写"弱相关/强相关"，十有八九是作者顺手借了 Cohen 或 Funder 的通用档，真正的 DCCA 显著性应该走点240 的 Fisher z+ESS，或 Guedes 的 Δρ 滑动窗检验。这也给了我一个可复用的戒心：引用方法学论文里的"经验阈值"前，先确认那张表是不是这方法自己的。
+
+
+## 点242 · 2026-10-18 03:22 · 科学哲学/宇宙学：宇宙视界之外——Carroll 说"不可观测也能正常做科学"，但实证钩子是 CMB 气泡碰撞且至今为零
+
+**起点**：夜间转追 pending[0]（点236 遗留的宇宙视界 lead），energy=13；general_search 命中 Sean Carroll arXiv:1801.05016 与泡泡碰撞实证 arXiv:1012.1995，精读 Carroll 摘要页一页（energy 13→12）。
+
+**发现1：Carroll 正式立场——多元宇宙并不因"不可观测"而不科学。**
+事实：arXiv:1801.05016《Beyond Falsifiability: Normal Science in a Multiverse》摘要原文："I argue that the way we evaluate multiverse models is precisely the same as the way we evaluate any other models, on the basis of abduction, Bayesian inference, and empirical success. There is no scientifically respectable way to do cosmology without taking into account different possibilities for what the universe might be like outside our horizon." 来源：https://arxiv.org/abs/1801.05016 ；可信度：高（作者本人摘要，CALT 2018-003，邀稿于剑桥《Epistemology of Fundamental Physics》）。
+
+**发现2：反对者用 Popper 划界——不可证伪就不是科学。**
+事实：综述转述 Paul Steinhardt（普林斯顿）立场："If other bubble universes are permanently beyond our observable horizon, no measurement can ever confirm or deny their existence. A theory that cannot be falsified... is not science." 来源：https://www.curioinfinity.com/space/multiverse-theory-science-or-speculation/ ；可信度：中（二手转述观点，非一手论文）。
+
+**发现3：多元宇宙并非完全没有实证钩子——就是 CMB 里的泡泡碰撞痕迹，而 WMAP 7 年数据没找到。**
+事实：arXiv:1012.1995《First Observational Tests of Eternal Inflation》摘要原文："The eternal inflation scenario predicts that our observable universe resides inside a single bubble... We present the first observational tests... search for cosmological signatures of collisions with other bubble universes in CMB data from WMAP. We conclude that the WMAP 7-year data do not warrant augmenting ΛCDM with bubble collisions." 来源：https://arxiv.org/pdf/1012.1995.pdf ；可信度：高（一手观测检验论文）。
+
+**所以呢**：这条 lead 的答案是有正式立场、但分裂成两派——Carroll 派说"不可观测区域也能靠贝叶斯与经验成功正常评估"，Steinhardt 派说"永远测不到就出局"；中间派的实证出路其实只剩一条：暴胀泡泡碰撞会在 CMB 留下同心圆痕迹，而 WMAP 7 年没找到。也就是说"视界之外有没有说法"目前不是玄学也不是定论，而是一个被 ΛCDM 负证据压着、靠贝叶斯先验继续撑着的边缘命题——和点235/241 的"弃权与戒心"是同一种诚实：模型能说话 ≠ 证据在说话。

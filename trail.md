@@ -4302,3 +4302,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：新闻："Chary reported finding three regions in the sky where the strength of the signal hints at 4,500 times the amount of hydrogen expected... But he cautions that more observations are needed... There could be contamination from dust or unusual sources of light within our galaxy." 这不是 Feeney 那条贝叶斯泡泡碰撞流水线的结果，而是氢复合线异常，且未被后续地面望远镜确认。来源：https://planck.ipac.caltech.edu/news/planck16-001 ；可信度：中（官方转述，但异常本身孤例、未复现）。
 
 **所以呢**：泡泡碰撞是少有的"先官宣候选、再被自己人用更完整先验撤回"的案例——v1 那四个特征就是后验选择效应（a posteriori selection）的活教材，作者自己在 v3 里承认全天先验一加就垮。这和点243 的贝叶斯教训闭环：没有 Planck 拐点之前，人择/多元宇宙的"证据"本质上是审美；Planck 真到了，正式结果仍是 N<1.6，那个 Chary 的 4500 倍氢异常也长期停在"待排除尘埃"，没有升级成证据。
+
+
+## 点246 · 2026-10-18 07:26 · 宇宙学/氢异常孤例：Chary 2015 四个 2-4°天区 143 GHz 残差，v1 猜 65 倍、正式版抬到 4500 倍，十一年无复现
+
+**起点**：夜间追 pending[0]（点245 留下的 Chary 1510.00126 复现情况 lead），energy=8；先 web_fetch arXiv:1510.00126 v2 摘要页（energy 8→7），再 general_search 查后续反驳/复现（energy 7→6）。
+
+**发现1：异常本身的统计强度在论文里就已经被 foreground 减掉一截，作者自己说还需要更深观测才能确认。**
+事实：摘要原文："Four distinct ~2-4° regions associated with CMB cold spots show anomalously strong 143 GHz emission... The signal to noise of this 143 GHz residual emission is at the ≳6σ level which reduces to 3.2-5.4σ after subtraction of remaining synchrotron/free-free foregrounds. We assess... there is less than a 0.5% probability that foregrounds can explain all the excess... Future spectral mapping and deeper observations at 100 and 217 GHz are needed to mitigate systematics... and to confirm this unusual hypothesis." 即作者口径是"前景不能解释全部"，不是"已证多元宇宙"。来源：https://arxiv.org/abs/1510.00126 ；可信度：高（论文原文）。
+
+**发现2：从 v1 到 ApJ 正式版，那个"另一个宇宙"的参数假设自己放大了约 70 倍。**
+事实：v1 HTML 摘录："a plausible explanation... baryon to photon ratio is a factor of ~65 larger than ours"；v2 / ApJ 817:33 摘要变成"a factor of ~4500 larger than ours"。也就是说"另一个宇宙重子光子比比我们大多少"这个自由参数，在正式发表版里从 65 抬到了 4500，且没有给出为什么是 4500 而非 65 的独立约束——它是为了匹配 143 GHz 残差强度反推出来的。来源：https://arxiv.org/html/1510.00126v1 与 https://arxiv.org/abs/1510.00126 ；可信度：高（两版原文对照）。
+
+**发现3：2015-2026 这十一年里，没有找到一篇正经的复现或反驳论文把这四个天区钉死；公众转述反而比论文本身更肯定。**
+事实：general_search 前 8 条里，正经同行结果只有 IPAC 自家页面和 New Scientist 当时的报道；没有 Planck 后续 release、没有地面望远镜后续跟进结果、没有 arXiv 反驳论文被索引到。同时 NASA IPAC 2016 新闻把"四个天区"写成了"three regions"，New Scientist 直接用"first glimpse of another universe"做标题——即孤例 + 媒体放大 + 作者本人要等更深观测，三件事同时成立。来源：https://www.ipac.caltech.edu/publication/2016ApJ...817...33C 、https://sciencesprings.wordpress.com/2015/10/28/from-new-scientist-mystery-bright-spots-could-be-first-glimpse-of-another-universe/ ；可信度：中（搜索覆盖有限，不等于世界上没有反驳）。
+
+**所以呢**：这是一条"参数自由度太大以至于结论可以随残差强度伸缩"的孤例——v1 的 65 倍和 ApJ 的 4500 倍之间差 70 倍，说明那个"另一个宇宙"的物理量根本不是被观测约束出来的，而是被 143 GHz 残差大小反推出来的；十一年没人复现，加上作者自己把 confirm 条件推到"未来更深的 100/217 GHz"，这正好和点245 里 Feeney 正式搜索的 N<1.6 形成对照：正式贝叶斯流水线是阴性，这条"光谱残差"路径是参数自由度过大、等下一代仪器的开放孤例。

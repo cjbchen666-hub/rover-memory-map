@@ -1,11 +1,11 @@
 {
   "identity": "Rover",
-  "current_position": "点238：arxiv 2007.10055 Morphological Skip-Gram——拆词只留有意义语素（'American'里的'erica'是噪声），类比题快40%但rare word输给穷举",
-  "current_goal": "energy=16，下轮可追 Zebende 2011 ρ_DCCA 有界系数；或补'有知识切分 vs brute force 在罕见样本上泛化'这条线",
+  "current_position": "点239：Zebende ρ_DCCA——DCCA 交叉涨度除以各自 DFA 自涨度，归一到 [-1,1]，点237 的'残差围绕零波动'现在是 ρ≈0；Fisher 显著性阈值仍未读到",
+  "current_goal": "energy=15，夜间只追 pending：下轮读 Zebende 2019/Podobnik 2011 的 ρ_DCCA 强度分级与 Fisher z 临界值",
   "pending_leads": [
     {
-      "url": "https://arxiv.org/abs/?search=Zebende+DCCA+coefficient+rho+significance+Fisher",
-      "motive": "点237 的 2007 论文只有双对数斜率、没有 [-1,1] 有界相关系数和显著性阈值；想知道后来 ρ_DCCA 怎么把'残差围绕零波动'这条阴性对照变成一个可计算的数字"
+      "url": "https://www.google.com/search?q=Zebende+2019+rho_DCCA+classification+strength+Fisher+significance+threshold",
+      "motive": "点239 已拿到有界系数 [-1,1]，但'多小算不显著'的临界值/强度分级表（Zebende et al. 2019; Podobnik et al. 2011）这轮没读到原文，需补"
     },
     {
       "url": "https://arxiv.org/abs/?search=observable+universe+horizon+multiverse+inflation",
@@ -13,28 +13,30 @@
     }
   ],
   "trail": [
-    "https://www.schneier.com/essays/2026/",
     "https://arxiv.org/html/2605.30771",
     "https://xkcd.com/1352/",
     "https://arxiv.org/abs/0709.0281",
     "https://arxiv.org/html/0709.0281v1",
     "https://arxiv.org/abs/2007.10055v2",
-    "https://arxiv.org/html/2007.10055v2"
+    "https://arxiv.org/html/2007.10055v2",
+    "https://bg.copernicus.org/articles/23/565/2026/",
+    "https://arxiv.org/abs/1311.00657",
+    "https://static.even3.com/anais/682425.pdf"
   ],
-  "energy": 16,
-  "last_update": "2026-10-17 23:25",
+  "energy": 15,
+  "last_update": "2026-10-18 00:20",
   "last_report_time": "2026-10-17 23:23",
-  "consecutive_pending": 0,
-  "consecutive_domain": 1,
-  "active_lead": null,
+  "consecutive_pending": 1,
+  "consecutive_domain": 2,
+  "active_lead": "Zebende rho_DCCA significance",
   "last_random_step": 238,
-  "recent_angles": ["拆结构时区分'真部件'与'看起来像碎片的噪声'，并记录这种克制的代价"],
+  "recent_angles": ["把定性的假相关对照变成有界系数后，下一步找显著性阈值，不脑补"],
   "random_stats": {
-    "total_steps": 2,
+    "total_steps": 3,
     "random_start_count": 2,
-    "pending_count": 0
+    "pending_count": 1
   },
   "converged": false,
-  "night_mode": false,
+  "night_mode": true,
   "heal_log": []
 }

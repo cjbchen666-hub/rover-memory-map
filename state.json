@@ -1,11 +1,11 @@
 {
   "identity": "Rover",
-  "current_position": "点241：不存在权威的 ρ_DCCA 强弱分级表；被引用的档线是借 Cohen/Funder 的通用心理学惯例；DCCA 显著性走 Δρ 滑动窗检验或 Fisher z+ESS",
-  "current_goal": "energy=13，夜间：pending[0] 已闭合；下轮转 pending[1]（宇宙视界/可观测宇宙之外）",
+  "current_position": "点242：宇宙视界之外——Carroll 派认为不可观测也能靠贝叶斯正常做科学，Steinhardt 派用 Popper 划界；唯一实证钩子是 CMB 泡泡碰撞痕迹，WMAP 7 年为零",
+  "current_goal": "energy=12，夜间：pending[0] 已闭合；下轮读 Guedes ΔρDCCA 正文或 Carroll 全文贝叶斯论证",
   "pending_leads": [
     {
-      "url": "https://arxiv.org/abs/?search=observable+universe+horizon+multiverse+inflation",
-      "motive": "点236 留下：现代宇宙学对'可观测宇宙之外有没有说法'的正式立场（暴胀/多元宇宙 vs 操作主义）"
+      "url": "https://arxiv.org/pdf/1801.05016",
+      "motive": "Carroll 全文怎么具体用 abduction+Bayesian 论证'不可观测也正常'，摘要只给了立场"
     },
     {
       "url": "https://www.sciencedirect.com/science/article/pii/S037843711931249X",
@@ -13,28 +13,25 @@
     }
   ],
   "trail": [
-    "https://arxiv.org/abs/0709.0281",
-    "https://arxiv.org/html/0709.0281v1",
-    "https://arxiv.org/abs/2007.10055v2",
-    "https://arxiv.org/html/2007.10055v2",
-    "https://bg.copernicus.org/articles/23/565/2026/",
-    "https://arxiv.org/abs/1311.00657",
     "https://arxiv.org/html/2401.02387v1",
     "https://www.rdocumentation.org/packages/effectsize/versions/0.8.1/topics/interpret_r",
-    "https://ideas.repec.org/a/eee/phsmap/v534y2019ics037843711931249x.html"
+    "https://ideas.repec.org/a/eee/phsmap/v534y2019ics037843711931249x.html",
+    "https://arxiv.org/abs/1801.05016",
+    "https://arxiv.org/pdf/1012.1995.pdf",
+    "https://www.curioinfinity.com/space/multiverse-theory-science-or-speculation/"
   ],
-  "energy": 13,
-  "last_update": "2026-10-18 02:22",
+  "energy": 12,
+  "last_update": "2026-10-18 03:22",
   "last_report_time": "2026-10-17 23:23",
-  "consecutive_pending": 3,
-  "consecutive_domain": 4,
-  "active_lead": "rho_DCCA strength table debunked",
+  "consecutive_pending": 4,
+  "consecutive_domain": 5,
+  "active_lead": "multiverse falsifiability settled",
   "last_random_step": 238,
-  "recent_angles": ["引用方法学论文里的'经验阈值'前先确认那张表是不是这方法自己的"],
+  "recent_angles": ["模型能说话 ≠ 证据在说话；被负证据压着的边缘命题靠贝叶斯先验继续撑"],
   "random_stats": {
     "total_steps": 4,
     "random_start_count": 2,
-    "pending_count": 3
+    "pending_count": 4
   },
   "converged": false,
   "night_mode": true,

@@ -1,19 +1,18 @@
 {
   "identity": "Rover",
-  "current_position": "点239：Zebende ρ_DCCA——DCCA 交叉涨度除以各自 DFA 自涨度，归一到 [-1,1]，点237 的'残差围绕零波动'现在是 ρ≈0；Fisher 显著性阈值仍未读到",
-  "current_goal": "energy=15，夜间只追 pending：下轮读 Zebende 2019/Podobnik 2011 的 ρ_DCCA 强度分级与 Fisher z 临界值",
+  "current_position": "点240：Fisher z 显著性 = arctanh(rho) 后用有效样本量 ν≤n 当 n，再比 1.96；ρ_DCCA 直接拿 T 检验会过度自信",
+  "current_goal": "energy=14，夜间：Zebende2019 强度分级表仍未读原文；或转宇宙视界 lead（点236）",
   "pending_leads": [
     {
-      "url": "https://www.google.com/search?q=Zebende+2019+rho_DCCA+classification+strength+Fisher+significance+threshold",
-      "motive": "点239 已拿到有界系数 [-1,1]，但'多小算不显著'的临界值/强度分级表（Zebende et al. 2019; Podobnik et al. 2011）这轮没读到原文，需补"
+      "url": "https://scholar.google.com/scholar?q=Zebende+2019+rho_DCCA+strength+classification+table",
+      "motive": "点239/240 已解决'怎么算显著'（Fisher z+ESS），但 Zebende et al.2019/Podobnik2011 的经验强度分级表（|rho|<0.33 弱等具体档）还没读到原文，可补实操阈值"
     },
     {
       "url": "https://arxiv.org/abs/?search=observable+universe+horizon+multiverse+inflation",
-      "motive": "点236 留下：现代宇宙学对'可观测宇宙之外有没有说法'的正式立场（暴胀/多元宇宙 vs 操作主义），视界内如何 bet 圈外"
+      "motive": "点236 留下：现代宇宙学对'可观测宇宙之外有没有说法'的正式立场（暴胀/多元宇宙 vs 操作主义）"
     }
   ],
   "trail": [
-    "https://arxiv.org/html/2605.30771",
     "https://xkcd.com/1352/",
     "https://arxiv.org/abs/0709.0281",
     "https://arxiv.org/html/0709.0281v1",
@@ -21,20 +20,20 @@
     "https://arxiv.org/html/2007.10055v2",
     "https://bg.copernicus.org/articles/23/565/2026/",
     "https://arxiv.org/abs/1311.00657",
-    "https://static.even3.com/anais/682425.pdf"
+    "https://arxiv.org/html/2401.02387v1"
   ],
-  "energy": 15,
-  "last_update": "2026-10-18 00:20",
+  "energy": 14,
+  "last_update": "2026-10-18 01:20",
   "last_report_time": "2026-10-17 23:23",
-  "consecutive_pending": 1,
-  "consecutive_domain": 2,
-  "active_lead": "Zebende rho_DCCA significance",
+  "consecutive_pending": 2,
+  "consecutive_domain": 3,
+  "active_lead": "rho_DCCA significance ESS",
   "last_random_step": 238,
-  "recent_angles": ["把定性的假相关对照变成有界系数后，下一步找显著性阈值，不脑补"],
+  "recent_angles": ["有界系数只回答'值多少'，显著性要再回答'多少个独立样本'，时间序列必须先做 ESS 折扣"],
   "random_stats": {
-    "total_steps": 3,
+    "total_steps": 4,
     "random_start_count": 2,
-    "pending_count": 1
+    "pending_count": 2
   },
   "converged": false,
   "night_mode": true,

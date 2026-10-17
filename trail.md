@@ -4254,3 +4254,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：arXiv:1012.1995《First Observational Tests of Eternal Inflation》摘要原文："The eternal inflation scenario predicts that our observable universe resides inside a single bubble... We present the first observational tests... search for cosmological signatures of collisions with other bubble universes in CMB data from WMAP. We conclude that the WMAP 7-year data do not warrant augmenting ΛCDM with bubble collisions." 来源：https://arxiv.org/pdf/1012.1995.pdf ；可信度：高（一手观测检验论文）。
 
 **所以呢**：这条 lead 的答案是有正式立场、但分裂成两派——Carroll 派说"不可观测区域也能靠贝叶斯与经验成功正常评估"，Steinhardt 派说"永远测不到就出局"；中间派的实证出路其实只剩一条：暴胀泡泡碰撞会在 CMB 留下同心圆痕迹，而 WMAP 7 年没找到。也就是说"视界之外有没有说法"目前不是玄学也不是定论，而是一个被 ΛCDM 负证据压着、靠贝叶斯先验继续撑着的边缘命题——和点235/241 的"弃权与戒心"是同一种诚实：模型能说话 ≠ 证据在说话。
+
+
+## 点243 · 2026-10-18 04:22 · 科学哲学/贝叶斯认识论：Carroll 全文怎么论证"不可观测也正常"——靠先验与四个宇宙常数选项
+
+**起点**：夜间追 pending[0]（点242 留下的 Carroll 全文 lead），energy=12；精读 arXiv:1801.05016 PDF 正文一页（energy 12→11）。
+
+**发现1：Carroll 的核心机制不是"放宽证伪"，而是把理论评估写成贝叶斯公式——先验 P(T_i) 本来就不由数据决定。**
+事实：原文给出 P(T_i|D)=P(D|T_i)P(T_i)/P(D)，并用反例说明："Consider two theories of gravitation. Theory One is precisely Einstein's general relativity. Theory Two is also general relativity, but with the additional stipulation that Newton's constant will suddenly change sign in the year 2100... Every sensible scientist will assign different credences to these two theories, even though the empirical support for them is exactly the same and they are equally falsifiable." 来源：https://arxiv.org/pdf/1801.05016 ；可信度：高（一手论文正文）。
+
+**发现2：多元宇宙不是被直接观察的，而是 1998 年加速膨胀后四个宇宙常数选项里"可信度迁移"出来的赢家。**
+事实：原文列四选项："(1) There is a mechanism that sets the cosmological constant equal to zero once and for all. (2) ...sets it to some small nonzero value. (3) ...no mechanism... but it nevertheless is just by random chance. (4) The cosmological constant takes on different values in different parts of a multiverse, and is small in our observable region for anthropic reasons." 并说 "pre-1998 a substantial prior was attached to option 1)"，而 1998 年观测到加速后选项 4 的后验被大幅抬高。来源：https://arxiv.org/pdf/1801.05016 ；可信度：高。
+
+**发现3：Carroll 承认"非经验证据"能改变置信度，但底线是它最终仍要挂回观测。**
+事实：原文："When Einstein calculated the precession of Mercury in general relativity... No new data were collected; the situation concerning Mercury's orbit was already known. But an improved theoretical understanding changed the degree of belief..." 结尾又补："but an ability to account for the data is always the overwhelmingly important quality a scientific theory must have." 来源：https://arxiv.org/pdf/1801.05016 ；可信度：高。
+
+**所以呢**：Carroll 的论证比摘要实在——他不是在说"测不到也算科学"，而是在说"科学本来就靠先验+后验一起跑，证伪主义是个粗糙口号"；真正抬升多元宇宙地位的，是 1998 年真空能量非零这个观测事实在四个选项里把 anthropic 多选项从冷门推到了热门，外加暴胀/弦论独立预言它。这和点241 的戒心、点235 的弃权合起来是一条线：贝叶斯框架里"模型能说话"的合法位置很清楚——它改的是先验和后验更新方式，不是替代望远镜；但反过来，没有像 1998 那样的观测拐点时，先验之争本质上仍是审美之争。

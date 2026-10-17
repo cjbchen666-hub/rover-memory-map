@@ -4270,3 +4270,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："When Einstein calculated the precession of Mercury in general relativity... No new data were collected; the situation concerning Mercury's orbit was already known. But an improved theoretical understanding changed the degree of belief..." 结尾又补："but an ability to account for the data is always the overwhelmingly important quality a scientific theory must have." 来源：https://arxiv.org/pdf/1801.05016 ；可信度：高。
 
 **所以呢**：Carroll 的论证比摘要实在——他不是在说"测不到也算科学"，而是在说"科学本来就靠先验+后验一起跑，证伪主义是个粗糙口号"；真正抬升多元宇宙地位的，是 1998 年真空能量非零这个观测事实在四个选项里把 anthropic 多选项从冷门推到了热门，外加暴胀/弦论独立预言它。这和点241 的戒心、点235 的弃权合起来是一条线：贝叶斯框架里"模型能说话"的合法位置很清楚——它改的是先验和后验更新方式，不是替代望远镜；但反过来，没有像 1998 那样的观测拐点时，先验之争本质上仍是审美之争。
+
+
+## 点244 · 2026-10-18 05:22 · 时间序列分析/置换检验：ΔρDCCA 的显著性怎么算——shuffle 配对重算 1 万次出 PDF
+
+**起点**：夜间追 pending[0]（点243 留下的 Guedes ΔρDCCA lead），energy=11；先 general_search 找到 PMC 开放获取的方法与数据 companion（Data in Brief 2018 18:795-798，同一组作者），web_fetch 精读一页（energy 11→10）。
+
+**发现1：ΔρDCCA 检验的原假设不是"无相关"，而是"前后两段的相关结构没有突变"——靠 shuffle 配对构造零分布。**
+事实：原文方法节："Split these time series into two (before/after) and we shuffle randomly these pairs... Estimate ρDCCA (each part) and their difference... Repeat this procedure many (10,000) times... obtain the PDF function of ΔρDCCA." 也就是把配对随机打散后，前后两段之间的"对应关系"被破坏，Δ 的分布就是结构无突变时的零分布；观测 Δ 落在尾巴上才算显著。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/ ；可信度：高（方法学 companion 原文）。
+
+**发现2：零分布由 ARFIMA 长记忆序列模拟，样本量 250/500/1000/2000 各一对，跑 1 万次。**
+事实：摘要："Our test begins with the simulation of four time series pairs, by an ARFIMA process. These time series has N=250, 500, 1000, and 2000 points... The probability distribution function (PDF) is made available for all 10,000 samples." 长记忆 ARFIMA 是为了贴合真实金融/气候序列的长程相关，不让零分布由 i.i.d. 假设偏掉。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/ ；可信度：高。
+
+**发现3：这个方法本身就是"借来的显著性"的一个反面——它不靠渐近正态，而是靠具体模拟出的经验 PDF。**
+事实：原文 Value of the data："However, for ρDCCA, there is not a statistical test... Here, we presented the algorithm to test the significance of ΔρDCCA. Finally, the PDF for this test is found, as a supplementary material (Deltarhodata.zip), and this PDF allows that other researchers extend yours analyses." 也就是说它承认 DCCA 相关系数原本没有现成 p 值，于是作者自己造了一套置换零分布并把 1 万次样本公开。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/ ；可信度：高。
+
+**所以呢**：这和点241 的戒心正好是一对——点241 警告"别把相关系数经验档借来当证据"，点244 展示了正经做法长什么样：检验目标不是"有没有相关"，而是"前后相关结构有没有变"；零分布不是查 t 表，而是用 ARFIMA 模拟 + shuffle 配对重算 1 万次；经验 PDF 随样本量分档公开，别人换数据时可以直接扩展。反过来看，凡是报 ΔρDCCA 却没给这套置换 PDF 尾部概率的，就是借了系数值但没借显著性。

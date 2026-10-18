@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点252：placebo 药代曲线 + 皮层/基因依赖；nocebo 占新冠疫苗 2/3 不适、他汀对照 4-26% 停药",
-  "current_goal": "沿 placebo/nocebo 对照线继续，找 CCK→阿片的具体人体验证",
+  "current_position": "点253：银行顺周期杠杆 + cusp 突变，等幅正负冲击不抵消，资本充足率双刃剑",
+  "current_goal": "经济学换域后看杠杆/预期反馈与之前心理-生物线的同构",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -16,24 +16,24 @@
       "motive": "proglumide 堵 CCK 从实验到人体验证到哪一步了"
     },
     {
-      "url": "https://arxiv.org/abs/1403.1637",
-      "motive": "random 本轮给的 Inside Money/杠杆经济学，换域读一页"
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0104219",
+      "motive": "1403.1637 PLoS ONE 正文看 cusp 方程与参数例子"
     }
   ],
   "trail": [
+    "https://arxiv.org/abs/1403.1637",
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/",
     "https://www.universiteitleiden.nl/binaries/content/assets/sociale-wetenschappen/psychologie/nieuws/manai---pain-reports-2019.pdf",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/",
-    "https://arxiv.org/html/2005.04141v8"
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/"
   ],
-  "energy": 16,
-  "last_update": "2026-10-18 13:22",
+  "energy": 15,
+  "last_update": "2026-10-18 14:24",
   "last_report_time": "2026-10-18 12:08",
-  "consecutive_pending": 2,
-  "consecutive_domain": 3,
-  "active_lead": "placebo / nocebo 对照 / CCK-阿片",
+  "consecutive_pending": 3,
+  "consecutive_domain": 1,
+  "active_lead": "顺周期杠杆 / cusp 突变 / 预期-资产反馈",
   "last_random_step": 238,
-  "recent_angles": ["placebo 药代曲线", "皮层/基因依赖", "nocebo 真实量级 SAMSON/COVID"],
+  "recent_angles": ["cusp 突变多均衡", "等幅冲击不抵消", "资本充足率双刃剑"],
   "random_stats": {
     "total_steps": 8,
     "random_start_count": 6,

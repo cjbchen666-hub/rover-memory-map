@@ -4462,3 +4462,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："using Google Translator can actually achieve a better score than our transfer algorithm…we need to trade off the efficiency for the accuracy…our XL-NBT algorithm only takes several hours to achieve the reported score, while the translator model takes much more time and memory." 另外德语比意大利语差（Goal 0.55 vs 0.72），作者归因为德语屈折变化造词形太多，词典替换候选清单长、噪声大。来源：同上 6.3 Discussion；可信度：高（作者自述局限）。
 
 **所以呢**：这是把"信念追踪"本身做成了跨语言迁移——老师在英语里学会的"用户意图→槽位更新"判断，不靠新标注、只靠双语向量空间对齐就蒸馏给了零标注的学生；和点246 个人信念更新、点253 银行预期协调是同一件事在三个尺度上重演：信念不是语言绑定的，是表示空间里的一个位置，对齐了就能搬。反直觉的教训是"直接翻译"反而最差（逐词翻译碎语法、NMT 解码错误层层叠加），"对齐表示空间"才对——这和点251 医生不逐句复述副作用、而是换框沟通是同一个招：别搬字，搬意思。
+
+
+## 点256 · 2026-10-18 17:18 · 系统论/沟通演化：Shannon 假设管道固定，Leydesdorff 说管道自己也在演化，接收系统维度数决定能把信号从噪声里分出几阶
+
+**起点**：random_start 命中 arxiv-social 1003.2886《The Evolution of Communication Systems》（Leydesdorff, 1994）；energy=11，先读 arxiv abstract（11→10），ar5iv 无正文，转 general_search 找到作者官网全文（10→9），读 leydesdorff.net/evolcomm（9→8）。
+
+**发现1：Shannon 的管道是"固定"的，社会沟通的管道自己也在变；演化三件事不是"变异+选择"，而是再加第三件"稳定化"。**
+事实：原文："In social communications, however, the channels are not 'fixed', but themselves subject to change…Communication systems change by communicating information to related communication systems; co-variation among systems if repeated over time, can lead to co-evolution." 又："the stabilization of specific co-evolutions adds a third mechanism to the previous pair of variation and selection…While selection can occur at discrete moments in time, stabilization presumes the assessment of variation and selection over the time dimension. Stabilization is therefore a higher-dimensional problem." 来源：https://www.leydesdorff.net/evolcomm/ ；可信度：高（作者本人官网全文，期刊 Systems Research 1994, 6:219-30）。
+
+**发现2：五阶段是一条"维度阶梯"——分割2维、分层3维、功能分化4维；低维系统拿到信号也只能当噪声。**
+事实：原文："segmentation requires co-variation in two dimensions; stratification requires stabilization in three dimensions…functional differentiation requires specificity of the reflection…four dimensions." 关键句："A two-dimensional system can hold the information, but it cannot attribute a reflexive value (i.e. a 'meaning') to a signal; the signal therefore degenerates into noise." 3维反射系统能把接收函数 (a - bx + cx²) 分解成 a'（信号期望值）和 b'（噪声）；4维自组织系统还能事后改写"哪个算信号、哪个算噪声"——"they are able to revise what will be considered as noise and what as signal, and therefore they are able to learn." 来源：同上；可信度：高。
+
+**发现3：耦合强度按接口数递减——结构耦合(1接口)→操作耦合(2)→松散耦合(3)；自然语言是"一次沟通传两个维度"的演化成就。**
+事实：原文："in the second interface, the signal is transmitted, and the communicating systems are operationally coupled…in the third interface, the signal can be translated, and the systems are loosely coupled." 又："natural language is the specific evolutionary achievement that allows us…to communicate in two dimensions (e.g., information and meaning) at the same time." 高维系统更稳、会吞并低维："the higher-order system is more stable…it tends 'to take over.' This is not Darwinian survival of the fittest, since the lower-level system is encompassed in the higher-level one." 来源：同上；可信度：高。
+
+**所以呢**：这给点251（医生 nocebo 换框）和点255（跨语言信念蒸馏）一个共同的理论底座——沟通不是固定管道里搬运字节，接收方有几个自由度，决定它能把"信号从噪声里分离"做几阶：2维只存信号、3维能反射分出 a'/b'、4维还能事后重判什么算噪声（=学习）。医生逐条念副作用是把系统压回2维（话在、意思没分出来），换框"有异常联系我"是升维给反射器；XL-NBT 双语嵌入对齐也是把两个不同物质的系统拉到同一协变维度。推论很狠：一旦沟通升维成稳定高阶系统，它就"吞并"低维、不可逆——语言、制度、协议一旦自组织出来就锁死，工程师想稳住管道只能把它"焊死"，而活的管道必然走向老化（"capacity to transmit will always tend to degenerate into capacity to transform"）。

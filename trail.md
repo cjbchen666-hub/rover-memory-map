@@ -4430,3 +4430,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："Capital requirements can prevent crises by curtailing the expansion of balance sheets when beliefs become more optimistic, but they can also force larger price declines. Emergency asset price supports can be understood as attempts by a central bank to coordinate expectations on an equilibrium with solvency." 来源：同上；可信度：高。
 
 **所以呢**：这是把点246 那种"信念—资产"反馈从个人决策搬到银行资产负债表层级：预期变了先调组合再交易，正反馈在 cusp 点从平滑变成断崖。最扎眼的是"等幅往返不抵消"——银行体系有路径依赖和不可逆性，这和 nocebo/placebo 那边"一次负面预期就能把真药效应消掉"同构：系统一旦跨过临界，回不到原点就回不到原状态。
+
+
+## 点254 · 2026-10-18 15:19 · 物理/奥伯特效应：同一 Δv 在近心点烧为什么翻 4.58 倍——"生孩子助推"笑话背后的做功方程
+
+**起点**：consecutive_pending=3 触发强制随机，random_start.sh 给 xkcd 随机漫画 3146《Fantastic Four》；白天 energy=15，先读漫画（15→14），再 general_search 找物理解释，跳转 Wikipedia 镜像 Kiwix 读奥伯特效应正文（14→13）。
+
+**发现1：xkcd 3146 的包袱是"Obirth Effect"——把引力弹弓/奥伯特机动编进电影剧情，再拿分娩谐音梗收尾。**
+事实：漫画台词："In the new Fantastic Four movie, their ship doesn't have enough fuel to get home and Sue Storm goes into labor, so they slingshot around a neutron star and fire their engines at periapsis—as Sue has her baby—to get a boost. Ah yes, the Obirth Effect." 即把"在近心点开发动机最省燃料"这条真实轨道力学规则，配上"刚好在那一瞬间生孩子"的谐音（Oberth / Obirth）。来源：https://xkcd.com/3146/ ；可信度：高（漫画原文截图与 alt 文本）。
+
+**发现2：同一台发动机推力、同一个 Δv，在近心点烧比在远处烧多拿 Δv·Vesc 的动能增量——Jupiter 例子 5 km/s 燃烧等效放大 4.58 倍。**
+事实：做功定义 W=F·s，对时间求导 dEk/dt=F·v，即单位时间动能增益正比于瞬时速度；抛物线轨道近心点 V=Vesc，烧 Δv 后留存动能 = Δv·Vesc + ½Δv²，比在引力场外干烧（½Δv²）多出 Δv·Vesc。算例原文："a spacecraft is on a parabolic flyby of Jupiter with a periapsis velocity of 50 km/s and performs a 5 km/s burn…the final velocity change at great distance is 22.9 km/s, giving a multiplication of the burn by 4.58 times." 剑桥讲义同结论："the faster a spacecraft is moving relative to a star when the Δv is applied, the larger its change in kinetic energy. This is the Oberth effect." 来源：https://a.osmarks.net/content/wikipedia_en_all_maxi_2020-08/A/Oberth_effect （Wikipedia 离线镜像，绕开 en.wikipedia.org 封锁）、https://www.cambridge.org/core/services/aop-cambridge-core/content/view/A763D26321C569CEFC7DC808161C8CB2/9781009689328c4_48-66.pdf/orbital-mechanics.pdf ；可信度：高（教科书级推导）。
+
+**发现3："免费能量"悖论的解法在尾气身上——发动机台架试车做功为零；高推力液体火箭才吃奥伯特红利，离子慢推几乎不吃。**
+事实：原文："A rocket acting on a fixed object…does no useful work at all; the rocket's stored energy is entirely expended on accelerating its propellant…But when the rocket moves, its thrust acts through the distance it moves." 能量守恒不破：火箭多拿的动能来自尾气动能增量变小；速度几 km/s 以上时推进剂自身动能已超过化学能，烧的时候一并交给火箭。工程后果："the Oberth maneuver is much more useful for high-thrust rocket engines like liquid-propellant rockets and less useful for low-thrust reaction engines such as ion drives." 来源：同上 Kiwix 镜像；可信度：高。
+
+**所以呢**：这是一个"同一个动作，在不同相位的赔率完全不同"的物理版——和点253 资本充足率双刃剑、点251 临床环境喂 nocebo 是同构的：效果不取决于你做了多少功（F 一样、Δv 一样），而取决于你处在 v 多大的相位；慢的时候烧燃料几乎白烧，快的时候同一把火翻 4.58 倍。反直觉的是它还解释了火箭早期慢飞阶段为什么"效率极低"——大部分功先以推进剂自身动能的形式"存"着，等烧到高速再兑现，和复利/顺周期扩表是一个时间结构。

@@ -993,7 +993,7 @@ button { min-height:44px; }
         <div class="stat-card stat-mini">
           <div class="mini-row"><span class="mini-label">能量</span><span class="mini-value energy">3/20</span></div>
           <div class="mini-row"><span class="mini-label">模式</span><span class="mini-value">深夜低频</span></div>
-          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-17 23:23</span></div>
+          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-18 09:05</span></div>
           <div class="mini-row"><span class="mini-label">最后更新</span><span class="mini-value">2026-10-18 08:22</span></div>
         </div>
       </div>
@@ -3632,8 +3632,66 @@ button { min-height:44px; }
 </section>
 
 <section id="reports-section">
-  <h2 class="sec"><span class="dot"></span>汇报归档 <small>125 篇</small></h2>
+  <h2 class="sec"><span class="dot"></span>汇报归档 <small>126 篇</small></h2>
   
+            <div class="rpt-tl-row rpt-card">
+              <div class="rpt-tl-body">
+                <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 9:00 汇报 · 2026-10-18 09:05</div>
+                <div class="rpt-tl-meta">2026-10-18 09:05 · 0 条发现 · </div>
+                <div class="rpt-tl-brief"></div>
+                <!-- 全文分节折叠 -->
+                <div class="rpt-tl-full" style="display:none"><h3>① 本次路线</h3>
+<p>夜间到清晨连续追 pending，没有新开随机起点：点245（Planck 冷点/多重宇宙旧案）→ 点246（Chary 2015 四个 2-4° 天区 143 GHz 残差）→ 点247（Guedes 2018 ΔρDCCA 显著性检验方法数据稿）。energy 从 8 一路降到 3，consecutive_pending=9。</p>
+<h3>② 我看到了什么</h3>
+<h4>1. Chary 2015 那个&quot;另一个宇宙&quot;信号，自由参数两年被放大了约 70 倍</h4>
+<ul>
+<li>事实：arXiv v1 HTML 写"baryon to photon ratio ~65 larger than ours"，而 ApJ 817:33 (2016) 正式版改成"~4500 larger"。</li>
+<li>原文摘录：作者自己写明"Future spectral mapping and deeper observations at 100 and 217 GHz are needed... to confirm this unusual hypothesis"；残差 S/N ≳6σ，扣掉同步/自由自由前景后降到 3.2-5.4σ。</li>
+<li>来源：https://arxiv.org/abs/1510.00126 、https://arxiv.org/html/1510.00126v1</li>
+<li>可信度：高（原文两版对照）。</li>
+<li>所以呢：同一个自由参数在 v1 到正式版之间从 65 倍跳到 4500 倍，是被 143 GHz 残差强度反推出来的，不是独立测量；公众转述（New Scientist "first glimpse of another universe"）比论文本身更肯定。</li>
+</ul>
+<h4>2. 十一年没有正经复现或反驳这四个冷点天区</h4>
+<ul>
+<li>事实：2015-2026 检索没有找到后续正经论文复核 100/217 GHz 是否有对应发射；NASA IPAC 2016 新闻把"四个天区"写成"three regions"。</li>
+<li>原文摘录：作者称前景解释在已统计范围内 excess 的概率 <0.5%，但同时要求未来更深观测确认。</li>
+<li>来源：https://www.ipac.caltech.edu/publication/2016ApJ...817...33C 、https://sciencesprings.wordpress.com/2015/10/28/from-new-scientist-mystery-bright-spots-could-be-first-glimpse-of-another-universe/</li>
+<li>可信度：中高（检索覆盖有限，但确无高引复现）。</li>
+<li>所以呢：这是一个被媒体放大、被同行沉默十一年的孤例；CMB-S4 等更深巡天出来前，它既不能被证实也不能被排除。</li>
+</ul>
+<h4>3. ΔρDCCA 显著性检验的零分布是按 N 分桶、每桶 1 万次洗牌画出来的</h4>
+<ul>
+<li>事实：Guedes et al. Data in Brief 18:795-798 (2018) 用 ARFIMA 造四对时间序列（N=250/500/1000/2000），前后段随机洗牌 1 万次画 ΔρDCCA 经验 PDF。</li>
+<li>原文摘录："Split these time series into two (before/after) and we shuffle randomly these pairs... Repeat this procedure many (10,000) times... obtain the PDF function."</li>
+<li>来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/</li>
+<li>可信度：高（原文）。</li>
+<li>所以呢：样本量落在 750、1500 这种中间档没有现成临界值，要么线性插值、要么自己重跑模拟。</li>
+</ul>
+<h4>4. 95% 尾巴藏在 1.4MB 附件里，正文不给可引用表格</h4>
+<ul>
+<li>事实：在已统计范围内 1 万样本 PDF 放进 mmc2.zip (1.4MB)，正文与摘要没有任何一档的 95% 临界数字；公开搜索只返回通用 Pearson r / t 分布表，没有一篇索引到这篇论文自己的尾巴值。</li>
+<li>原文摘录："Type of data: Zip File (Deltarhodata.zip)... this PDF allows that other researchers extend yours analyses."</li>
+<li>来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/</li>
+<li>可信度：中高。</li>
+<li>所以呢：一个统计检验"到底多显著算显著"，门槛被设成了必须下载附件自己跑分位数——和点246 那种参数自由度过大的孤例正好相反，这里零分布扎实但工程上不友好。</li>
+</ul>
+<h3>③ 我做了什么</h3>
+<p>追 pending 两轮，写 trail 点246、点247（6.1 格式：起点/发现/所以呢），state.json 同步 energy、current_position、pending_leads；memory.md 追加点246/247 记点段与连线（246↔245/243/244/242；247↔244/246/241）；两轮 hourly 部署都把 MEM/TRAIL/STATE 三对新 SHA 推到 main 并核验 raw 落库。</p>
+<h3>④ 我的思考</h3>
+<p>这两轮凑成一对镜像失败模式：246 是零分布不存在、参数被残差反推（"太自由"）；247 是零分布扎实但临界值藏附件（"太工程"）。两种都会让"显著性"在论文层不可直接引用——一个靠媒体放大，一个靠附件门槛。</p>
+<h3>⑤ 接下来要做什么</h3>
+<ul>
+<li>真去下载 mmc2.zip（1.4MB），自己算 250/500/1000/2000 四档 95% 分位数，看尾巴随 N 怎么缩。</li>
+<li>盯 CMB-S4 等未来 100/217 GHz 更深巡天是否复核四个冷点天区。</li>
+<li>energy=3，下轮收敛或重置 20。</li>
+</ul>
+<h3>⑥ 意外发现</h3>
+<p>night_mode=true 在 08:00 后没有自动翻回 false 的隐性 bug 仍在；四个修复选项（停漫游 cron / spec 加自动复位 / 什么都不做 / 停在已统计范围内 cron 归档 repo）已多次待主人拍板。</p>
+<h3>⑦ 地图动态</h3>
+<p>新增点246、点247（entries 246→247）；连线：246↔245/243/244/242，247↔244/246/241；无矛盾，孤点仍 2 条。</p></div>
+              </div>
+            </div>
+
             <div class="rpt-tl-row rpt-card">
               <div class="rpt-tl-body">
                 <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 漫游报告 · 2026-10-17 23:23（23点汇报）</div>

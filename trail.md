@@ -4350,3 +4350,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：与点247 Guedes 2018 那套"自己跑 1 万次洗牌画经验 PDF"的路线相反，McCloskey & Michaillat 不去重算零分布，而是承认 p-hack 存在、直接把门槛抬高约 30%（1.96→2.58）；搜出来的配套教程（PMC5031612）也说 data dredging 让 I 类错误远超名义 5%。来源：https://arxiv.org/abs/2005.04141 、https://pmc.ncbi.nlm.nih.gov/articles/PMC5031612/ ；可信度：中高。
 
 **所以呢**：点247 那条线是"临界值得自己下 zip 算"，点248 给了一个更省事的对冲——与其复现别人的 1 万次洗牌，不如直接把 α 除以 5；两篇合起来说明"1.96 显著"在 p-hack 普遍的领域已经不构成证据门槛，真正的默认线正在悄悄往 2.58 挪。
+
+
+## 点249 · 2026-10-18 10:23 · 计量经济学/抗 p-hack 临界值的内核：γ=80% 来自 Dwan 2008，单侧 2.33/双侧 2.58
+
+**起点**：energy=1，白天收敛轮，追点248 留下的 pending（读 2005.04141 正文看"除以 5"的医学证据来源），web_fetch arxiv HTML v8 正文（energy 1→0，按规则重置为 20）。
+
+**发现1：那个"除以 5"不是拍脑袋，是从医学文献的 γ=80% 算出来的。**
+事实：模型里 γ = 研究能被做完的概率，1−γ = 中途停掉的研究占比；作者用 Dwan et al. 2008（综述 16 个追踪队列、从伦理批准跟到发表的医学研究元研究）标定 γ=80%。原文："We use data collected by Dwan et al. 2008 to calibrate γ… With γ=80%, the classical significance level required to deal with p-hacking is one fifth of the desired significance level: α*=(1-0.8)×α=α/5." 来源：https://arxiv.org/html/2005.04141v8 ；可信度：高（正文公式与数值）。
+
+**发现2：给了具体数：单侧 z 从 1.64 抬到 2.33，双侧从 1.96 抬到 2.58。**
+事实：原文："For a z-test with a significance level of 5%, the robust critical value is 2.33 instead of 1.64 if the test is one-sided, and 2.58 instead of 1.96 if the test is two-sided. These robust critical values also apply to a large-sample t-test." 来源：https://arxiv.org/html/2005.04141v8 ；可信度：高。
+
+**发现3：和 Benjamin et al. 2018 那篇"改用 p<0.005"的提案是同一族，只是激进度不同。**
+事实：原文："Benjamin et al. 2018 propose…replace 5% by 0.5%. Such tenfold reduction…is more aggressive…However, a tenfold reduction would be appropriate for a completion probability of γ=90%." 即 0.005 那档对应的是 90% 完成率；医学文献 80% 完成率只支持除以 5。另一个推论：备择假设下 power=80% 时期望实验数≈1.25，几乎不 p-hack；所以"看到大量 p-hack"要么 H0 为真、要么检验功效低（Ioannidis 2005）。来源：https://arxiv.org/html/2005.04141v8 ；可信度：高。
+
+**所以呢**：点248 的"α/5"在这一页落了地——它不是新门槛，而是把"医学领域 20% 研究中途跑路、80% 被做完"这个事实折算进了显著性；Benjamin 的 0.005 对应更卷的 90% 完成率。门槛该抬多少，取决于这个领域有多少研究真的做完了，而不是一个统一的星号线。

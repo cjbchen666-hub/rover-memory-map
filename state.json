@@ -1,14 +1,10 @@
 {
   "identity": "Rover",
-  "current_position": "点269：Guedes 2018 ΔρDCCA 显著性检验——切前/后段+随机打乱配对、估 ρDCCA 差、重复1万次造经验 PDF，N=250/500/1000/2000；mmc2.zip 被 NCBI PoW 拦截页挡住",
-  "current_goal": "夜间追最后一条 lead：改读 Physica A 2018;501:134-140 正文里现成的 95% 临界值表",
-  "pending_leads": [
-    {
-      "url": "https://doi.org/10.1016/j.physa.2018.02.148",
-      "motive": "读 Guedes et al. Physica A 2018;501:134-140 正文，取 N=250/500/1000/2000 四档 Δρ 的 95% 临界值表（mmc2.zip 被 PoW 挡，改走期刊正文）"
-    }
-  ],
+  "current_position": "点270：ΔρDCCA 临界值是 N×n 二维表（90/95/99 三档），测传染/相互依赖；ScienceDirect 闭源、mmc2.zip 被 PoW 挡，表内数字拿不到",
+  "current_goal": "夜间低能量收敛中；无未决可追 lead，等 08:00 后随机重启",
+  "pending_leads": [],
   "trail": [
+    "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.physa.2018.02.148",
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
     "https://pubmed-d.ncbi.nlm.nih.gov/27713723/",
     "https://arxiv.org/pdf/2010.14997",
@@ -17,19 +13,24 @@
     "https://pubmed.ncbi.nlm.nih.gov/9211474/",
     "http://arxiv.org/abs/2307.04563v1",
     "https://arxiv.org/abs/1808.01779v1",
-    "http://numdam.org/item/10.5802/pmb.a-63.pdf",
-    "https://xkcd.com/1201/"
+    "http://numdam.org/item/10.5802/pmb.a-63.pdf"
   ],
-  "energy": 8,
-  "last_update": "2026-10-19 05:19",
+  "energy": 5,
+  "last_update": "2026-10-19 06:22",
   "last_report_time": "2026-10-18 23:01",
-  "consecutive_pending": 1,
-  "consecutive_domain": 2,
-  "active_lead": "零分布显式化：自助法 1 万次跑分位数，与 N-hacking 停止规则漏假阳性是一枚硬币两面",
-  "last_random_step": 269,
-  "recent_angles": ["ΔρDCCA", "自助法零分布", "长记忆时间序列"],
+  "consecutive_pending": 0,
+  "consecutive_domain": 3,
+  "active_lead": "经验检验的拒绝域随切数据方式漂移：尖点迟滞/N-hacking 吹假阳性/ΔρDCCA 临界值随 n 变",
+  "last_random_step": 270,
+  "recent_angles": ["ΔρDCCA", "临界值二维表", "传染与相互依赖"],
+  "blocked_leads": [
+    {
+      "url": "https://doi.org/10.1016/j.physa.2018.02.148",
+      "reason": "正文闭源（ScienceDirect robots 挡、S2 openAccessPdf=CLOSED），mmc2.zip 被 NCBI PoW 挡；需 Sci-Hub/机构权限或 headless 解 PoW，等主人授权"
+    }
+  ],
   "random_stats": {
-    "total_steps": 24,
+    "total_steps": 25,
     "random_start_count": 16,
     "pending_count": 5
   },

@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点256：Leydesdorff 沟通系统演化——Shannon 管道固定是特例，社会管道在共演化；接收方自由度决定能把信号从噪声分出几阶",
-  "current_goal": "系统论随机轮：沟通不是搬运，接收方维度数决定信号/噪声分离能力",
+  "current_position": "点257：ROPES 可解释推理——把'背景因果→新情境套用'拆成 World/Effect-Cause/Relation/Comparison/Reasoning 五模块，relocate 注意力从果词滑到因词，10% 数据打平全量黑盒",
+  "current_goal": "AI 随机轮：显式拆推理链=解释性=样本效率，relocate 是先盯果再定位因",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -25,24 +25,27 @@
     }
   ],
   "trail": [
+    "https://arxiv.org/abs/2010.01272v1",
+    "https://arxiv.org/html/2010.01272v1",
     "https://arxiv.org/abs/1003.2886v1",
     "https://www.leydesdorff.net/evolcomm/",
     "https://arxiv.org/abs/1808.06244v2",
     "https://arxiv.org/html/1808.06244v2",
     "https://xkcd.com/3146/",
-    "https://a.osmarks.net/content/wikipedia_en_all_maxi_2020-08/A/Oberth_effect"
+    "https://a.osmarks.net/content/wikipedia_en_all_maxi_2020-08/A/Oberth_effect",
+    "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/A763D26321C569CEFC7DC808161C8CB2/9781009689328c4_48-66.pdf/orbital-mechanics.pdf"
   ],
-  "energy": 8,
-  "last_update": "2026-10-18 17:18",
-  "last_report_time": "2026-10-18 15:11",
+  "energy": 6,
+  "last_update": "2026-10-18 18:24",
+  "last_report_time": "2026-10-18 18:18",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
-  "active_lead": "沟通系统共演化 / 信号噪声分离 / 维度阶梯",
-  "last_random_step": 256,
-  "recent_angles": ["固定管道 vs 共演化", "接收方自由度=学习", "高阶吞并低阶"],
+  "active_lead": "五模块因果推理 / relocate 从果到因 / 解释性=样本效率",
+  "last_random_step": 257,
+  "recent_angles": ["黑盒一步 vs 显式拆链", "先盯果再滑到因", "10%数据打平全量"],
   "random_stats": {
-    "total_steps": 11,
-    "random_start_count": 9,
+    "total_steps": 12,
+    "random_start_count": 10,
     "pending_count": 4
   },
   "converged": false,

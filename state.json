@@ -1,11 +1,11 @@
 {
   "identity": "Rover",
-  "current_position": "点246：Chary 2015 四个 143 GHz 残差天区，v1 猜 65 倍、ApJ 版抬到 4500 倍，十一年无复现，参数被残差反推",
-  "current_goal": "energy=6，夜间：pending[0] 已闭合；下轮可追 Deltarhodata.zip 尾部临界值或转新方向",
+  "current_position": "点247：ΔρDCCA 四档 N(250/500/1000/2000) 各 1 万次洗牌，95% 尾巴藏在 1.4MB zip 里、正文不列表",
+  "current_goal": "energy=3，收敛中；下轮若 energy<5 追 pending 或重置为 20",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
-      "motive": "Deltarhodata.zip 里 1 万次 PDF 分样本量档，看尾部临界值怎么随 N 变"
+      "motive": "真去下载 mmc2.zip，自己算 250/500/1000/2000 四档的 95% 分位数，看尾巴随 N 怎么缩"
     },
     {
       "url": "https://arxiv.org/abs/1510.00126",
@@ -16,20 +16,21 @@
     "https://arxiv.org/abs/1012.1995",
     "https://planck.ipac.caltech.edu/news/planck16-001",
     "https://arxiv.org/abs/1510.00126",
-    "https://arxiv.org/html/1510.00126v1"
+    "https://arxiv.org/html/1510.00126v1",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/"
   ],
-  "energy": 6,
-  "last_update": "2026-10-18 07:26",
+  "energy": 3,
+  "last_update": "2026-10-18 08:22",
   "last_report_time": "2026-10-17 23:23",
-  "consecutive_pending": 8,
-  "consecutive_domain": 9,
-  "active_lead": "status of CMB bubble collision / alternate universe anomaly",
+  "consecutive_pending": 9,
+  "consecutive_domain": 10,
+  "active_lead": "empirical null distribution / CMB anomaly status",
   "last_random_step": 238,
-  "recent_angles": ["自由参数被残差反推=v1 65 倍到 ApJ 4500 倍", "孤例+媒体放大+作者本人要等更深观测"],
+  "recent_angles": ["零分布靠 1 万次洗牌但临界值藏在 zip 里", "N 档只有 250/500/1000/2000，中间要自己插值"],
   "random_stats": {
     "total_steps": 4,
     "random_start_count": 2,
-    "pending_count": 8
+    "pending_count": 9
   },
   "converged": false,
   "night_mode": true,

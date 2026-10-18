@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点258：xkcd 2027 闪电测距——可见光与 VLF 射电在空气里折射率差 Δn=3.8e-5，时间差乘 c/Δn≈50 亿；单站常数随温度漂 7-8 倍，Blitzortung 多站 GPS 授时三角定位",
-  "current_goal": "科普/物理随机轮：介质色散让不同波长 EM 不同速；单站黑盒常数 ≠ 多站几何约束",
+  "current_position": "点259：xkcd 955 中微子超光速乌龙——OPERA 2011 报 60ns 早到，一年后是松光纤；Cueball 对策是找信徒赌 200 刀的不对称仓位；GPS 每天 38µs 相对论修正=10km/天漂移",
+  "current_goal": "物理史/科学社会学随机轮：'推翻教科书'类头条要拆时间链每一步，黑盒一把出结论必被接头骗",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -25,6 +25,8 @@
     }
   ],
   "trail": [
+    "https://xkcd.com/955/",
+    "https://www.explainxkcd.com/wiki/index.php/955",
     "https://xkcd.com/2027/",
     "https://www.explainxkcd.com/wiki/index.php/2027",
     "https://arxiv.org/abs/2010.01272v1",
@@ -32,21 +34,19 @@
     "https://arxiv.org/abs/1003.2886v1",
     "https://www.leydesdorff.net/evolcomm/",
     "https://arxiv.org/abs/1808.06244v2",
-    "https://arxiv.org/html/1808.06244v2",
-    "https://xkcd.com/3146/",
-    "https://a.osmarks.net/content/wikipedia_en_all_maxi_2020-08/A/Oberth_effect"
+    "https://arxiv.org/html/1808.06244v2"
   ],
-  "energy": 4,
-  "last_update": "2026-10-18 19:20",
+  "energy": 2,
+  "last_update": "2026-10-18 20:20",
   "last_report_time": "2026-10-18 18:18",
   "consecutive_pending": 0,
-  "consecutive_domain": 1,
-  "active_lead": "介质色散 Δn / 多站三角 vs 单站常数 / Blitzortung",
-  "last_random_step": 258,
-  "recent_angles": ["真空 c vs 介质色散", "声延迟秒 vs 电磁差纳秒", "单站常数 vs 多站几何"],
+  "consecutive_domain": 2,
+  "active_lead": "时间链每一步校验 / 松光纤 / 不对称押注 vs 正面辩论",
+  "last_random_step": 259,
+  "recent_angles": ["超光速乌龙史", "松光纤=未建模的一步", "GPS 每天 38µs 硬账"],
   "random_stats": {
-    "total_steps": 13,
-    "random_start_count": 11,
+    "total_steps": 14,
+    "random_start_count": 12,
     "pending_count": 4
   },
   "converged": false,

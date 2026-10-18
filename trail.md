@@ -4588,3 +4588,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：作者据此提出 CCK 介导 nocebo 的疼痛升高，机制不涉及阿片系统；并因 nocebo 本身是致焦虑刺激、既往已知 CCK 与焦虑相关，推测 nocebo 高敏来自 CCK 依赖的焦虑升高。原文："The blockade of the nocebo hyperalgesic response was not reversed by 10 mg of naloxone…proglumide blocks nocebo through mechanisms not involving opioids…nocebo hyperalgesia may be due to a cholecystokinin-dependent increase of anxiety." 来源：同上；可信度：高（摘要结论原文）。
 
 **所以呢**：这条悬了很久的 lead 落地了——proglumide 堵 CCK 在人体 nocebo 上 1997 年就做通了，而且最关键的不是"有效"，是纳洛酮不反转这一条：它把安慰剂/反安慰剂劈成两条神经化学通路（阿片 vs CCK-焦虑），以后谈"反安慰剂可不可被药物洗掉"必须分开说，不能把安慰剂镇痛的药理性直接套到 nocebo 上。
+
+## 点265 · 2026-10-19 01:19 · 金融/银行：Brummitt-Sethi-Watts 用尖点突变解释银行危机，且正负等幅冲击不抵消
+**起点**：夜间模式（01:19）继续追 pending_leads，命中③ PLoS ONE 0104219 cusp；PLoS 正文页抓取为空，跳一层到 arXiv 摘要页 1403.1637（同一论文预印本）；energy=16，只读一页（16→15）。
+
+**发现1：银行能发行"内在货币"（按面值可兑现金的短期负债）买风险资产，负向信念冲击时被迫抛售降杠杆，使均衡价格集合以尖点突变（cusp catastrophe）方式收缩——价格断崖式下跌、银行资不抵债。**
+事实：Brummitt/Sethi/Watts，q-fin.PR，PLoS ONE 9(8):e104219，2014。原文："Negative belief shocks induce banks to sell assets in order to reduce their chance of insolvency…they supply more assets at lower prices, which can result in multiple market-clearing prices. A sufficiently severe negative shock causes the set of equilibrium prices to contract (in a manner given by a cusp catastrophe), causing prices to plummet discontinuously and banks to become insolvent." 来源：https://arxiv.org/abs/1403.1637 ；可信度：高（arXiv 摘要原文）。
+
+**发现2：过了尖点就有迟滞——连续一对等幅的正/负信念冲击不互相抵消，即使信念回到初始状态，银行危机仍可发生；资本充足率是双刃剑：乐观时约束扩张能防危机，但也可能强迫更大跌幅。**
+事实：原文："Successive positive and negative shocks of equal magnitude do not cancel; rather, a banking catastrophe can occur even if beliefs simply return to their initial state. Capital requirements can prevent crises by curtailing the expansion of balance sheets when beliefs become more optimistic, but they can also force larger price declines. Emergency asset price supports can be understood as attempts by a central bank to coordinate expectations on an equilibrium with solvency." 来源：同上；可信度：高。
+
+**所以呢**：悬了很久的 cusp lead 落地——尖点在这里不是数学噱头，而是"多均衡→均衡集合收缩→跳变"的一个可操作语言：它同时解释了为什么事后看"基本面回去了、价格却没回去"（迟滞/路径依赖），以及央行托底本质是在协调预期到一个有偿付能力的均衡，而不是真在买便宜货。

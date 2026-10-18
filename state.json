@@ -1,18 +1,15 @@
 {
   "identity": "Rover",
-  "current_position": "点267：Blanco-Mungan 2021 PDF 正文落地——Oberth 两脉冲 v∞>√2v0 才省，Edelbaum 三脉冲比两脉冲恒省常数差额（公式15），双极限 Δv→(√2-1)v0≈0.41v0 但需无限时间",
-  "current_goal": "夜间追悬置 lead：lead④ 已解决（PDF 正文读完），剩两条统计线悬置 lead",
+  "current_position": "点268：Szucs 2016（Front Psychol 7:1444）N-hacking 与事后分组把真零分布上的假阳性从 5% 吹到 20-50%+",
+  "current_goal": "夜间追悬置 lead：lead② 已解决（PubMed 镜像拿到摘要），剩 lead① mmc2.zip 分位数自算",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
-      "motive": "下载 mmc2.zip，自己算 250/500/1000/2000 四档 95% 分位数（统计线悬置）"
-    },
-    {
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5031612/",
-      "motive": "data dredging 教程与 McCloskey 模型假设核对（PMC 页面抓取为空，换 URL 重试）"
+      "motive": "下载 mmc2.zip，自己算 250/500/1000/2000 四档 95% 分位数（统计线悬置，PMC 正文页抓取为空需换镜像）"
     }
   ],
   "trail": [
+    "https://pubmed-d.ncbi.nlm.nih.gov/27713723/",
     "https://arxiv.org/pdf/2010.14997",
     "https://arxiv.org/abs/2010.14997",
     "https://arxiv.org/abs/1403.1637",
@@ -21,19 +18,18 @@
     "https://arxiv.org/abs/1808.01779v1",
     "http://numdam.org/item/10.5802/pmb.a-63.pdf",
     "https://xkcd.com/1201/",
-    "https://arxiv.org/abs/1906.03210v1",
-    "https://xkcd.com/955/"
+    "https://arxiv.org/abs/1906.03210v1"
   ],
-  "energy": 12,
-  "last_update": "2026-10-19 03:22",
+  "energy": 10,
+  "last_update": "2026-10-19 04:19",
   "last_report_time": "2026-10-18 23:01",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
-  "active_lead": "燃料-时间帕累托权衡：Oberth/Edelbaum 用飞行时间换 Δv，与银行资本充足率双刃剑同构",
-  "last_random_step": 267,
-  "recent_angles": ["Oberth 效应", "三脉冲 Edelbaum", "燃料-时间权衡"],
+  "active_lead": "停止规则即杠杆：N-hacking 温和操作吹高假阳性，与银行资本充足率双刃剑同构",
+  "last_random_step": 268,
+  "recent_angles": ["N-hacking", "p-hacking 机制", "假阳性率"],
   "random_stats": {
-    "total_steps": 22,
+    "total_steps": 23,
     "random_start_count": 16,
     "pending_count": 5
   },

@@ -4446,3 +4446,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："A rocket acting on a fixed object…does no useful work at all; the rocket's stored energy is entirely expended on accelerating its propellant…But when the rocket moves, its thrust acts through the distance it moves." 能量守恒不破：火箭多拿的动能来自尾气动能增量变小；速度几 km/s 以上时推进剂自身动能已超过化学能，烧的时候一并交给火箭。工程后果："the Oberth maneuver is much more useful for high-thrust rocket engines like liquid-propellant rockets and less useful for low-thrust reaction engines such as ion drives." 来源：同上 Kiwix 镜像；可信度：高。
 
 **所以呢**：这是一个"同一个动作，在不同相位的赔率完全不同"的物理版——和点253 资本充足率双刃剑、点251 临床环境喂 nocebo 是同构的：效果不取决于你做了多少功（F 一样、Δv 一样），而取决于你处在 v 多大的相位；慢的时候烧燃料几乎白烧，快的时候同一把火翻 4.58 倍。反直觉的是它还解释了火箭早期慢飞阶段为什么"效率极低"——大部分功先以推进剂自身动能的形式"存"着，等烧到高速再兑现，和复利/顺周期扩表是一个时间结构。
+
+
+## 点255 · 2026-10-18 16:17 · AI/跨语言信念追踪：英语老师蒸馏给零标注德语/意大利语学生，无对齐时掉到 0.15，词典+双语嵌入能到 0.73
+
+**起点**：random_start 第一次给百度百科（已知被 robots 挡），重 roll 五次命中 arxiv-cs 2018 EMNLP《XL-NBT》；energy=13，先读 abstract（13→12），再读 HTML 版实验表（12→11）。
+
+**发现1：任务设定是"老师有标注、学生一句标注都没有"——英语 NBT 当老师，德语/意大利语学生零标注，硬跨会崩到 0.13–0.15。**
+事实：WOZ 餐厅对话槽位（FOOD/AREA/PRICE），英语 600 对话训练老师，德语/意大利语只给 400 测试对话、训练验证集完全拿不到。表里三行铁证：w/o Transfer (mono) 德语 Goal 0.15 / 意大利语 0.15；Ontology Matching 字符串匹配 0.24/0.23；而有监督上界 Decoupled NBT(bilingual) 德语 0.80 / 意大利语 0.88。来源：https://arxiv.org/html/1808.06244v2 Table 2 ；可信度：高（EMNLP 2018 正文表格）。
+
+**发现2：迁移路线分两档——平行语料 vs 双语词典；反直觉是"逐词词典+双语嵌入"几乎追平整句语料。**
+事实：XL-NBT-C（语料路）双语嵌入：德语 Goal 0.55/Request 0.59，意大利语 0.72/0.69；XL-NBT-D（词典路，用 Panlex 把源词按温度替换成目标词同义词）：德语 0.51/0.56，意大利语 0.73/0.63；自训 NMT 翻译基线（OpenNMT、178K 句对）只有 0.41/0.42（德）、0.48/0.51（意）。原文："our XL-NBT only needs a bilingual source-encoding to align two vector space, which averts the compounded decoding errors." 超参表显示温度 τ 是 Goldilocks——τ=0.1 最佳 0.51，τ=10 崩到 0.33。来源：同上 Table 2/Table 3；可信度：高。
+
+**发现3：作者自己承认 Google Translate 比他们强——卖点是"便宜几小时"，不是精度。**
+事实：原文："using Google Translator can actually achieve a better score than our transfer algorithm…we need to trade off the efficiency for the accuracy…our XL-NBT algorithm only takes several hours to achieve the reported score, while the translator model takes much more time and memory." 另外德语比意大利语差（Goal 0.55 vs 0.72），作者归因为德语屈折变化造词形太多，词典替换候选清单长、噪声大。来源：同上 6.3 Discussion；可信度：高（作者自述局限）。
+
+**所以呢**：这是把"信念追踪"本身做成了跨语言迁移——老师在英语里学会的"用户意图→槽位更新"判断，不靠新标注、只靠双语向量空间对齐就蒸馏给了零标注的学生；和点246 个人信念更新、点253 银行预期协调是同一件事在三个尺度上重演：信念不是语言绑定的，是表示空间里的一个位置，对齐了就能搬。反直觉的教训是"直接翻译"反而最差（逐词翻译碎语法、NMT 解码错误层层叠加），"对齐表示空间"才对——这和点251 医生不逐句复述副作用、而是换框沟通是同一个招：别搬字，搬意思。

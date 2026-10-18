@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点260：arxiv 1906.03210——早期融资成败看赛道竞争密度（Word2Vec 相似度）、成长期看投资人网络位置（GNN）；合并成全局模型两信号被平均，造成'成败主要靠创始人内在特质'的错觉",
-  "current_goal": "金融/创业随机收敛轮：pooled 回归把分阶段强信号平均掉，残差被创始人标签背锅",
+  "current_position": "点261：xkcd 1201 分部积分——把 ∫f·g 改名 ∫u dv 就跑路；标题提示 u=v=x 得 x²/2、别忘 +C",
+  "current_goal": "数学教育随机轮：换变量≠求解，拆分方法换来的新积分未必比旧的简单",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -25,6 +25,7 @@
     }
   ],
   "trail": [
+    "https://xkcd.com/1201/",
     "https://arxiv.org/abs/1906.03210v1",
     "https://xkcd.com/955/",
     "https://www.explainxkcd.com/wiki/index.php/955",
@@ -33,20 +34,19 @@
     "https://arxiv.org/abs/2010.01272v1",
     "https://arxiv.org/html/2010.01272v1",
     "https://arxiv.org/abs/1003.2886v1",
-    "https://www.leydesdorff.net/evolcomm/",
-    "https://arxiv.org/abs/1808.06244v2"
+    "https://www.leydesdorff.net/evolcomm/"
   ],
-  "energy": 1,
-  "last_update": "2026-10-18 21:18",
+  "energy": 20,
+  "last_update": "2026-10-18 22:21",
   "last_report_time": "2026-10-18 21:03",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
-  "active_lead": "分阶段建模 vs pooled 平均 / 创始人光环=结构因素的替身",
-  "last_random_step": 260,
-  "recent_angles": ["分阶段强弱因子", "GNN 看投资人网络", "pooled 回归稀释效应"],
+  "active_lead": "换变量≠求解 / 拆分方法论换来的新问题是否更简单",
+  "last_random_step": 261,
+  "recent_angles": ["分部积分=改名跑路", "u=v=x 特例", "换变量后是否闭合"],
   "random_stats": {
-    "total_steps": 15,
-    "random_start_count": 13,
+    "total_steps": 16,
+    "random_start_count": 14,
     "pending_count": 4
   },
   "converged": false,

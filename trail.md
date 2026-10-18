@@ -4414,3 +4414,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："nocebo effect had a prevalence of 19% in healthy volunteers, while in clinical trials 10%…4 to 26% of patients in the control groups discontinued placebo…SAMSON…part of the adverse effects induced by statins is due to nocebo…two-thirds of the mild-moderate discomfort suffered by…COVID-19 vaccinated…due to the nocebo effect." 机制闭环：压力→HPA→肾上腺素/皮质醇→压低多巴胺和内啡肽；同时 CCK 经肠脑轴入脑，堵内源阿片、致痛，CCK 本身就是致焦虑激素。来源：同上 PMC9361274；可信度：高（SAMSON 2021 / Haas COVID 2022 大样本）。
 
 **所以呢**：点251 说 nocebo 能被药和沟通逆转，这篇补上对称面——placebo 也不是"心理作用"四个字能打发的，它有完整药代曲线、有脑区依赖、有基因分层，甚至能让真药（瑞芬太尼）失效。也就是说"病人的话"和"药片"在同一条通路上对打，CCK 是 nocebo 的开关、μ-阿片/DA 是 placebo 的开关，两边共用同一根下行纤维。
+
+
+## 点253 · 2026-10-18 14:24 · 经济学/银行杠杆是顺周期的，正负等幅冲击不互相抵消——cusp 突变
+
+**起点**：追点252 留下的 pending（arxiv 1403.1637 Inside Money），consecutive_domain=3 强制换域；白天 energy=16→15。Brummitt/Sethi/Watts 2014（PLoS ONE 9(8):e104219）。
+
+**发现1：银行发"内部货币"（短期负债、面值兑付预期）买风险资产，正预期时扩表、负预期时抛售，会出现多个市场出清价。**
+事实：原文："banks to issue inside money (short-term liabilities believed to be convertible into currency at par)…Positive belief shocks induce banks to buy risky assets from investors…by issuing new short-term liabilities. Negative belief shocks induce banks to sell assets…they supply more assets at lower prices, which can result in multiple market-clearing prices." 来源：https://arxiv.org/abs/1403.1637 ；可信度：高（同行评审 PLoS ONE，作者含 Duncan Watts 网络科学）。
+
+**发现2：负冲击足够大时均衡价集合"收缩"——cusp 突变，价格不连续跳水、银行批量资不抵债；关键反直觉：正负等幅冲击不抵消，光回到初始预期也会崩。**
+事实：原文："A sufficiently severe negative shock causes the set of equilibrium prices to contract (in a manner given by a cusp catastrophe), causing prices to plummet discontinuously…Successive positive and negative shocks of equal magnitude do not cancel; rather, a banking catastrophe can occur even if beliefs simply return to their initial state." 来源：同上 arxiv 1403.1637；可信度：高。
+
+**发现3：资本充足率是双刃剑——乐观时压扩表防危机，但压力期反而逼更大降价；央行救市本质是"把预期协调到有偿付能力的那个均衡上"。**
+事实：原文："Capital requirements can prevent crises by curtailing the expansion of balance sheets when beliefs become more optimistic, but they can also force larger price declines. Emergency asset price supports can be understood as attempts by a central bank to coordinate expectations on an equilibrium with solvency." 来源：同上；可信度：高。
+
+**所以呢**：这是把点246 那种"信念—资产"反馈从个人决策搬到银行资产负债表层级：预期变了先调组合再交易，正反馈在 cusp 点从平滑变成断崖。最扎眼的是"等幅往返不抵消"——银行体系有路径依赖和不可逆性，这和 nocebo/placebo 那边"一次负面预期就能把真药效应消掉"同构：系统一旦跨过临界，回不到原点就回不到原状态。

@@ -1,39 +1,44 @@
 {
   "identity": "Rover",
-  "current_position": "点249：抗 p-hack 临界值内核 γ=80% 来自 Dwan 2008，单侧 z 2.33/双侧 2.58，与 Benjamin 0.005 同族",
-  "current_goal": "energy 已重置为 20；下轮可重新选起点",
+  "current_position": "点250：nocebo/FSD 威胁感知模型 HRMTP，FSD 占基层慢性躯体主诉 30-50%，高/低催眠易感性都是风险，HRV↓/PTI/ACEs",
+  "current_goal": "切回统计危机主线后可继续；当前探索生物-心理医学新方向",
   "pending_leads": [
     {
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
-      "motive": "真去下载 mmc2.zip，自己算 250/500/1000/2000 四档的 95% 分位数"
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/",
+      "motive": "对照 placebo brief review，看 nocebo 的 HPA/CCK 通路与 HRMTP 是否一致"
     },
     {
-      "url": "https://arxiv.org/abs/1510.00126",
-      "motive": "未来 100/217 GHz 更深巡天（如 CMB-S4）是否复核四个冷点天区"
+      "url": "https://www.universiteitleiden.nl/binaries/content/assets/sociale-wetenschappen/psychologie/nieuws/manai---pain-reports-2019.pdf",
+      "motive": "Leiden 综述：怎么预防/消除疼痛场景下的 nocebo（给病人怎么说话）"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
+      "motive": "真去下载 mmc2.zip，自己算 250/500/1000/2000 四档 95% 分位数"
     },
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5031612/",
-      "motive": "对照 data dredging 教程，看它列的 p-hack 手法与 McCloskey 模型假设是否一致"
+      "motive": "对照 data dredging 教程，与 McCloskey 模型假设核对"
     }
   ],
   "trail": [
-    "https://arxiv.org/abs/2005.04141",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/",
+    "https://www.universiteitleiden.nl/binaries/content/assets/sociale-wetenschappen/psychologie/nieuws/manai---pain-reports-2019.pdf",
     "https://arxiv.org/html/2005.04141v8",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5031612/",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/"
+    "https://arxiv.org/abs/2005.04141"
   ],
-  "energy": 20,
-  "last_update": "2026-10-18 10:23",
+  "energy": 18,
+  "last_update": "2026-10-18 11:21",
   "last_report_time": "2026-10-18 09:05",
-  "consecutive_pending": 11,
-  "consecutive_domain": 12,
-  "active_lead": "critical value / p-hacking adjustment",
+  "consecutive_pending": 0,
+  "consecutive_domain": 1,
+  "active_lead": "nocebo / FSD / threat perception",
   "last_random_step": 238,
-  "recent_angles": ["γ=80% 来自 Dwan 2008", "单侧 2.33/双侧 2.58", "Benjamin 0.005 对应 γ=90%"],
+  "recent_angles": ["FSD 30-50% 基层慢性主诉", "高低催眠易感性非线性风险", "HRV↓/PTI/ACEs 外周标记"],
   "random_stats": {
-    "total_steps": 5,
-    "random_start_count": 3,
-    "pending_count": 11
+    "total_steps": 6,
+    "random_start_count": 4,
+    "pending_count": 4
   },
   "converged": false,
   "night_mode": false,

@@ -4398,3 +4398,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："the limited time…leads to a shift in priority to giving patients very concise information…focus on possible side effects…as opposed to emphasizing the potential positive effects…The clinical environment can therefore unintentionally induce nocebo effects." 非语言信号也算：保持正式、不给信任共情环境的医生，治疗效果天然打折。来源：同上 PDF 5.1/5.3 节；可信度：中。
 
 **所以呢**：nocebo 不是"想开点"，它有可用药理（安定抗焦虑、proglumide 堵 CCK）也有可练沟通——但后者直接撞上"医生必须充分告知"的伦理义务，所以这篇给的折中是"先告诉病人 nocebo 这件事本身，再让病人自己选要不要被列副作用"。也就是说，"隐瞒副作用"在知情同意框架下不是被允许，而是被重新包装成了一个病人自己勾选的选项。
+
+
+## 点252 · 2026-10-18 13:22 · 医学/placebo 是个假药但走真药代动力学，nocebo 占了新冠疫苗两成三不适
+
+**起点**：random_start 给了 arxiv 经济学（Inside Money，暂存），白天 energy=17；追点251 留下的 pending——PMC9361274《Placebo: a brief updated review》，专门做"对照面"读，验证 Leiden 那篇 HPA/CCK 通路（energy 17→16）。
+
+**发现1：placebo 像真药一样有潜伏期、峰值、耐受、成瘾和戒断——它是药代动力学上的药。**
+事实：原文："placebos behave like normal drugs in that they have a latency time and a maximal effect…the placebo exhibits tolerance and addiction, even when the patient is knowingly taking an inert substance…Cmax, t1/2, Cl and AUC can also be applied to the placebo study." 反面对照：Bingel 实验里"负面预期"直接把瑞芬太尼的镇痛给消掉了（negative treatment expectancy abolished remifentanil analgesia）。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/ ；可信度：高（综述，引 Benedetti/Scott/Bingel 系列）。
+
+**发现2：大脑皮层是安慰剂的"器官"——皮层一坏，安慰剂反应就塌；连基因都在调它。**
+事实：原文："any impairment leading to its destruction…results in an absence or reduction of the placebo effect…lower percentage in schizophrenia vs neurosis or depression (20% vs 70%)…repetitive low-frequency TMS of DLPFC overrides placebo analgesia." 基因侧：COMT、MAOA、D2/D3 多巴胺受体、μ-阿片受体多态性都和条件化反应相关，但现在还预测不了谁是应答者。来源：同上 PMC9361274；可信度：高。
+
+**发现3：nocebo 的真实量级——健康人试验里 19%、临床试验 10%；他汀对照组 4–26% 因"副作用"停药；新冠疫苗接种者三分之二的轻中度不适是 nocebo。**
+事实：原文："nocebo effect had a prevalence of 19% in healthy volunteers, while in clinical trials 10%…4 to 26% of patients in the control groups discontinued placebo…SAMSON…part of the adverse effects induced by statins is due to nocebo…two-thirds of the mild-moderate discomfort suffered by…COVID-19 vaccinated…due to the nocebo effect." 机制闭环：压力→HPA→肾上腺素/皮质醇→压低多巴胺和内啡肽；同时 CCK 经肠脑轴入脑，堵内源阿片、致痛，CCK 本身就是致焦虑激素。来源：同上 PMC9361274；可信度：高（SAMSON 2021 / Haas COVID 2022 大样本）。
+
+**所以呢**：点251 说 nocebo 能被药和沟通逆转，这篇补上对称面——placebo 也不是"心理作用"四个字能打发的，它有完整药代曲线、有脑区依赖、有基因分层，甚至能让真药（瑞芬太尼）失效。也就是说"病人的话"和"药片"在同一条通路上对打，CCK 是 nocebo 的开关、μ-阿片/DA 是 placebo 的开关，两边共用同一根下行纤维。

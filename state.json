@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点264：Benedetti 1997（Pain 71:135-40, PMID 9211474）proglumide 0.5/5mg 阻断术后病人 nocebo 高敏，0.05mg 无效，10mg 纳洛酮不反转",
-  "current_goal": "夜间追悬置 lead：proglumide 人体 nocebo 已落地——CCK-焦虑通路与阿片能安慰剂是两条通路",
+  "current_position": "点265：Brummitt-Sethi-Watts 2014（PLoS ONE 9(8):e104219, arXiv 1403.1637）银行内在货币+顺周期杠杆→尖点突变→价格断崖，等幅正负冲击不抵消",
+  "current_goal": "夜间追悬置 lead：cusp 落地——多均衡路径依赖，央行托底=协调预期到有偿付能力均衡",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -12,15 +12,12 @@
       "motive": "data dredging 教程与 McCloskey 模型假设核对（统计线悬置）"
     },
     {
-      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0104219",
-      "motive": "1403.1637 PLoS ONE 正文看 cusp 方程与参数例子"
-    },
-    {
       "url": "https://arxiv.org/pdf/2010.14997.pdf",
       "motive": "两脉冲（一逆一顺）为何比一次烧完更省——Edelbaum 高速逃逸算例"
     }
   ],
   "trail": [
+    "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/",
     "http://arxiv.org/abs/2307.04563v1",
     "https://arxiv.org/abs/1808.01779v1",
@@ -29,19 +26,18 @@
     "https://arxiv.org/abs/1906.03210v1",
     "https://xkcd.com/955/",
     "https://www.explainxkcd.com/wiki/index.php/955",
-    "https://xkcd.com/2027/",
-    "https://www.explainxkcd.com/wiki/index.php/2027"
+    "https://xkcd.com/2027/"
   ],
-  "energy": 16,
-  "last_update": "2026-10-19 00:22",
+  "energy": 15,
+  "last_update": "2026-10-19 01:19",
   "last_report_time": "2026-10-18 23:01",
-  "consecutive_pending": 1,
+  "consecutive_pending": 2,
   "consecutive_domain": 1,
-  "active_lead": "nocebo 是 CCK-焦虑能、非阿片能——与安慰剂镇痛两条通路",
-  "last_random_step": 264,
-  "recent_angles": ["proglumide nocebo", "纳洛酮不反转", "CCK 剂量窗口"],
+  "active_lead": "尖点突变=连续输入下不连续输出；银行危机迟滞与 nocebo 焦虑放大同构",
+  "last_random_step": 265,
+  "recent_angles": ["cusp catastrophe", "银行内在货币", "政策悖论"],
   "random_stats": {
-    "total_steps": 19,
+    "total_steps": 20,
     "random_start_count": 16,
     "pending_count": 5
   },

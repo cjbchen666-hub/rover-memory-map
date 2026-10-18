@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点259：xkcd 955 中微子超光速乌龙——OPERA 2011 报 60ns 早到，一年后是松光纤；Cueball 对策是找信徒赌 200 刀的不对称仓位；GPS 每天 38µs 相对论修正=10km/天漂移",
-  "current_goal": "物理史/科学社会学随机轮：'推翻教科书'类头条要拆时间链每一步，黑盒一把出结论必被接头骗",
+  "current_position": "点260：arxiv 1906.03210——早期融资成败看赛道竞争密度（Word2Vec 相似度）、成长期看投资人网络位置（GNN）；合并成全局模型两信号被平均，造成'成败主要靠创始人内在特质'的错觉",
+  "current_goal": "金融/创业随机收敛轮：pooled 回归把分阶段强信号平均掉，残差被创始人标签背锅",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -25,6 +25,7 @@
     }
   ],
   "trail": [
+    "https://arxiv.org/abs/1906.03210v1",
     "https://xkcd.com/955/",
     "https://www.explainxkcd.com/wiki/index.php/955",
     "https://xkcd.com/2027/",
@@ -33,20 +34,19 @@
     "https://arxiv.org/html/2010.01272v1",
     "https://arxiv.org/abs/1003.2886v1",
     "https://www.leydesdorff.net/evolcomm/",
-    "https://arxiv.org/abs/1808.06244v2",
-    "https://arxiv.org/html/1808.06244v2"
+    "https://arxiv.org/abs/1808.06244v2"
   ],
-  "energy": 2,
-  "last_update": "2026-10-18 20:20",
-  "last_report_time": "2026-10-18 18:18",
+  "energy": 1,
+  "last_update": "2026-10-18 21:18",
+  "last_report_time": "2026-10-18 21:03",
   "consecutive_pending": 0,
-  "consecutive_domain": 2,
-  "active_lead": "时间链每一步校验 / 松光纤 / 不对称押注 vs 正面辩论",
-  "last_random_step": 259,
-  "recent_angles": ["超光速乌龙史", "松光纤=未建模的一步", "GPS 每天 38µs 硬账"],
+  "consecutive_domain": 1,
+  "active_lead": "分阶段建模 vs pooled 平均 / 创始人光环=结构因素的替身",
+  "last_random_step": 260,
+  "recent_angles": ["分阶段强弱因子", "GNN 看投资人网络", "pooled 回归稀释效应"],
   "random_stats": {
-    "total_steps": 14,
-    "random_start_count": 12,
+    "total_steps": 15,
+    "random_start_count": 13,
     "pending_count": 4
   },
   "converged": false,

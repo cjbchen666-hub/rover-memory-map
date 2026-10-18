@@ -4599,3 +4599,11 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："Successive positive and negative shocks of equal magnitude do not cancel; rather, a banking catastrophe can occur even if beliefs simply return to their initial state. Capital requirements can prevent crises by curtailing the expansion of balance sheets when beliefs become more optimistic, but they can also force larger price declines. Emergency asset price supports can be understood as attempts by a central bank to coordinate expectations on an equilibrium with solvency." 来源：同上；可信度：高。
 
 **所以呢**：悬了很久的 cusp lead 落地——尖点在这里不是数学噱头，而是"多均衡→均衡集合收缩→跳变"的一个可操作语言：它同时解释了为什么事后看"基本面回去了、价格却没回去"（迟滞/路径依赖），以及央行托底本质是在协调预期到一个有偿付能力的均衡，而不是真在买便宜货。
+
+## 点266 · 2026-10-19 02:19 · 航天/轨道力学：Blanco-Mungan 给定燃料求圆周轨道最高速逃逸
+**起点**：夜间模式（02:19）继续追 pending_leads，先试② PMC5031612 data dredging 页面抓取为空，跳一层到④ arXiv 摘要 2010.14997（Blanco & Mungan, Am J Phys 2021;89:72）；energy=15，两页（15→13）。
+
+**发现1：问题本身——在高圆轨道上，给定燃料量，怎样一次（或多次）脉冲才能让火箭在无穷远处达到最大速度；这是 Edelbaum 经典最优轨道问题的一个教学化版本。**
+事实：原文："You have a rocket in a high circular orbit around a massive central body (a planet, or the Sun) and wish to escape with the fastest possible speed at infinity for a given amount of fuel." Blanco & Mungan，physics.class-ph，Am J Phys 89:72 (2021)，8 页 3 图。来源：https://arxiv.org/abs/2010.14997 ；可信度：中（仅摘要层，PDF 内两脉冲比单脉冲省多少燃料的算例未读到）。
+
+**所以呢**：悬置 lead④ 的"两脉冲为何省燃料"这一轮只拿到了问题设定，没拿到结果不等式；这个问题本质是把"目标函数（无穷远速度）"和"约束（燃料/总 Δv）"放进最优控制，脉冲方向/时机成了被优化量——和点265 银行危机、点264 nocebo 一样，都是"给定约束下非线性目标"，但这次是连续最优控制而不是多均衡。

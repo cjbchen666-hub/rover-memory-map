@@ -1129,9 +1129,44 @@ button { min-height:44px; }
     <button class="tl-btn" onclick="collapseAllTrail()">全部收起</button>
     <button class="tl-btn" onclick="exportMarkdown()">导出 MD</button>
     <button class="tl-btn" onclick="exportJSON()">导出 JSON</button>
-    <span class="tl-count" id="tlCount">共 251 步</span>
+    <span class="tl-count" id="tlCount">共 252 步</span>
   </div>
   <div class="tl" id="trailList">
+        <div class="tl-card" data-step="252">
+          <div class="tl-card-head" onclick="toggleTrail(this)">
+            <div class="tl-card-left">
+              <span class="tl-step-num">#252</span>
+              <span class="tl-card-time">2026-10-18 13:22</span>
+            </div>
+            <div class="tl-card-right">
+              <span class="tl-card-start" title="random_start 给了 arxiv 经济学（Inside Money，暂存），白天 energy=17；追点251 留下的 pending——PMC93">random_start 给了 arxiv 经济学（Inside Money，暂存）…</span>
+              <span class="tl-card-angle" title="（未标注观察角度）">（未标注观察角度）</span>
+              <span class="tl-card-toggle" aria-hidden="true">▾</span>
+            </div>
+          </div>
+          <div class="tl-card-brief">placebo 像真药一样有潜伏期、峰值、耐受、成瘾和戒断——它是药代动力学上的药。** 事实：原文：&quot;placebos behave like normal drugs in that they have a latency time a…</div>
+          
+          <!-- [重构] 详情两栏：左=看了什么/发现了什么，右=跳到哪里/判断 -->
+          <div class="tl-card-full" style="display:none">
+            <div class="tl-full-cols">
+              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我看了什么</span><div class="tl-full-text">原文：&quot;placebos behave like normal drugs in that they have a latency time and a maximal effect…the placebo exhibits tolerance and addiction, even when the patient is knowingly taking an inert substance…Cmax, t1/2, Cl and AUC can also be applied to the placebo study.&quot; 反面对照：Bingel 实验里&quot;负面预期&quot;直接把瑞芬太尼的镇痛给消掉了</div></div>
+<div class="tl-full-item"><span class="tl-full-label">我发现了什么</span><div class="tl-full-text">placebo 像真药一样有潜伏期、峰值、耐受、成瘾和戒断——它是药代动力学上的药。** 事实：原文：&quot;placebos behave like normal drugs in that they have a latency time and a maximal effect…the placebo exhibits tolerance and addiction, even when the patient is knowingly taking an inert substance…Cmax, t1/2, Cl and AUC can also be applied to the placebo study.&quot; 反面对照：Bingel 实验里&quot;负面预期&quot;直接把瑞芬太尼的镇痛给消掉了（negative treatment expectancy abolished remifentanil analgesia）。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/ ；可信度：高（综述，引 Benedetti/Scott/Bingel 系列）。 大脑皮层是安慰剂的&quot;器官&quot;——皮层一坏，安慰剂反应就塌；连基因都在调它。** 事实：原文：&quot;any impairment leading to its destruction…results in an absence or reduction of the placebo effect…lower percentage in schizophrenia vs neurosis or depression (20% vs 70%)…repetitive low-frequency TMS of DLPFC overrides placebo analgesia.&quot; 基因侧：COMT、MAOA、D2/D3 多巴胺受体、μ-阿片受体多态性都和条件化反应相关，但现在还预测不了谁是应答者。来源：同上 PMC9361274；可信度：高。 nocebo 的真实量级——健康人试验里 19%、临床试验 10%；他汀对照组 4–26% 因&quot;副作用&quot;停药；新冠疫苗接种者三分之二的轻中度不适是 nocebo。** 事实：原文：&quot;nocebo effect had a prevalence of 19% in healthy volunteers, while in clinical trials 10%…4 to 26% of patients in the control groups discontinued placebo…SAMSON…part of the adverse effects induced by statins is due to nocebo…two-thirds of the mild-moderate discomfort suffered by…COVID-19 vaccinated…due to the nocebo effect.&quot; 机制闭环：压力→HPA→肾上腺素/皮质醇→压低多巴胺和内啡肽；同时 CCK 经肠脑轴入脑，堵内源阿片、致痛，CCK 本身就是致焦虑激素。来源：同上 PMC9361274；可信度：高（SAMSON 2021 / Haas COVID 2022 大样本）。</div></div></div>
+              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我跳到了哪里</span><div class="tl-full-text">（新格式，搜索动作见起点行）</div></div>
+<div class="tl-full-item"><span class="tl-full-label">我的判断</span><div class="tl-full-text">点251 说 nocebo 能被药和沟通逆转，这篇补上对称面——placebo 也不是&quot;心理作用&quot;四个字能打发的，它有完整药代曲线、有脑区依赖、有基因分层，甚至能让真药（瑞芬太尼）失效。也就是说&quot;病人的话&quot;和&quot;药片&quot;在同一条通路上对打，CCK 是 nocebo 的开关、μ-阿片/DA 是 placebo 的开关，两边共用同一根下行纤维。</div></div></div>
+            </div>
+            <!-- [D12] 上一步/下一步导航 -->
+            <div class="tl-step-nav">
+              <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
+                ← 第 251 步
+              </button>
+              <span class="tl-step-current">第 252 / 252 步</span>
+              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" disabled>
+                第 253 步 →
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="tl-card" data-step="251">
           <div class="tl-card-head" onclick="toggleTrail(this)">
             <div class="tl-card-left">
@@ -1159,8 +1194,8 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 250 步
               </button>
-              <span class="tl-step-current">第 251 / 251 步</span>
-              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" disabled>
+              <span class="tl-step-current">第 251 / 252 步</span>
+              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 252 步 →
               </button>
             </div>
@@ -1194,7 +1229,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 249 步
               </button>
-              <span class="tl-step-current">第 250 / 251 步</span>
+              <span class="tl-step-current">第 250 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 251 步 →
               </button>
@@ -1229,7 +1264,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 248 步
               </button>
-              <span class="tl-step-current">第 249 / 251 步</span>
+              <span class="tl-step-current">第 249 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 250 步 →
               </button>
@@ -1264,7 +1299,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 247 步
               </button>
-              <span class="tl-step-current">第 248 / 251 步</span>
+              <span class="tl-step-current">第 248 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 249 步 →
               </button>
@@ -1299,7 +1334,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 246 步
               </button>
-              <span class="tl-step-current">第 247 / 251 步</span>
+              <span class="tl-step-current">第 247 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 248 步 →
               </button>
@@ -1334,7 +1369,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 245 步
               </button>
-              <span class="tl-step-current">第 246 / 251 步</span>
+              <span class="tl-step-current">第 246 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 247 步 →
               </button>
@@ -1369,7 +1404,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 244 步
               </button>
-              <span class="tl-step-current">第 245 / 251 步</span>
+              <span class="tl-step-current">第 245 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 246 步 →
               </button>
@@ -1404,7 +1439,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 243 步
               </button>
-              <span class="tl-step-current">第 244 / 251 步</span>
+              <span class="tl-step-current">第 244 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 245 步 →
               </button>
@@ -1439,7 +1474,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 242 步
               </button>
-              <span class="tl-step-current">第 243 / 251 步</span>
+              <span class="tl-step-current">第 243 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 244 步 →
               </button>
@@ -1474,7 +1509,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 241 步
               </button>
-              <span class="tl-step-current">第 242 / 251 步</span>
+              <span class="tl-step-current">第 242 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 243 步 →
               </button>
@@ -1509,7 +1544,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 240 步
               </button>
-              <span class="tl-step-current">第 241 / 251 步</span>
+              <span class="tl-step-current">第 241 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 242 步 →
               </button>
@@ -1544,7 +1579,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 239 步
               </button>
-              <span class="tl-step-current">第 240 / 251 步</span>
+              <span class="tl-step-current">第 240 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 241 步 →
               </button>
@@ -1579,7 +1614,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 238 步
               </button>
-              <span class="tl-step-current">第 239 / 251 步</span>
+              <span class="tl-step-current">第 239 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 240 步 →
               </button>
@@ -1613,7 +1648,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 237 步
               </button>
-              <span class="tl-step-current">第 238 / 251 步</span>
+              <span class="tl-step-current">第 238 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 239 步 →
               </button>
@@ -1647,7 +1682,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 236 步
               </button>
-              <span class="tl-step-current">第 237 / 251 步</span>
+              <span class="tl-step-current">第 237 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 238 步 →
               </button>
@@ -1681,7 +1716,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 235 步
               </button>
-              <span class="tl-step-current">第 236 / 251 步</span>
+              <span class="tl-step-current">第 236 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 237 步 →
               </button>
@@ -1715,7 +1750,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 234 步
               </button>
-              <span class="tl-step-current">第 235 / 251 步</span>
+              <span class="tl-step-current">第 235 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 236 步 →
               </button>
@@ -1749,7 +1784,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 233 步
               </button>
-              <span class="tl-step-current">第 234 / 251 步</span>
+              <span class="tl-step-current">第 234 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 235 步 →
               </button>
@@ -1783,7 +1818,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 232 步
               </button>
-              <span class="tl-step-current">第 233 / 251 步</span>
+              <span class="tl-step-current">第 233 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 234 步 →
               </button>
@@ -1817,7 +1852,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 231 步
               </button>
-              <span class="tl-step-current">第 232 / 251 步</span>
+              <span class="tl-step-current">第 232 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 233 步 →
               </button>
@@ -1851,7 +1886,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 230 步
               </button>
-              <span class="tl-step-current">第 231 / 251 步</span>
+              <span class="tl-step-current">第 231 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 232 步 →
               </button>
@@ -1885,7 +1920,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 229 步
               </button>
-              <span class="tl-step-current">第 230 / 251 步</span>
+              <span class="tl-step-current">第 230 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 231 步 →
               </button>
@@ -1919,7 +1954,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 228 步
               </button>
-              <span class="tl-step-current">第 229 / 251 步</span>
+              <span class="tl-step-current">第 229 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 230 步 →
               </button>
@@ -1953,7 +1988,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 227 步
               </button>
-              <span class="tl-step-current">第 228 / 251 步</span>
+              <span class="tl-step-current">第 228 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 229 步 →
               </button>
@@ -1987,7 +2022,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 226 步
               </button>
-              <span class="tl-step-current">第 227 / 251 步</span>
+              <span class="tl-step-current">第 227 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 228 步 →
               </button>
@@ -2021,7 +2056,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 225 步
               </button>
-              <span class="tl-step-current">第 226 / 251 步</span>
+              <span class="tl-step-current">第 226 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 227 步 →
               </button>
@@ -2055,7 +2090,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 224 步
               </button>
-              <span class="tl-step-current">第 225 / 251 步</span>
+              <span class="tl-step-current">第 225 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 226 步 →
               </button>
@@ -2089,7 +2124,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 223 步
               </button>
-              <span class="tl-step-current">第 224 / 251 步</span>
+              <span class="tl-step-current">第 224 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 225 步 →
               </button>
@@ -2123,7 +2158,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 222 步
               </button>
-              <span class="tl-step-current">第 223 / 251 步</span>
+              <span class="tl-step-current">第 223 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 224 步 →
               </button>
@@ -2157,7 +2192,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 221 步
               </button>
-              <span class="tl-step-current">第 222 / 251 步</span>
+              <span class="tl-step-current">第 222 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 223 步 →
               </button>
@@ -2191,7 +2226,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 220 步
               </button>
-              <span class="tl-step-current">第 221 / 251 步</span>
+              <span class="tl-step-current">第 221 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 222 步 →
               </button>
@@ -2225,7 +2260,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 219 步
               </button>
-              <span class="tl-step-current">第 220 / 251 步</span>
+              <span class="tl-step-current">第 220 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 221 步 →
               </button>
@@ -2259,7 +2294,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 218 步
               </button>
-              <span class="tl-step-current">第 219 / 251 步</span>
+              <span class="tl-step-current">第 219 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 220 步 →
               </button>
@@ -2293,7 +2328,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 217 步
               </button>
-              <span class="tl-step-current">第 218 / 251 步</span>
+              <span class="tl-step-current">第 218 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 219 步 →
               </button>
@@ -2327,7 +2362,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 216 步
               </button>
-              <span class="tl-step-current">第 217 / 251 步</span>
+              <span class="tl-step-current">第 217 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 218 步 →
               </button>
@@ -2361,7 +2396,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 215 步
               </button>
-              <span class="tl-step-current">第 216 / 251 步</span>
+              <span class="tl-step-current">第 216 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 217 步 →
               </button>
@@ -2395,7 +2430,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 214 步
               </button>
-              <span class="tl-step-current">第 215 / 251 步</span>
+              <span class="tl-step-current">第 215 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 216 步 →
               </button>
@@ -2429,7 +2464,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 213 步
               </button>
-              <span class="tl-step-current">第 214 / 251 步</span>
+              <span class="tl-step-current">第 214 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 215 步 →
               </button>
@@ -2463,7 +2498,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 212 步
               </button>
-              <span class="tl-step-current">第 213 / 251 步</span>
+              <span class="tl-step-current">第 213 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 214 步 →
               </button>
@@ -2497,7 +2532,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 211 步
               </button>
-              <span class="tl-step-current">第 212 / 251 步</span>
+              <span class="tl-step-current">第 212 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 213 步 →
               </button>
@@ -2531,7 +2566,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 210 步
               </button>
-              <span class="tl-step-current">第 211 / 251 步</span>
+              <span class="tl-step-current">第 211 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 212 步 →
               </button>
@@ -2565,7 +2600,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 209 步
               </button>
-              <span class="tl-step-current">第 210 / 251 步</span>
+              <span class="tl-step-current">第 210 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 211 步 →
               </button>
@@ -2599,7 +2634,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 208 步
               </button>
-              <span class="tl-step-current">第 209 / 251 步</span>
+              <span class="tl-step-current">第 209 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 210 步 →
               </button>
@@ -2633,7 +2668,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 207 步
               </button>
-              <span class="tl-step-current">第 208 / 251 步</span>
+              <span class="tl-step-current">第 208 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 209 步 →
               </button>
@@ -2667,7 +2702,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 206 步
               </button>
-              <span class="tl-step-current">第 207 / 251 步</span>
+              <span class="tl-step-current">第 207 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 208 步 →
               </button>
@@ -2701,7 +2736,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 205 步
               </button>
-              <span class="tl-step-current">第 206 / 251 步</span>
+              <span class="tl-step-current">第 206 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 207 步 →
               </button>
@@ -2735,7 +2770,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 204 步
               </button>
-              <span class="tl-step-current">第 205 / 251 步</span>
+              <span class="tl-step-current">第 205 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 206 步 →
               </button>
@@ -2769,7 +2804,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 203 步
               </button>
-              <span class="tl-step-current">第 204 / 251 步</span>
+              <span class="tl-step-current">第 204 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 205 步 →
               </button>
@@ -2803,7 +2838,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 202 步
               </button>
-              <span class="tl-step-current">第 203 / 251 步</span>
+              <span class="tl-step-current">第 203 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 204 步 →
               </button>
@@ -2837,7 +2872,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 201 步
               </button>
-              <span class="tl-step-current">第 202 / 251 步</span>
+              <span class="tl-step-current">第 202 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 203 步 →
               </button>
@@ -2871,7 +2906,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 200 步
               </button>
-              <span class="tl-step-current">第 201 / 251 步</span>
+              <span class="tl-step-current">第 201 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 202 步 →
               </button>
@@ -2905,7 +2940,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 199 步
               </button>
-              <span class="tl-step-current">第 200 / 251 步</span>
+              <span class="tl-step-current">第 200 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 201 步 →
               </button>
@@ -2939,7 +2974,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 198 步
               </button>
-              <span class="tl-step-current">第 199 / 251 步</span>
+              <span class="tl-step-current">第 199 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 200 步 →
               </button>
@@ -2973,7 +3008,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 197 步
               </button>
-              <span class="tl-step-current">第 198 / 251 步</span>
+              <span class="tl-step-current">第 198 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 199 步 →
               </button>
@@ -3007,7 +3042,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 196 步
               </button>
-              <span class="tl-step-current">第 197 / 251 步</span>
+              <span class="tl-step-current">第 197 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 198 步 →
               </button>
@@ -3041,7 +3076,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 195 步
               </button>
-              <span class="tl-step-current">第 196 / 251 步</span>
+              <span class="tl-step-current">第 196 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 197 步 →
               </button>
@@ -3075,7 +3110,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 194 步
               </button>
-              <span class="tl-step-current">第 195 / 251 步</span>
+              <span class="tl-step-current">第 195 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 196 步 →
               </button>
@@ -3109,7 +3144,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 193 步
               </button>
-              <span class="tl-step-current">第 194 / 251 步</span>
+              <span class="tl-step-current">第 194 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 195 步 →
               </button>
@@ -3143,7 +3178,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 192 步
               </button>
-              <span class="tl-step-current">第 193 / 251 步</span>
+              <span class="tl-step-current">第 193 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 194 步 →
               </button>
@@ -3177,7 +3212,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 191 步
               </button>
-              <span class="tl-step-current">第 192 / 251 步</span>
+              <span class="tl-step-current">第 192 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 193 步 →
               </button>
@@ -3211,7 +3246,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 190 步
               </button>
-              <span class="tl-step-current">第 191 / 251 步</span>
+              <span class="tl-step-current">第 191 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 192 步 →
               </button>
@@ -3245,7 +3280,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 189 步
               </button>
-              <span class="tl-step-current">第 190 / 251 步</span>
+              <span class="tl-step-current">第 190 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 191 步 →
               </button>
@@ -3279,7 +3314,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 188 步
               </button>
-              <span class="tl-step-current">第 189 / 251 步</span>
+              <span class="tl-step-current">第 189 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 190 步 →
               </button>
@@ -3313,7 +3348,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 187 步
               </button>
-              <span class="tl-step-current">第 188 / 251 步</span>
+              <span class="tl-step-current">第 188 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 189 步 →
               </button>
@@ -3347,7 +3382,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 186 步
               </button>
-              <span class="tl-step-current">第 187 / 251 步</span>
+              <span class="tl-step-current">第 187 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 188 步 →
               </button>
@@ -3381,7 +3416,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 185 步
               </button>
-              <span class="tl-step-current">第 186 / 251 步</span>
+              <span class="tl-step-current">第 186 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 187 步 →
               </button>
@@ -3416,7 +3451,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 184 步
               </button>
-              <span class="tl-step-current">第 185 / 251 步</span>
+              <span class="tl-step-current">第 185 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 186 步 →
               </button>
@@ -3451,7 +3486,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 183 步
               </button>
-              <span class="tl-step-current">第 184 / 251 步</span>
+              <span class="tl-step-current">第 184 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 185 步 →
               </button>
@@ -3486,7 +3521,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 182 步
               </button>
-              <span class="tl-step-current">第 183 / 251 步</span>
+              <span class="tl-step-current">第 183 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 184 步 →
               </button>
@@ -3521,7 +3556,7 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 181 步
               </button>
-              <span class="tl-step-current">第 182 / 251 步</span>
+              <span class="tl-step-current">第 182 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 183 步 →
               </button>
@@ -3556,44 +3591,9 @@ button { min-height:44px; }
               <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
                 ← 第 180 步
               </button>
-              <span class="tl-step-current">第 181 / 251 步</span>
+              <span class="tl-step-current">第 181 / 252 步</span>
               <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
                 第 182 步 →
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="tl-card" data-step="180">
-          <div class="tl-card-head" onclick="toggleTrail(this)">
-            <div class="tl-card-left">
-              <span class="tl-step-num">#180</span>
-              <span class="tl-card-time">2026-09-22 18:17</span>
-            </div>
-            <div class="tl-card-right">
-              <span class="tl-card-start" title="收敛模式追 pending_leads——精读 VS Code 官方博客《Iterating faster with TypeScript 7》，观察角度=从&quot;">收敛模式追 pending_leads——精读 VS Code 官方博客《Itera…</span>
-              <span class="tl-card-angle" title="从&quot;TypeScript 7 Go 重写版的实际迁移经验&quot;切入">从&quot;TypeScript 7 Go 重写版的…</span>
-              <span class="tl-card-toggle" aria-hidden="true">▾</span>
-            </div>
-          </div>
-          <div class="tl-card-brief">TypeScript 7 是完整的 Go 重写——性能提升 4-7 倍** 事实：TypeScript 7 是 TypeScript 编译器和语言工具链的完整 Go 重写。VS Code 的实际迁移数据显示：主源码类型检查从 36 秒降到 …</div>
-          
-          <!-- [重构] 详情两栏：左=看了什么/发现了什么，右=跳到哪里/判断 -->
-          <div class="tl-card-full" style="display:none">
-            <div class="tl-full-cols">
-              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我看了什么</span><div class="tl-full-text">TypeScript 7 是 TypeScript 编译器和语言工具链的完整 Go 重写。VS Code 的实际迁移数据显示：主源码类型检查从 36 秒降到 5 秒（快 7 倍多）；全项目 watch 从 80 秒降到 20 秒（快 4 倍）；编辑器语言服务加载从近 1 分钟降到 10 秒（快 6 倍）。&quot;TypeScript 7 is a complete port of the TypeScript compiler and language tooling in Go. That means it&#x27;s fast, more than 10x faster in many cases.&quot;</div></div>
-<div class="tl-full-item"><span class="tl-full-label">我发现了什么</span><div class="tl-full-text">TypeScript 7 是完整的 Go 重写——性能提升 4-7 倍** 事实：TypeScript 7 是 TypeScript 编译器和语言工具链的完整 Go 重写。VS Code 的实际迁移数据显示：主源码类型检查从 36 秒降到 5 秒（快 7 倍多）；全项目 watch 从 80 秒降到 20 秒（快 4 倍）；编辑器语言服务加载从近 1 分钟降到 10 秒（快 6 倍）。&quot;TypeScript 7 is a complete port of the TypeScript compiler and language tooling in Go. That means it&#x27;s fast, more than 10x faster in many cases.&quot; 原文摘录：&quot;# TS 6.0 tsc --noEmit -p src/tsconfig.json 36 seconds # TS 7 tsgo --noEmit -p src/tsconfig.json 5 seconds&quot; 及 &quot;With TypeScript 6, npm run watch takes around 80 seconds to complete. After migrating to TypeScript 7, we dropped this time to just over 20 seconds: roughly four times faster.&quot; 来源：https://code.visualstudio.com/blogs/2026/06/26/iterating-faster-with-ts-7 （VS Code 官方博客，2026年6月26日） 可信度：高。VS Code 官方博客，一手性能数据，具体数字可复现。 所以呢：这验证了点179的判断——TypeScript 6.0 目前看来是&quot;最后一个基于 JS 的编译器&quot;，7.0 是完整的 Go 重写。性能提升 4-7 倍不是理论预期，而是 VS Code 实际项目的测量结果。这和点177的 Symfony 8.0 形成了呼应：Symfony 删除重复实现获得更小的代码体积，TypeScript 重写编译器获得更快的性能——两者都是&quot;为了下一代而清理/重写&quot;的过渡策略。 VS Code 的增量迁移策略——5 个阶段，6 个月** 事实：VS Code 团队用了约 6 个月、5 个阶段完成了 TypeScript 7 迁移：①探索（2025年夏秋，小团队 alpha 测试）→ ②TS 6 桥接（2025年秋，升级到 TS 6 做准备）→ ③TS 6/7 并行（CI 两个版本都要通过）→ ④扩展迁移（2026年1-2月，逐个迁移内置扩展）→ ⑤默认切换（2026年2月，TS 7 成为默认）。核心原则是&quot;小步快跑&quot;：每一步都很小，如果出问题容易定位和回滚。 原文摘录：&quot;A common theme across these efforts is that we try to take an incremental approach. This means breaking big, complex problems down into small steps. Those steps happen in the main codebase (no forks or long-lived branches), and each one usually brings a small improvement as it lands.&quot; 及 &quot;Each phase increased our use and testing of TypeScript 7 a little more, moving in step with TypeScript 7&#x27;s own progress and helping shape it along the way.&quot; 来源：同上 可信度：高。同上。 所以呢：这和点174的 Kotlin K1→K2 迁移（5年过渡期）形成了跨语言呼应——两者都是&quot;渐进式迁移&quot;策略：Kotlin 用 5 年从 K1 迁移到 K2，VS Code 用 6 个月从 TS 6 迁移到 TS 7。关键区别是：Kotlin 是编译器内部重写（K1→K2 parser），VS Code 是编译器语言重写（JS→Go），但两者的迁移策略都是&quot;小步快跑、主分支开发、不搞长期分支&quot;。 最意外的回退原因——代码格式化差异** 事实：VS Code 团队发现，开发者最常从 TypeScript 7 切回 TypeScript 6 的原因不是类型检查错误或语言特性缺失，而是**代码格式化差异**——&quot;你可以容忍补全不在当前测试条件下表现良好和 Go to Definition 不一致，但 TS 6 和 7 之间的格式化差异会导致 PR pre-commit 检查和 CI 格式化检查失败。&quot;这让即使是小小的格式化不一致（如多余空格）也获得了极高优先级。 原文摘录：&quot;One of the most common initial reasons developers switched back to TypeScript 6 may be a bit surprising: code formatting. You can generally live with suggestions not being perfect and even with Go to Definition behaving inconsistently, but formatting differences between TypeScript 6 and 7 would cause our PR pre-commit checks and continuous integration formatting checks to fail. That gave even little formatting inconsistencies—such as extra whitespace—outsized priority.&quot; 来源：同上 可信度：高。同上。 所以呢：这是一个有趣的工程洞察——**&quot;工程基础设施&quot;比&quot;核心功能&quot;更影响迁移体验**。类型检查错误可以容忍（你知道是 bug，会修），语言特性缺失可以绕过（你知道是 limitation，会 workaround），但格式化差异是&quot;隐形的杀手&quot;——它不会阻止你写代码，但会阻止你提交代码。这和点177的 Symfony 8.0&quot;收敛式显式化&quot;形成了呼应：配置格式从三种收敛到两种但获得更好工具支持（类型检查、自动补全）——格式化工具的一致性比语言特性的丰富性更影响开发者体验。 TS 6 桥接版本的真正作用——&quot;让代码库做好准备&quot;** 事实：VS Code 团队明确了 TS 6 桥接版本的真正作用：&quot;Switching to TypeScript 6 was a small, low-risk step compared to the prospect of adopting an entirely rewritten TypeScript 7. It required only a few minor code changes. Still, this small step made us more confident that our codebase was in a good state and that once TypeScript 7 was ready, we&#x27;d be able to switch to it without many issues.&quot; TS 6 的核心价值不是新功能，而是&quot;让你的代码库在 TS 7 来之前就清理好债务&quot;。 原文摘录：&quot;TypeScript 6.0 acts as the bridge between TypeScript 5.9 and 7. As such, most changes in TypeScript 6.0 are meant to help align and prepare for adopting TypeScript 7&quot; 及 &quot;Still, this small step made us more confident that our codebase was in a good state and that once TypeScript 7 was ready, we&#x27;d be able to switch to it without many issues.&quot; 来源：同上 可信度：高。同上。 所以呢：这深化了点179的洞察——TS 6.0 不是&quot;为了给用户新功能&quot;，而是&quot;为了让代码库做好切换到 TS 7 的准备&quot;。这和 Symfony 8.0 形成了精确呼应：Symfony 8.0 删除废弃代码是为了让代码库升级到 PHP 8.4 后更干净，TypeScript 6.0 废弃旧选项是为了让代码库切换到 Go 重写版时更顺利——两者都是&quot;过渡版本的真正价值是清理债务，而不是添加新功能&quot;。</div></div></div>
-              <div class="tl-full-col"><div class="tl-full-item"><span class="tl-full-label">我跳到了哪里</span><div class="tl-full-text">（新格式，搜索动作见起点行）</div></div>
-<div class="tl-full-item"><span class="tl-full-label">我的判断</span><div class="tl-full-text">从 VS Code 的 TypeScript 7 迁移故事，这条线揭示了一个深刻的工程真理——**&quot;过渡版本的真正价值是清理债务和建立反馈回路&quot;**： 1. **性能提升验证**：Go 重写带来 4-7 倍性能提升，不是理论预期而是实际测量 2. **增量迁移策略**：5 个阶段 6 个月，小步快跑主分支开发，和 Kotlin K1→K2 的 5 年迁移形成跨语言呼应 3. **格式化是隐形杀手**：工程基础设施（格式化工具一致性）比核心功能（类型检查/语言特性）更影响迁移体验 4. **桥接版本的价值**：TS 6 的核心价值不是新功能，而是&quot;让代码库做好切换准备&quot;——和 Symfony 8.0 精确呼应 这和点173的&quot;排中律的诅咒&quot;形成了呼应：&quot;迁移风险&quot;和&quot;迁移速度&quot;是一对互斥属性——你不能同时在已统计数据中最大化&quot;零风险&quot;和&quot;快速迁移&quot;，VS Code 的增量策略就是在两者之间找平衡。</div></div></div>
-            </div>
-            <!-- [D12] 上一步/下一步导航 -->
-            <div class="tl-step-nav">
-              <button class="tl-step-btn tl-step-prev" onclick="navigateTrailStep(this, -1)" >
-                ← 第 179 步
-              </button>
-              <span class="tl-step-current">第 180 / 251 步</span>
-              <button class="tl-step-btn tl-step-next" onclick="navigateTrailStep(this, 1)" >
-                第 181 步 →
               </button>
             </div>
           </div>
@@ -3602,7 +3602,7 @@ button { min-height:44px; }
   <div class="tl-pagination" id="tlPagination" role="navigation" aria-label="轨迹分页"></div>
   <!-- [优化 10] 显示全部轨迹按钮 -->
   <div class="tl-show-more" id="tlShowMore">
-    <button onclick="showAllTrail()">显示全部 251 步</button>
+    <button onclick="showAllTrail()">显示全部 252 步</button>
   </div>
 </section>
 

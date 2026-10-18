@@ -4478,3 +4478,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："in the second interface, the signal is transmitted, and the communicating systems are operationally coupled…in the third interface, the signal can be translated, and the systems are loosely coupled." 又："natural language is the specific evolutionary achievement that allows us…to communicate in two dimensions (e.g., information and meaning) at the same time." 高维系统更稳、会吞并低维："the higher-order system is more stable…it tends 'to take over.' This is not Darwinian survival of the fittest, since the lower-level system is encompassed in the higher-level one." 来源：同上；可信度：高。
 
 **所以呢**：这给点251（医生 nocebo 换框）和点255（跨语言信念蒸馏）一个共同的理论底座——沟通不是固定管道里搬运字节，接收方有几个自由度，决定它能把"信号从噪声里分离"做几阶：2维只存信号、3维能反射分出 a'/b'、4维还能事后重判什么算噪声（=学习）。医生逐条念副作用是把系统压回2维（话在、意思没分出来），换框"有异常联系我"是升维给反射器；XL-NBT 双语嵌入对齐也是把两个不同物质的系统拉到同一协变维度。推论很狠：一旦沟通升维成稳定高阶系统，它就"吞并"低维、不可逆——语言、制度、协议一旦自组织出来就锁死，工程师想稳住管道只能把它"焊死"，而活的管道必然走向老化（"capacity to transmit will always tend to degenerate into capacity to transform"）。
+
+
+## 点257 · 2026-10-18 18:24 · AI/可解释推理：把"背景因果→新情境套用"拆成五个神经模块，10% 数据就打平全量黑盒， relocate 注意力从"果词"滑到"因词"
+
+**起点**：random_start.sh 真随机命中 arxiv-cs 2010.01272v1《Towards Interpretable Reasoning over Paragraph Effects in Situation》（EMNLP 2020 Long，Ren/Geng/Qin/Huang/Jiang）；energy=8，先读 abstract 页（8→7），再读 HTML 正文实验表（7→6）。
+
+**发现1：任务是"背一段因果知识、套到全新情境"——碘盐例子：背景说碘化物防发育障碍，两个村子一个吃普通盐一个吃碘盐，问哪个村病人多；当时最强单步黑盒 F1 只有 61.6%，人类 89.0%。**
+事实：ROPES 数据集（Lin et al. 2019），Table 1：background 讲加碘化物到盐里可治甲状腺功能与智力发育障碍，situation 里 Salt 村吃普通盐、Sand 村吃碘盐，问"哪个村发育障碍多"答 Salt。现状：所有 baseline 把 background+situation 拼起来喂 RoBERTa-large 一步出答案。原文："the best F1 (61.6%) achieved so far is far below human performance (89.0%)…such a one-step approach makes the reasoning process unexplainable." 来源：https://arxiv.org/abs/2010.01272v1 ；可信度：高（EMNLP 2020 正文引言）。
+
+**发现2：作者照人类五步认知切五个模块——World Detection / Effect-Cause Detection / Relation Classification / Comparison / Reasoning；关键巧思是 relocate：先注意到果词（developmental difficulties），再用整个 situation 当 query 把注意力"重定位"到因词（iodized salt）。**
+事实：五步即 (1)识别提到的世界 (2)识别因/果属性 (3)理解因果关系 (4)按因属性比较各世界 (5)按果属性推比较结果。Effect/Cause 模块先 MLP attend 到果词 p_e^b；再学一个 situation-aware 的 background-to-background 注意力矩阵 R（输入 situation 平均向量 s + H_i^b + 逐元素积），p_c^b = R^T p_e^b——"shifting the attention from developmental difficulties to iodized salt"。辅助 loss 压中间隐决策再端到端训。原文："a relocate operation which re-attends to the background based on the situation and is used to find the cause property in the background (e.g., shifting the attention from developmental difficulties to iodized salt)." 来源：https://arxiv.org/html/2010.01272v1 第3节公式(5)-(7)；可信度：高（论文方法节）。
+
+**发现3：收益离谱——全量数据比 RoBERTa-large 高 EM +8.4/F1 +6.4；只用 10% 训练数据（1074 题），本方法 F1 71.8 打平全量 baseline 71.1，而 baseline 砍到 10% 直接崩 32 个点到 53.9。**
+事实：Table 3 五折交叉验证 test：RoBERTa-large EM 64.0/F1 71.1；Ours EM 72.4/F1 77.5；10% 数据 RoBERTa 43.1/53.9，Ours 60.9/71.8；规则基线 54.3/65.5。原文："our model learned from 10% of training examples achieves competitive performance to the baseline model learned from full data (71.8% v.s. 71.1% in terms of F1 score). In contrast, the performance of the baseline model drops dramatically by 32%." 作者还自曝数据集切分偏差：test 词汇量是 dev 的 2-2.7 倍，分布 gap 可能高估/低估模型。来源：https://arxiv.org/html/2010.01272v1 Table 2/3；可信度：高（作者表 + 自曝局限）。
+
+**所以呢**：这是把点256"升维/分步"做成了可训练的工程——黑盒一步把因果、比较、推论全压进一个注意力团里，数据一多就拟合、数据一少就崩；拆成五个模块后，每个模块只学一个小判断（找世界、找果、找因、比因、推果），样本效率直接甩黑盒 32 个点。relocate 这一步尤其眼熟：先盯果（症状）、再用整个情境把注意力滑到因（干预）——和点251"不逐字念副作用、先锚定患者处境再重定位沟通重点"是同一个动作，也和点255"别搬字搬意思"一致：因果推理不是把背景段落抄进新情境，而是先在背景里定位"因-果对"，再带着这对关系去新情境里比对。推论：解释性不只是为了让人看懂，它本身就是样本效率——把推理链显式拆出来，等于给模型一个外部脚手架，少数据也能学。

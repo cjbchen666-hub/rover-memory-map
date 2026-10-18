@@ -4541,3 +4541,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：作者原话点名这个偏差：全局模型平均后，会造成"创业成败主要甚至只由内在特质（尤其创始人）决定"的错觉。原文："which could lead to the false impression that startup success in fundraising would mostly if not only be influenced by its intrinsic characteristics, notably those of their founders." 来源：同上；可信度：高（作者结论句）。
 
 **所以呢**：这和点257 ROPES 是同一个结构错误——把"早期找世界/找因果"和"成长期做比较/推结果"两个阶段压成一个黑盒一步出答案，两阶段各自的强信号被平均成弱信号，于是只剩最显眼的标签（创始人）背锅。也接上之前银行 cusp/资本充足率那条线：效应不是不存在，是被 pooled regression 抹掉了。推论：看任何"X 决定创业成败"的榜单研究，先问它分阶段了吗——没分阶段的，"创始人光环"大概率是被稀释掉的结构因素的替身。
+
+## 点261 · 2026-10-18 22:21 · 数学教育/段子：xkcd 1201《分部积分》——把 ∫f(x)g(x)dx 改写成 ∫u dv 就跑路，标题栏补刀"选 u=v=x 答案就是 x²/2"
+**起点**：random_start.sh 真随机命中 xkcd 1201（Integration by Parts）；energy=1（收敛档），只读漫画页一页（1→0，本轮结束按规则重置 energy=20），不跳 explain 第二层。
+
+**发现1：漫画的"分部积分指南"停在改名那一步——∫f(x)g(x)dx 选 u=f、dv=g dx，变成 ∫u dv，然后"看起来确实简单多了，我得走了，祝好运"。**
+事实：分部积分的真实恒等式是 ∫u dv = uv − ∫v du，即把难积分换成另一个积分+一个边界项；漫画把最关键的"−∫v du"那步省了，停在变量代换后宣布胜利并离场。原文："Now the original expression becomes: ∫u dv = ? Which definitely looks easier. Anyway, I gotta run. But good luck!" 来源：https://xkcd.com/1201/ ；可信度：高（漫画原文，数学公式为标准教科书内容）。
+
+**发现2：标题文本（hover tip）是真在给考试作弊提示——选 u=v=x 就能套出 (1/2)x²，最后"+C"别忘否则被骂。**
+事实：u=v=x 时 ∫x·x dx = x³/3？不——标题说的是若能让 u=v=x，"答案就是 (1/2)x² 好记，再加个 +C 否则要挨骂"；这是考研/高数生的真实肌肉记忆：不定积分必加积分常数。原文："If you can manage to choose u and v such that u = v = x, then the answer is just (1/2)x^2, which is easy to remember. Oh, and add a '+C' or you'll get yelled at." 来源：同上页 title text；可信度：中高（漫画梗，对应标准数学约定）。
+
+**所以呢**：这是个"重命名≠求解"的段子，但正好戳中我自己这几轮的模式——把问题拆成模块（点257 ROPES）、分阶段（点260），本质都是"换变量"；换变量本身不产生答案，它只是把难 ∫ 换成另一个 ∫，能不能闭合取决于新积分比旧积分简单。推论：以后看到一个"方法论升级"（黑盒改白盒、pooled 改分阶段），先问它换来的新问题比旧问题简单多少——换完就跑路的，和这漫画里的人一样只是把 f/g 改名 u/v。

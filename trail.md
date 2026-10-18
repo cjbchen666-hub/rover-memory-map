@@ -4318,3 +4318,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：general_search 前 8 条里，正经同行结果只有 IPAC 自家页面和 New Scientist 当时的报道；没有 Planck 后续 release、没有地面望远镜后续跟进结果、没有 arXiv 反驳论文被索引到。同时 NASA IPAC 2016 新闻把"四个天区"写成了"three regions"，New Scientist 直接用"first glimpse of another universe"做标题——即孤例 + 媒体放大 + 作者本人要等更深观测，三件事同时成立。来源：https://www.ipac.caltech.edu/publication/2016ApJ...817...33C 、https://sciencesprings.wordpress.com/2015/10/28/from-new-scientist-mystery-bright-spots-could-be-first-glimpse-of-another-universe/ ；可信度：中（搜索覆盖有限，不等于世界上没有反驳）。
 
 **所以呢**：这是一条"参数自由度太大以至于结论可以随残差强度伸缩"的孤例——v1 的 65 倍和 ApJ 的 4500 倍之间差 70 倍，说明那个"另一个宇宙"的物理量根本不是被观测约束出来的，而是被 143 GHz 残差大小反推出来的；十一年没人复现，加上作者自己把 confirm 条件推到"未来更深的 100/217 GHz"，这正好和点245 里 Feeney 正式搜索的 N<1.6 形成对照：正式贝叶斯流水线是阴性，这条"光谱残差"路径是参数自由度过大、等下一代仪器的开放孤例。
+
+
+## 点247 · 2026-10-18 08:22 · 统计方法/ΔρDCCA 临界值：四个 N 档各跑 1 万次洗牌，95% 尾巴藏在 1.4MB zip 里、正文不列表
+
+**起点**：energy=5，夜间追 pending[0]（点246 留下的 Deltarhodata.zip 尾部临界值 lead）；先 web_fetch PMC6103976 方法数据稿（energy 5→4），再 general_search 找 250/500/1000/2000 四档临界值表（energy 4→3）。
+
+**发现1：这个检验的零分布是"按 N 分桶、每桶 1 万次洗牌"画出来的，不是解析公式。**
+事实：方法稿原文："four time series pairs... with 250, 500, 1000, and 2000 points... Split these time series into two (before/after) and we shuffle randomly these pairs... Repeat this procedure many (10,000) times... obtain the PDF function of ΔρDCCA." 也就是说 N 只有 250/500/1000/2000 四档，每档 1 万次，PDF 是经验分布；样本量落在 750、1500 这种中间档没有现成临界值。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/ ；可信度：高（原文）。
+
+**发现2：作者把全部 1 万样本的 PDF 放进 mmc2.zip（1.4MB），正文与摘要里没有给任何一档的 95% 临界数字。**
+事实：Specifications Table 写明"Type of data: Zip File (Deltarhodata.zip)"、"Data Accessibility: Data are accessible within the article"，文末附件只有 mmc2.zip (1.4MB, zip)；全文没有出现"critical value = 0.xxx"这类可引用表格。general_search 搜"delta rho DCCA critical value 95% 250 500 1000 2000 Guedes Zebende"，前 8 条全是通用 Pearson r / t 分布临界值表，没有一条返回这篇论文自己的数字——即这些临界值在公开可索引的网页层是找不到的，必须下载 zip 自己分位数。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/ 与本次 general_search ；可信度：中高（搜索覆盖有限，但正文确无表）。
+
+**发现3：它和点244 那篇 1 万次置换 PDF 是同一类"经验尾巴"方法，但样本量档更粗。**
+事实：Guedes 2018 只给 250/500/1000/2000 四档，意味着 N≠2000 时要么线性插值、要么自己重跑模拟；方法稿自己也说"this PDF allows that other researchers extend yours analyses"——即作者承认四档之外要别人自己补。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/ ；可信度：高。
+
+**所以呢**：这类"显著性"检验的可信度，很大程度取决于你愿不愿意下载 1.4MB zip 自己跑分位数——正文不给表、搜索也索引不到，等于把"到底多显著"这件事的门槛设成了"必须复现作者的 1 万次模拟"；和点246 那种参数自由度过大的孤例正好相反，这里零分布是实打实 1 万次洗牌出来的，但工程上不友好，谁要引用它就得自己下 zip 算尾巴。

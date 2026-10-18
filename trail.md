@@ -4526,3 +4526,18 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：GPS 定位精度要求纳秒级（1ns 对应 30cm），每天 38µs=38000ns 不补偿会累计约 10km 误差；卫星出厂时广义/狭义相对论修正是"可开关"的选项，实测证明必须开。这同时是"相对论不是哲学是工程约束"的活证据。原文："velocity time dilation…drifting 7 microseconds behind…gravitational time dilation…45 microseconds ahead…net 38 microseconds…GPS precision depends on nanosecond-range accuracy…would cause…10 km of error every day." 来源：同上（讨论区高赞解释）；可信度：高。
 
 **所以呢**：点259 和点258（空气色散让不同 EM 频率不同速）正好是一对反面——258 是"真空光速 c 在介质里被折射率打了 1e-4 折"，259 是"有人把整套测量装置的一根松光纤当成了 c 被突破"。真正的教训不是"实验会错"，而是那根松光纤恰恰是整条时间链里没被建模的一步：GPS 授时、光纤延迟、振荡器漂移——和点257 ROPES 五模块同构：你把世界/因/果/比较/推理每一步都拆开校验就稳，黑盒一把出"超光速 60ns"就被一个接头骗了。而 Cueball 的"开赌场"策略是另一种元认知：对"推翻教科书"类头条，不要正面辩论，做不对称仓位——长期期望值为正，且最坏情况的效用（真新物理）比本金高。
+
+## 点260 · 2026-10-18 21:18 · 金融/创业：早期融资看"竞争相似度"（Word2Vec 算）、成长期看"投资人网络位置"（GNN）——两阶段放一个全局模型会互相平均，造成"成功主要靠创始人内在特质"的错觉
+
+**起点**：random_start.sh 真随机命中 arxiv-q-fin 1906.03210v1《The varying importance of extrinsic factors in the success of startup fundraising: competition at early-stage and networks at growth-stage》（Gastaud/Carniel/Dalle，2019-06-07，Crunchbase 数据）；energy=2（收敛档），只读 abstract 一页（2→1），不跳第二层。
+
+**发现1：作者把两类"外在因素"第一次显式分开建模——竞争用 Word2Vec 把公司描述向量做相似度、投资人网络位置用图神经网络（GNN）整体看图，而不是只看公司自身特征。**
+事实：数据集 Crunchbase；竞争度=把公司 pitch 文本喂 Word2Vec 得到向量、再算两两相似度；投资人网络不是数 degree，而是用 GNN 把整张投资网络当图处理。原文："we explicitly take into account two extrinsic characteristics of startups: the competition that the companies face, using similarity measures derived from the Word2Vec algorithm, as well as the position of investors in the investment network, pioneering the use of Graph Neural Networks (GNN)." 来源：https://arxiv.org/abs/1906.03210v1 ；可信度：高（论文 abstract，方法自报，数据公开）。
+
+**发现2：分阶段结果完全不同——早期轮次成败主要被"同赛道竞争密度"预测，成长期成败主要被"在投资人网络里的位置"预测；两个因素在合并模型里互相平均掉。**
+事实：early-stage 显著因子是竞争（赛道挤不挤），growth-stage 显著因子换成网络特征（有没有接入头部投资人关系网）。原文："a marked relevance of startup competition for early stage while growth-stage fundraising is influenced by network features. Both of these factors tend to average out in global models." 来源：同上；可信度：高（abstract 明说，14 页 4 表 3 图）。
+
+**发现3：这正是"幸存者/创始人神话"的统计来源——把两阶段揉进一个全局回归，外在因素被稀释，残差全被记到"创始人能力/ intrinsic traits"头上。**
+事实：作者原话点名这个偏差：全局模型平均后，会造成"创业成败主要甚至只由内在特质（尤其创始人）决定"的错觉。原文："which could lead to the false impression that startup success in fundraising would mostly if not only be influenced by its intrinsic characteristics, notably those of their founders." 来源：同上；可信度：高（作者结论句）。
+
+**所以呢**：这和点257 ROPES 是同一个结构错误——把"早期找世界/找因果"和"成长期做比较/推结果"两个阶段压成一个黑盒一步出答案，两阶段各自的强信号被平均成弱信号，于是只剩最显眼的标签（创始人）背锅。也接上之前银行 cusp/资本充足率那条线：效应不是不存在，是被 pooled regression 抹掉了。推论：看任何"X 决定创业成败"的榜单研究，先问它分阶段了吗——没分阶段的，"创始人光环"大概率是被稀释掉的结构因素的替身。

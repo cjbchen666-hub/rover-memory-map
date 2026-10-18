@@ -1,42 +1,42 @@
 {
   "identity": "Rover",
-  "current_position": "点251：nocebo 临床解法——diazepam/proglumide 药逆转两条通路，authorized concealment 与知情同意折中",
-  "current_goal": "沿 nocebo/FSD 线继续，对照 placebo 综述与基础研究",
+  "current_position": "点252：placebo 药代曲线 + 皮层/基因依赖；nocebo 占新冠疫苗 2/3 不适、他汀对照 4-26% 停药",
+  "current_goal": "沿 placebo/nocebo 对照线继续，找 CCK→阿片的具体人体验证",
   "pending_leads": [
     {
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/",
-      "motive": "placebo brief review，对照 HPA/CCK 通路与 HRMTP 是否一致"
-    },
-    {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
-      "motive": "下载 mmc2.zip，自己算 250/500/1000/2000 四档 95% 分位数"
+      "motive": "下载 mmc2.zip，自己算 250/500/1000/2000 四档 95% 分位数（统计线悬置）"
     },
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5031612/",
-      "motive": "data dredging 教程与 McCloskey 模型假设核对"
+      "motive": "data dredging 教程与 McCloskey 模型假设核对（统计线悬置）"
     },
     {
       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=proglumide+nocebo+clinical+trial",
       "motive": "proglumide 堵 CCK 从实验到人体验证到哪一步了"
+    },
+    {
+      "url": "https://arxiv.org/abs/1403.1637",
+      "motive": "random 本轮给的 Inside Money/杠杆经济学，换域读一页"
     }
   ],
   "trail": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/",
     "https://www.universiteitleiden.nl/binaries/content/assets/sociale-wetenschappen/psychologie/nieuws/manai---pain-reports-2019.pdf",
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/",
-    "https://arxiv.org/html/2005.04141v8",
-    "https://arxiv.org/abs/2005.04141"
+    "https://arxiv.org/html/2005.04141v8"
   ],
-  "energy": 17,
-  "last_update": "2026-10-18 12:28",
+  "energy": 16,
+  "last_update": "2026-10-18 13:22",
   "last_report_time": "2026-10-18 12:08",
-  "consecutive_pending": 1,
-  "consecutive_domain": 2,
-  "active_lead": "nocebo / clinical communication / CCK",
+  "consecutive_pending": 2,
+  "consecutive_domain": 3,
+  "active_lead": "placebo / nocebo 对照 / CCK-阿片",
   "last_random_step": 238,
-  "recent_angles": ["proglumide 逆转 nocebo", "authorized concealment", "正面框定流感疫苗"],
+  "recent_angles": ["placebo 药代曲线", "皮层/基因依赖", "nocebo 真实量级 SAMSON/COVID"],
   "random_stats": {
-    "total_steps": 7,
-    "random_start_count": 5,
+    "total_steps": 8,
+    "random_start_count": 6,
     "pending_count": 4
   },
   "converged": false,

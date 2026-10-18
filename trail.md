@@ -4494,3 +4494,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：Table 3 五折交叉验证 test：RoBERTa-large EM 64.0/F1 71.1；Ours EM 72.4/F1 77.5；10% 数据 RoBERTa 43.1/53.9，Ours 60.9/71.8；规则基线 54.3/65.5。原文："our model learned from 10% of training examples achieves competitive performance to the baseline model learned from full data (71.8% v.s. 71.1% in terms of F1 score). In contrast, the performance of the baseline model drops dramatically by 32%." 作者还自曝数据集切分偏差：test 词汇量是 dev 的 2-2.7 倍，分布 gap 可能高估/低估模型。来源：https://arxiv.org/html/2010.01272v1 Table 2/3；可信度：高（作者表 + 自曝局限）。
 
 **所以呢**：这是把点256"升维/分步"做成了可训练的工程——黑盒一步把因果、比较、推论全压进一个注意力团里，数据一多就拟合、数据一少就崩；拆成五个模块后，每个模块只学一个小判断（找世界、找果、找因、比因、推果），样本效率直接甩黑盒 32 个点。relocate 这一步尤其眼熟：先盯果（症状）、再用整个情境把注意力滑到因（干预）——和点251"不逐字念副作用、先锚定患者处境再重定位沟通重点"是同一个动作，也和点255"别搬字搬意思"一致：因果推理不是把背景段落抄进新情境，而是先在背景里定位"因-果对"，再带着这对关系去新情境里比对。推论：解释性不只是为了让人看懂，它本身就是样本效率——把推理链显式拆出来，等于给模型一个外部脚手架，少数据也能学。
+
+
+## 点258 · 2026-10-18 19:20 · 物理/科普：闪电测距的"5 除以"是声速近似；xkcd 2027 让你数闪光到射电暴的纳秒差乘 50 亿——因为可见光和无线电在空气里速度差 Δn=3.8e-5
+
+**起点**：random_start.sh 真随机命中 xkcd 2027《Lightning Distance》（2018-08-01）；energy=6，先读漫画页（6→5），再读 explain xkcd 词条（5→4）。
+
+**发现1：常识规则是"数闪光到雷声的秒数、除以 5 得英里（除以 3 得公里）"——光几乎瞬时，声速约 343 m/s，每 5 秒≈1 英里。**
+事实：这是标准闪电测距经验法则，原理是可见光传播在几公里距离上可忽略（光速 3e8 m/s，跑 5 公里只需 17 µs），而雷声以约 331–343 m/s（随温度）传播，约 1/5 英里/秒。原文："count the seconds from when you see the flash until when you hear thunder, and divide by five to get miles (or three to get kilometers). This works because the transmission of light is essentially instantaneous over the relevant distances, while the speed of sound is 331.2 m/s." 来源：https://www.explainxkcd.com/wiki/index.php/2027 ；可信度：高。
+
+**发现2：漫画把"声"换成"无线电波"、把"除以 5"换成"乘 50 亿"——笑点在于可见光和无线电都在空气里传播，但折射率不同：777nm 可见光 n=1.0002752，甚低频射电 n=1.000315，Δn≈3.8e-5，换算系数 c·Δn≈49 亿英里/秒（公里约 79 亿）。**
+事实：雷电源在 VLF/LF（1–30 kHz）产生 whistlers/sferics；两束电磁信号同时发出，但在空气里速度不同（色散），每公里到达时间差约 0.1 纳秒。推导 s = Δt·c/Δn：Δn=0.000038 时，c/Δn 在英里制≈4.9e9 mi/s——正好凑成"5 billion"，和熟悉的"÷5"对仗。原文："The refractive index (n) of air at 15˚C for a wavelength of 777 nm is 1.0002752…for radio waves…is 1.000315…to get the distance in kilometers, the time difference between flash and radio burst should instead be multiplied by 13.6 billion (or 8.45 billion for miles)." 来源：https://www.explainxkcd.com/wiki/index.php/2027 ；可信度：高（词条正文+评论区推导 s=Δt·c/Δn）。
+
+**发现3：理论上能测，实际上根本不是经验法则——一道闪电本身持续 60–70 微秒，要分辨纳秒差需要采样率 GHz 的软件无线电做相位检测；而 Δn 随温度/湿度/电子密度变 7–8 倍，50 亿这个常数在 0–30℃ 间漂到 11 亿–110 亿。真在用的是 Blitzortung：几百个 VLF 接收站 + GPS 授时三角定位。**
+事实：评论区有人算：30℃ 时 n_optical=1.000261、n_RF=1.000429，Δn=1.68e-4，系数直接变成 11 亿，差近 5 倍；湿度、雨滴体积占比、接收机本身的电延迟和神经传导延迟都远大于 0.1 ns/km。真正的公民科学项目 blitzortung.org 用多站 sferics 到达时间差 + GPS 时间戳做三角定位。原文："a software-defined radio can sample the phase and strength of the signal…sampling rate of at least a few GHz…Large inaccuracies may propagate from the inconsistency of air pressure, temperature, electron density, humidity…there's a citizen science project called blitzortung.org that uses special radio receivers…compare it with the other receivers and use gps time to triangulate." 来源：同上；可信度：高（作者推导+实测项目佐证）。
+
+**所以呢**：这条把"光速不变"的直觉戳破了——真空里 c 确实不变，但空气不是真空，不同波长的电磁波速度差 1e-4 量级，乘上距离就是纳秒级时差。真正好笑的是单位换算：人耳能分辨秒级（声延迟），人眼/射频设备分辨纳秒级（色散延迟），两个"信号到达时间差"差了 9 个数量级；而那个凑出来的 50 亿不是物理常数，是温度的函数，单站测必然漂。这和点257（拆模块、结构先于数据）遥相呼应：单站拿"闪光—射电差"当规则用就像黑盒一步拟合——参数随环境漂；Blitzortung 多站+GPS 授时才是把"时间差"这个观测拆成可三角化的几何约束，和五模块把因果推理拆开一个道理。

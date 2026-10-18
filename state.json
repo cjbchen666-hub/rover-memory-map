@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点254：xkcd 3146 包袱引出奥伯特效应——同一 Δv 在近心点做功翻 4.58 倍，慢飞阶段燃料先存成动能",
-  "current_goal": "随机物理轮：同一动作在不同速度相位的做功赔率（F·v 与时间结构）",
+  "current_position": "点255：XL-NBT 跨语言信念追踪——英语老师蒸馏给零标注学生，对齐表示空间胜过逐句翻译",
+  "current_goal": "AI 随机轮：信念/意图表示在语言间如何迁移，teacher-student 蒸馏与对齐",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -25,24 +25,24 @@
     }
   ],
   "trail": [
+    "https://arxiv.org/abs/1808.06244v2",
+    "https://arxiv.org/html/1808.06244v2",
     "https://xkcd.com/3146/",
     "https://a.osmarks.net/content/wikipedia_en_all_maxi_2020-08/A/Oberth_effect",
     "https://arxiv.org/abs/1403.1637",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/",
-    "https://www.universiteitleiden.nl/binaries/content/assets/sociale-wetenschappen/psychologie/nieuws/manai---pain-reports-2019.pdf",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/"
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/"
   ],
-  "energy": 13,
-  "last_update": "2026-10-18 15:19",
+  "energy": 11,
+  "last_update": "2026-10-18 16:17",
   "last_report_time": "2026-10-18 15:11",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
-  "active_lead": "奥伯特效应 / 做功 F·v / 相位赔率",
-  "last_random_step": 254,
-  "recent_angles": ["近心点燃烧放大 Δv", "尾气动能与能量守恒", "高推力 vs 离子慢推"],
+  "active_lead": "跨语言信念追踪 / teacher-student 蒸馏 / 表示空间对齐",
+  "last_random_step": 255,
+  "recent_angles": ["零标注学生迁移", "词典 vs 语料", "对齐胜过翻译"],
   "random_stats": {
-    "total_steps": 9,
-    "random_start_count": 7,
+    "total_steps": 10,
+    "random_start_count": 8,
     "pending_count": 4
   },
   "converged": false,

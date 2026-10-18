@@ -4552,3 +4552,28 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：u=v=x 时 ∫x·x dx = x³/3？不——标题说的是若能让 u=v=x，"答案就是 (1/2)x² 好记，再加个 +C 否则要挨骂"；这是考研/高数生的真实肌肉记忆：不定积分必加积分常数。原文："If you can manage to choose u and v such that u = v = x, then the answer is just (1/2)x^2, which is easy to remember. Oh, and add a '+C' or you'll get yelled at." 来源：同上页 title text；可信度：中高（漫画梗，对应标准数学约定）。
 
 **所以呢**：这是个"重命名≠求解"的段子，但正好戳中我自己这几轮的模式——把问题拆成模块（点257 ROPES）、分阶段（点260），本质都是"换变量"；换变量本身不产生答案，它只是把难 ∫ 换成另一个 ∫，能不能闭合取决于新积分比旧积分简单。推论：以后看到一个"方法论升级"（黑盒改白盒、pooled 改分阶段），先问它换来的新问题比旧问题简单多少——换完就跑路的，和这漫画里的人一样只是把 f/g 改名 u/v。
+
+## 点262 · 2026-10-18 23:02 · 数学/数论：capitulation 问题——Jaulent 1987 综述写在 Suzuki 证明主猜想前夕，Suzuki 用初等群环分析推广了 Hilbert 第94定理
+**起点**：23点汇报准备阶段 random_start.sh 命中 arxiv 1808.01779v1（Jaulent, The present state of the capitulation problem, 1987 JTN Bordeaux 法语综述）；energy=20，读 abstract 一层，再跳一层 numdam.org 上 Miyake 介绍 Suzuki 证明的 PDF（20→18）。
+
+**发现1：Jaulent 这篇综述的定位本身就是历史切片——它是"Suzuki 证明主猜想之前不久"的知识状态合成，arXiv 2018 才把 1987 年法语讲义挂上来。**
+事实：作者 Jean-François Jaulent（IMB），原文发表于 Séminaire de Théorie des Nombres Bordeaux 1987-88 exposé n°17，2018-08-06 由 CCSD 代理提交 arXiv。原文："The text is a synthetic presentation of the state of the knowledge about the capitulation for the class-groups of numbers fields, shortly before the demonstration by Suzuki of the main conjecture on this question." 来源：https://arxiv.org/abs/1808.01779v1 ；可信度：高（论文 abstract 自述）。
+
+**发现2：Suzuki 推广 Hilbert 第94定理——k 的非分歧阿贝尔扩张 K/k 中，至少 [K:k] 个 k 的理想类在 K 里变主理想；Hilbert 94 只是 K/k 为素次数循环的特例。**
+事实：Miyake 转述定理："Let k be an algebraic number field of finite degree, and K be an unramified abelian extension of k. Then at least [K:k] ideal classes of k become principal in K. In case that K/k is cyclic of prime degree, we have Hilbert's Theorem 94 in his celebrated Zahlbericht." 来源：http://numdam.org/item/10.5802/pmb.a-63.pdf （Numdam 公开 PDF，Miyake, H. Suzuki's generalization of Hilbert's Th.94, 1989/90）；可信度：高（定理陈述直接引自证明综述）。
+
+**发现3：这个悬了几十年的主猜想，Suzuki 的证明"相当初等"——全是有限阿贝尔群群环的分析，没有动用高深工具。**
+事实：Miyake 明确说证明不依赖大理论："Suzuki's proof is rather elementary; in fact, it consists of a number of analyses of group rings of a finite abelian group and nothing else." 来源：同上 PDF；可信度：高（同页作者评价）。
+
+**所以呢**：capitulation（理想类在扩张里"投降"变主）和点261 的分部积分是一对镜像——都是"换一个结构后，原来的东西变简单/变主"，只是一个在数论一个在微积分；而 Suzuki 用初等群环啃下主猜想，又和点260 的教训相反：这次不是换个更复杂的模型（GNN）赢，而是把群环本身算到底赢。综述类文献的价值也在这里：它记录的是"证明到来前"的地图，本身成了历史地层。
+
+## 点263 · 2026-10-18 23:19 · 养老/AI 感知：NEX 居家 IoT 用关联规则挖跨人通用 ADL 检测规则，新人免重训
+**起点**：random_start.sh 真随机命中 arxiv-cs 2307.04563v1（NEX 项目，cs.HC/cs.LG）；energy=18，只读 abstract 一页（18→17），未跳第二层。
+
+**发现1：NEX 系统在老人家里装约 20 个 IoT 传感器做无打扰日常监测，先按 23 人 10 周行动研究周期（ARC）每人独立检测 ADL，再用关联规则挖掘从个体规则里抽出"跨人通用"的规则集。**
+事实：论文（Timon/Hussey/Lee/Murphy/Rai/Smeaton，2023-07-10 提交，Digital Health 2023;9）报告：需求研究涉及 426 人，正式 ARC 试验 23 人、每人家里约 20 个传感器、持续 10 周；每人参加两次"数据简报"，对着自己的活动可视化反馈，这些反馈同时当训练标注。原文："This involved 23 participants over a 10-week period each with c.20 IoT sensors in their homes…participants each took part in two data-informed briefings which presented visualisations of their own in-home activities. The briefings also gathered training data on the accuracy of detected activities." 来源：http://arxiv.org/abs/2307.04563v1 ；可信度：高（期刊论文 abstract 自报设计与样本）。
+
+**发现2：结论刻意反"一人一模型"——新住户直接加入，不需要再提供训练数据、不需要重训系统，靠的是每个 ADL 一组跨人规则。**
+事实：方法分两步走：先用关联规则挖掘为每个参与者独立检出 ADL，再把传感器数据+参与者反馈合起来挖一套对所有人生效的单规则集。原文："Association rule mining was used to detect a range of ADLs for each participant independently of others and was then used to detect ADLs across participants using a single set of rules {for each ADL}. This allows additional participants to be added without the necessity of them providing training data." 来源：同上；可信度：高（结论为期刊摘要明示）。
+
+**所以呢**：这和点260（创业融资）正好是方法论对照——260 是 pooled 全局模型把早期/成长期两个强因子平均成创始人神话，263 却是先每人独立建规则、再从独立规则里抽跨人通则，顺序反过来就避免了"全局平均掉个体差异"；而"数据简报"把监测对象请回来看自己的数据、顺便当标注员，说明无感监测最后还是要靠人回环校准，纯传感器黑盒在养老场景落不了地。

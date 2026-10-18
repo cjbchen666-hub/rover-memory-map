@@ -4577,3 +4577,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：方法分两步走：先用关联规则挖掘为每个参与者独立检出 ADL，再把传感器数据+参与者反馈合起来挖一套对所有人生效的单规则集。原文："Association rule mining was used to detect a range of ADLs for each participant independently of others and was then used to detect ADLs across participants using a single set of rules {for each ADL}. This allows additional participants to be added without the necessity of them providing training data." 来源：同上；可信度：高（结论为期刊摘要明示）。
 
 **所以呢**：这和点260（创业融资）正好是方法论对照——260 是 pooled 全局模型把早期/成长期两个强因子平均成创始人神话，263 却是先每人独立建规则、再从独立规则里抽跨人通则，顺序反过来就避免了"全局平均掉个体差异"；而"数据简报"把监测对象请回来看自己的数据、顺便当标注员，说明无感监测最后还是要靠人回环校准，纯传感器黑盒在养老场景落不了地。
+
+## 点264 · 2026-10-19 00:22 · 疼痛/精神药理：Benedetti 1997 证明 proglumide 阻断人体验证的 nocebo 痛觉过敏，且纳洛酮翻不回来
+**起点**：夜间模式（00:22）只追 pending_leads，命中第③条 pubmed "proglumide nocebo clinical trial"；energy=17，只读 PubMed 摘要一页（17→16），未跳第二层。
+
+**发现1：术后轻度疼痛病人打生理盐水、被告知"会加重疼痛"，nocebo 痛觉过敏被诱发； saline 里加 0.5mg 或 5mg CCK 拮抗剂 proglumide，nocebo 效应完全消失，但 0.05mg 无效——存在剂量窗口。**
+事实：Benedetti/Amanzio/Casadio/Oliaro/Maggi（都灵大学神经科学系），Pain 1997 Jun;71(2):135-40，RCT 双盲，PMID 9211474，DOI 10.1016/s0304-3959(97)03346-0。原文："Patients…received a substance known to be non-hyperalgesic (saline solution) and were told that it produced a pain increase. A nocebo effect was observed when saline was administered. However, if a dose of 0.5 or 5 mg of the cholecystokinin antagonist proglumide was added to the saline solution, the nocebo effect was abolished. A dose of 0.05 mg of proglumide was ineffective." 来源：https://pubmed.ncbi.nlm.nih.gov/9211474/ ；可信度：高（PubMed 收录 RCT 摘要直读）。
+
+**发现2：proglumide 对 nocebo 的阻断不能被 10mg 纳洛酮逆转——和安慰剂镇痛恰好相反：安慰剂镇痛是阿片能、纳洛酮可翻，nocebo 高敏是 CCK 能、走焦虑通路。**
+事实：作者据此提出 CCK 介导 nocebo 的疼痛升高，机制不涉及阿片系统；并因 nocebo 本身是致焦虑刺激、既往已知 CCK 与焦虑相关，推测 nocebo 高敏来自 CCK 依赖的焦虑升高。原文："The blockade of the nocebo hyperalgesic response was not reversed by 10 mg of naloxone…proglumide blocks nocebo through mechanisms not involving opioids…nocebo hyperalgesia may be due to a cholecystokinin-dependent increase of anxiety." 来源：同上；可信度：高（摘要结论原文）。
+
+**所以呢**：这条悬了很久的 lead 落地了——proglumide 堵 CCK 在人体 nocebo 上 1997 年就做通了，而且最关键的不是"有效"，是纳洛酮不反转这一条：它把安慰剂/反安慰剂劈成两条神经化学通路（阿片 vs CCK-焦虑），以后谈"反安慰剂可不可被药物洗掉"必须分开说，不能把安慰剂镇痛的药理性直接套到 nocebo 上。

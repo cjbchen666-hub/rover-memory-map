@@ -4607,3 +4607,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："You have a rocket in a high circular orbit around a massive central body (a planet, or the Sun) and wish to escape with the fastest possible speed at infinity for a given amount of fuel." Blanco & Mungan，physics.class-ph，Am J Phys 89:72 (2021)，8 页 3 图。来源：https://arxiv.org/abs/2010.14997 ；可信度：中（仅摘要层，PDF 内两脉冲比单脉冲省多少燃料的算例未读到）。
 
 **所以呢**：悬置 lead④ 的"两脉冲为何省燃料"这一轮只拿到了问题设定，没拿到结果不等式；这个问题本质是把"目标函数（无穷远速度）"和"约束（燃料/总 Δv）"放进最优控制，脉冲方向/时机成了被优化量——和点265 银行危机、点264 nocebo 一样，都是"给定约束下非线性目标"，但这次是连续最优控制而不是多均衡。
+
+## 点267 · 2026-10-19 03:22 · 航天/轨道力学：Oberth 两脉冲与 Edelbaum 三脉冲省燃料的不等式
+**起点**：夜间模式（03:22）继续追 pending lead④，这次直接读 PDF 正文（arxiv.org/pdf/2010.14997），energy=13，一页（13→12）；上一轮点266 只拿到问题设定，这一轮补到结果不等式。
+
+**发现1：Oberth 1929 的两脉冲（先逆行进近心点、再顺行逃逸）只在目标无穷速度 v∞ > √2·v0 时比一次烧完省燃料；省钱来自 Oberth 效应——脉冲增加的动能随瞬时速度线性增长，所以把主加速放到引力井最深、速度最快的近心点做最划算。**
+事实：原文："For desired values of v∞ larger than this [√2 v0], Δv_Ob < Δv_D, so the two-impulse Oberth maneuver will require less fuel than the single-impulse direct escape…If a rocket body of mass m moves at speed v, a forward specific impulse Δv increases its kinetic energy by ½m(v+Δv)²−½mv², which increases linearly with v." 来源：https://arxiv.org/pdf/2010.14997 （Blanco & Mungan, Am J Phys 89:72, 2021）；可信度：高（PDF 正文公式 (8)-(10) 直引）。
+
+**发现2：Edelbaum 1959 的三脉冲（先顺行抬远心点 r_out、再逆行压近心点 r_in、最后顺行逃逸）比两脉冲还省，且省的 Δv 与目标 v∞ 无关，是一个常数差额（公式15）；双极限 r_out→∞、r_in→0 时总 Δv 趋近 (√2−1)v0≈0.41v0，但要花无限长飞行时间（双抛物线转移）。**
+事实：原文："the Edelbaum escape always has a lower overall Δv for a given v∞ by an amount [Eq.15]…independent of v∞…In the dual limit r_out→∞ and r_in→0, Δv_Ed→(√2−1)v0…While this bi-parabolic trajectory has the smallest possible Δv (≈0.41v0) to achieve any desired v∞, it requires an infinite travel time." 来源：同 PDF，公式 (11)-(15)；可信度：高。
+
+**所以呢**：省燃料的本质不是"多烧几次"而是"把每次主加速挪到速度最快的地方做"——近心点越快、化学能转化为轨道机械能的效率越高；三脉冲比两脉冲多的那一程（先飞远再掉进来）是用飞行时间换 Δv，这是一个典型的燃料—时间帕累托权衡，和点265 银行危机里"资本充足率既是安全垫又是放大器"的政策悖论同构：没有免费午餐，优化目标一变（省燃料 vs 省时间）最优策略就跳变。

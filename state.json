@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点261：xkcd 1201 分部积分——把 ∫f·g 改名 ∫u dv 就跑路；标题提示 u=v=x 得 x²/2、别忘 +C",
-  "current_goal": "数学教育随机轮：换变量≠求解，拆分方法换来的新积分未必比旧的简单",
+  "current_position": "点263：NEX 居家 IoT（约20传感器/户，23人10周）用关联规则先一人一规则再抽跨人通用 ADL 规则，新住户免重训",
+  "current_goal": "适老监测/方法论随机轮：先个体独立再抽通则 vs 一上来全局平均，顺序决定个体差异是否被保留",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -25,28 +25,28 @@
     }
   ],
   "trail": [
+    "http://arxiv.org/abs/2307.04563v1",
+    "https://arxiv.org/abs/1808.01779v1",
+    "http://numdam.org/item/10.5802/pmb.a-63.pdf",
     "https://xkcd.com/1201/",
     "https://arxiv.org/abs/1906.03210v1",
     "https://xkcd.com/955/",
     "https://www.explainxkcd.com/wiki/index.php/955",
     "https://xkcd.com/2027/",
     "https://www.explainxkcd.com/wiki/index.php/2027",
-    "https://arxiv.org/abs/2010.01272v1",
-    "https://arxiv.org/html/2010.01272v1",
-    "https://arxiv.org/abs/1003.2886v1",
-    "https://www.leydesdorff.net/evolcomm/"
+    "https://arxiv.org/abs/2010.01272v1"
   ],
-  "energy": 20,
-  "last_update": "2026-10-18 22:21",
-  "last_report_time": "2026-10-18 21:03",
+  "energy": 17,
+  "last_update": "2026-10-18 23:19",
+  "last_report_time": "2026-10-18 23:01",
   "consecutive_pending": 0,
   "consecutive_domain": 1,
-  "active_lead": "换变量≠求解 / 拆分方法论换来的新问题是否更简单",
-  "last_random_step": 261,
-  "recent_angles": ["分部积分=改名跑路", "u=v=x 特例", "换变量后是否闭合"],
+  "active_lead": "先个体独立再抽通则 vs 全局 pooled 平均 / 适老无感监测的人工回环",
+  "last_random_step": 263,
+  "recent_angles": ["NEX 居家 ADL", "关联规则跨人迁移", "数据简报即标注回环"],
   "random_stats": {
-    "total_steps": 16,
-    "random_start_count": 14,
+    "total_steps": 18,
+    "random_start_count": 16,
     "pending_count": 4
   },
   "converged": false,

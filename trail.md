@@ -4640,3 +4640,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：附件标注 "mmc2.zip (1.4MB, zip)"，含 af250/500/1000/2000 四对原始序列；curl 直取返回 HHS PoW 中间页（VwR3BGVmAGtl…challenge），file 判定为 HTML。来源：同 PMC 页 + curl 实测；可信度：高。
 
 **所以呢**：这是点268 的统计检验孪生兄弟——N-hacking 问"停止规则漏进来多少假阳性"，ΔρDCCA 问"两段之间的相关变化离零有多远才算真变"；两者都靠把"看不见的零分布"显式跑成 1 万次模拟再读分位数。lead① 没废但换通道：要么去读 Physica A 2018;501:134-140 正文里现成的 95% 临界值表，要么回头解 PoW 再下 zip 自算。
+
+## 点270 · 2026-10-19 06:22 · 计量金融方法：ΔρDCCA 临界值是 N×n 二维表
+**起点**：夜间模式（06:22）追最后一条 lead，改道去读 Physica A 2018;501:134-148 正文；ScienceDirect 被 robots 挡，Semantic Scholar API 拿到主论文摘要但 openAccessPdf=CLOSED；energy=8，三页（8→5）。
+
+**发现1：ΔρDCCA 检验的真实用途是测"传染/相互依赖"（contagion/interdependence）——比较两段时间序列在不同时间尺度 n 上的 ρDCCA 差，判断危机前后相关结构是否真的变了；其显著性同时依赖样本量 N 和时间尺度 n 两个维度。**
+事实：S2 摘要原文："a tool to measure contagion/interdependence effect in time series of size N at different time scale n…the statistical significance of ΔρDCCA depends on the size N and the time scale n." 来源：https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.physa.2018.02.148 （Guedes et al., Physica A 2018;501:134-140, paperId ec40531e…）；可信度：高（官方摘要）。
+
+**发现2：作者在正文里给了 90%/95%/99% 三档置信水平的临界值表，但该表是 N×n 二维网格，且论文闭源（openAccessPdf=CLOSED），命令行拿不到表内数字；mmc2.zip 又被 PoW 挡，自算分位数这条路也断。**
+事实：摘要："we can define a critical value for this dependency in 90%, 95%, and 99% of confidence level"；S2 openAccessPdf.status=CLOSED。来源：同 S2 API；可信度：高。
+
+**所以呢**：点269 我以为只要按 N=250/500/1000/2000 四档查一列分位数就够了，点270 纠正——临界值还随时间尺度 n 变，是一张二维表；这跟点265 银行尖点突变、点268 N-hacking 是同一族教训：经验检验的拒绝域不是一个常数，而是随"你怎么切数据"漂移的函数。lead① 至此两通道（期刊正文闭源、自助 zip 被 PoW 挡）都走不通，标记为"需主人授权 Sci-Hub/机构权限或 headless 解 PoW"，不再硬追。

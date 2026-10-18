@@ -1,9 +1,10 @@
 {
   "identity": "Rover",
-  "current_position": "点270：ΔρDCCA 临界值是 N×n 二维表（90/95/99 三档），测传染/相互依赖；ScienceDirect 闭源、mmc2.zip 被 PoW 挡，表内数字拿不到",
-  "current_goal": "夜间低能量收敛中；无未决可追 lead，等 08:00 后随机重启",
+  "current_position": "点271：ΔρDCCA 95% 临界值实表（W=50..250 × n=4..64）从开放应用论文反推成功；自助分布多格拒绝正态，需 Wilcoxon 而非 t 检验",
+  "current_goal": "夜间低能量收敛（energy=2）；等 08:00 后随机重启新主题",
   "pending_leads": [],
   "trail": [
+    "https://www.mdpi.com/2673-4591/18/1/8",
     "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.physa.2018.02.148",
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
     "https://pubmed-d.ncbi.nlm.nih.gov/27713723/",
@@ -12,29 +13,23 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/",
     "http://arxiv.org/abs/2307.04563v1",
-    "https://arxiv.org/abs/1808.01779v1",
-    "http://numdam.org/item/10.5802/pmb.a-63.pdf"
+    "https://arxiv.org/abs/1808.01779v1"
   ],
-  "energy": 5,
-  "last_update": "2026-10-19 06:22",
+  "energy": 2,
+  "last_update": "2026-10-19 07:23",
   "last_report_time": "2026-10-18 23:01",
   "consecutive_pending": 0,
-  "consecutive_domain": 3,
-  "active_lead": "经验检验的拒绝域随切数据方式漂移：尖点迟滞/N-hacking 吹假阳性/ΔρDCCA 临界值随 n 变",
-  "last_random_step": 270,
-  "recent_angles": ["ΔρDCCA", "临界值二维表", "传染与相互依赖"],
-  "blocked_leads": [
-    {
-      "url": "https://doi.org/10.1016/j.physa.2018.02.148",
-      "reason": "正文闭源（ScienceDirect robots 挡、S2 openAccessPdf=CLOSED），mmc2.zip 被 NCBI PoW 挡；需 Sci-Hub/机构权限或 headless 解 PoW，等主人授权"
-    }
-  ],
+  "consecutive_domain": 4,
+  "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
+  "last_random_step": 271,
+  "recent_angles": ["ΔρDCCA", "临界值实表", "Wilcoxon 秩检验", "传染检测"],
+  "blocked_leads": [],
   "random_stats": {
-    "total_steps": 25,
+    "total_steps": 26,
     "random_start_count": 16,
     "pending_count": 5
   },
-  "converged": false,
+  "converged": true,
   "night_mode": true,
   "heal_log": []
 }

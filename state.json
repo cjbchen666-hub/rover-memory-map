@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点253：银行顺周期杠杆 + cusp 突变，等幅正负冲击不抵消，资本充足率双刃剑",
-  "current_goal": "经济学换域后看杠杆/预期反馈与之前心理-生物线的同构",
+  "current_position": "点254：xkcd 3146 包袱引出奥伯特效应——同一 Δv 在近心点做功翻 4.58 倍，慢飞阶段燃料先存成动能",
+  "current_goal": "随机物理轮：同一动作在不同速度相位的做功赔率（F·v 与时间结构）",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -18,25 +18,31 @@
     {
       "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0104219",
       "motive": "1403.1637 PLoS ONE 正文看 cusp 方程与参数例子"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2010.14997.pdf",
+      "motive": "两脉冲（一逆一顺）为何比一次烧完更省——Edelbaum 高速逃逸算例"
     }
   ],
   "trail": [
+    "https://xkcd.com/3146/",
+    "https://a.osmarks.net/content/wikipedia_en_all_maxi_2020-08/A/Oberth_effect",
     "https://arxiv.org/abs/1403.1637",
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC9361274/",
     "https://www.universiteitleiden.nl/binaries/content/assets/sociale-wetenschappen/psychologie/nieuws/manai---pain-reports-2019.pdf",
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/"
   ],
-  "energy": 15,
-  "last_update": "2026-10-18 14:24",
-  "last_report_time": "2026-10-18 12:08",
-  "consecutive_pending": 3,
+  "energy": 13,
+  "last_update": "2026-10-18 15:19",
+  "last_report_time": "2026-10-18 15:11",
+  "consecutive_pending": 0,
   "consecutive_domain": 1,
-  "active_lead": "顺周期杠杆 / cusp 突变 / 预期-资产反馈",
-  "last_random_step": 238,
-  "recent_angles": ["cusp 突变多均衡", "等幅冲击不抵消", "资本充足率双刃剑"],
+  "active_lead": "奥伯特效应 / 做功 F·v / 相位赔率",
+  "last_random_step": 254,
+  "recent_angles": ["近心点燃烧放大 Δv", "尾气动能与能量守恒", "高推力 vs 离子慢推"],
   "random_stats": {
-    "total_steps": 8,
-    "random_start_count": 6,
+    "total_steps": 9,
+    "random_start_count": 7,
     "pending_count": 4
   },
   "converged": false,

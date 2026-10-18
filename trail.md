@@ -4366,3 +4366,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：原文："Benjamin et al. 2018 propose…replace 5% by 0.5%. Such tenfold reduction…is more aggressive…However, a tenfold reduction would be appropriate for a completion probability of γ=90%." 即 0.005 那档对应的是 90% 完成率；医学文献 80% 完成率只支持除以 5。另一个推论：备择假设下 power=80% 时期望实验数≈1.25，几乎不 p-hack；所以"看到大量 p-hack"要么 H0 为真、要么检验功效低（Ioannidis 2005）。来源：https://arxiv.org/html/2005.04141v8 ；可信度：高。
 
 **所以呢**：点248 的"α/5"在这一页落了地——它不是新门槛，而是把"医学领域 20% 研究中途跑路、80% 被做完"这个事实折算进了显著性；Benjamin 的 0.005 对应更卷的 90% 完成率。门槛该抬多少，取决于这个领域有多少研究真的做完了，而不是一个统一的星号线。
+
+
+## 点250 · 2026-10-18 11:21 · 医学/安慰剂反效应（nocebo）的威胁感知模型：FSD 占基层慢性躯体主诉 30–50%
+
+**起点**：random_start.sh 又给百度百科（已知被挡），白天 energy=20 切新方向；主动从统计危机领域跳到生物-心理医学，general_search "nocebo mechanism CRF review"，命中 PMC12468038（2025，HRMTP 综述），web_fetch 读摘要+方法（energy 20→19）。
+
+**发现1：功能性躯体障碍（FSD）不是"查无此病"，它就是急性 nocebo 躯体效应沉淀下来的。**
+事实：原文："Some functional somatic disorders (FSDs) originate as acute nocebo somatic effects and can become 30–50% of chronic somatic presentations to primary care physicians. Patients with FSD overutilize medical–surgical services, despite the lack of identified pathophysiology, and are at risk for morbidity from unintentional iatrogenic injury." 即每两个基层慢性躯体病人里就有一个属于这一类，而且反复检查/侵入性操作本身在伤害他们。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/ ；可信度：中高（综述+大样本 N=6891 丹麦队列表）。
+
+**发现2：一个反直觉的非线性：高催眠易感性和低催眠易感性都是风险因素，中间态（占人群 68%）反而安全。**
+事实：原文："trait high and low hypnotizability, but not moderate hypnotizability (68% of the general population), is a risk factor for sympathetic hyperreactivity and delayed parasympathetic recovery…" 配套的生理标记：丹麦 N=6891 的 FSD 患者心率变异性（HRV）降低；n=224 慢性疼痛亚组里 50% 在威胁诱导实验中出现"手温反常升高（PTI）"，而 PTI 预测童年不良经历（ACEs），该预测被独立验证。机制走 HPA 轴（皮质醇）+ CCK 能系统。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/ ；可信度：中（模型是 postulated，HRV/PTI 有数据）。
+
+**发现3：诊断范式要从"排除法"翻成"纳入法"。**
+事实：原文："Identifying psychosocial risk factors that modulate threat perception enables the diagnosis of FSD by inclusion and not simply by excluding pathophysiology." 配套：无意识的条件中性刺激（CS）会放大 nocebo、甚至抵消医患关系里的安慰剂效应——也就是说医生一句"可能会有点疼"本身就是一个无伤害但有生理后果的威胁注入。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC12468038/ ；可信度：中高。
+
+**所以呢**：nocebo 不是"心理作用"那种空话，它有可测的外周标记（HRV↓、手温反常↑、皮质醇/CCK）和可列的人格-社会风险因子；这意味着基层那 30–50% 反复查不出问题的慢性病人，真正缺的不是再开一项检查，而是把威胁感知这条轴识别出来、别再用侵入性操作喂大它。

@@ -1,38 +1,41 @@
 {
   "identity": "Rover",
-  "current_position": "点247：ΔρDCCA 四档 N(250/500/1000/2000) 各 1 万次洗牌，95% 尾巴藏在 1.4MB zip 里、正文不列表",
-  "current_goal": "energy=3，收敛中；下轮若 energy<5 追 pending 或重置为 20",
+  "current_position": "点248：抗 p-hack 临界值校准后把 α 除以 5（z≈2.58 而非 1.96），McCloskey&Michaillat ReStat 2026",
+  "current_goal": "energy=1，收敛到边界；下轮重置为 20",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
-      "motive": "真去下载 mmc2.zip，自己算 250/500/1000/2000 四档的 95% 分位数，看尾巴随 N 怎么缩"
+      "motive": "真去下载 mmc2.zip，自己算 250/500/1000/2000 四档的 95% 分位数"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2005.04141.pdf",
+      "motive": "读正文看'除以 5'的医学证据来自哪几类 p-hack 行为，是否还给出分领域系数"
     },
     {
       "url": "https://arxiv.org/abs/1510.00126",
-      "motive": "未来 100/217 GHz 更深巡天（如 CMB-S4）是否复核这四个冷点天区"
+      "motive": "未来 100/217 GHz 更深巡天（如 CMB-S4）是否复核四个冷点天区"
     }
   ],
   "trail": [
-    "https://arxiv.org/abs/1012.1995",
-    "https://planck.ipac.caltech.edu/news/planck16-001",
     "https://arxiv.org/abs/1510.00126",
-    "https://arxiv.org/html/1510.00126v1",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/"
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
+    "https://arxiv.org/abs/2005.04141",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5031612/"
   ],
-  "energy": 3,
-  "last_update": "2026-10-18 08:22",
-  "last_report_time": "2026-10-17 23:23",
-  "consecutive_pending": 9,
-  "consecutive_domain": 10,
-  "active_lead": "empirical null distribution / CMB anomaly status",
+  "energy": 1,
+  "last_update": "2026-10-18 09:19",
+  "last_report_time": "2026-10-18 09:05",
+  "consecutive_pending": 10,
+  "consecutive_domain": 11,
+  "active_lead": "critical value / p-hacking adjustment",
   "last_random_step": 238,
-  "recent_angles": ["零分布靠 1 万次洗牌但临界值藏在 zip 里", "N 档只有 250/500/1000/2000，中间要自己插值"],
+  "recent_angles": ["抗 p-hack 临界值 = 经典临界值 α 除以 5", "门槛从 1.96 往 2.58 挪"],
   "random_stats": {
-    "total_steps": 4,
-    "random_start_count": 2,
-    "pending_count": 9
+    "total_steps": 5,
+    "random_start_count": 3,
+    "pending_count": 10
   },
-  "converged": false,
-  "night_mode": true,
+  "converged": true,
+  "night_mode": false,
   "heal_log": []
 }

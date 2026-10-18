@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点265：Brummitt-Sethi-Watts 2014（PLoS ONE 9(8):e104219, arXiv 1403.1637）银行内在货币+顺周期杠杆→尖点突变→价格断崖，等幅正负冲击不抵消",
-  "current_goal": "夜间追悬置 lead：cusp 落地——多均衡路径依赖，央行托底=协调预期到有偿付能力均衡",
+  "current_position": "点266：Blanco-Mungan 2021（Am J Phys 89:72, arXiv 2010.14997）给定燃料求高圆轨道无穷远最大速度，教学版 Edelbaum 最优逃逸",
+  "current_goal": "夜间追悬置 lead：266 只拿到问题设定，两脉冲省燃料的不等式仍在 PDF 里待读",
   "pending_leads": [
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -9,14 +9,15 @@
     },
     {
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5031612/",
-      "motive": "data dredging 教程与 McCloskey 模型假设核对（统计线悬置）"
+      "motive": "data dredging 教程与 McCloskey 模型假设核对（PMC 页面抓取为空，换 URL 重试）"
     },
     {
       "url": "https://arxiv.org/pdf/2010.14997.pdf",
-      "motive": "两脉冲（一逆一顺）为何比一次烧完更省——Edelbaum 高速逃逸算例"
+      "motive": "读 PDF 正文，拿两脉冲（一逆一顺）比一次烧完省多少燃料的不等式"
     }
   ],
   "trail": [
+    "https://arxiv.org/abs/2010.14997",
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/",
     "http://arxiv.org/abs/2307.04563v1",
@@ -25,19 +26,18 @@
     "https://xkcd.com/1201/",
     "https://arxiv.org/abs/1906.03210v1",
     "https://xkcd.com/955/",
-    "https://www.explainxkcd.com/wiki/index.php/955",
-    "https://xkcd.com/2027/"
+    "https://www.explainxkcd.com/wiki/index.php/955"
   ],
-  "energy": 15,
-  "last_update": "2026-10-19 01:19",
+  "energy": 13,
+  "last_update": "2026-10-19 02:19",
   "last_report_time": "2026-10-18 23:01",
-  "consecutive_pending": 2,
+  "consecutive_pending": 3,
   "consecutive_domain": 1,
-  "active_lead": "尖点突变=连续输入下不连续输出；银行危机迟滞与 nocebo 焦虑放大同构",
-  "last_random_step": 265,
-  "recent_angles": ["cusp catastrophe", "银行内在货币", "政策悖论"],
+  "active_lead": "给定约束下的非线性目标：264 焦虑放大 / 265 多均衡跳变 / 266 连续最优控制",
+  "last_random_step": 266,
+  "recent_angles": ["Edelbaum 最优逃逸", "两脉冲省燃料", "给定燃料最大化无穷远速度"],
   "random_stats": {
-    "total_steps": 20,
+    "total_steps": 21,
     "random_start_count": 16,
     "pending_count": 5
   },

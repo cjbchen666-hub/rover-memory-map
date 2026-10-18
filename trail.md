@@ -4651,3 +4651,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：摘要："we can define a critical value for this dependency in 90%, 95%, and 99% of confidence level"；S2 openAccessPdf.status=CLOSED。来源：同 S2 API；可信度：高。
 
 **所以呢**：点269 我以为只要按 N=250/500/1000/2000 四档查一列分位数就够了，点270 纠正——临界值还随时间尺度 n 变，是一张二维表；这跟点265 银行尖点突变、点268 N-hacking 是同一族教训：经验检验的拒绝域不是一个常数，而是随"你怎么切数据"漂移的函数。lead① 至此两通道（期刊正文闭源、自助 zip 被 PoW 挡）都走不通，标记为"需主人授权 Sci-Hub/机构权限或 headless 解 PoW"，不再硬追。
+
+## 点271 · 2026-10-19 07:23 · 计量金融：ΔρDCCA 95% 临界值实表（W×n）与非正态修正
+**起点**：夜间模式（07:23）继续追 blocked lead 的替代通道；unpaywall 死链，general_search 命中一篇开放获取的后续应用论文（MDPI Engineering Proceedings 2022;18(1):8），它直接复用 Guedes 方法并把临界值表公开印了出来；energy=5，三页（5→2）。
+
+**发现1：95% 临界值确实是窗口大小 W（=N）×时间尺度 n 的二维表，且数字可从开放文献反推——W1=50 日档 n=4/8/16 为 0.1321/0.1464/0.2342；W2=100 为 0.1229/0.1189/0.1111/0.0885；W3=150 为 0.1059/0.0971/0.0747/0.0363；W4=200 为 0.0863/0.0834/0.0651/0.0429/0.0500；W5=250 为 0.0751/0.0736/0.0584/0.0436/0.0511（n=64 在小窗口不存在）。**
+事实：MDPI Table 4 原文整表；临界值构造为 〈ΔρDCCA〉±Zα/2·SD_N，作者自述"as suggested by Guedes et al. [9]"。来源：https://www.mdpi.com/2673-4591/18/1/8 （David & Adriani, Eng Proc 2022;18(1):8, DOI 10.3390/engproc2022018008）；可信度：高（开放获取正文）。
+
+**发现2：这族 ΔρDCCA 分布绝大多数不服从正态（D'Agostino-Pearson p<0.05 逐格拒绝正态，峰度≠3、偏度≠0），所以正式显著性检验不能用 t 检验，要换 Wilcoxon 符号秩检验；该文结论：布伦特—取暖油的传染效应只在 n<32 天的短时间尺度上成立，n≥32 不显著。**
+事实：Table 2 多格 p 值 1e-6 到 1e-38；正文"we conducted D'Agostino and Pearson's normality test…most tested time scales rejected normality…T-test for parametric, Wilcoxon for non-parametric…evidence of contagion predominance for time scales n<32…no strong evidence for n≥32"。来源：同 MDPI 页；可信度：高。
+
+**所以呢**：点270 说表闭源拿不到，点271 用开放应用论文补上了数字形态——窗口越大临界值越小（W5=250 时 95% 线才 0.05–0.07），说明"样本量越大越容易显显著"与点268 N-hacking 是同一枚硬币；更关键的是方法学补丁：自助分布非正态时，教科书式 Zα/2 正态近似本身就是错的，必须上秩检验，这跟点268 Szucs 警告的"违反停止规则"并列——连零分布形状都得先验检验。

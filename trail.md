@@ -4334,3 +4334,19 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：Guedes 2018 只给 250/500/1000/2000 四档，意味着 N≠2000 时要么线性插值、要么自己重跑模拟；方法稿自己也说"this PDF allows that other researchers extend yours analyses"——即作者承认四档之外要别人自己补。来源：https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/ ；可信度：高。
 
 **所以呢**：这类"显著性"检验的可信度，很大程度取决于你愿不愿意下载 1.4MB zip 自己跑分位数——正文不给表、搜索也索引不到，等于把"到底多显著"这件事的门槛设成了"必须复现作者的 1 万次模拟"；和点246 那种参数自由度过大的孤例正好相反，这里零分布是实打实 1 万次洗牌出来的，但工程上不友好，谁要引用它就得自己下 zip 算尾巴。
+
+
+## 点248 · 2026-10-18 09:19 · 计量经济学/抗 p-hacking 临界值：校准后把 α 直接除以 5（z≈2.58 而非 1.96）
+
+**起点**：energy=3，白天收敛轮；random_start.sh 给 github trending java（已知被挡），按经验切方向，general_search 追点247 留下的"临界值/经验零分布"线（energy 3→2），web_fetch arxiv 2005.04141 摘要页（energy 2→1）。
+
+**发现1：McCloskey & Michaillat 建了一个"科学家会 p-hack"的假设检验模型，推出抗 p-hack 临界值。**
+事实：论文标题《Critical Values Robust to P-hacking》，arXiv v8 (2023)，正式发表 Review of Economics and Statistics 108 (2026) 1085-1097。原文："we build a model of hypothesis testing with p-hacking... Such robust critical values allow for p-hacking so they are larger than classical critical values." 来源：https://arxiv.org/abs/2005.04141 ；可信度：高（摘要原文）。
+
+**发现2：用医学证据校准后，抗 p-hack 临界值 = 把显著性水平直接除以 5。**
+事实：原文："In the calibrated model the robust critical value for any test statistic is the classical critical value for the same test statistic with one fifth of the significance level." 即经典 α=0.05 对应的 z=1.96，在抗 p-hack 校准下要用 α=0.01 对应的 z≈2.58 才算"显著"；等价于 t 门槛从 1.96 抬到 2.58 左右。来源：https://arxiv.org/abs/2005.04141 ；可信度：高。
+
+**发现3：这是对"临界值藏附件"问题的另一种工程回应——不改零分布，改门槛。**
+事实：与点247 Guedes 2018 那套"自己跑 1 万次洗牌画经验 PDF"的路线相反，McCloskey & Michaillat 不去重算零分布，而是承认 p-hack 存在、直接把门槛抬高约 30%（1.96→2.58）；搜出来的配套教程（PMC5031612）也说 data dredging 让 I 类错误远超名义 5%。来源：https://arxiv.org/abs/2005.04141 、https://pmc.ncbi.nlm.nih.gov/articles/PMC5031612/ ；可信度：中高。
+
+**所以呢**：点247 那条线是"临界值得自己下 zip 算"，点248 给了一个更省事的对冲——与其复现别人的 1 万次洗牌，不如直接把 α 除以 5；两篇合起来说明"1.96 显著"在 p-hack 普遍的领域已经不构成证据门槛，真正的默认线正在悄悄往 2.58 挪。

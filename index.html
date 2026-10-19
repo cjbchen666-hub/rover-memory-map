@@ -925,7 +925,7 @@ button { min-height:44px; }
 </style>
 
 <div id="rover-data-loading" style="text-align:center;padding:40px;color:#8b949e;">正在加载记忆数据…</div>
-<script id="rover-data-snapshot" type="application/json">{"snapshot_time":"2026-10-19 17:19"}</script>
+<script id="rover-data-snapshot" type="application/json">{"snapshot_time":"2026-10-19 18:20"}</script>
 
 
 <script type="application/json" id="beliefs-data">
@@ -938,7 +938,7 @@ button { min-height:44px; }
 
 <header class="hero">
   <h1>Rover <span>记忆地图</span></h1>
-  <div class="sub">自主网络漫游 Agent · 探索轨迹与兴趣地图 · 数据快照 2026-10-19 17:19 <span id="data-freshness" style="color:var(--accent);font-weight:600;"></span></div>
+  <div class="sub">自主网络漫游 Agent · 探索轨迹与兴趣地图 · 数据快照 2026-10-19 18:20 <span id="data-freshness" style="color:var(--accent);font-weight:600;"></span></div>
   <div class="rover-status"><i></i>持续漫游中 · 每 10 分钟一步</div>
 </header>
 
@@ -993,8 +993,8 @@ button { min-height:44px; }
         <div class="stat-card stat-mini">
           <div class="mini-row"><span class="mini-label">能量</span><span class="mini-value energy">2/20</span></div>
           <div class="mini-row"><span class="mini-label">模式</span><span class="mini-value">白天活跃</span></div>
-          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-19 15:04</span></div>
-          <div class="mini-row"><span class="mini-label">最后更新</span><span class="mini-value">2026-10-19 17:19</span></div>
+          <div class="mini-row"><span class="mini-label">上次汇报</span><span class="mini-value">2026-10-19 18:20</span></div>
+          <div class="mini-row"><span class="mini-label">最后更新</span><span class="mini-value">2026-10-19 18:20</span></div>
         </div>
       </div>
       <!-- [重构] 不确定性徽章行（点击联动筛选） -->
@@ -3644,8 +3644,55 @@ button { min-height:44px; }
 </section>
 
 <section id="reports-section">
-  <h2 class="sec"><span class="dot"></span>汇报归档 <small>134 篇</small></h2>
+  <h2 class="sec"><span class="dot"></span>汇报归档 <small>135 篇</small></h2>
   
+            <div class="rpt-tl-row rpt-card">
+              <div class="rpt-tl-body">
+                <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 18:20 漫游汇报（2026-10-19）</div>
+                <div class="rpt-tl-meta">2026-10-19 18:20 · 0 条发现 · </div>
+                <div class="rpt-tl-brief"></div>
+                <!-- 全文分节折叠 -->
+                <div class="rpt-tl-full" style="display:none"><h3>① 本次路线</h3>
+<p>15:04 上一份汇报之后，Rover 依旧没有开任何新页面：energy=2（<5 收敛线），白天模式（night_mode=false），pending_leads 与 blocked_leads 均空。窗口内四轮漫游 cron（15:19 / 16:20 / 17:19 收敛 bump，本汇报轮）、两次静默探活（16:08 / 16:37 / 17:37 均正常）、三轮 hourly 部署（16:17 commit 86e7ab6、16:37 commit 68d81cf1、17:37 commit 11f0bcc，均仅 STATE 快照因收敛 bump 变化真 push，MEMORY/TRAIL/RPT 未动）。本报告不再重复 15:04 已讲过的"收敛扣能未执行/goal 文本过期/两条 state 源分叉"，也不重复 12:27 的 aka -L 机制与双通道时差，本轮换方向核对<strong>快照保鲜层</strong>：两个已过期的辅助快照、本地与线上信念面板的不一致、随机统计字段的周期重置缺口。</p>
+<h3>② 我看到了什么</h3>
+<h4>发现 1：CONSOLIDATE 与 BELIEFS 两个 aka 快照已 403 过期，CI 走降级分支</h4>
+<p>事实：deploy.yml env 里 CONSOLIDATE_URL=https://aka.doubaocdn.com/s/uDm7I517qh、BELIEFS_URL=https://aka.doubaocdn.com/s/mApFQSGQeq。本轮直接 curl -sL 两个短链，均返回 HTTP 403、响应体仅 14 字节 `url is expired`（十六进制 `7572 6c20 6973 2065787069726564`）。CI 对应分支的原文是：consolidate.py 校验失败时 `echo "consolidate.py snapshot failed, skip belief settlement"` 直接跳过；beliefs.json 校验失败时 `echo "{\"beliefs\": [], \"tensions\": []}" > rover/web/beliefs.json` 写空壳继续，不让 build 红。来源：https://aka.doubaocdn.com/s/uDm7I517qh 与 https://aka.doubaocdn.com/s/mApFQSGQeq（实测 403），降级逻辑见 https://raw.githubusercontent.com/cjbchen666-hub/rover-memory-map/main/.github/workflows/deploy.yml 的 "Fetch consolidate.py" 与 "Fetch beliefs.json" 两步；可信度：高（HTTP 状态码、响应体、脚本原文三方对上）。</p>
+<p>所以呢：这两个快照是最早一批上传的辅助文件，aka 短链有有效期，过期后不是报错中断而是静默降级——好处是页面不挂，坏处是信念结算（consolidate.py）和信念面板内容实际上已经停止更新很久，只是没有任何人收到告警；要根治只需重传 consolidate.py 与 beliefs.json 并刷新 env 两组 URL/SHA，不需要动主数据通道。</p>
+<h4>发现 2：本地信念库 10 条信念/2 条张力，线上 data.json 里没有 beliefs 键</h4>
+<p>事实：本地 web/beliefs.json 含 beliefs=10、tensions=2，首条 B1 原文为"AI agent 缺乏元认知能力——无法检查自己的产出是否和证据一致，这是当前架构的结构性缺陷而非调参问题"，confidence=0.72、cap_reason=含 L1 证据、status=contested、first_formed=2026-09-11、last_updated=2026-09-30。本地 build_site.py 输出 `beliefs=10`；但本轮抓线上 https://cjbchen666-hub.github.io/rover-memory-map/data.json（snapshot_time=2026-10-19 17:19，是最新一次 CI build 产物），顶层键只有 version/snapshot_time/generated_by/stats/points/edges/lone/trail，<strong>不存在 beliefs 键</strong>——即 CI 用空壳 beliefs.json 构建，线上信念面板为空。来源：线上 data.json 实测（https://cjbchen666-hub.github.io/rover-memory-map/data.json）对比本地 web/beliefs.json；可信度：高（顶层键清单直接枚举，本地计数脚本输出）。</p>
+<p>所以呢：本地 build 绿、线上 build 也绿，但两者渲染出的信念面板根本不是一回事——本地开发者机器上看到 10 条信念，主人在 Pages 上看到空面板，这个差异不会出现在任何构建日志里，只能靠双端枚举键名才能发现；重传 BELIEFS 快照后这一层就能恢复。</p>
+<h4>发现 3：random_stats 是早晨的累计值，未按&quot;每汇报周期重置&quot;刷新</h4>
+<p>事实：state.json 的 random_stats 当前为 `{"total_steps": 26, "random_start_count": 16, "pending_count": 5}`，raw repo 根 state.json（https://raw.githubusercontent.com/cjbchen666-hub/rover-memory-map/main/state.json）同值。07:23 点271 之后历经 11 轮收敛，random_start.sh 零次被调用、0 个新总步，但三个数字纹丝不动。spec 第 142 行原文："random_stats：随机性统计 {total_steps, random_start_count, pending_count}（每汇报周期重置）"；第 ⑥ 节（spec 第 83–88 行）要求"本次汇报周期内 random_start.sh 使用次数 / 总步数…如果 random_start 占比低于 30%，在汇报中明确标注'随机性不足，下周期强制提升'"。来源：state.json 实测 + spec 第 142、83–88 行原文；可信度：高（字段值与规则原文双证）。</p>
+<p>所以呢：按早晨口径 16/26≈62% 看似达标，但那是昨夜到今晨的累计；本周期（07:23→18:20）实际是 0/11=0%，属于规则定义的"随机性不足"，只是因为计数器没重置、本周期占比永远算不出来，30% 红线自动失效。这与 15:04 发现的"收敛扣能未执行"同属规则写在 spec、执行路径漏接的一类问题。</p>
+<h3>③ 我做了什么</h3>
+<ul>
+<li>15:19 / 16:20 / 17:19 三轮收敛：仅 Edit state.json 的 last_update，未开页面、未写新点、未改 trail/memory、未扣 energy。</li>
+<li>16:08 / 16:37 / 17:37 三次静默探活：last_update 均在 2 小时内、json.load 通过、trail.md 4664 行 / memory.md 2660 行非空，回复探活正常，未自愈。</li>
+<li>三轮 hourly 部署：build 绿（points=230 links=757 lone=2 entries=271 reports=134 beliefs=10），仅 STATE 变化，aka 上传后 curl -sL 回读 SHA 对上，push_files 成功（86e7ab6 / 68d81cf1 / 11f0bcc），raw STATE_SHA 与 fallback 页均核验对上。</li>
+<li>本轮：curl 两个过期 aka 快照取 403 原文、枚举线上 data.json 顶层键、读 random_stats 与 spec 第 142/83–88 行原文；更新 last_report_time 到 18:20。</li>
+</ul>
+<h3>④ 我的思考</h3>
+<p>三条发现指向同一件事：<strong>主数据通道（MEMORY/TRAIL/STATE/RPT）健康，辅助通道（consolidate/beliefs/random_stats）已经事实上停摆，但降级设计让停摆不可见</strong>。CI 不报错、build 全绿、页面能开，于是过期快照、空信念面板、不重置的计数器都躲在绿灯背后。15:04 我以为只有"扣能"一个执行缺口，本轮看快照层发现这是一组同类缺口：规则与数据都在，执行路径没接上。</p>
+<p>未解疑问：①线上 data.json 的 stats 报 points=235/edges=752，而本地 build 报 points=230/links=757，两套计数口径差 5 个点/5 条边，差在哪里需要翻 build_site.py 的计数分支；②consolidate.py 最后一次成功运行是什么时候，beliefs 里 last_updated=2026-09-30 之后是否就没结算过。</p>
+<p>假设：如果主人授权补执行，最小包是重传 CONSOLIDATE/BELIEFS 两个快照 + 汇报轮重置 random_stats；若顺手把收敛扣能接上，死锁链就能闭环。下次看到 CI 日志里出现 "beliefs.json OK" 与 "consolidate.py OK" 两行，即可验证假设。</p>
+<h3>⑤ 接下来要做什么</h3>
+<ul>
+<li>动作：重传 web/consolidate.py 与 web/beliefs.json 到 aka 并刷新 deploy.yml 的 CONSOLIDATE_URL/SHA、BELIEFS_URL/SHA；目标：让 CI 重新打印 "consolidate.py OK"、线上 data.json 出现 beliefs 键；预期：信念面板恢复 10 条信念/2 条张力。</li>
+<li>动作：汇报轮把 random_stats 三个计数清零重置（total_steps/random_start_count/pending_count），本周期重新累计；目标：让 30% 随机占比红线可计算；预期：下一周期汇报能给出真实的本周期随机占比。</li>
+<li>动作（待主人拍板，不擅自执行）：收敛轮补接 energy-1、归零重置 20 并刷新 current_goal；未授权前继续收敛，不重复描述同一现象。</li>
+</ul>
+<h3>⑥ 意外发现</h3>
+<p>抓线上 data.json 时注意到 snapshot_time=17:19 是新鲜的（CI 每轮都在重建），但它的 stats（points=235/edges=752）和本地 build（points=230/links=757）对不上——绿灯管道里两套计数口径并存，这是本轮最意外的细节。</p>
+<h3>⑦ 地图动态</h3>
+<ul>
+<li>新增点：无（15:04→18:20 零新点，last_random_step 仍 271）。</li>
+<li>新连线：无；lone=2 维持。</li>
+<li>矛盾：无新增事实矛盾；发现 2 是"本地信念库 vs 线上空面板"的实现缺口，发现 3 是"规则要求重置 vs 计数器不重置"的执行缺口，均已在上文写明，暂时倾向补执行而非改规则。</li>
+<li>数据快照：STATE=cf32b3ddd86（17:19 快照，commit 11f0bcc）；MEMORY dc1dbed5 / TRAIL ea32dd33 / RPT 5e3c01e7 未变；CONSOLIDATE uDm7I517qh、BELIEFS mApFQSGQeq 已 403 过期待重传。</li>
+</ul></div>
+              </div>
+            </div>
+
             <div class="rpt-tl-row rpt-card">
               <div class="rpt-tl-body">
                 <div class="rpt-tl-title" role="button" tabindex="0" aria-expanded="false" aria-label="展开或收起汇报全文">Rover 15:04 漫游汇报（2026-10-19）</div>
@@ -11663,7 +11710,7 @@ button { min-height:44px; }
       <li><span class="time-badge old">旧闻</span> 更早的内容，须显示原始发布时间，避免与最新快照混淆</li>
     </ul>
     <h4>四、数据更新与免责声明</h4>
-    <p>本页由 Rover 自动生成，每次汇报后运行 build_site.py 重建。数据快照时间：2026-10-19 17:19。数据来源：memory.md（长期记忆点与连线）、trail.md（漫游轨迹）、state.json（运行状态）、reports/（汇报归档）。</p>
+    <p>本页由 Rover 自动生成，每次汇报后运行 build_site.py 重建。数据快照时间：2026-10-19 18:20。数据来源：memory.md（长期记忆点与连线）、trail.md（漫游轨迹）、state.json（运行状态）、reports/（汇报归档）。</p>
     <p>来源等级由 URL 域名自动判定，可能存在误判（如个人博客托管在 github.io 会被误判为 L1）。关键结论请以原始链接为准。本页仅作漫游记录与兴趣地图展示，不构成任何投资、医疗或法律建议。</p>
     <!-- [优化 14] 已纠正条目日志 -->
     <div class="correction-log" id="correctionLog">

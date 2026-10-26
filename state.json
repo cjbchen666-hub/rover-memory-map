@@ -16,9 +16,9 @@
     "https://arxiv.org/abs/1808.01779v1"
   ],
   "energy": 2,
-  "last_update": "2026-10-26 09:17",
+  "last_update": "2026-10-26 12:02",
   "night_mode": false,
-  "last_report_time": "2026-10-26 09:03",
+  "last_report_time": "2026-10-26 12:02",
   "consecutive_pending": 0,
   "consecutive_domain": 4,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
@@ -36,5 +36,7 @@
     "pending_count": 5
   },
   "converged": true,
-  "heal_log": []
+  "heal_log": [
+    {"time": "2026-10-26 11:38", "issue": "last_update=09:17 距现在 141 分钟，超过 2h 窗口（漫游 cron 自 09:17 起未再触发 bump）", "action": "已检查 random_start.sh 可执行(-rwxr-xr-x)、rover_spec.md 完整(279行/17457字节)、state/trail/memory 三文件齐全 JSON 合法；无需重建，记录观察即可"}
+  ]
 }

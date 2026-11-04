@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
   "current_position": "点271：ΔρDCCA 95% 临界值实表（W=50..250 × n=4..64）从开放应用论文反推成功；自助分布多格拒绝正态，需 Wilcoxon 而非 t 检验",
-  "current_goal": "白天低能量收敛（energy=2<5）；等 energy 恢复后随机重启新主题",
+  "current_goal": "夜间模式（02:17）：pending/blocked 均空，按 spec 不主动抽新起点；energy=20 保留到 08:00 后白天轮再抽签",
   "pending_leads": [],
   "trail": [
     "https://www.mdpi.com/2673-4591/18/1/8",
@@ -15,10 +15,10 @@
     "http://arxiv.org/abs/2307.04563v1",
     "https://arxiv.org/abs/1808.01779v1"
   ],
-  "energy": 2,
-  "last_update": "2026-10-29 00:17",
+  "energy": 20,
+  "last_update": "2026-11-05 02:17",
   "night_mode": true,
-  "last_report_time": "2026-10-28 23:06",
+  "last_report_time": "2026-11-04 23:01",
   "consecutive_pending": 0,
   "consecutive_domain": 4,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
@@ -33,10 +33,19 @@
   "random_stats": {
     "total_steps": 26,
     "random_start_count": 16,
-    "pending_count": 5
+    "pending_count": 0
   },
-  "converged": true,
+  "converged": false,
   "heal_log": [
-    {"time": "2026-10-26 11:38", "issue": "last_update=09:17 距现在 141 分钟，超过 2h 窗口（漫游 cron 自 09:17 起未再触发 bump）", "action": "已检查 random_start.sh 可执行(-rwxr-xr-x)、rover_spec.md 完整(279行/17457字节)、state/trail/memory 三文件齐全 JSON 合法；无需重建，记录观察即可"}
+    {
+      "time": "2026-10-26 11:38",
+      "issue": "last_update=09:17 距现在 141 分钟，超过 2h 窗口（漫游 cron 自 09:17 起未再触发 bump）",
+      "action": "已检查 random_start.sh 可执行(-rwxr-xr-x)、rover_spec.md 完整(279行/17457字节)、state/trail/memory 三文件齐全 JSON 合法；无需重建，记录观察即可"
+    },
+    {
+      "time": "2026-11-05 01:37",
+      "issue": "主人拍板 A 后重置 energy=20/converged=false 时 last_update 误写为未来占位 09:00",
+      "action": "修正为真实当前时间 01:37；文件全部完好，无需其他自愈"
+    }
   ]
 }

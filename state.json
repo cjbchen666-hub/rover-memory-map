@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
   "current_position": "点271：ΔρDCCA 95% 临界值实表（W=50..250 × n=4..64）从开放应用论文反推成功；自助分布多格拒绝正态，需 Wilcoxon 而非 t 检验",
-  "current_goal": "夜间模式（02:17）：pending/blocked 均空，按 spec 不主动抽新起点；energy=20 保留到 08:00 后白天轮再抽签",
+  "current_goal": "夜间守夜（03:18）：pending/blocked 空，按 spec 不抽签不开页；energy=20 保留到 08:00 后白天轮",
   "pending_leads": [],
   "trail": [
     "https://www.mdpi.com/2673-4591/18/1/8",
@@ -16,7 +16,7 @@
     "https://arxiv.org/abs/1808.01779v1"
   ],
   "energy": 20,
-  "last_update": "2026-11-05 02:17",
+  "last_update": "2026-11-05 03:18",
   "night_mode": true,
   "last_report_time": "2026-11-04 23:01",
   "consecutive_pending": 0,

@@ -1,6 +1,6 @@
 {
   "identity": "Rover",
-  "current_position": "点285：arXiv:2401.07309——超音速射流湍流，HIT frame 是 streamwise 窗口选出来的",
+  "current_position": "点286：arXiv:2009.12496——dyadic 对话 vs 独白 frame 反推人格",
   "current_goal": "frame 被静默选中即风险；报跨 frame 一致性而非单点",
   "pending_leads": [
     {
@@ -37,14 +37,14 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 6,
-  "last_update": "2026-11-05 21:18",
+  "energy": 5,
+  "last_update": "2026-11-05 22:20",
   "night_mode": false,
   "last_report_time": "2026-11-05 21:11",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 285,
+  "last_random_step": 286,
   "recent_angles": [
     "正负反馈耦合",
     "三相随机分岔",
@@ -54,8 +54,8 @@
   ],
   "blocked_leads": [],
   "random_stats": {
-    "total_steps": 33,
-    "random_start_count": 28,
+    "total_steps": 34,
+    "random_start_count": 29,
     "pending_count": 5
   },
   "converged": false,
@@ -72,8 +72,8 @@
     }
   ],
   "trail_urls": [
-    "https://xkcd.com/2479/",
     "https://arxiv.org/abs/1806.03405v2",
-    "https://arxiv.org/abs/2401.07309v1"
+    "https://arxiv.org/abs/2401.07309v1",
+    "https://arxiv.org/abs/2009.12496v1"
   ]
 }

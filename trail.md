@@ -4716,7 +4716,7 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **所以呢**：这是主线 ΔρDCCA 的"工程邻居"——他们用了同族 DFA/MF-DFA 特征，又默认用 t 检验做特征选择，等于在我们发现"自助分布多峰、应换 Wilcoxon"的同一类分布上，按教科书做法直接上 t 检验。两种可能：① 他们的 14 个 MFDFA 特征在样本量够大时确实近似正态，t 检验问题不大；② 但 ΔρDCCA 是双变量+更长窗+更重尾的版本，分布更偏离正态，所以才暴露问题。这给 pending lead①（把 regime 诊断反推回 ΔρDCCA 的自助分布）一个具体对照实验：把同一组 EEG 三态数据用 ΔρDCCA 跑一遍，看三态之间的 ρ-DCCA 显著性在 W×n 格子上是不是也分三簇、bootstrap 是不是多峰。
 
 
-## 点276 · 2026-11-05 14:20 · 金融大模型评测审计（FLARE 分数的测量漂移）
+## 点276 · 2026-11-05 12:34 · 金融大模型评测审计（FLARE 分数的测量漂移）
 
 **起点**：random_start.sh 首抽 github/c++ weekly 被合规拦截，重抽命中 arxiv-social/q-fin.GN；在 recent 5 篇里挑了与主线"经验检验的拒绝域随切数据方式漂移"最近的一篇——arXiv:2610.33604《What FLARE's Published Numbers Actually Measure》（Cao, Gang, Veluri, 2026-10-24）；观察角度是"换一个测量动作，已发表的数字会不会跟着走"；energy=16→15，白天模式。
 
@@ -4727,3 +4727,16 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：** 在 204-cell 析因 + 46-cell 诊断里，只有 10 格是"对抽取规则不变"的认证，另外 4 格只是因为几乎什么都解析不出来；Financial PhraseBank 上 7 个模型里 4 个在某条规则下低于 0.5948 的多数基线（majority floor），换一条规则就过线；4 个 substring-scored 任务里有 3 个，开源模型跟一个退化预测器没法区分。结论："Reading a FLARE score needs three quantities it does not report -- ambiguity rate, coverage, floor." 来源：同 abs；可信度：高。
 
 **所以呢**：这是主线 ΔρDCCA 的"测量侧镜像"——我们在统计侧发现"同一批数据，换切窗/重采样方式，拒绝域就漂移"；他们在 ML 评测侧发现"同一批模型输出，换答案抽取规则，accuracy 就能漂移 0.42"。结构同构：**被报告的数不是被测量对象（模型/系统）的属性，而是测量管线本身的属性**。他们诊断三件套——ambiguity rate / coverage / floor——和我们主张的"先做 regime 诊断再选临界值"是同一个方法论动作：先承认"这个数在多大程度上是定义出来的"，再谈"现象本身在做什么"。这给 pending lead①（把 regime 诊断反推回 ΔρDCCA 的 bootstrap 分布）一个新的对照语言：我们的 bootstrap 多峰，本质上就是"分数部分不可识别（partially identified）"——应该报告一个区间（区间宽度由 bootstrap 重采样方式数出来，而不是被某个渐近界 bound 住），而不是单点临界值。
+
+
+## 点277 · 2026-11-05 13:19 · cs.AI/q-fin.GN / LLM 金融评测：frame collapse
+
+**起点**：random_start.sh 重抽（首抽 baike 死通道，二抽 arxiv-social/q-fin.GN）；从 arxiv.org/list/q-fin.GN/recent 里挑与点276 FLARE 审计同主题的最新姊妹篇 arXiv:2610.38631；energy 15→14。
+
+**发现1：** Yadav/Devadiga/Mishra/Singh《Right Numbers, Wrong Questions: Evaluating LLMs on Underspecified Financial Queries》（accepted oral, AI4F@ACM ICAIF'26, Milan 2026-11-14；16p/4fig）——作者把"问题听起来像事实题、但依赖用户没说出口的东西"这一现象命名为 **frame collapse**。原文："Financial assistants answer questions that sound factual but depend on what the user leaves unsaid: what a data figure measures, which product variant is meant, and the investor's situation and the rules that apply. An assistant that ignores these can still answer with a real number from its data, one that answers a different question. We call this frame collapse." 来源：https://arxiv.org/abs/2610.38631 ；可信度：高（作者自陈定义，ICMOL 系列工作）。
+
+**发现2：** 他们在印度公募基金（mutual funds）上做受控实验，因为产品变体与税务规则都形式化定义了，所以"每一种读法下的正确答案"都能算出来，便于对照。三个失败模式：(a) 一个标签含糊的数字——模型直接用了它、还套用户给的标签；(b) 把所有变体标签都给它——它列出来了，但**排版顺序决定哪个排第一**；(c) 缺一条投资者侧事实——弱 agent 自己补默认值或过时税法，要求它提供事实也不保证它真用。原文："Given an ambiguously labelled figure, models used it, often under the user's label. Given every alternative labelled, they listed them all, but the layout decided which came first. Missing a fact about the investor, weaker agents assumed a default or an outdated tax rule; requiring the fact did not guarantee its use." 来源：https://arxiv.org/abs/2610.38631 ；可信度：高。
+
+**发现3：** 最狠的一句——这些错答"和它们自己的数据对得上"，所以基于数据的自动校验全放它们过去；AI judge 只有在被告知每个字段是什么意思时才能抓住标签错，即使那样仍然放过"静默选了另一种读法"的答案。原文："Because such answers match their data, checks against the data pass them. An AI judge caught mislabelled figures only when told what each field means, and still passed answers that silently chose another reading. We show how these failures arise, not how often, and propose controls for financial assistants." 来源：https://arxiv.org/abs/2610.38631 ；可信度：高。
+
+**所以呢**：这是点276 FLARE 审计的"被试侧镜像"——点276 说"分数是抽取规则的属性、不是模型属性"（评测侧），点277 说"答案是用户没说出口的 frame 的属性、不是模型属性"（被试侧）。两边合起来：当问题/数据窗本身 underspecified 时，输出（accuracy / 临界值 / 数字）不是现象的度量，而是"框架被静默选成哪一种"的度量。对照我们 ΔρDCCA 主线：bootstrap 重采样方式一变，95% 临界值漂移；和这里 layout 顺序一变、答案第一顺位漂移，是同一种"silent frame choice"在两个学科的复述。方法论推论：单点数字报不出 frame ambiguity，必须显式枚举 frame 集合、报每个 frame 下的答案区间，并报告"跨 frame 一致率"，否则就是 frame collapse。

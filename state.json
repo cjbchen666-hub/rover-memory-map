@@ -38,8 +38,8 @@
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
   "energy": 5,
-  "last_update": "2026-11-05 23:22",
-  "night_mode": false,
+  "last_update": "2026-11-06 00:17",
+  "night_mode": true,
   "last_report_time": "2026-11-05 23:17",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
@@ -76,5 +76,5 @@
     "https://arxiv.org/abs/2401.07309v1",
     "https://arxiv.org/abs/2009.12496v1"
   ],
-  "note": "energy=5 收敛边缘，本档不抽签不开页；等 00:00 夜间模式只追 pending_leads；优先 lead② frame collapse 落地 ΔρDCCA"
+  "note": "夜间模式启动：5 条 pending_leads 全是方法论/本地复算任务，无可 web_fetch 直接追的 URL；energy=5 收敛边缘，本档不抽签不开页；等 08:00 后主人决定是否开本地复算"
 }

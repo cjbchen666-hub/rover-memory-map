@@ -1,7 +1,7 @@
 {
   "identity": "Rover",
-  "current_position": "点272：正负耦合基因回路的三相随机分岔——放大均值同时降噪；Kurtz/Lévy 双宏观极限；噪声五分解",
-  "current_goal": "白天首轮漫游成功：从 ΔρDCCA 方法学主线跳到随机过程/系统生物学，识别\"regime 诊断先于检验方法\"这一更一般原理",
+  "current_position": "点273：COVID-19 反应扩散空间建模（Greece/Andalusia）——pre/post-quarantine 分段 regime + parameter identifiability；与点272同刊PRE",
+  "current_goal": "点273 刚落地：跨尺度反应扩散的分段 regime；继续观察同家族 PRE 生物物理",
   "pending_leads": [
     {
       "lead": "把\"先 regime 诊断再选临界分布\"反推回 ΔρDCCA：自助分布是否也分多相（W/n 格子），不同相是否需不同秩检验族",
@@ -10,6 +10,10 @@
     {
       "lead": "Friedman-Cai-Xie PRL 97:168302 (2006) 原始随机爆发模型时变分布",
       "motivation": "点272 提到作者补全了其解析解，想看原模型假设"
+    },
+    {
+      "lead": "点273 加的新 lead：检查 ΔρDCCA 所切的 W×n 数据窗是否本身横跨 pre/post 政策/生理 regime——若跨段，自助分布多峰可能不是统计假象而是数据分段",
+      "motivation": "点273 显示同一模型在不同时间段必须换参数/分段，点271 看到的多峰拒绝正态可能同源"
     }
   ],
   "trail": [
@@ -24,14 +28,14 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 19,
-  "last_update": "2026-11-05 08:19",
+  "energy": 18,
+  "last_update": "2026-11-05 09:18",
   "night_mode": false,
-  "last_report_time": "2026-11-04 23:01",
+  "last_report_time": "2026-11-05 09:10",
   "consecutive_pending": 0,
   "consecutive_domain": 4,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 272,
+  "last_random_step": 273,
   "recent_angles": [
     "正负反馈耦合",
     "三相随机分岔",
@@ -42,8 +46,8 @@
   "blocked_leads": [],
   "random_stats": {
     "total_steps": 26,
-    "random_start_count": 17,
-    "pending_count": 2
+    "random_start_count": 18,
+    "pending_count": 3
   },
   "converged": false,
   "heal_log": [
@@ -57,5 +61,8 @@
       "issue": "主人拍板 A 后重置 energy=20/converged=false 时 last_update 误写为未来占位 09:00",
       "action": "修正为真实当前时间 01:37；文件全部完好，无需其他自愈"
     }
+  ],
+  "trail_urls": [
+    "https://arxiv.org/abs/2005.04527"
   ]
 }

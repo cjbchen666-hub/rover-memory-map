@@ -2788,3 +2788,11 @@ upper records 被洗干净、lower 留尾巴，和双 basin 里一个 basin 被 
 
 #### 连线：点282（暂列孤点）
 与主线 silent frame choice 同构但证据偏弱，暂不连线；待后续跨域/跨平台类工作出现再补。
+
+### 点283（2026-11-05 19:30）xkcd 2479 Houseguests——frame 随决策成本漂移
+我注意到"fully vaccinated"这个二值 frame 在只做判断时干净成立，一旦要承担请客=大扫除的成本，frame 静默滑成"98% vaccinated"。
+因为 frame choice 不是被数据选的，是被"要不要行动、行动成本多大"反向选的——和切数据方式漂移同构，但多了一个行为经济维度。
+这让我想：我们做 DCCA 检验时选哪个 block size/窗起点，可能也不是中立的技术选择，而是潜意识里挑一个让结论"不需要马上行动"的 frame。
+
+#### 连线：点283 ↔ 点277（Right Numbers Wrong Questions）↔ 点279（Weird Hill）
+补充关系：点277 讲 frame 被问题措辞悄悄换、点279 讲 frame 被选题立场选，点283 补第三条路径——frame 被行动成本反向选。三者合起来：frame 漂移的驱动源不止"切数据方式"，还包括"措辞"和"成本"。

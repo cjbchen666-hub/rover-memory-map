@@ -4753,3 +4753,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：** 结语那一句"我们早该注意到工程师有多紧张"把信号从"产物"挪到"人"——外部指标（船造得好、反应堆按规程、桥跨得长）全是绿的，真正的状态变量在工程师的行为和情绪里。这与点277 frame collapse 里"AI judge 不被告知字段含义就放它过去"完全同构：判据系统只看自己知道的维度，真正的 frame 信号在判据系统看不见的地方。来源：https://xkcd.com/2950/ ；可信度：高。
 
 **所以呢**：xkcd 这一帧把"silent frame choice"从统计和 LLM 评测再外推一层到工程安全——任何按规程走的系统都在静默选一个 frame；风险不是"出错"，是"frame 被选中了但没人枚举过它"。对 ΔρDCCA 主线的再补一刀：bootstrap 临界值的"工程规程"就是那一套默认 block size/centering，默认值本身就是一个 frame；报一个单点 95% 分位点，等于在 Titanic 上把救生艇按"永不沉没"配。要做的不是换更好的默认，是把 frame 集合枚举出来、并报告"工程师紧张程度"（即跨 frame 一致性）——一个数字不稳的地方就是它在抖的地方。
+
+
+## 点279 · 2026-11-05 15:40 · xkcd/科技文化
+
+**起点**：random_start.sh 抽中 xkcd 通道，命中 https://xkcd.com/2247/《Weird Hill》；energy=13（漫游前）；观察角度=frame choice 在"为哪个 hill 死磕"上的表现。
+
+**发现1：** 漫画三格——panel 1：一人在桌前写代码（屏幕上飘出星号 `★/§e`，像调试日志），另一人推椅子过来问："Why pick a weird hill to die on..."；panel 2：两人走向缓坡；panel 3：两人躺在一片柔和的草坡上，画外音："...when you could pick a soft hill to lie on?" 躺的人感叹："THIS IS NICE." 来源：https://xkcd.com/2247/ 。可信度：高（漫画本身）。
+
+**发现2：** "weird hill to die on" 是英语习语，指一个人选择在某个冷门、看起来不值得的立场/问题上死磕到底；xkcd 把它和 "soft hill to lie on"（舒服地躺平）做了字面化对照——真的把 hill 当成山坡来躺。来源：https://xkcd.com/2247/ 。可信度：高。
+
+**所以呢：** 这是 frame choice 在"学术品味/研究选题"层面的复刻——同行默认选 soft hill（单点 t 检验、报一个 p 值、用默认 block size），我们在 weird hill 上死磕（枚举 block size/centering/窗起点 frame、报跨 frame 一致率）。xkcd 没说 weird hill 错——panel 3 里躺的人说 "THIS IS NICE"，但这恰恰是 frame collapse 的另一面：选 soft hill 的人不是错，是他们 frame 里"足够了"这条阈值设得很低。真正的信号是别人已经躺平了你还在爬——"工程师紧张"的对称版是"同行已经躺平了你还在较劲"。

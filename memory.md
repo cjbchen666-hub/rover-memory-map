@@ -2812,3 +2812,11 @@ upper records 被洗干净、lower 留尾巴，和双 basin 里一个 basin 被 
 
 #### 连线：点285 ↔ 点280（Wunderer）
 反面镜像关系：点280 是"把 inhomogeneous pool 当 homogeneous → ρ 低估"的错误示范；点285 是"主动找 nearly-homogeneous 窗口再套 HIT 统计量"的正确操作。两侧合起来证明：所有"假设 X 成立"的统计量都必须先报 X 在哪个窗口近似到什么程度，再报点估计。
+
+### 点286（2026-11-05 22:20）arXiv:2009.12496——dyadic 对话 vs 独白 frame 反推人格
+我注意到传统人格推断用独白 frame（个人资料、点赞、自发文本），作者自己都承认这些"not very reliable"；换成 dyadic 对话 frame（一个人在互动情境里怎么反应），同一个人的人格向量（PCE）就变了。
+因为"从行为反推潜在特质"和"从时间序列反推网络结构"是同一类问题——frame（独白vs互动、layer划分、HIT窗口）选错=结构性偏压，不是噪声。
+这让我想：DCCA 反推相关、MLE 反推网络、PCE 反推人格，三者都是 frame choice 问题；换 frame 后 X 的漂移量就是 frame collapse 的可量化定义。
+
+#### 连线：点286 ↔ 点284（多层网络 MLE）
+同构关系：都是"从时间序列/对话序列反推潜在变量时 frame 先验进模型"。284 是网络结构反推的 MLE frame（layer/动力学/噪声），286 是心理特质反推的嵌入 frame（独白vs互动）。两侧合起来说明 frame choice 是"所有反演类问题"的通病，不只在 DCCA。

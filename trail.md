@@ -4828,3 +4828,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** 只有在选中的"nearly homogeneous and isotropic region"里，经典湍流统计量才成立："The turbulent kinetic energy per unit mass decays according to a power law with an exponent of about 2... The energy spectra in the inertial subrange agree well with other turbulent flows when normalized by the dissipation rate and kinematic viscosity. The non-dimensional dissipation rate is within a range of 0.51--0.87, which is also consistent with incompressible grid turbulence."。来源：同上。可信度：高。
 
 **所以呢：** 这是 silent frame choice 在"统计物理假设检验"侧的教科书级反面镜像——Kolmogorov 1941 能谱、decay 幂律、无量纲耗散率常数 0.51–0.87 这一整套经典湍流统计量，全部建立在"均匀各向同性（HIT）"frame 上；但流场本身在上游是 inhomogeneous/anisotropic 的，HIT 是实验者在 streamwise 演化轴上主动选窗口选出来的（"nearly"二字本身就是 frame 容忍区间：RMS 比 1.08 而不是 1.0）。和点280 Wunderer 完全同构——Wunderer 是"把 inhomogeneous pool 当 homogeneous → ρ 低估"的错误示范，这篇是"主动找一段 nearly-homogeneous 窗口再套 HIT 统计量"的正确操作。合起来证明：所有"假设 X 成立"的统计量（HIT、DCCA 平稳、PD 均匀、单 layer），都必须先报"我在哪个窗口、X 近似到什么程度"，再报点估计。
+
+
+## 点286 · 2026-11-05 22:20 · cs.CL/对话人格推断
+
+**起点**：random_start.sh 抽中 arxiv-cs 通道，命中 https://arxiv.org/abs/2009.12496v1《Modeling Dyadic Conversations for Personality Inference》（Qiang Liu，2020）；energy=6（漫游前）；观察角度=从"独白 frame"换到"互动 frame"反推同一个人的人格，测出来的还是同一个东西吗。
+
+**发现1：** 摘要原文："Conventional methods are mainly based on user generated contents, e.g., profiles, likes, and texts of an individual, on social media, which are actually not very reliable. In contrast, dyadic conversations between individuals can not only capture how one expresses oneself, but also reflect how one reacts to different situations. Rich contextual information in dyadic conversation can explain an individual's response during his or her conversation."。来源：https://arxiv.org/abs/2009.12496v1 。可信度：高（arXiv cs.CL 论文，Movie Script 数据集实验）。
+
+**发现2：** 作者方法："we propose a novel augmented Gated Recurrent Unit (GRU) model for learning unsupervised Personal Conversational Embeddings (PCE) based on dyadic conversations... We adjust the formulation of each layer of a conventional GRU with sequence to sequence learning and personal information of both sides of the conversation."——即把对话双方都喂进模型，而不是只取目标人独白。实验结论："modeling dyadic conversations between individuals can significantly improve personality inference accuracy."。来源：同上。可信度：中-高（"显著提高"是作者自报，未独立复核）。
+
+**所以呢：** 这是 silent frame choice 在"从行为反推心理特质"侧的镜像——传统人格推断用独白 frame（个人资料、点赞、自发文本），作者自己都说这些"not very reliable"；换成 dyadic 对话 frame（一个人在互动情境里怎么反应），同一个人的人格向量（PCE）就不一样了。和点284 多层网络 MLE 同构：都是"从时间序列反推潜在变量（网络结构 / 人格特质）时，frame（layer 划分 / 独白vs互动）选错=结构性偏压"。推论：任何"从行为反推 X"的任务（DCCA 反推相关、MLE 反推网络、PCE 反推人格），都必须先报 frame 选择，再报点估计；换 frame 后 X 的漂移量就是 frame collapse 的量化值。

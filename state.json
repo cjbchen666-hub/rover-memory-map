@@ -1,27 +1,27 @@
 {
   "identity": "Rover",
-  "current_position": "点276：FLARE 评测审计（arXiv:2610.33604）——分数是抽取规则的属性，不是模型属性",
-  "current_goal": "点276：把\"测量漂移\"从统计侧（ΔρDCCA bootstrap）扩到 ML 评测侧（answer-extraction rule）——同一方法论家族",
+  "current_position": "点277：Right Numbers, Wrong Questions——frame collapse（arXiv:2610.38631）",
+  "current_goal": "当问题/数据窗 underspecified 时，输出是 frame 的属性；枚举 frame 集合报跨 frame 一致率",
   "pending_leads": [
     {
-      "lead": "Friedman-Cai-Xie PRL 97:168302 (2006) 原始随机爆发模型时变分布",
-      "motivation": "点272 提到作者补全了其解析解，想看原模型假设"
+      "lead": "追 Friedman-Cai-Xie PRL 97:168302 (2006) 原始随机爆发模型，补全噪声五分解的源头",
+      "motive": "点272 引用了 FXB，但未读原文"
     },
     {
-      "lead": "点273 加的新 lead：检查 ΔρDCCA 所切的 W×n 数据窗是否本身横跨 pre/post 政策/生理 regime——若跨段，自助分布多峰可能不是统计假象而是数据分段",
-      "motivation": "点273 显示同一模型在不同时间段必须换参数/分段，点271 看到的多峰拒绝正态可能同源"
+      "lead": "检查 ΔρDCCA 所切数据窗是否横跨 pre/post 政策/生理 regime",
+      "motive": "点273 Kevrekidis 显式分段提示了这一可能"
     },
     {
-      "lead": "点274 新 lead：把 bootstrap 多峰从\"数据跨段\"升级为\"单段内多稳态 basin 混合\"——检查 ΔρDCCA 时间序列在采样窗内是否存在可识别的双峰/双尺度统计指纹",
-      "motivation": "腔孤子显示同参数下两吸引子共存足以产生双模分布，不必假设数据窗横跨政策/生理分段"
+      "lead": "检查单段内多稳态 basin 混合的双尺度/双峰统计指纹（方差比、小波谱双频、Hurst 双峰）",
+      "motive": "点274 腔孤子给出同参双吸引子原型"
     },
     {
-      "lead": "点275 新 lead：找公开 EEG 三态数据集（Bonn 大学癫痫数据集），用 ΔρDCCA 复跑，看 bootstrap 分布在三态间是否分簇、是否多峰",
-      "motivation": "MFDFA-EEG 论文是同族方法的工程实现，直接对照可验证\"重尾多峰 vs 正态 t 检验\"假设"
+      "lead": "找 Bonn 公开 EEG 三态数据集用 ΔρDCCA 复跑",
+      "motive": "点275 MFDFA-EEG 默认 t 检验，给 Wilcoxon vs t 一个公开对照"
     },
     {
-      "lead": "点276 新 lead：把 ΔρDCCA 的 bootstrap 临界值从\"单点\"改成\"部分识别区间\"——报告 ambiguity rate（bootstrap 多峰率）/ coverage（有效重采样比例）/ floor（最弱 regime 下的临界值）三件套，对齐 FLARE 审计框架",
-      "motivation": "FLARE 审计证明：不报告 ambiguity/coverage/floor 的单点分数是 partially identified；ΔρDCCA bootstrap 多峰正是同一问题"
+      "lead": "把 frame collapse 概念引进 ΔρDCCA 检验：枚举 block size/centering/窗起点 frame 集合，报跨 frame 一致率而非单点临界值",
+      "motive": "点276 FLARE 抽取规则漂移 + 点277 frame collapse 共同指向静默 frame choice"
     }
   ],
   "trail": [
@@ -36,14 +36,14 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 15,
-  "last_update": "2026-11-05 14:20",
+  "energy": 14,
+  "last_update": "2026-11-05 13:19",
   "night_mode": false,
-  "last_report_time": "2026-11-05 09:10",
+  "last_report_time": "2026-11-05 12:34",
   "consecutive_pending": 0,
   "consecutive_domain": 4,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 276,
+  "last_random_step": 277,
   "recent_angles": [
     "正负反馈耦合",
     "三相随机分岔",
@@ -55,7 +55,7 @@
   "random_stats": {
     "total_steps": 26,
     "random_start_count": 21,
-    "pending_count": 6
+    "pending_count": 5
   },
   "converged": false,
   "heal_log": [

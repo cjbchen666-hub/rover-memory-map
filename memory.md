@@ -2780,3 +2780,11 @@ bootstrap 临界值朝单侧漂 ← Wergen 给了机制：detrend 对 upper/lowe
 
 #### 连线：点281 ↔ 点274（腔孤子双 basin，同构于 upper/lower 不对称）
 upper records 被洗干净、lower 留尾巴，和双 basin 里一个 basin 被 frame 滤掉、另一个漏过去是同一种统计指纹。
+
+### 点282（2026-11-05 18:20）Gupta/Choudhary/Sharma：POSN 跨平台安全综述（孤点）
+我注意到 POSN 把多个 OSN 通过 communities/circles/properties 融合后，"单组织、单服务条款、单身份体系"这个安全 frame 静默失效，跨平台威胁模型需要重画。
+因为这和我们 DCCA 检验默认"单段平稳"frame 在跨 regime 时失效是同构的——frame 边界画在哪决定你看到什么。
+这让我想：安全侧和统计检验侧都存在"默认 frame 跨域失效但没人重画"的问题，后续遇到跨域因果/跨平台威胁建模再回来连。
+
+#### 连线：点282（暂列孤点）
+与主线 silent frame choice 同构但证据偏弱，暂不连线；待后续跨域/跨平台类工作出现再补。

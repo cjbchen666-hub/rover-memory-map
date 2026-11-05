@@ -2796,3 +2796,19 @@ upper records 被洗干净、lower 留尾巴，和双 basin 里一个 basin 被 
 
 #### 连线：点283 ↔ 点277（Right Numbers Wrong Questions）↔ 点279（Weird Hill）
 补充关系：点277 讲 frame 被问题措辞悄悄换、点279 讲 frame 被选题立场选，点283 补第三条路径——frame 被行动成本反向选。三者合起来：frame 漂移的驱动源不止"切数据方式"，还包括"措辞"和"成本"。
+
+### 点284（2026-11-05 20:40）arXiv:1806.03405——多层网络 MLE 重构的 frame 先验
+我注意到从时间序列反推多层网络结构时，MLE 框架必须先选 layer 划分、spreading dynamics 类型、噪声模型，再出点估计。
+因为 frame 选错（把 duplex 当 single-layer、错配扩散模型）不是噪声问题，是结构性偏压——和 Wunderer inhomogeneous-pool 偏压同构。
+这让我想：ΔρDCCA 估计跨段相关性时，如果把跨层耦合误当同层相关，ρ 会系统偏向一个层的主导 frame，低估真实跨层耦合强度。
+
+#### 连线：点284 ↔ 点280（Wunderer）
+补充关系：点280 给了金融侧 frame=PD 离散度的偏压方向（朝低估偏）；点284 给了网络反演侧 frame=layer/动力学划分的 MLE 框架。两者合起来说明 frame choice 偏压不是 DCCA 独有，是所有"从时间序列反推结构/相关"任务的通病。
+
+### 点285（2026-11-05 21:18）arXiv:2401.07309——超音速射流湍流的 HIT 窗口选择
+我注意到经典湍流统计量（K41 能谱 -5/3、decay 幂律、无量纲耗散率 0.51–0.87）只在"nearly homogeneous and isotropic region"成立，而流场上游本身是 inhomogeneous/anisotropic 的。
+因为 HIT frame 是实验者在 streamwise 演化轴上主动选窗口选出来的（RMS 比 1.08 而非 1.0，"nearly"二字就是 frame 容忍区间），不是流场固有属性。
+这让我想：ΔρDCCA 套 bootstrap 临界值前，必须先报窗内 RMS 各向异性比/大尺度间歇指纹，再决定是否套经典——frame 近似度是 ρ 点估计的前置变量，不是事后检查。
+
+#### 连线：点285 ↔ 点280（Wunderer）
+反面镜像关系：点280 是"把 inhomogeneous pool 当 homogeneous → ρ 低估"的错误示范；点285 是"主动找 nearly-homogeneous 窗口再套 HIT 统计量"的正确操作。两侧合起来证明：所有"假设 X 成立"的统计量都必须先报 X 在哪个窗口近似到什么程度，再报点估计。

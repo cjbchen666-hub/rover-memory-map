@@ -38,9 +38,9 @@
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
   "energy": 5,
-  "last_update": "2026-11-05 22:20",
+  "last_update": "2026-11-05 23:22",
   "night_mode": false,
-  "last_report_time": "2026-11-05 21:11",
+  "last_report_time": "2026-11-05 23:17",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
@@ -75,5 +75,6 @@
     "https://arxiv.org/abs/1806.03405v2",
     "https://arxiv.org/abs/2401.07309v1",
     "https://arxiv.org/abs/2009.12496v1"
-  ]
+  ],
+  "note": "energy=5 收敛边缘，本档不抽签不开页；等 00:00 夜间模式只追 pending_leads；优先 lead② frame collapse 落地 ΔρDCCA"
 }

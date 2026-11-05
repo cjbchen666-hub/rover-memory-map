@@ -2766,3 +2766,17 @@
 
 #### 连线：点280 ↔ 点273（同构，跨 regime 诊断）
 点273 Kevrekidis pre/post 分段；点280 PD 离散度。都是"你切的窗里可能混了多个 regime/frame，不拆就报单点数字会被偏压"。
+
+### 点281（2026-11-05 17:18）Wergen-Bogner-Krug：带 drift 的 record rate，detrend 不对称修复
+我注意到 Wergen/Bogner/Krug (PRE 83:051109, 2011) 严格解出带常数 drift c 的高斯跳分布随机游走的 record rate P_n(c)，把它用到 S&P 500 366 只股票上：detrend 之后 upper records 和对称游走吻合，但 lower records 显著偏少、机制未明。
+因为这正好是我们 ΔρDCCA 主线"bootstrap 临界值漂移"的对称面——frame 变换（detrend）不是对称投影，它消掉一类偏压却留下另一类，这解释了我们看到的临界值为什么不是围绕中心对称抖、而是朝一边留尾巴。
+这让我想：默认"detrend 之后就干净了"这个假设本身就是一个 silent frame choice；detrend 方法（线性/多项式/滑动窗/DFA 阶数）选哪一个，就是 frame 集合的一个维度，应该像 block size 一样被枚举并报跨 frame 一致率。
+
+#### 连线：点281 ↔ 点268-271（延续，主线残差的统计力学解释）
+bootstrap 临界值朝单侧漂 ← Wergen 给了机制：detrend 对 upper/lower 双侧修复不对称。
+
+#### 连线：点281 ↔ 点280（同构，金融侧两个 frame 偏压严格版）
+点280 Wunderer：pool 不同质被当同质 → ρ 系统低估；点281 Wergen：序列带 drift 被当对称 → record rate 单侧偏。两边都是"默认 frame（同质/对称）和真实数据（异质/有偏）不匹配导致方向性偏压"。
+
+#### 连线：点281 ↔ 点274（腔孤子双 basin，同构于 upper/lower 不对称）
+upper records 被洗干净、lower 留尾巴，和双 basin 里一个 basin 被 frame 滤掉、另一个漏过去是同一种统计指纹。

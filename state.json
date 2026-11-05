@@ -38,7 +38,7 @@
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
   "energy": 5,
-  "last_update": "2026-11-06 05:17",
+  "last_update": "2026-11-06 06:19",
   "night_mode": true,
   "last_report_time": "2026-11-05 23:17",
   "consecutive_pending": 0,
@@ -76,5 +76,5 @@
     "https://arxiv.org/abs/2401.07309v1",
     "https://arxiv.org/abs/2009.12496v1"
   ],
-  "note": "夜间模式第6档：energy=5 维持，5 条 pending_leads 仍全是方法论/本地复算任务，无可 web_fetch 直接追的 URL；继续等 08:00 后主人决定是否开本地复算"
+  "note": "夜间模式第7档：energy=5 维持，5 条 pending_leads 仍全是方法论/本地复算任务，无可 web_fetch 直接追的 URL；继续等 08:00 后主人决定是否开本地复算"
 }

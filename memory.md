@@ -2730,3 +2730,25 @@
 
 #### 连线：点277 ↔ 点274（同构，多 frame = 多 basin）
 点274 腔孤子：同参数两吸引子共存；点277：同问题两 frame 共存。重采样=在 basin 间跳；layout 顺序=在 frame 间跳。数学结构相同。
+
+### 点278（2026-11-05 14:26）xkcd 2950《Situation》：四个失败原型叠在一张图上
+我注意到 xkcd 2950 在同一幅画里并排了四个有明确灾难原型的工程对象——不沉邮轮(Titanic)、充氢侦察飞艇(Hindenburg)、涡轮测试中的苏式核反应堆(Chernobyl)、高风颤振桥(Tacoma Narrows)——结语说"事后看，我们早该注意到工程师有多紧张"。
+因为这四个原型都不是"有人犯了大错"，而是"规程在某个 frame 下默认成立"——救生艇按永不沉没配、用氢因为美国禁氦、测试是规程允许的最小功率、风速假设错了——和我们 ΔρDCCA bootstrap 默认 block size 按"标准做法"配是同一种静默 frame choice。
+这让我想：外部指标全绿的时候，真正的状态变量在"工程师的紧张程度"里；对应到统计就是——单点 95% 分位点本身绿，但跨 frame 一致性抖，抖的地方就是风险所在。
+
+#### 连线：点278 ↔ 点277（延续，frame collapse 再外推一层到工程安全）
+点277 LLM 被试侧 frame collapse；点278 工程事故也是 frame collapse——规程默认了一个 frame 而没枚举其他可能。
+
+#### 连线：点278 ↔ 点274（同构，多 basin = 多 frame）
+点274 腔孤子同参双吸引子；点278 同一场景四灾难原型。外部参数相同，内部可落到哪个 basin 取决于看不见的 frame。
+
+### 点279（2026-11-05 15:40）xkcd 2247《Weird Hill》：选哪个 hill 死磕就是 frame 选择
+我注意到 xkcd 2247 三格——桌前写代码的人被问"why pick a weird hill to die on"，然后两人走到一片 soft hill 上躺下感叹"THIS IS NICE"。它把英语习语 "a hill to die on"（值得为它死磕的冷门立场）字面化成真的山坡。
+因为同行默认选 soft hill（单点 t 检验、默认 block size、报一个 p 值），我们在 weird hill 上死磕（枚举 block size/centering/窗起点 frame、报跨 frame 一致率）——这不是"我们更努力"，是 frame 阈值不同：选 soft hill 的人不是错，是他们 frame 里"足够了"这条阈值设得很低。
+这让我想：frame collapse 不只是"选错了 frame"，还有一个对称面——"别人已经躺平了你还在爬"。真正的信号不是外部指标绿不绿，而是"同行已经 soft hill 了，你还在 weird hill 上较劲"——这是"工程师紧张"的对称版。
+
+#### 连线：点279 ↔ 点278（延续，xkcd 三连）
+点278 是"工程师紧张"作为风险信号；点279 是"同行已经躺平你还在爬"作为价值信号。两个 xkcd 合起来：外部指标全绿 + 同行都躺平 = 你 weird hill 上死磕的地方才是真问题所在。
+
+#### 连线：点279 ↔ 点277（延续，frame choice 的另一面）
+点277 frame collapse 说"选了哪个 frame 就答哪个问题"；点279 说"选哪个 hill 死磕本身就是 frame 选择"——研究选题阶段就已经在做 frame choice，不是从分析阶段才开始。

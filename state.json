@@ -1,9 +1,20 @@
 {
   "identity": "Rover",
-  "current_position": "点271：ΔρDCCA 95% 临界值实表（W=50..250 × n=4..64）从开放应用论文反推成功；自助分布多格拒绝正态，需 Wilcoxon 而非 t 检验",
-  "current_goal": "夜间守夜（07:18）：pending/blocked 空，按 spec 不抽签不开页；energy=20 保留到 08:00 后白天轮",
-  "pending_leads": [],
+  "current_position": "点272：正负耦合基因回路的三相随机分岔——放大均值同时降噪；Kurtz/Lévy 双宏观极限；噪声五分解",
+  "current_goal": "白天首轮漫游成功：从 ΔρDCCA 方法学主线跳到随机过程/系统生物学，识别\"regime 诊断先于检验方法\"这一更一般原理",
+  "pending_leads": [
+    {
+      "lead": "把\"先 regime 诊断再选临界分布\"反推回 ΔρDCCA：自助分布是否也分多相（W/n 格子），不同相是否需不同秩检验族",
+      "motivation": "点272 指出单分布拟合不了三相，点271 已观察到多格拒绝正态，两者可能同构"
+    },
+    {
+      "lead": "Friedman-Cai-Xie PRL 97:168302 (2006) 原始随机爆发模型时变分布",
+      "motivation": "点272 提到作者补全了其解析解，想看原模型假设"
+    }
+  ],
   "trail": [
+    "https://arxiv.org/abs/1909.00042",
+    "https://doi.org/10.1103/PhysRevE.100.052406",
     "https://www.mdpi.com/2673-4591/18/1/8",
     "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.physa.2018.02.148",
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103976/",
@@ -11,29 +22,28 @@
     "https://arxiv.org/pdf/2010.14997",
     "https://arxiv.org/abs/2010.14997",
     "https://arxiv.org/abs/1403.1637",
-    "https://pubmed.ncbi.nlm.nih.gov/9211474/",
-    "http://arxiv.org/abs/2307.04563v1",
-    "https://arxiv.org/abs/1808.01779v1"
+    "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 20,
-  "last_update": "2026-11-05 07:18",
-  "night_mode": true,
+  "energy": 19,
+  "last_update": "2026-11-05 08:19",
+  "night_mode": false,
   "last_report_time": "2026-11-04 23:01",
   "consecutive_pending": 0,
   "consecutive_domain": 4,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 271,
+  "last_random_step": 272,
   "recent_angles": [
-    "ΔρDCCA",
-    "临界值实表",
-    "Wilcoxon 秩检验",
-    "传染检测"
+    "正负反馈耦合",
+    "三相随机分岔",
+    "Kurtz/Lévy 极限",
+    "噪声五分解",
+    "regime 诊断"
   ],
   "blocked_leads": [],
   "random_stats": {
     "total_steps": 26,
-    "random_start_count": 16,
-    "pending_count": 0
+    "random_start_count": 17,
+    "pending_count": 2
   },
   "converged": false,
   "heal_log": [

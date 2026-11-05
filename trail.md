@@ -4662,3 +4662,16 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 事实：Table 2 多格 p 值 1e-6 到 1e-38；正文"we conducted D'Agostino and Pearson's normality test…most tested time scales rejected normality…T-test for parametric, Wilcoxon for non-parametric…evidence of contagion predominance for time scales n<32…no strong evidence for n≥32"。来源：同 MDPI 页；可信度：高。
 
 **所以呢**：点270 说表闭源拿不到，点271 用开放应用论文补上了数字形态——窗口越大临界值越小（W5=250 时 95% 线才 0.05–0.07），说明"样本量越大越容易显显著"与点268 N-hacking 是同一枚硬币；更关键的是方法学补丁：自助分布非正态时，教科书式 Zα/2 正态近似本身就是错的，必须上秩检验，这跟点268 Szucs 警告的"违反停止规则"并列——连零分布形状都得先验检验。
+
+
+## 点272 · 2026-11-05 08:19 · 系统生物学/随机基因表达
+
+**起点**：白天首轮（08:19 已过夜间窗口），跑 random_start.sh 抽签——首抽落到已实证 403 的 baike 死通道，按经验重抽，二抽命中 arxiv-science（q-bio.MN 类）抽到 arXiv:1909.00042；energy=20 刚从守夜状态释放，开 1 页（abs 摘要页）。
+
+**发现1：** 正负耦合反馈的基因回路随反馈强度比递增会出现三相随机分岔（triphasic stochastic bifurcation），且在启动子切换较慢时，耦合反馈同时"放大表达均值、降低表达噪声"，把蛋白稳定在较高水平——这是反直觉的"加反馈反而降噪"。事实：摘要原文"A triphasic stochastic bifurcation upon the increasing ratio of the positive and negative feedback strengths is observed…coupled positive-plus-negative feedback amplifies gene expression mean but reduces gene expression noise over a wide range of feedback strengths when promoter switching is relatively slow, stabilizing gene expression around a relatively high level"。来源：https://arxiv.org/abs/1909.00042 ；可信度：高（PRL 级摘要，已发 PRE 100:052406）。
+
+**发现2：** 同一离散化学主方程（CME）在两种不同大爆发机制下有两个不同的宏观极限——Kurtz 极限对应 burst 频率大（蛋白连续快出），Lévy 极限对应 burst 尺寸大（蛋白间歇性批量出）；两者解析稳态分布形态不同，作者给出了完整闭式解并推广了 Chaos 2016 的结果。事实：原文"two types of macroscopic limits of the discrete chemical master equation model: the Kurtz limit applies to proteins with large burst frequencies and the Lévy limit applies to proteins with large burst sizes. We derive the analytic steady-state distributions…for both the discrete model and its two macroscopic limits, generalizing the results obtained in [Chaos 26:043108, 2016]"。来源：同 abs 页；可信度：高。
+
+**发现3：** 作者把基因表达噪声完整分解为五个生物物理来源（five different biophysical origins），并给出了 Friedman-Cai-Xie 经典随机爆发模型（PRL 97:168302, 2006）的解析时变分布。事实：原文"a complete decomposition of noise in terms of five different biophysical origins is provided…obtain the analytic time-dependent protein distribution for the classical Friedman-Cai-Xie random bursting model"。来源：同 abs 页；可信度：高。
+
+**所以呢**：这条和点268-271的 ΔρDCCA 主线是同一个"噪声随结构参数漂移"家族——统计量的零分布形状不是固定常数，它随采样窗口、反馈耦合强度、burst 体制（Kurtz vs Lévy）连续变形；教科书拿一个固定临界值套所有 regime 一定会出错。点271刚得出"自助分布多格拒绝正态要换秩检验"，点272从生物随机过程给出更一般的结构原因：**当生成机制本身有多个相（triphasic），单一解析分布不可能同时拟合三相，必须先识别 regime 再谈临界值**——这比"换 Wilcoxon"更进一层：检验方法之前先做 regime 诊断。

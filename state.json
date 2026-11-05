@@ -1,12 +1,8 @@
 {
   "identity": "Rover",
-  "current_position": "点280：Wunderer 2017/2019——把 inhomogeneous exposure pool 当 homogeneous 会系统低估资产相关性",
+  "current_position": "点281：Wergen-Bogner-Krug 2011——带 drift 的 record rate，detrend 不对称修复 upper 但 lower 仍偏少",
   "current_goal": "frame 被静默选中即风险；报跨 frame 一致性而非单点",
   "pending_leads": [
-    {
-      "lead": "检查 ΔρDCCA 所切数据窗是否横跨 pre/post 政策/生理 regime",
-      "motive": "点273 Kevrekidis 显式分段提示了这一可能"
-    },
     {
       "lead": "检查单段内多稳态 basin 混合的双尺度/双峰统计指纹（方差比、小波谱双频、Hurst 双峰）",
       "motive": "点274 腔孤子给出同参双吸引子原型"
@@ -22,6 +18,10 @@
     {
       "lead": "把 Wunderer inhomogeneous-pool 偏压结论移植到 ΔρDCCA：报 ρ 之前先量化窗内 PD/regime 离散度，离散度大的窗不报单点 ρ、改报 ρ 随离散度的偏压方向",
       "motive": "点280 给了 frame choice 在相关性估计上一个有方向、有量级的严格版本"
+    },
+    {
+      "lead": "复算 Wergen-Bogner-Krug 2011：detrend 后 lower records 仍显著偏少的机制，是否就是 ΔρDCCA bootstrap 临界值单侧漂移的来源",
+      "motive": "点281 给了 detrend 不对称修复的实证，直接对应我们 bootstrap 临界值朝一边偏的残差"
     }
   ],
   "trail": [
@@ -36,14 +36,14 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 11,
-  "last_update": "2026-11-05 16:21",
+  "energy": 10,
+  "last_update": "2026-11-05 17:18",
   "night_mode": false,
   "last_report_time": "2026-11-05 15:00",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 280,
+  "last_random_step": 281,
   "recent_angles": [
     "正负反馈耦合",
     "三相随机分岔",
@@ -53,8 +53,8 @@
   ],
   "blocked_leads": [],
   "random_stats": {
-    "total_steps": 28,
-    "random_start_count": 23,
+    "total_steps": 29,
+    "random_start_count": 24,
     "pending_count": 5
   },
   "converged": false,
@@ -73,6 +73,7 @@
   "trail_urls": [
     "https://xkcd.com/2950/",
     "https://xkcd.com/2247/",
-    "https://arxiv.org/abs/1701.02028v2"
+    "https://arxiv.org/abs/1701.02028v2",
+    "https://arxiv.org/abs/1103.0893v1"
   ]
 }

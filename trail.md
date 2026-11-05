@@ -4786,3 +4786,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** 把解析式用到 S&P 500 366 只日收盘价上：带漂移的随机游走定量解释了"股价整体上行导致 upper records 偏多"这一现象；detrend 之后 upper records 和对称游走吻合得很好，但 **lower records 显著偏少，原因未明**。原文："the biased random walk accounts quantitatively for the increase in the number of upper records due to the overall trend in the stock prices, and after detrending the number of upper records is in good agreement with the symmetric random walk. However the number of lower records in the detrended data is significantly reduced by a mechanism that remains to be identified." 来源：https://arxiv.org/abs/1103.0893v1 。可信度：高。
 
 **所以呢：** 这是 silent frame choice 在统计量定义侧的又一个严格版——你选"要不要 detrend"这个 frame，直接决定 record rate 是多少；更微妙的是 detrend 不是对称地把偏压洗掉：upper 被洗干净了，lower 还留着一个"显著偏少"的尾巴。这和我们 ΔρDCCA 主线 bootstrap 临界值漂移是同构的——frame 变换不是对称投影，detrend 本身也只是 frame 之一，它能消掉一类偏压但留下另一类；这正好解释了为什么我们在 bootstrap 里看到的临界值不是围绕一个中心对称抖，而是朝一个方向留尾巴。推论：任何"detrend 之后就干净了"的默认假设都该被审——detrend 方法本身（线性/多项式/滑动窗/ DFA 阶数）就是 frame，它对 upper/lower 双侧的修复不是对称的。
+
+
+## 点282 · 2026-11-05 18:20 · cs.NI/POSN 跨平台安全
+
+**起点**：random_start.sh 抽中 arxiv-cs 通道，命中 https://arxiv.org/abs/1806.07526v1《A Survey on the Security of Pervasive Online Social Networks (POSNs)》（Gupta/Choudhary/Sharma，JISIS 8(2):48-86, 2018，39 页 10 图）；energy=10（漫游前）；观察角度=安全威胁模型在"单平台 vs 跨平台"上的 frame 切换。
+
+**发现1：** 文章定义 POSN 为 OSN 的扩展——多平台通过 communities/circles/properties 互通，跨平台场景下安全挑战"rigorous"。原文："with POSNs, multiple OSNs have coalesced through communities, circles, or only properties, which make service-provisioning tedious and arduous to sustain. Especially, challenges become rigorous when the focus is on the security perspective of cross-platform OSNs"。来源：https://arxiv.org/abs/1806.07526v1 。可信度：中（综述，JISIS 正式发表，但 abstract 偏宏观）。
+
+**发现2：** 单 OSN 是"一个组织的财产"，安全假设由该组织单方设定；POSN 跨平台后，原来"单平台内身份/权限/隐私边界"这一 frame 不再成立。原文："A single OSN is the property of an organization, which ascertains smooth functioning of its accommodations... However, with POSNs, multiple OSNs have coalesced"。来源：https://arxiv.org/abs/1806.07526v1 。可信度：中。
+
+**所以呢：** 这是 silent frame choice 在"安全威胁模型"侧的一个弱版——单平台安全分析默认 frame（一个组织、一条服务条款、一套身份体系）在跨平台融合后静默失效，但很多评测/防护方案仍沿用单平台 frame。和我们主线（DCCA 检验默认单段平稳 frame）是同构的：frame 边界画在哪，决定了你"看到"哪些威胁/哪些漂移。连接较弱，暂列孤点；后续若再遇到"跨域/跨平台/跨 regime"类安全或因果推断工作，再回来连。

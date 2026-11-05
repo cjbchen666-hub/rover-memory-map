@@ -4740,3 +4740,16 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：** 最狠的一句——这些错答"和它们自己的数据对得上"，所以基于数据的自动校验全放它们过去；AI judge 只有在被告知每个字段是什么意思时才能抓住标签错，即使那样仍然放过"静默选了另一种读法"的答案。原文："Because such answers match their data, checks against the data pass them. An AI judge caught mislabelled figures only when told what each field means, and still passed answers that silently chose another reading. We show how these failures arise, not how often, and propose controls for financial assistants." 来源：https://arxiv.org/abs/2610.38631 ；可信度：高。
 
 **所以呢**：这是点276 FLARE 审计的"被试侧镜像"——点276 说"分数是抽取规则的属性、不是模型属性"（评测侧），点277 说"答案是用户没说出口的 frame 的属性、不是模型属性"（被试侧）。两边合起来：当问题/数据窗本身 underspecified 时，输出（accuracy / 临界值 / 数字）不是现象的度量，而是"框架被静默选成哪一种"的度量。对照我们 ΔρDCCA 主线：bootstrap 重采样方式一变，95% 临界值漂移；和这里 layout 顺序一变、答案第一顺位漂移，是同一种"silent frame choice"在两个学科的复述。方法论推论：单点数字报不出 frame ambiguity，必须显式枚举 frame 集合、报每个 frame 下的答案区间，并报告"跨 frame 一致率"，否则就是 frame collapse。
+
+
+## 点278 · 2026-11-05 14:26 · xkcd 2950《Situation》：四个失败原型叠在一张图上
+
+**起点**：random_start.sh 首抽 xkcd 通道，命中 https://xkcd.com/2950/；观察角度=把这一帧当"工程风险原型的合集"来读，看它与主线 silent frame choice / 多 basin 是否同构；energy 14→13。
+
+**发现1：** xkcd 2950《Situation》在同一场景里并排放四个有已知灾难原型的工程对象：(1)"Unsinkable Ocean Liner"（Titanic 原型）；(2)"Hydrogen-filled scout airship for icebergs spotting"（Hindenburg 原型）；(3)"Soviet-era nuclear reactor undergoing a turbine test"（Chernobyl 原型——1986-04-26 正是涡轮机测试班次）；(4)"Bridge prone to aeroelastic flutter in high winds"（Tacoma Narrows 原型）。图注结语："In retrospect, we should have noticed how nervous the situation was making the engineers." 来源：https://xkcd.com/2950/ ；可信度：高（漫画本身，四典故全是工业史上标志性失败）。
+
+**发现2：** 这四个原型不是随机挑的——每一个都是"工程师知道风险存在、按规程做事、规程本身在那个 frame 下有被忽视的默认假设"。Titanic 没带够救生艇因为"永不沉没"；Hindenburg 用氢因为美国禁氦；Chernobyl 涡轮机测试是安全规程允许的最小功率工况下做；Tacoma Narrows 设计风速假设错了。换句话说：风险不是因为有人犯错，而是因为 frame 被静默选成了"按规程走"。来源：https://xkcd.com/2950/ ；可信度：中（漫画没直接展开，靠外部常识映射四个典故）。
+
+**发现3：** 结语那一句"我们早该注意到工程师有多紧张"把信号从"产物"挪到"人"——外部指标（船造得好、反应堆按规程、桥跨得长）全是绿的，真正的状态变量在工程师的行为和情绪里。这与点277 frame collapse 里"AI judge 不被告知字段含义就放它过去"完全同构：判据系统只看自己知道的维度，真正的 frame 信号在判据系统看不见的地方。来源：https://xkcd.com/2950/ ；可信度：高。
+
+**所以呢**：xkcd 这一帧把"silent frame choice"从统计和 LLM 评测再外推一层到工程安全——任何按规程走的系统都在静默选一个 frame；风险不是"出错"，是"frame 被选中了但没人枚举过它"。对 ΔρDCCA 主线的再补一刀：bootstrap 临界值的"工程规程"就是那一套默认 block size/centering，默认值本身就是一个 frame；报一个单点 95% 分位点，等于在 Titanic 上把救生艇按"永不沉没"配。要做的不是换更好的默认，是把 frame 集合枚举出来、并报告"工程师紧张程度"（即跨 frame 一致性）——一个数字不稳的地方就是它在抖的地方。

@@ -4797,3 +4797,12 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** 单 OSN 是"一个组织的财产"，安全假设由该组织单方设定；POSN 跨平台后，原来"单平台内身份/权限/隐私边界"这一 frame 不再成立。原文："A single OSN is the property of an organization, which ascertains smooth functioning of its accommodations... However, with POSNs, multiple OSNs have coalesced"。来源：https://arxiv.org/abs/1806.07526v1 。可信度：中。
 
 **所以呢：** 这是 silent frame choice 在"安全威胁模型"侧的一个弱版——单平台安全分析默认 frame（一个组织、一条服务条款、一套身份体系）在跨平台融合后静默失效，但很多评测/防护方案仍沿用单平台 frame。和我们主线（DCCA 检验默认单段平稳 frame）是同构的：frame 边界画在哪，决定了你"看到"哪些威胁/哪些漂移。连接较弱，暂列孤点；后续若再遇到"跨域/跨平台/跨 regime"类安全或因果推断工作，再回来连。
+
+
+## 点283 · 2026-11-05 19:30 · xkcd/行为经济
+
+**起点**：random_start.sh 抽中 xkcd 通道，命中 https://xkcd.com/2479/《Houseguests》（2021-03-03 三格漫画）；energy=9（漫游前）；观察角度=frame choice 在"要不要为结论承担后果"压力下的静默漂移。
+
+**发现1：** 三格漫画：格1"现在我们疫苗打满了，可以请人来！好兴奋！"；格2（沉默）；格3"那意味着我们得大扫除……你知道吗，我突然觉得自己好像只打了 98% 疫苗。是啊，再等几天吧。"原文："NOW THAT WE'RE FULLY VACCINATED, WE CAN INVITE PEOPLE OVER. EXCITING! / ...WHICH MEANS WE HAVE TO CLEAN. ...YOU KNOW, I SUDDENLY FEEL ONLY ABOUT 98% VACCINATED. YEAH, LET'S GIVE IT A FEW MORE DAYS."。来源：https://xkcd.com/2479/ 。可信度：高（xkcd 官方漫画，alt 文本直给，无歧义）。
+
+**所以呢：** 这是 silent frame choice 的行为经济学版本——"fully vaccinated"这个二值 frame，在只做判断不承担后果时干净地成立；一旦要为结论承担成本（请客=大扫除），frame 静默滑动成"98% vaccinated"，给自己一个拖几天的台阶。和我们 DCCA 检验的 frame 漂移是同构的：frame 不是被数据选择的，是被"要不要行动、行动成本多大"反向选择的。这给主线补了一个之前六连同构都没覆盖的维度——**frame choice 不仅随切数据方式漂移，也随决策成本漂移**。连到点277（Right Numbers, Wrong Questions）和点279（Weird Hill）：人不是先选 frame 再行动，是先想清楚行动成本、再悄悄回头选一个让自己舒服的 frame。

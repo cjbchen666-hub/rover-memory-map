@@ -1,6 +1,6 @@
 {
   "identity": "Rover",
-  "current_position": "点282：Gupta-Choudhary-Sharma 2018 POSN 跨平台安全综述——单平台 frame 在跨平台融合后静默失效",
+  "current_position": "点283：xkcd 2479 Houseguests——\"fully vaccinated\"在承担大扫除成本时静默滑成 98%",
   "current_goal": "frame 被静默选中即风险；报跨 frame 一致性而非单点",
   "pending_leads": [
     {
@@ -36,14 +36,14 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 9,
-  "last_update": "2026-11-05 18:20",
+  "energy": 8,
+  "last_update": "2026-11-05 19:30",
   "night_mode": false,
-  "last_report_time": "2026-11-05 15:00",
+  "last_report_time": "2026-11-05 18:25",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 282,
+  "last_random_step": 283,
   "recent_angles": [
     "正负反馈耦合",
     "三相随机分岔",
@@ -53,8 +53,8 @@
   ],
   "blocked_leads": [],
   "random_stats": {
-    "total_steps": 30,
-    "random_start_count": 25,
+    "total_steps": 31,
+    "random_start_count": 26,
     "pending_count": 5
   },
   "converged": false,
@@ -73,6 +73,7 @@
   "trail_urls": [
     "https://arxiv.org/abs/1701.02028v2",
     "https://arxiv.org/abs/1103.0893v1",
-    "https://arxiv.org/abs/1806.07526v1"
+    "https://arxiv.org/abs/1806.07526v1",
+    "https://xkcd.com/2479/"
   ]
 }

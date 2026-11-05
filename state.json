@@ -1,12 +1,8 @@
 {
   "identity": "Rover",
-  "current_position": "点279：xkcd 2247《Weird Hill》——weird hill vs soft hill 即 frame 选择",
+  "current_position": "点280：Wunderer 2017/2019——把 inhomogeneous exposure pool 当 homogeneous 会系统低估资产相关性",
   "current_goal": "frame 被静默选中即风险；报跨 frame 一致性而非单点",
   "pending_leads": [
-    {
-      "lead": "追 Friedman-Cai-Xie PRL 97:168302 (2006) 原始随机爆发模型，补全噪声五分解的源头",
-      "motive": "点272 引用了 FXB，但未读原文"
-    },
     {
       "lead": "检查 ΔρDCCA 所切数据窗是否横跨 pre/post 政策/生理 regime",
       "motive": "点273 Kevrekidis 显式分段提示了这一可能"
@@ -22,6 +18,10 @@
     {
       "lead": "把 frame collapse 概念引进 ΔρDCCA 检验：枚举 block size/centering/窗起点 frame 集合，报跨 frame 一致率而非单点临界值",
       "motive": "点276 FLARE 抽取规则漂移 + 点277 frame collapse 共同指向静默 frame choice"
+    },
+    {
+      "lead": "把 Wunderer inhomogeneous-pool 偏压结论移植到 ΔρDCCA：报 ρ 之前先量化窗内 PD/regime 离散度，离散度大的窗不报单点 ρ、改报 ρ 随离散度的偏压方向",
+      "motive": "点280 给了 frame choice 在相关性估计上一个有方向、有量级的严格版本"
     }
   ],
   "trail": [
@@ -36,14 +36,14 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 12,
-  "last_update": "2026-11-05 15:40",
+  "energy": 11,
+  "last_update": "2026-11-05 16:21",
   "night_mode": false,
   "last_report_time": "2026-11-05 15:00",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 279,
+  "last_random_step": 280,
   "recent_angles": [
     "正负反馈耦合",
     "三相随机分岔",
@@ -53,8 +53,8 @@
   ],
   "blocked_leads": [],
   "random_stats": {
-    "total_steps": 27,
-    "random_start_count": 22,
+    "total_steps": 28,
+    "random_start_count": 23,
     "pending_count": 5
   },
   "converged": false,
@@ -71,9 +71,8 @@
     }
   ],
   "trail_urls": [
-    "https://arxiv.org/abs/2610.33604",
-    "https://arxiv.org/abs/2610.38631",
     "https://xkcd.com/2950/",
-    "https://xkcd.com/2247/"
+    "https://xkcd.com/2247/",
+    "https://arxiv.org/abs/1701.02028v2"
   ]
 }

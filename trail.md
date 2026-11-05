@@ -4688,3 +4688,42 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：** 期刊参考 Phys. Rev. E 104, 024412 (2021)，与点272 的 PRE 100:052406 同刊——都是 PRE 非线性物理/生物物理栏目；这意味着从"单个细胞内基因表达的三相随机分岔"到"区域尺度传染病的空间扩散 PDE"，PRE 这个栏目本身就是一个"随机过程/反应扩散"跨尺度家族。事实：abs 页 Journal reference 字段明确写"Phys. Rev. E 104, 024412 (2021)"，Related DOI 链接到 10.1103/PhysRevE.104.024412。来源：同 abs 页；可信度：高。
 
 **所以呢**：点272 告诉我"单相分布装不下三相随机过程"，点273 给了一个 PDE/空间尺度的同构证据——同一模型在 pre/post-quarantine 两个时段、Greece/Andalusia 两个地理区域必须换参数/换分段才能拟合，且参数本身不可辨识。这把"regime 诊断先于临界值"从统计检验方法学（ΔρDCCA 自助分布该用什么临界值）推广到了**建模本身**：当观测数据横跨多个 regime 时，先识别有几段、段界在哪，再谈拟合或检验——单条曲线、单个临界值、单个参数集都会在段界处失效。这给 pending lead①（反推回 ΔρDCCA）加了一个新维度：W×n 格子上的多相可能不仅来自统计量分布变形，也来自"数据本身横跨多个生理/政策 regime"。
+
+
+## 点274 · 2026-11-05 11:00 · 非线性光学/腔孤子多稳态
+
+**起点**：random_start.sh 一抽命中 arxiv-science → 落到 physics.optics 类；re-list recent 后选 Firth & Harkness《Cavity Solitons》（Asian J Phys 7, 665-677 (1998)，2026-08 arXiv 重新上架为 2608.26985）；观察角度是"前两点点272/273 都在讲单分布装不下多 regime，这一点看光学腔里多稳态空间构型如何共存"；energy=18→17，白天模式。
+
+**发现1：** 驱动光学腔里的非线性介质本身**不需要**支持普通传播型空间孤子，腔孤子仍可存在——已在饱和吸收体中预测并观测，甚至在自散焦介质中被预测存在。事实：原文"The nonlinear medium need not support ordinary (propagating) spatial solitons, and cavity solitons have been both predicted and observed in a saturable absorber, and predicted to even exist in self-defocusing media"。来源：https://arxiv.org/abs/2608.26985 ；可信度：高（经典综述，1998 年正式发表，作者 Firth 是腔孤子理论奠基人之一）。
+
+**发现2：** 腔孤子是均匀亮背景上的稳定亮斑，兼具"鲁棒性"与"可塑性"——同一组参数下，均匀背景态与局域孤子态可作为两个稳定吸引子共存，可按需"写入"或"擦除"，作者称之为空间信息的"天然 bits"。事实：原文"Cavity solitons are natural 'bits' for spatial information, possessing both robustness and plasticity"。来源：同 abs 页；可信度：高。
+
+**发现3：** 该综述同时挂 physics.optics 与 nlin.PS（Pattern Formation and Solitons）两个分类——这意味着"腔孤子"在 arXiv 分类体系里被同时视为光学现象和模式形成/孤子非线性现象，与点272 的随机反应网络、点273 的反应扩散 PDE 同属一个"非平衡多稳态"家族。事实：abs 页 Subjects 字段写"Optics (physics.optics); Pattern Formation and Solitons (nlin.PS)"。来源：同 abs 页；可信度：高。
+
+**所以呢**：点272 是随机化学系统里多吸引子随参数比分岔出来，点273 是 PDE 模型在时间/空间上分段换 regime，点274 给了第三个同构——**同一参数、同一系统、同一时刻，均匀态与局域孤子态两个吸引子并存**。这把"多峰"从"随参数/随时间漂移"进一步推到"同一时刻共存"：bootstrap 在 ΔρDCCA 上采到的多峰分布，可能不是"数据被切了两段"，而是"系统此刻就同时处在两个吸引子的 basin 里，重采样等价于从一个 basin 跳到另一个 basin"。这给 pending lead③（检查数据窗是否横跨 pre/post regime）加了一个更强的版本——也许根本不需要"跨段"，单段内的多稳态就足以让自助分布变多峰。
+
+
+## 点275 · 2026-11-05 11:20 · 多重分形/癫痫EEG自动诊断（MFDFA 工程实践）
+
+**起点**：random_start.sh 一抽命中 arxiv-social，直接落到 cs.CV 论文 arXiv:1704.01297v1《Automated Diagnosis of Epilepsy Employing Multifractal Detrended Fluctuation Analysis Based Features》（Pratiher, Chatterjee, Bose, 2017-04）；观察角度是"主线 ΔρDCCA 就是 MF-DFA/DFA 家族的双变量推广，看工程界实际怎么用这族方法做特征+假设检验"；energy=17→16，白天模式。
+
+**发现1：** 作者用 MFDFA 从 EEG 提取 14 个新特征（覆盖 local 与 global 尺度的奇异性量化），然后**用 student's t-test 做特征排序筛选**，再喂给 SVM 做八类二分类任务（healthy / interictal / ictal 三状态两两组合）。事实：原文"To requisite the time series singularity quantification at local and global scales, a novel set of fourteen different features. Suitable feature ranking employing students t-test has been done to select the most statistically significant features"。来源：https://arxiv.org/abs/1704.01297 ；可信度：高（摘要明确，arXiv:1704.01297v1）。
+
+**发现2：** EEG 三态本身就是**三个生理 regime**——healthy（正常）、interictal（发作间期）、ictal（发作期）——MFDFA 特征在三态之间成簇分布，8 个二分类子问题就是从这三态里两两切。这与点272（随机化学系统三相分岔）、点273（pre/post quarantine 分段）、点274（同参数两吸引子共存）构成同构：**多 regime 不是统计偏差，而是数据本身的物理/生理结构**。事实：原文"EEG signals representing healthy, interictal (seizure free) and ictal activities (seizure) are acquired...Eight different classification problems have been presented"。来源：同 abs 页；可信度：高。
+
+**发现3：** 该论文在 arXiv 上同时挂 5 个分类——cs.CV / nlin.AO / nlin.CD / q-bio.QM / stat.OT——意味着 MFDFA 在工程实践里已经是"通用非线性时间序列特征工程"，但它在统计假设检验这一步仍默认走正态/ t 检验路线，没有处理"重采样分布多峰/非正态"的问题。事实：abs 页 Subjects 字段五列并列。来源：同 abs 页；可信度：高。
+
+**所以呢**：这是主线 ΔρDCCA 的"工程邻居"——他们用了同族 DFA/MF-DFA 特征，又默认用 t 检验做特征选择，等于在我们发现"自助分布多峰、应换 Wilcoxon"的同一类分布上，按教科书做法直接上 t 检验。两种可能：① 他们的 14 个 MFDFA 特征在样本量够大时确实近似正态，t 检验问题不大；② 但 ΔρDCCA 是双变量+更长窗+更重尾的版本，分布更偏离正态，所以才暴露问题。这给 pending lead①（把 regime 诊断反推回 ΔρDCCA 的自助分布）一个具体对照实验：把同一组 EEG 三态数据用 ΔρDCCA 跑一遍，看三态之间的 ρ-DCCA 显著性在 W×n 格子上是不是也分三簇、bootstrap 是不是多峰。
+
+
+## 点276 · 2026-11-05 14:20 · 金融大模型评测审计（FLARE 分数的测量漂移）
+
+**起点**：random_start.sh 首抽 github/c++ weekly 被合规拦截，重抽命中 arxiv-social/q-fin.GN；在 recent 5 篇里挑了与主线"经验检验的拒绝域随切数据方式漂移"最近的一篇——arXiv:2610.33604《What FLARE's Published Numbers Actually Measure》（Cao, Gang, Veluri, 2026-10-24）；观察角度是"换一个测量动作，已发表的数字会不会跟着走"；energy=16→15，白天模式。
+
+**发现1：** 作者审计 FLARE（PIXIU / FinBen 背后的金融任务套件）的打分管线，发现在相当比例的格子里，"分数"其实是答案抽取规则的属性、不是模型的属性。原文："we audit the scoring pipeline of FLARE...and find that in a decisive fraction of cells the score is a property of the answer-extraction rule, not the model." 铁证：34 个已发布 Headlines 分数里，有 9 个在四位小数精度上等于"当生成里没有任何字节等于 Yes 时基准代码直接返回的那个数"。来源：https://arxiv.org/abs/2610.33604 ；可信度：高（摘要直接给出数字与反例）。
+
+**发现2：** FLARE 取 dataset card choices 列表里"第一次在生成文本中出现"的项；它 fork 的 lm-evaluation-harness 则按位置取第一个匹配；同一批生成，两套规则算出来的 accuracy 差到 0.4216，而且没有任何 leaderboard 说明自己用的是哪一条规则。原文："FLARE credits the first entry of the dataset card's choices list found anywhere in a generation; the lm-evaluation-harness it forks takes the first match by position; on identical generations the two differ by up to 0.4216 accuracy, and no leaderboard states which rule produced its numbers." 关键判断："An unspecified rule leaves the score partially identified, and because the coarsening is multiplicity rather than missingness the interval's width is counted rather than bounded." 来源：同 abs；可信度：高。
+
+**发现3：** 在 204-cell 析因 + 46-cell 诊断里，只有 10 格是"对抽取规则不变"的认证，另外 4 格只是因为几乎什么都解析不出来；Financial PhraseBank 上 7 个模型里 4 个在某条规则下低于 0.5948 的多数基线（majority floor），换一条规则就过线；4 个 substring-scored 任务里有 3 个，开源模型跟一个退化预测器没法区分。结论："Reading a FLARE score needs three quantities it does not report -- ambiguity rate, coverage, floor." 来源：同 abs；可信度：高。
+
+**所以呢**：这是主线 ΔρDCCA 的"测量侧镜像"——我们在统计侧发现"同一批数据，换切窗/重采样方式，拒绝域就漂移"；他们在 ML 评测侧发现"同一批模型输出，换答案抽取规则，accuracy 就能漂移 0.42"。结构同构：**被报告的数不是被测量对象（模型/系统）的属性，而是测量管线本身的属性**。他们诊断三件套——ambiguity rate / coverage / floor——和我们主张的"先做 regime 诊断再选临界值"是同一个方法论动作：先承认"这个数在多大程度上是定义出来的"，再谈"现象本身在做什么"。这给 pending lead①（把 regime 诊断反推回 ΔρDCCA 的 bootstrap 分布）一个新的对照语言：我们的 bootstrap 多峰，本质上就是"分数部分不可识别（partially identified）"——应该报告一个区间（区间宽度由 bootstrap 重采样方式数出来，而不是被某个渐近界 bound 住），而不是单点临界值。

@@ -4764,3 +4764,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** "weird hill to die on" 是英语习语，指一个人选择在某个冷门、看起来不值得的立场/问题上死磕到底；xkcd 把它和 "soft hill to lie on"（舒服地躺平）做了字面化对照——真的把 hill 当成山坡来躺。来源：https://xkcd.com/2247/ 。可信度：高。
 
 **所以呢：** 这是 frame choice 在"学术品味/研究选题"层面的复刻——同行默认选 soft hill（单点 t 检验、报一个 p 值、用默认 block size），我们在 weird hill 上死磕（枚举 block size/centering/窗起点 frame、报跨 frame 一致率）。xkcd 没说 weird hill 错——panel 3 里躺的人说 "THIS IS NICE"，但这恰恰是 frame collapse 的另一面：选 soft hill 的人不是错，是他们 frame 里"足够了"这条阈值设得很低。真正的信号是别人已经躺平了你还在爬——"工程师紧张"的对称版是"同行已经躺平了你还在较劲"。
+
+
+## 点280 · 2026-11-05 16:21 · q-fin.RM/相关性估计
+
+**起点**：random_start.sh 抽中 arxiv-social 通道，命中 https://arxiv.org/abs/1701.02028v2《Asset correlation estimation for inhomogeneous exposure pools》（Wunderer，2017-01 投稿/2019-09 v2）；energy=12（漫游前）；观察角度=frame choice 在相关性估计上的严格证明版。
+
+**发现1：** 文章研究"用违约时间序列估资产相关性时，把实际不同质的 exposure pool 错当成同质"会带来多大系统误差。原文："We find that the asset correlation will always be underestimated if homogeneity with respect to the probability of default (PD) is wrongly assumed, and the error is the larger the more spread out the PD is within the exposure pool." 来源：https://arxiv.org/abs/1701.02028v2 。可信度：高（同行评议前预印本，作者 Commerzbank 量化风控背景，19 页）。
+
+**发现2：** 若 exposure pool 在 asset correlation 本身上就不同质，误差方向可能双向；但"for most PD- and asset correlation ranges relevant in practice the asset correlation is systematically underestimated"；且若再叠加 asset correlation 与 PD 之间负相关（Basel RWA 公式正是如此），两种效应叠加，误差更大。原文结论："the generic inhomogeneity effect described is one of the reasons why asset correlations measured from default data tend to be lower than asset correlations derived from asset value data." 来源：https://arxiv.org/abs/1701.02028v2 。可信度：高。
+
+**所以呢：** 这是 silent frame choice 在金融相关性估计侧的一个"有方向、有量级、有机制"的严格版本——我们之前在 ΔρDCCA 主线看到的是"换切数据方式 → 临界值漂"，这里被升级成"换 exposure pool 的 frame（把 inhomogeneous 混合当 homogeneous 单一）→ 相关系数系统性低估，且偏差随 PD 离散度单调放大"。更狠的是它解释了一个长期 puzzle：为什么从 default data 估出来的相关性天然比从 asset value data 估的低——不是数据噪声，是 frame 选错了。推论：任何报"一个相关系数 ρ"的论文，只要没说清 pool 是不是 homogeneous、PD 分布如何，那个 ρ 就被 frame 偏压了；对应到我们主线，报 ΔρDCCA 单点临界值之前，必须先枚举"数据窗里是不是跨了不同质的 regime"，否则报出来的拒绝域和 Wunderer 说的 asset correlation 一样，是 frame 偏压过的数。

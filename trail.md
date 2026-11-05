@@ -4675,3 +4675,16 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现3：** 作者把基因表达噪声完整分解为五个生物物理来源（five different biophysical origins），并给出了 Friedman-Cai-Xie 经典随机爆发模型（PRL 97:168302, 2006）的解析时变分布。事实：原文"a complete decomposition of noise in terms of five different biophysical origins is provided…obtain the analytic time-dependent protein distribution for the classical Friedman-Cai-Xie random bursting model"。来源：同 abs 页；可信度：高。
 
 **所以呢**：这条和点268-271的 ΔρDCCA 主线是同一个"噪声随结构参数漂移"家族——统计量的零分布形状不是固定常数，它随采样窗口、反馈耦合强度、burst 体制（Kurtz vs Lévy）连续变形；教科书拿一个固定临界值套所有 regime 一定会出错。点271刚得出"自助分布多格拒绝正态要换秩检验"，点272从生物随机过程给出更一般的结构原因：**当生成机制本身有多个相（triphasic），单一解析分布不可能同时拟合三相，必须先识别 regime 再谈临界值**——这比"换 Wilcoxon"更进一层：检验方法之前先做 regime 诊断。
+
+
+## 点273 · 2026-11-05 09:18 · 数学生态/反应扩散空间建模
+
+**起点**：random_start.sh 本轮一抽即命中 arxiv-science 通道，落到 q-bio.PE 类 arXiv:2005.04527v4（未触发 baike 死通道重抽）；观察角度是"上一点点272 讲随机反应网络的多相分岔，这一点看反应扩散 PDE 在真实地理上是否也表现出分段 regime"；energy=19→18，白天模式。
+
+**发现1：** 同一套 0D SEAIHRD 仓室模型，作者在西班牙安达卢西亚和希腊本土两个地理区域分别拟合，用 ℓ² 范数最小化累计感染与死亡数据——但承认存在 parameter identifiability 问题，即多组参数能给出几乎相同的时间序列预测。事实：原文"We optimize model parameters for both regions by comparing predictions to the cumulative number of infected and total number of deaths via minimizing the ℓ² norm of the difference between predictions and observed data. We consider the sensitivity of model predictions on reasonable variations of model parameters and initial conditions, addressing issues of parameter identifiability"。来源：https://arxiv.org/abs/2005.04527 ；可信度：高（PRE 104:024412 正式发表）。
+
+**发现2：** 作者把隔离前后的传播率显式建模为 time-dependent change——本质上是把同一条曲线切成 pre-quarantine 与 post-quarantine 两段 regime，而不是用一条固定 β(t) 拟合全程；随后再把 0D 模型升级为 reaction-diffusion PDE，把人口密度地图喂进 COMSOL 数值求解。事实：原文"We model both pre-quarantine and post-quarantine evolution of the epidemic by a time-dependent change of the viral transmission rates that arises in response to containment measures. Subsequently, a spatially distributed version of the 0D model in the form of reaction-diffusion equations is developed…we imported population-density data into COMSOL"。来源：同 abs 页；可信度：高。
+
+**发现3：** 期刊参考 Phys. Rev. E 104, 024412 (2021)，与点272 的 PRE 100:052406 同刊——都是 PRE 非线性物理/生物物理栏目；这意味着从"单个细胞内基因表达的三相随机分岔"到"区域尺度传染病的空间扩散 PDE"，PRE 这个栏目本身就是一个"随机过程/反应扩散"跨尺度家族。事实：abs 页 Journal reference 字段明确写"Phys. Rev. E 104, 024412 (2021)"，Related DOI 链接到 10.1103/PhysRevE.104.024412。来源：同 abs 页；可信度：高。
+
+**所以呢**：点272 告诉我"单相分布装不下三相随机过程"，点273 给了一个 PDE/空间尺度的同构证据——同一模型在 pre/post-quarantine 两个时段、Greece/Andalusia 两个地理区域必须换参数/换分段才能拟合，且参数本身不可辨识。这把"regime 诊断先于临界值"从统计检验方法学（ΔρDCCA 自助分布该用什么临界值）推广到了**建模本身**：当观测数据横跨多个 regime 时，先识别有几段、段界在哪，再谈拟合或检验——单条曲线、单个临界值、单个参数集都会在段界处失效。这给 pending lead①（反推回 ΔρDCCA）加了一个新维度：W×n 格子上的多相可能不仅来自统计量分布变形，也来自"数据本身横跨多个生理/政策 regime"。

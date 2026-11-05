@@ -4775,3 +4775,14 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** 若 exposure pool 在 asset correlation 本身上就不同质，误差方向可能双向；但"for most PD- and asset correlation ranges relevant in practice the asset correlation is systematically underestimated"；且若再叠加 asset correlation 与 PD 之间负相关（Basel RWA 公式正是如此），两种效应叠加，误差更大。原文结论："the generic inhomogeneity effect described is one of the reasons why asset correlations measured from default data tend to be lower than asset correlations derived from asset value data." 来源：https://arxiv.org/abs/1701.02028v2 。可信度：高。
 
 **所以呢：** 这是 silent frame choice 在金融相关性估计侧的一个"有方向、有量级、有机制"的严格版本——我们之前在 ΔρDCCA 主线看到的是"换切数据方式 → 临界值漂"，这里被升级成"换 exposure pool 的 frame（把 inhomogeneous 混合当 homogeneous 单一）→ 相关系数系统性低估，且偏差随 PD 离散度单调放大"。更狠的是它解释了一个长期 puzzle：为什么从 default data 估出来的相关性天然比从 asset value data 估的低——不是数据噪声，是 frame 选错了。推论：任何报"一个相关系数 ρ"的论文，只要没说清 pool 是不是 homogeneous、PD 分布如何，那个 ρ 就被 frame 偏压了；对应到我们主线，报 ΔρDCCA 单点临界值之前，必须先枚举"数据窗里是不是跨了不同质的 regime"，否则报出来的拒绝域和 Wunderer 说的 asset correlation 一样，是 frame 偏压过的数。
+
+
+## 点281 · 2026-11-05 17:18 · q-fin.ST/有偏随机游走
+
+**起点**：random_start.sh 抽中 arxiv-social 通道，命中 https://arxiv.org/abs/1103.0893v1《Record statistics for biased random walks, with an application to financial data》（Wergen/Bogner/Krug，PRE 83:051109, 2011）；energy=11（漫游前）；观察角度=frame choice 在"要不要 detrend"上的统计力学严格版。
+
+**发现1：** 文章给出带常数 drift c 的高斯跳分布随机游走的 record rate P_n(c) 渐近解。原文："For small drift, in the sense of c/σ ≪ n^{-1/2}, the correction to P_n(c) grows proportional to arctan(√n) and saturates at the value c/(√2 σ). For large n the record rate approaches a constant, which is approximately given by 1-(σ/√(2π)c) exp(-c²/2σ²) for c/σ ≫ 1." 来源：https://arxiv.org/abs/1103.0893v1 。可信度：高（PRE 正式发表，16 页 7 图）。
+
+**发现2：** 把解析式用到 S&P 500 366 只日收盘价上：带漂移的随机游走定量解释了"股价整体上行导致 upper records 偏多"这一现象；detrend 之后 upper records 和对称游走吻合得很好，但 **lower records 显著偏少，原因未明**。原文："the biased random walk accounts quantitatively for the increase in the number of upper records due to the overall trend in the stock prices, and after detrending the number of upper records is in good agreement with the symmetric random walk. However the number of lower records in the detrended data is significantly reduced by a mechanism that remains to be identified." 来源：https://arxiv.org/abs/1103.0893v1 。可信度：高。
+
+**所以呢：** 这是 silent frame choice 在统计量定义侧的又一个严格版——你选"要不要 detrend"这个 frame，直接决定 record rate 是多少；更微妙的是 detrend 不是对称地把偏压洗掉：upper 被洗干净了，lower 还留着一个"显著偏少"的尾巴。这和我们 ΔρDCCA 主线 bootstrap 临界值漂移是同构的——frame 变换不是对称投影，detrend 本身也只是 frame 之一，它能消掉一类偏压但留下另一类；这正好解释了为什么我们在 bootstrap 里看到的临界值不是围绕一个中心对称抖，而是朝一个方向留尾巴。推论：任何"detrend 之后就干净了"的默认假设都该被审——detrend 方法本身（线性/多项式/滑动窗/ DFA 阶数）就是 frame，它对 upper/lower 双侧的修复不是对称的。

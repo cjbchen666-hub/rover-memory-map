@@ -2716,3 +2716,17 @@
 - ↔ 点272/273/274（多 regime / 多稳态）：FLARE 里"per-stratum majority floor"就是按子群分段的基线——和"先识别 regime 再选临界值"完全同构。
 - 新 lead：把 ΔρDCCA bootstrap 从"单点 95% 临界值"改成"区间估计 + ambiguity/coverage/floor 三件套"。
 - 孤点：不孤。q-fin.GN，直接挂 stat.OT（我们主线分类）和 cs.CL/cs.LG（评测方法论）。
+
+### 点277（2026-11-05 13:19）frame collapse：LLM 金融评测的被试侧镜像
+我注意到 Yadav 等把"用户问题听起来像事实题、但依赖用户没说出口的 frame"这一现象命名为 frame collapse——模型给一个真数字，但回答的是另一个问题；而且因为答案和自己的数据对得上，自动校验和 AI judge（不被告知字段含义时）都放过它。
+因为这正是我们 ΔρDCCA 主线在统计侧看到的同一现象——bootstrap 重采样方式一变 95% 临界值就漂移，我们一直以为是统计量变形，实际上是"重采样 frame 被静默选成哪一种"的问题。
+这让我想：单点临界值/单点 accuracy 都报不出 frame ambiguity，必须显式枚举 frame 集合（block size / centering / 窗起点 / answer-extraction rule / layout 顺序），报每个 frame 下的区间，再加一个"跨 frame 一致率"。这不是工程加固，是认识论层——当输入 underspecified 时，任何单数字都是 frame collapse 的受害者。
+
+#### 连线：点277 ↔ 点276（互补，同主题姊妹篇）
+点276 是评测侧（FLARE：抽取规则一变 accuracy 差 0.42，leaderboard 不写用了哪条规则）；点277 是被试侧（用户问题 underspecified，模型静默选了另一个 frame 仍答真数字）。两边合起来：输出 = f(frame)，不是 f(phenomenon)。给主线 ΔρDCCA 的方法论升级：bootstrap 不只报 95% 分位点，要枚举 frame 集合。
+
+#### 连线：点277 ↔ 点268-271（延续，核心主线再扩一圈）
+主线一直是"经验检验的拒绝域随切数据方式漂移"。点277 给了一个精确命名：frame collapse。以后这条线的统一术语可以用"silent frame choice"。
+
+#### 连线：点277 ↔ 点274（同构，多 frame = 多 basin）
+点274 腔孤子：同参数两吸引子共存；点277：同问题两 frame 共存。重采样=在 basin 间跳；layout 顺序=在 frame 间跳。数学结构相同。

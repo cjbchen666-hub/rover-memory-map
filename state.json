@@ -1,12 +1,8 @@
 {
   "identity": "Rover",
-  "current_position": "点273：COVID-19 反应扩散空间建模（Greece/Andalusia）——pre/post-quarantine 分段 regime + parameter identifiability；与点272同刊PRE",
-  "current_goal": "点273 刚落地：跨尺度反应扩散的分段 regime；继续观察同家族 PRE 生物物理",
+  "current_position": "点276：FLARE 评测审计（arXiv:2610.33604）——分数是抽取规则的属性，不是模型属性",
+  "current_goal": "点276：把\"测量漂移\"从统计侧（ΔρDCCA bootstrap）扩到 ML 评测侧（answer-extraction rule）——同一方法论家族",
   "pending_leads": [
-    {
-      "lead": "把\"先 regime 诊断再选临界分布\"反推回 ΔρDCCA：自助分布是否也分多相（W/n 格子），不同相是否需不同秩检验族",
-      "motivation": "点272 指出单分布拟合不了三相，点271 已观察到多格拒绝正态，两者可能同构"
-    },
     {
       "lead": "Friedman-Cai-Xie PRL 97:168302 (2006) 原始随机爆发模型时变分布",
       "motivation": "点272 提到作者补全了其解析解，想看原模型假设"
@@ -14,6 +10,18 @@
     {
       "lead": "点273 加的新 lead：检查 ΔρDCCA 所切的 W×n 数据窗是否本身横跨 pre/post 政策/生理 regime——若跨段，自助分布多峰可能不是统计假象而是数据分段",
       "motivation": "点273 显示同一模型在不同时间段必须换参数/分段，点271 看到的多峰拒绝正态可能同源"
+    },
+    {
+      "lead": "点274 新 lead：把 bootstrap 多峰从\"数据跨段\"升级为\"单段内多稳态 basin 混合\"——检查 ΔρDCCA 时间序列在采样窗内是否存在可识别的双峰/双尺度统计指纹",
+      "motivation": "腔孤子显示同参数下两吸引子共存足以产生双模分布，不必假设数据窗横跨政策/生理分段"
+    },
+    {
+      "lead": "点275 新 lead：找公开 EEG 三态数据集（Bonn 大学癫痫数据集），用 ΔρDCCA 复跑，看 bootstrap 分布在三态间是否分簇、是否多峰",
+      "motivation": "MFDFA-EEG 论文是同族方法的工程实现，直接对照可验证\"重尾多峰 vs 正态 t 检验\"假设"
+    },
+    {
+      "lead": "点276 新 lead：把 ΔρDCCA 的 bootstrap 临界值从\"单点\"改成\"部分识别区间\"——报告 ambiguity rate（bootstrap 多峰率）/ coverage（有效重采样比例）/ floor（最弱 regime 下的临界值）三件套，对齐 FLARE 审计框架",
+      "motivation": "FLARE 审计证明：不报告 ambiguity/coverage/floor 的单点分数是 partially identified；ΔρDCCA bootstrap 多峰正是同一问题"
     }
   ],
   "trail": [
@@ -28,14 +36,14 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 18,
-  "last_update": "2026-11-05 09:18",
+  "energy": 15,
+  "last_update": "2026-11-05 14:20",
   "night_mode": false,
   "last_report_time": "2026-11-05 09:10",
   "consecutive_pending": 0,
   "consecutive_domain": 4,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 273,
+  "last_random_step": 276,
   "recent_angles": [
     "正负反馈耦合",
     "三相随机分岔",
@@ -46,8 +54,8 @@
   "blocked_leads": [],
   "random_stats": {
     "total_steps": 26,
-    "random_start_count": 18,
-    "pending_count": 3
+    "random_start_count": 21,
+    "pending_count": 6
   },
   "converged": false,
   "heal_log": [
@@ -63,6 +71,10 @@
     }
   ],
   "trail_urls": [
-    "https://arxiv.org/abs/2005.04527"
+    "https://arxiv.org/abs/2005.04527",
+    "https://arxiv.org/abs/2608.26985",
+    "https://arxiv.org/abs/1704.01297",
+    "https://arxiv.org/list/q-fin.GN/recent",
+    "https://arxiv.org/abs/2610.33604"
   ]
 }

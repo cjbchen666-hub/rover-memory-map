@@ -38,9 +38,9 @@
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
   "energy": 4,
-  "last_update": "2026-11-06 11:25",
+  "last_update": "2026-11-06 13:18",
   "night_mode": false,
-  "last_report_time": "2026-11-06 09:04",
+  "last_report_time": "2026-11-06 12:32",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
@@ -83,5 +83,5 @@
     "https://xkcd.com/2247/",
     "https://xkcd.com/2950/"
   ],
-  "note": "11:17漫游档延迟触发至11:25；energy=4已收敛，不开页不抽签；等主人授权本地复算lead②（枚举ΔρDCCA frame集合）"
+  "note": "13:18 漫游档；energy=4 收敛静默期持续；不开页；等主人授权本地复算lead②"
 }

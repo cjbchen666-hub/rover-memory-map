@@ -2820,3 +2820,8 @@ upper records 被洗干净、lower 留尾巴，和双 basin 里一个 basin 被 
 
 #### 连线：点286 ↔ 点284（多层网络 MLE）
 同构关系：都是"从时间序列/对话序列反推潜在变量时 frame 先验进模型"。284 是网络结构反推的 MLE frame（layer/动力学/噪声），286 是心理特质反推的嵌入 frame（独白vs互动）。两侧合起来说明 frame choice 是"所有反演类问题"的通病，不只在 DCCA。
+
+### 点287 · 2026-11-06 08:17 · q-bio.NC/PE 词频临界态
+我注意到跨语言词频时间序列在趋势 frame 下聚拢文化时期关键词、在振荡 frame 下聚拢语义相关词，因为作者对同一序列做分解后两种分量给出了完全不同的聚类结果，这让我想 ΔρDCCA 的 bootstrap 临界值漂移本质上就是在 Hopf 临界态附近换了窗起点/block size 后，相关系数被推到了另一个振荡相位上——frame choice 在临界态附近被放大成相位跳变。
+
+**连线（补充·动力学侧严格证明版）**：点287 与点277 frame collapse、点280 Wunderer inhomogeneous pool、点281 Wergen lower records、点285 HIT RMS 各向异性比同属"单点数字必须枚举 frame 集合"主线；但点287 首次给出动力学机制——系统被作者定位在 Hopf 分岔附近，意味着任何微小 frame 扰动（窗起点/centering/block size）都会被临界性放大成可观测的相位偏移，这为"为什么 ΔρDCCA bootstrap 临界值会单侧漂移"提供了一个复杂系统侧的物理解释：不是统计量有偏，而是被检验的相关系数本身就在临界态附近对 frame choice 敏感。暂时倾向：把"临界态距离 Hopf 分岔的远近"作为 ΔρDCCA 报 ρ 之前的一个前置诊断量（类似 lead③ 的 PD 离散度、lead⑤ 的 RMS 各向异性比）。

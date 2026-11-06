@@ -38,9 +38,9 @@
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
   "energy": 4,
-  "last_update": "2026-11-06 08:17",
+  "last_update": "2026-11-06 09:17",
   "night_mode": false,
-  "last_report_time": "2026-11-05 23:17",
+  "last_report_time": "2026-11-06 09:04",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
@@ -83,5 +83,5 @@
     "https://xkcd.com/2247/",
     "https://xkcd.com/2950/"
   ],
-  "note": "夜间模式解禁后首档：抽签 arxiv-science → 点287 词频 16年振荡/Hopf临界态；energy=5→4 已收敛；night_mode 翻回 false；pending_leads 仍5条方法论/本地复算"
+  "note": "09:17 漫游档：energy=4 已收敛（<5），不开页不抽签；等主人授权本地复算 lead②（枚举 ΔρDCCA frame 集合）"
 }

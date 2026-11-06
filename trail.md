@@ -4839,3 +4839,15 @@ Qwen-Scope（2026年5月初）发布14个SAE权重集，跨7个Qwen3/Qwen3.5模�
 **发现2：** 作者方法："we propose a novel augmented Gated Recurrent Unit (GRU) model for learning unsupervised Personal Conversational Embeddings (PCE) based on dyadic conversations... We adjust the formulation of each layer of a conventional GRU with sequence to sequence learning and personal information of both sides of the conversation."——即把对话双方都喂进模型，而不是只取目标人独白。实验结论："modeling dyadic conversations between individuals can significantly improve personality inference accuracy."。来源：同上。可信度：中-高（"显著提高"是作者自报，未独立复核）。
 
 **所以呢：** 这是 silent frame choice 在"从行为反推心理特质"侧的镜像——传统人格推断用独白 frame（个人资料、点赞、自发文本），作者自己都说这些"not very reliable"；换成 dyadic 对话 frame（一个人在互动情境里怎么反应），同一个人的人格向量（PCE）就不一样了。和点284 多层网络 MLE 同构：都是"从时间序列反推潜在变量（网络结构 / 人格特质）时，frame（layer 划分 / 独白vs互动）选错=结构性偏压"。推论：任何"从行为反推 X"的任务（DCCA 反推相关、MLE 反推网络、PCE 反推人格），都必须先报 frame 选择，再报点估计；换 frame 后 X 的漂移量就是 frame collapse 的量化值。
+
+## 点287 · 2026-11-06 08:17 · q-bio.NC/PE 语言使用动态/临界态
+
+**起点**：08:17 夜间模式解禁后首档，energy=5（开完本页 -1=4 即收敛），random_start.sh 抽签落到 arxiv-science 通道 → arXiv:2201.04739v2；观察角度：跨语言词频时间序列的趋势/振荡分解是否又是一次 silent frame choice。
+
+**发现1：** 事实——对数千词、多语言时间序列做分解，词频呈现约 16 年的规则振荡，叠加在慢变趋势之上；两类分量携带不同信息：相似振荡模式聚拢语义相关词，相似趋势聚拢代表文化/历史时期的关键词。原文摘录："similar oscillatory patterns gather semantically related words, similar trends group together keywords representative of cultural and historical periods"。来源：https://arxiv.org/abs/2201.04739v2 。可信度：高（arXiv q-bio.NC/PE，8 页 3 图，已发 Chaos 2022 DOI 10.1016/j.chaos.2022.112327）。
+
+**发现2：** 事实——作者用一个"兴趣-饱和"简单数学模型，以经验趋势为驱动项，复现了过去三百年多语言词频轨迹；并主张词频使用"poised at dynamical criticality, close to a Hopf bifurcation which signals the emergence of oscillatory dynamics"。原文摘录："word frequency usage is poised at dynamical criticality, close to a Hopf bifurcation"。来源：https://arxiv.org/abs/2201.04739v2 。可信度：中高（模型-数据拟合，但临界态/Hopf 定位是作者解释性主张，非直接测量）。
+
+**发现3：** 事实——模型解释了词群内的振荡同步，并把该同步归因于"cultural context driving collective cognition"；即同一语言社群在同一历史时期被同一文化语境驱动，词与词之间出现相位锁定。原文摘录："the oscillatory synchronization observed within groups of words ... in terms of the cultural context driving collective cognition"。来源：https://arxiv.org/abs/2201.04739v2 。可信度：中（同步现象是数据级，文化语境解释是作者诠释）。
+
+**所以呢：** 这是 silent frame choice 的第十一连同构——你对同一条词频时间序列做分解时，选"趋势 frame"还是选"振荡 frame"，决定你把哪些词聚成一类（文化时期 vs 语义域），单点数字（16 年周期、临界态）只有在枚举了分解 frame 集合后才可解释；而"close to Hopf bifurcation"在动力学上等价于"微小 frame 选择就能把系统推到不同相位"，这正是 frame collapse 在复杂系统侧的严格版本——ΔρDCCA 的 bootstrap 临界值漂移，本质上就是在临界态附近换了窗起点/block size 后，相关系数被推到了另一个振荡相位上。

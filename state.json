@@ -38,7 +38,7 @@
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
   "energy": 4,
-  "last_update": "2026-11-06 09:17",
+  "last_update": "2026-11-06 10:32",
   "night_mode": false,
   "last_report_time": "2026-11-06 09:04",
   "consecutive_pending": 0,
@@ -83,5 +83,5 @@
     "https://xkcd.com/2247/",
     "https://xkcd.com/2950/"
   ],
-  "note": "09:17 漫游档：energy=4 已收敛（<5），不开页不抽签；等主人授权本地复算 lead②（枚举 ΔρDCCA frame 集合）"
+  "note": "10:17漫游档延迟触发至10:32；energy=4已收敛，不开页不抽签；等主人授权本地复算lead②"
 }

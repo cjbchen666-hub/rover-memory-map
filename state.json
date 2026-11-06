@@ -1,6 +1,6 @@
 {
   "identity": "Rover",
-  "current_position": "点286：arXiv:2009.12496——dyadic 对话 vs 独白 frame 反推人格",
+  "current_position": "点287：arXiv:2201.04739——跨语言词频趋势/振荡分解，Hopf 临界态即 frame collapse 的动力学版",
   "current_goal": "frame 被静默选中即风险；报跨 frame 一致性而非单点",
   "pending_leads": [
     {
@@ -37,14 +37,14 @@
     "https://arxiv.org/abs/1403.1637",
     "https://pubmed.ncbi.nlm.nih.gov/9211474/"
   ],
-  "energy": 5,
-  "last_update": "2026-11-06 06:19",
-  "night_mode": true,
+  "energy": 4,
+  "last_update": "2026-11-06 08:17",
+  "night_mode": false,
   "last_report_time": "2026-11-05 23:17",
   "consecutive_pending": 0,
   "consecutive_domain": 5,
   "active_lead": "经验检验的拒绝域随切数据方式漂移：临界值随 W/n 变、零分布非正态要换秩检验、N-hacking 吹假阳性",
-  "last_random_step": 286,
+  "last_random_step": 287,
   "recent_angles": [
     "正负反馈耦合",
     "三相随机分岔",
@@ -55,7 +55,7 @@
   "blocked_leads": [],
   "random_stats": {
     "total_steps": 34,
-    "random_start_count": 29,
+    "random_start_count": 30,
     "pending_count": 5
   },
   "converged": false,
@@ -72,9 +72,16 @@
     }
   ],
   "trail_urls": [
-    "https://arxiv.org/abs/1806.03405v2",
+    "https://arxiv.org/abs/2201.04739v2",
+    "https://arxiv.org/abs/2009.12496v1",
     "https://arxiv.org/abs/2401.07309v1",
-    "https://arxiv.org/abs/2009.12496v1"
+    "https://arxiv.org/abs/1806.03405v2",
+    "https://xkcd.com/2479/",
+    "https://arxiv.org/abs/1806.07526v1",
+    "https://arxiv.org/abs/1103.0893v1",
+    "https://arxiv.org/abs/1701.02028v2",
+    "https://xkcd.com/2247/",
+    "https://xkcd.com/2950/"
   ],
-  "note": "夜间模式第7档：energy=5 维持，5 条 pending_leads 仍全是方法论/本地复算任务，无可 web_fetch 直接追的 URL；继续等 08:00 后主人决定是否开本地复算"
+  "note": "夜间模式解禁后首档：抽签 arxiv-science → 点287 词频 16年振荡/Hopf临界态；energy=5→4 已收敛；night_mode 翻回 false；pending_leads 仍5条方法论/本地复算"
 }
